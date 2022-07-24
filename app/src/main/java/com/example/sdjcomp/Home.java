@@ -26,7 +26,7 @@ public class Home extends Fragment {
     private HomeBinding binding;
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
-    private String URL="http://192.168.20.25:3000/login/";
+    private String URL="http://192.168.56.1:3000/login/";
     private boolean validado;
 
     @Override
@@ -58,10 +58,13 @@ public class Home extends Fragment {
                 call.enqueue(new Callback<PreLoginUsuario>() {
                     @Override
                     public void onResponse(Call<PreLoginUsuario> call, Response<PreLoginUsuario> response) {
+                        System.out.println(response.code());
                         //si la bd devuel 200 y luego se revisa por segunda vez si coinciden
                         if(response.code()==200)
                         {
+
                             PreLoginUsuario result = response.body();
+                            System.out.println(map.get("correo")+" " + result.getCorreo() + " " + map.get("correo").equals(result.getCorreo()));
                             if(map.get("correo").equals(result.getCorreo()) && map.get("clave").equals(result.getClave()))
                             {
                                 System.out.println("JULIAN!!!¡");
