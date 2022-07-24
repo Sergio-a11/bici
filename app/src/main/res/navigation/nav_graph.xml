@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/Home">
+
+    <fragment
+        android:id="@+id/Home"
+        android:name="com.example.sdjcomp.Home"
+        android:label="@string/login"
+        tools:layout="@layout/home">
+        <action
+            android:id="@+id/action_Home_to_InterfazEstudiante"
+            app:destination="@id/InterfazEstudiante" />
+    </fragment>
+    <fragment
+        android:id="@+id/InterfazEstudiante"
+        android:name="com.example.sdjcomp.InterfazEstudiante"
+        android:label="@string/title"
+        tools:layout="@layout/interfaz_estudiante">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/Home" />
+    </fragment>
+</navigation>
