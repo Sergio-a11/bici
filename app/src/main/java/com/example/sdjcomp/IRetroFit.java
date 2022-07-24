@@ -9,4 +9,7 @@ import retrofit2.http.POST;
 public interface IRetroFit {
     @POST("/login")
     Call<PreLoginUsuario> executeLogin(@Body HashMap<String,String> map);
+
+    @POST("/register")
+    Call<Usuario> executeRegister(@Body Usuario map);
 }
