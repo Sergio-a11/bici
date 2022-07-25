@@ -2,10 +2,15 @@ package com.example.sdjcomp;
 
 import java.util.HashMap;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface IRetroFit {
@@ -17,4 +22,7 @@ public interface IRetroFit {
 
     @GET("/getUser/{correo}")
     Call<Usuario> executeGetUser(@Path("correo") String correo);
+
+    @PUT("/updateUser")
+    Call<Usuario> executeUpdateUser(@Body Usuario codigo);
 }

@@ -11,9 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import java.util.HashMap;
+import com.example.sdjcomp.databinding.HomeBinding;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,23 +22,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Registro#newInstance} factory method to
+ * Use the {@link ModificarUsuario#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Registro extends Fragment {
+public class ModificarUsuario extends Fragment {
 
+    private HomeBinding binding;
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
-    private String URL="http://192.168.1.14:3000/register/";
+    private String URL="http://192.168.1.14:3000/updateUser/";
 
-    private EditText edtCodigo;
     private EditText edtNombre;
     private EditText edtCorreo;
     private EditText edtClave;
     private EditText edtRespuesta;
     private Spinner spnPreguntas;
-    private Button btnRegistrar;
-
+    private Button btnModificar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,7 +48,7 @@ public class Registro extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Registro() {
+    public ModificarUsuario() {
         // Required empty public constructor
     }
 
@@ -60,11 +58,11 @@ public class Registro extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Registro.
+     * @return A new instance of fragment ModificarUsuario.
      */
     // TODO: Rename and change types and number of parameters
-    public static Registro newInstance(String param1, String param2) {
-        Registro fragment = new Registro();
+    public static ModificarUsuario newInstance(String param1, String param2) {
+        ModificarUsuario fragment = new ModificarUsuario();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -84,64 +82,37 @@ public class Registro extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_registro, container, false);
-        edtCodigo = (EditText) v.findViewById(R.id.edtCodigo);
-        edtNombre = (EditText) v.findViewById(R.id.edtNombre);
-        edtCorreo = (EditText) v.findViewById(R.id.edtCorreo);
-        edtClave = (EditText) v.findViewById(R.id.edtClave);
-        edtRespuesta = (EditText) v.findViewById(R.id.edtRespuesta);
-        btnRegistrar = (Button) v.findViewById(R.id.btnRegistrarUsuario);
-        spnPreguntas = (Spinner) v.findViewById(R.id.spnPreguntas);
+        View v = inflater.inflate(R.layout.fragment_modificar_usuario,container,false);
+
+        edtCorreo = v.findViewById(R.id.edtCorreoM);
+        edtNombre = v.findViewById(R.id.edtNombreM);
+        edtClave = v.findViewById(R.id.edtClaveM);
+        edtRespuesta = v.findViewById(R.id.edtRespuestaM);
+        spnPreguntas = v.findViewById(R.id.spnPreguntasM);
+        btnModificar = v.findViewById(R.id.btnModificarUsuario);
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 
-          int Pregunta = 0;
-        switch (spnPreguntas.getSelectedItemPosition()){
-            case 1:{
-                Pregunta = 1;
-                break;
-            }
-            case 2:{
-                Pregunta = 2;
-                break;
-            }
-            case 3:{
-                Pregunta = 3;
-                break;
-            }
-        }
-
-        final int preguntaF = Pregunta;
-        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+        btnModificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Usuario objU = new Usuario(edtCodigo.getText().toString(),edtNombre.getText().toString(),
+                Usuario objU = new Usuario(((Sesion)getActivity().getApplicationContext()).getCodigo(),edtNombre.getText().toString(),
                         edtCorreo.getText().toString(),edtClave.getText().toString(),
-                        preguntaF,edtRespuesta.getText().toString(),2);
+                        1,edtRespuesta.getText().toString(),2);
 
-                HashMap<String,Usuario> map = new HashMap<>();
-
-                map.put("usuario",objU);
-                System.out.println("objU PS = " + objU.getPseguridad());
-                System.out.println("objU RS = " + objU.getRseguridad());
-                System.out.println("objU rol = " + objU.getRol_id());
-
-                Call<Usuario> call = iRetrofit.executeRegister(objU);
+                Call<Usuario> call = iRetrofit.executeUpdateUser(objU);
                 call.enqueue(new Callback<Usuario>() {
                     @Override
                     public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                         if(response.code()==200){
-                            Toast.makeText(getContext(), "Usuario Registrado Con Exito", Toast.LENGTH_LONG).show();
+                            NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Usuario> call, Throwable t) {
-                        System.out.println("t = " + t);
-                        Toast.makeText(getContext(), "Usuario No Registrado", Toast.LENGTH_LONG).show();
-                        NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_Home);
+
                     }
                 });
             }
