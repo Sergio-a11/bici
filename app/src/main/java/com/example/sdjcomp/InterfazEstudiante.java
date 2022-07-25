@@ -26,7 +26,7 @@ public class InterfazEstudiante extends Fragment {
 
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
-    private String URL="http://192.168.1.14:3000/getUser/";
+    private String URL="http://192.168.20.25:3000/getUser/";
 
     private TextView txtTitulo;
     private Button btnActualizarUsuario;
