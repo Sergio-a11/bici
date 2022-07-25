@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.sdjcomp.databinding.HomeBinding;
 
@@ -91,6 +92,12 @@ public class ModificarUsuario extends Fragment {
         spnPreguntas = v.findViewById(R.id.spnPreguntasM);
         btnModificar = v.findViewById(R.id.btnModificarUsuario);
 
+        edtCorreo.setText(((Sesion)getActivity().getApplicationContext()).getCorreo());
+        edtNombre.setText(((Sesion)getActivity().getApplicationContext()).getNombre());
+        edtClave.setText(((Sesion)getActivity().getApplicationContext()).getClave());
+        edtRespuesta.setText(((Sesion)getActivity().getApplicationContext()).getClave());
+
+
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 
@@ -106,13 +113,14 @@ public class ModificarUsuario extends Fragment {
                     @Override
                     public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                         if(response.code()==200){
+                            System.out.println("Usuario Modificado");
                             NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Usuario> call, Throwable t) {
-
+                        Toast.makeText(getContext(), "No redirigio", Toast.LENGTH_LONG).show();
                     }
                 });
             }

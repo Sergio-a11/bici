@@ -50,9 +50,12 @@ public class InterfazEstudiante extends Fragment {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if(response.code()==200){
-                    ((Sesion)getActivity().getApplicationContext()).setCorreo(response.body().getNombre());
-                    ((Sesion)getActivity().getApplicationContext()).setNombre(response.body().getNombre());
                     ((Sesion)getActivity().getApplicationContext()).setCodigo(response.body().getCodigo());
+                    ((Sesion)getActivity().getApplicationContext()).setNombre(response.body().getNombre());
+                    ((Sesion)getActivity().getApplicationContext()).setCorreo(response.body().getCorreo());
+                    ((Sesion)getActivity().getApplicationContext()).setClave(response.body().getClave());
+                    ((Sesion)getActivity().getApplicationContext()).setPseguridad(response.body().getPseguridad());
+                    ((Sesion)getActivity().getApplicationContext()).setRseguridad(response.body().getRseguridad());
                     ((Sesion)getActivity().getApplicationContext()).setRol_id(response.body().getRol_id());
                     txtTitulo.setText("Bienvenido "+response.body().getNombre());
                 }
