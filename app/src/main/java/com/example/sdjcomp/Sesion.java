@@ -3,19 +3,22 @@ package com.example.sdjcomp;
 import android.app.Application;
 
 public class Sesion extends Application {
-    private String codigo,nombre,correo;
-    private int Rol_id;
+    private String codigo,nombre,correo,clave,Rseguridad;
+    private int Rol_id,Pseguridad;
     private boolean validado;
 
     public Sesion() {
     }
 
-    public Sesion(String codigo, String nombre, int rol_id,String Correo, boolean Validado) {
+    public Sesion(String codigo, String nombre, String correo, String clave, String rseguridad, int rol_id, int pseguridad, boolean validado) {
         this.codigo = codigo;
         this.nombre = nombre;
+        this.correo = correo;
+        this.clave = clave;
+        Rseguridad = rseguridad;
         Rol_id = rol_id;
-        this.correo = Correo;
-        this.validado = Validado;
+        Pseguridad = pseguridad;
+        this.validado = validado;
     }
 
     public String getCodigo() {
@@ -34,6 +37,30 @@ public class Sesion extends Application {
         this.nombre = nombre;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public String getRseguridad() {
+        return Rseguridad;
+    }
+
+    public void setRseguridad(String rseguridad) {
+        Rseguridad = rseguridad;
+    }
+
     public int getRol_id() {
         return Rol_id;
     }
@@ -42,12 +69,12 @@ public class Sesion extends Application {
         Rol_id = rol_id;
     }
 
-    public String getCorreo() {
-        return correo;
+    public int getPseguridad() {
+        return Pseguridad;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setPseguridad(int pseguridad) {
+        Pseguridad = pseguridad;
     }
 
     public boolean isValidado() {

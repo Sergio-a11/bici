@@ -52,7 +52,7 @@ app.post('/registerUser', (req, res) => {
 
 app.get('/getUser/:correo', (req,res)=>{
     const correo = req.params.correo   
-    console.log(correo)
+    console.log("Consultando a "+correo)
     conexion.query(`SELECT * FROM usuarios WHERE correo='${correo}'`,(error,results)=>{
     if(error)
     {
@@ -70,7 +70,7 @@ app.get('/getUser/:correo', (req,res)=>{
 
 app.get('/getUsers', (req,res)=>{
     const codigo = req.body.codigo
-    console.log(codigo)
+    console.log("Consultando a "+codigo)
     conexion.query(`SELECT * FROM usuarios`,(error,results)=>{
     if(error)
     {
@@ -94,13 +94,14 @@ app.put('/updateUser', (req,res)=>{
     const Pseguridad = req.body.Pseguridad
     const Rseguridad = req.body.Rseguridad
     const Rol_id = req.body.Rol_id
-    console.log(codigo)
+    console.log("Modificando a :"+codigo)
     conexion.query(`UPDATE usuarios SET nombre='${nombre}', correo='${correo}', clave='${clave}', Pseguridad=${Pseguridad}, Rseguridad='${Rseguridad}', Rol_id=${Rol_id} WHERE codigo=${codigo}`,(error,results)=>{
     if(error)
     {
         console.log(error)
     }else if(results!=null){
-        res.status(200).send(JSON.stringify(results[0]))
+        console.log(results)
+        res.status(200).send(JSON.stringify(results))
     }
     else{
         console.log("3")
