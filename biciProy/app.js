@@ -4,6 +4,10 @@ const app = express();
 
 app.use(express.json())
 
+app.listen(3000, () => {
+    console.log("Listening on port 3000...")
+})
+
 app.post('/login', (req, res) => {
     const correo = req.body.correo
     const clave = req.body.clave
@@ -23,7 +27,7 @@ app.post('/login', (req, res) => {
     })
 })
 
-app.post('/register', (req, res) => {
+app.post('/registerUser', (req, res) => {
     const codigo = req.body.codigo
     const nombre = req.body.nombre
     const correo = req.body.correo
@@ -46,16 +50,38 @@ app.post('/register', (req, res) => {
 })
 })
 
-
 app.get('/getUser', (req,res)=>{
     const codigo = req.body.codigo
     console.log(codigo)
-    conexion.query('SELECT * FROM usuarios WHERE ?',[{codigo}],(error,results)=>{
+    conexion.query(`SELECT * FROM usuarios WHERE ${codigo}`,(error,results)=>{
     if(error)
     {
         console.log(error)
     }else if(results!=null){
+        res.status(200).send(JSON.stringify(results))
+    }
+    else{
+        console.log("3")
         console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
+app.get('/updateUser', (req,res)=>{
+    const codigo = req.body.codigo
+    const nombre = req.body.nombre
+    const correo = req.body.correo
+    const clave = req.body.clave
+    const Pseguridad = req.body.Pseguridad
+    const Rseguridad = req.body.Rseguridad
+    const Rol_id = req.body.Rol_id
+    console.log(codigo)
+    conexion.query(`UPDATE usuarios set${nombre}, ${correo}, ${clave}, ${Pseguridad}, ${Rseguridad}, ${Rol_id} WHERE ${codigo}`,[{codigo}],(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
         res.status(200).send(JSON.stringify(results[0]))
     }
     else{
@@ -66,6 +92,112 @@ app.get('/getUser', (req,res)=>{
     })
 })
 
-app.listen(3000, () => {
-    console.log("Listening on port 3000...")
+app.get('/deleteUser', (req,res)=>{
+    const codigo = req.body.codigo
+    console.log(codigo)
+    conexion.query('DELETE FROM usuarios WHERE ?',[{codigo}],(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results[0]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
 })
+
+app.post('/registerBike', (req, res) => {
+    const idBicicleta = req.body.idBicicleta
+    const cedulaPropietario = req.body.cedulaPropietario
+    const fechaRegistro = req.body.fechaRegistro
+    const lugarRegistro = req.body.lugarRegistro
+    const Marca_id = req.body.Marca_id
+    const numSerie = req.body.numSerie
+    const Tipo_id = req.body.Tipo_id
+    const color = req.body.color
+    const Estudiante_id = req.body.Estudiante_id
+
+    conexion.query(`INSERT INTO bicicletas (idBicicleta,cedulaPropietario,fechaRegistro,lugarRegistro,Marca_id,numSerie,Tipo_id,color,Estudiante_id) 
+    VALUES('${idBicicleta}','${cedulaPropietario}','${fechaRegistro}','${lugarRegistro}',${Marca_id},'${numSerie}',${Tipo_id},'${color}','${Estudiante_id}')`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send()
+    }
+    else{
+        res.status(404).send()
+    }
+})
+})
+
+app.get('/geBike', (req,res)=>{
+    const Estudiante_id = req.body.Estudiante_id
+    console.log(codigo)
+    conexion.query('SELECT * FROM bicicletas WHERE ?',[{Estudiante_id}],(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results[0]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+//updateBike
+//deleteBike
+
+app.post('/registerSlots', (req, res) => {
+    const idCupo = req.body.idCupo
+    const seccion = req.body.seccion
+    const estado = req.body.estado
+
+    conexion.query(`INSERT INTO cupos (idCupo,seccion,estado) 
+    VALUES(${idCupo},'${seccion}',${fechaRegistro},${estado}')`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send()
+    }
+    else{
+        res.status(404).send()
+    }
+})
+})
+//getSlots
+//updateSlots
+//deleteSlots
+
+//registerBrands
+//getBrands
+//updateBrands
+//deleteBrands
+
+//registerParkinglot
+//getParkinglot
+//updateParkinglots
+//deleteParkinglot
+
+//registerQuestions
+//getQuestions
+//updateQuestions
+//deleteQuestions
+
+//registerRoles
+//getRoles
+//updateRoles
+//deleteRoles
+
+//registerTypes
+//getTypes
+//updateTypes
+//deleteTypes
