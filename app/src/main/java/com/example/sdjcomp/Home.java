@@ -70,6 +70,7 @@ public class Home extends Fragment {
                             {
                                 System.out.println("JULIAN!!!¡");
                                 validado=true;
+                                ((Sesion) getActivity().getApplicationContext()).setCorreo(txtCorreo.getText().toString());
                                 NavHostFragment.findNavController(Home.this).navigate(R.id.action_Home_to_InterfazEstudiante);
                             }
                         }

@@ -50,10 +50,28 @@ app.post('/registerUser', (req, res) => {
 })
 })
 
-app.get('/getUser', (req,res)=>{
+app.get('/getUser/:correo', (req,res)=>{
+    const correo = req.params.correo   
+    console.log(correo)
+    conexion.query(`SELECT * FROM usuarios WHERE correo='${correo}'`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results[0]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
+app.get('/getUsers', (req,res)=>{
     const codigo = req.body.codigo
     console.log(codigo)
-    conexion.query(`SELECT * FROM usuarios WHERE ${codigo}`,(error,results)=>{
+    conexion.query(`SELECT * FROM usuarios`,(error,results)=>{
     if(error)
     {
         console.log(error)
@@ -68,7 +86,7 @@ app.get('/getUser', (req,res)=>{
     })
 })
 
-app.get('/updateUser', (req,res)=>{
+app.put('/updateUser', (req,res)=>{
     const codigo = req.body.codigo
     const nombre = req.body.nombre
     const correo = req.body.correo
@@ -77,7 +95,7 @@ app.get('/updateUser', (req,res)=>{
     const Rseguridad = req.body.Rseguridad
     const Rol_id = req.body.Rol_id
     console.log(codigo)
-    conexion.query(`UPDATE usuarios set${nombre}, ${correo}, ${clave}, ${Pseguridad}, ${Rseguridad}, ${Rol_id} WHERE ${codigo}`,[{codigo}],(error,results)=>{
+    conexion.query(`UPDATE usuarios SET nombre='${nombre}', correo='${correo}', clave='${clave}', Pseguridad=${Pseguridad}, Rseguridad='${Rseguridad}', Rol_id=${Rol_id} WHERE codigo=${codigo}`,(error,results)=>{
     if(error)
     {
         console.log(error)
@@ -92,7 +110,7 @@ app.get('/updateUser', (req,res)=>{
     })
 })
 
-app.get('/deleteUser', (req,res)=>{
+app.delete('/deleteUser', (req,res)=>{
     const codigo = req.body.codigo
     console.log(codigo)
     conexion.query('DELETE FROM usuarios WHERE ?',[{codigo}],(error,results)=>{
@@ -100,7 +118,7 @@ app.get('/deleteUser', (req,res)=>{
     {
         console.log(error)
     }else if(results!=null){
-        res.status(200).send(JSON.stringify(results[0]))
+        res.status(200).send(JSON.stringify(results))
     }
     else{
         console.log("3")
@@ -109,6 +127,8 @@ app.get('/deleteUser', (req,res)=>{
     }
     })
 })
+
+//↑↑↑↑↑↑va bien↑↑↑↑↑↑
 
 app.post('/registerBike', (req, res) => {
     const idBicicleta = req.body.idBicicleta
