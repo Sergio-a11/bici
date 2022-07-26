@@ -111,15 +111,15 @@ app.put('/updateUser', (req,res)=>{
     })
 })
 
-app.delete('/deleteUser', (req,res)=>{
-    const codigo = req.body.codigo
+app.delete('/deleteUser/:codigo', (req,res)=>{
+    const codigo = req.params.codigo
     console.log(codigo)
     conexion.query('DELETE FROM usuarios WHERE ?',[{codigo}],(error,results)=>{
     if(error)
     {
         console.log(error)
     }else if(results!=null){
-        res.status(200).send(JSON.stringify(results))
+        res.status(200).send(JSON.stringify(results["affectedRows"]))
     }
     else{
         console.log("3")

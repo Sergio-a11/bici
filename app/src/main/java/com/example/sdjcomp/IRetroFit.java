@@ -2,9 +2,11 @@ package com.example.sdjcomp;
 
 import java.util.HashMap;
 
+import kotlin.io.path.ExperimentalPathApi;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -25,4 +27,7 @@ public interface IRetroFit {
 
     @PUT("/updateUser")
     Call<Usuario> executeUpdateUser(@Body Usuario codigo);
+
+    @DELETE("/deleteUser/{codigo}")
+    Call<Number> executeDeleteUser(@Path("codigo") String codigo);
 }
