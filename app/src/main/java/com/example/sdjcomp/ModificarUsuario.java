@@ -35,7 +35,6 @@ public class ModificarUsuario extends Fragment {
     private String URL="http://192.168.20.25:3000/updateUser/";
 
     private EditText edtNombre;
-    private EditText edtCorreo;
     private EditText edtClave;
     private EditText edtRespuesta;
     private Spinner spnPreguntas;
@@ -87,21 +86,18 @@ public class ModificarUsuario extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_modificar_usuario,container,false);
 
-        edtCorreo = v.findViewById(R.id.edtCorreoM);
         edtNombre = v.findViewById(R.id.edtNombreM);
         edtClave = v.findViewById(R.id.edtClaveM);
         edtRespuesta = v.findViewById(R.id.edtRespuestaM);
         spnPreguntas = v.findViewById(R.id.spnPreguntasM);
         btnModificar = v.findViewById(R.id.btnModificarUsuario);
-        btnModificarCorreo = v.findViewById(R.id.btnModificarCorreo);
         btnModificarNombre = v.findViewById(R.id.btnModificarNombre);
         btnModificarClave = v.findViewById(R.id.btnModificarClave);
         btnModificarRespuesta = v.findViewById(R.id.btnModificarRespuesta);
 
-        edtCorreo.setText(((Sesion)getActivity().getApplicationContext()).getCorreo());
         edtNombre.setText(((Sesion)getActivity().getApplicationContext()).getNombre());
         edtClave.setText(((Sesion)getActivity().getApplicationContext()).getClave());
-        edtRespuesta.setText(((Sesion)getActivity().getApplicationContext()).getClave());
+        edtRespuesta.setText(((Sesion)getActivity().getApplicationContext()).getRseguridad());
 
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
@@ -111,7 +107,7 @@ public class ModificarUsuario extends Fragment {
             @Override
             public void onClick(View view) {
                 Usuario objU = new Usuario(((Sesion)getActivity().getApplicationContext()).getCodigo(),edtNombre.getText().toString(),
-                        edtCorreo.getText().toString(),edtClave.getText().toString(),
+                        ((Sesion)getActivity().getApplicationContext()).getCorreo(),edtClave.getText().toString(),
                         1,edtRespuesta.getText().toString(),2);
 
                 Call<Usuario> call = iRetrofit.executeUpdateUser(objU);
@@ -132,12 +128,6 @@ public class ModificarUsuario extends Fragment {
             }
         });
 
-        btnModificarCorreo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CambiarAtributo(1);
-            }
-        });
 
         btnModificarNombre.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,18 +154,13 @@ public class ModificarUsuario extends Fragment {
     }
 
     public void CambiarAtributo(int i){
-        String URLaux = "http://192.168.1.14:3000/updateOneUser/";
+        String URLaux = "http://192.168.20.25:3000/updateOneUser/";
         retrofit = new Retrofit.Builder().baseUrl(URLaux).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 
         String valor,campo;
 
         switch (i){
-            case 1:{
-                valor = edtCorreo.getText().toString();
-                campo = "correo";
-                break;
-            }
             case 2:{
                 valor = edtNombre.getText().toString();
                 campo = "nombre";

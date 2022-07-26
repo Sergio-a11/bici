@@ -56,49 +56,26 @@
         app:layout_constraintTop_toBottomOf="@+id/lblTituloM" />
 
     <TextView
-        android:id="@+id/lblCorreo2"
-        android:layout_width="35dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="51dp"
-        android:text="Correo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblNombre2" />
-
-    <EditText
-        android:id="@+id/edtCorreoM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="estudiante@correo.udsitrital.edu.co"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toEndOf="@+id/lblCorreo2"
-        app:layout_constraintTop_toBottomOf="@+id/edtNombreM" />
-
-    <TextView
         android:id="@+id/lblClave2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="60dp"
         android:text="Clave"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCorreo2" />
+        app:layout_constraintTop_toBottomOf="@+id/lblNombre2" />
 
     <EditText
         android:id="@+id/edtClaveM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPassword"
         android:minHeight="48dp"
         app:layout_constraintStart_toEndOf="@+id/lblClave2"
-        app:layout_constraintTop_toBottomOf="@+id/edtCorreoM" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNombreM" />
 
     <TextView
         android:id="@+id/lblPregunta2"
@@ -124,7 +101,7 @@
         android:id="@+id/btnModificarUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="144dp"
         android:text="Modificar"
         android:textColor="#FFFFFF"
@@ -153,34 +130,24 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="17dp"
         android:layout_marginEnd="15dp"
+        android:minHeight="48dp"
         android:src="@drawable/ic_bxs_up_arrow_circle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/edtNombreM"
         app:layout_constraintTop_toBottomOf="@+id/lblTituloM" />
 
     <ImageButton
-        android:id="@+id/btnModificarCorreo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="15dp"
-        android:src="@drawable/ic_bxs_up_arrow_circle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/edtCorreoM"
-        app:layout_constraintTop_toBottomOf="@+id/btnModificarNombre" />
-
-    <ImageButton
         android:id="@+id/btnModificarClave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
+        android:minHeight="48dp"
         android:src="@drawable/ic_bxs_up_arrow_circle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/edtClaveM"
-        app:layout_constraintTop_toBottomOf="@+id/btnModificarCorreo" />
+        app:layout_constraintTop_toBottomOf="@+id/btnModificarNombre" />
 
     <ImageButton
         android:id="@+id/btnModificarRespuesta"
@@ -189,6 +156,7 @@
         android:layout_marginStart="37dp"
         android:layout_marginTop="102dp"
         android:layout_marginEnd="15dp"
+        android:minHeight="48dp"
         android:src="@drawable/ic_bxs_up_arrow_circle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/edtRespuestaM"

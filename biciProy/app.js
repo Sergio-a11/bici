@@ -95,7 +95,7 @@ app.put('/updateUser', (req,res)=>{
     const Rseguridad = req.body.Rseguridad
     const Rol_id = req.body.Rol_id
     console.log("Modificando a :"+codigo)
-    conexion.query(`UPDATE usuarios SET nombre='${nombre}', correo='${correo}', clave='${clave}', Pseguridad=${Pseguridad}, Rseguridad='${Rseguridad}', Rol_id=${Rol_id} WHERE codigo=${codigo}`,(error,results)=>{
+    conexion.query(`UPDATE usuarios SET nombre='${nombre}', clave='${clave}', Pseguridad=${Pseguridad}, Rseguridad='${Rseguridad}', Rol_id=${Rol_id} WHERE codigo=${codigo}`,(error,results)=>{
     if(error)
     {
         console.log(error)
