@@ -27,7 +27,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="112dp"
         android:singleLine="false"
-        android:text="Modificar Informacion de usuario, Todos los datos que se muetran aqui seran cambiados"
+        android:text="Modificar Informacion de usuario"
+        android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -144,5 +145,53 @@
         android:text="Respuesta"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblPregunta2" />
+
+    <ImageButton
+        android:id="@+id/btnModificarNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_bxs_up_arrow_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edtNombreM"
+        app:layout_constraintTop_toBottomOf="@+id/lblTituloM" />
+
+    <ImageButton
+        android:id="@+id/btnModificarCorreo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_bxs_up_arrow_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edtCorreoM"
+        app:layout_constraintTop_toBottomOf="@+id/btnModificarNombre" />
+
+    <ImageButton
+        android:id="@+id/btnModificarClave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_bxs_up_arrow_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edtClaveM"
+        app:layout_constraintTop_toBottomOf="@+id/btnModificarCorreo" />
+
+    <ImageButton
+        android:id="@+id/btnModificarRespuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="102dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_bxs_up_arrow_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edtRespuestaM"
+        app:layout_constraintTop_toBottomOf="@+id/btnModificarClave" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -104,10 +104,32 @@ app.put('/updateUser', (req,res)=>{
         res.status(200).send(JSON.stringify(results))
     }
     else{
-        console.log("3")
         console.log(results)
         res.status(404).send()
     }
+    })
+})
+
+app.patch('/updateOneUser/:palabras', (req,res)=>{
+    const palabras = req.params.palabras
+    console.log(palabras)
+    const words = palabras.split(',')
+    const valor = words[0]
+    const campo = words[1]
+    const codigo = words[2]
+    console.log("Modificando a :"+codigo)
+    conexion.query(`UPDATE usuarios SET ${campo}='${valor}' WHERE codigo=${codigo}`, ( error,results) =>{
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null){
+            console.log(results)
+            res.status(200).send(JSON.stringify(results["affectedRows"]))
+        }
+        else{
+            console.log(results)
+            res.status(404).send()
+        }
     })
 })
 
