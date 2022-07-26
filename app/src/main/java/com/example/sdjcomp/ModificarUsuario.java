@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ public class ModificarUsuario extends Fragment {
     private EditText edtRespuesta;
     private Spinner spnPreguntas;
     private Button btnModificar;
+    private ImageButton btnModificarCorreo,btnModificarNombre,btnModificarClave,btnModificarRespuesta;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -91,6 +93,10 @@ public class ModificarUsuario extends Fragment {
         edtRespuesta = v.findViewById(R.id.edtRespuestaM);
         spnPreguntas = v.findViewById(R.id.spnPreguntasM);
         btnModificar = v.findViewById(R.id.btnModificarUsuario);
+        btnModificarCorreo = v.findViewById(R.id.btnModificarCorreo);
+        btnModificarNombre = v.findViewById(R.id.btnModificarNombre);
+        btnModificarClave = v.findViewById(R.id.btnModificarClave);
+        btnModificarRespuesta = v.findViewById(R.id.btnModificarRespuesta);
 
         edtCorreo.setText(((Sesion)getActivity().getApplicationContext()).getCorreo());
         edtNombre.setText(((Sesion)getActivity().getApplicationContext()).getNombre());
@@ -113,7 +119,7 @@ public class ModificarUsuario extends Fragment {
                     @Override
                     public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                         if(response.code()==200){
-                            System.out.println("Usuario Modificado");
+                            Toast.makeText(getContext(), "Usuario Modificado", Toast.LENGTH_LONG).show();
                             NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
                         }
                     }
@@ -126,6 +132,90 @@ public class ModificarUsuario extends Fragment {
             }
         });
 
+        btnModificarCorreo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CambiarAtributo(1);
+            }
+        });
+
+        btnModificarNombre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CambiarAtributo(2);
+            }
+        });
+
+        btnModificarClave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CambiarAtributo(3);
+            }
+        });
+
+        btnModificarRespuesta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CambiarAtributo(4);
+            }
+        });
+
         return v;
     }
+
+    public void CambiarAtributo(int i){
+        String URLaux = "http://192.168.1.14:3000/updateOneUser/";
+        retrofit = new Retrofit.Builder().baseUrl(URLaux).addConverterFactory(GsonConverterFactory.create()).build();
+        iRetrofit = retrofit.create(IRetroFit.class);
+
+        String valor,campo;
+
+        switch (i){
+            case 1:{
+                valor = edtCorreo.getText().toString();
+                campo = "correo";
+                break;
+            }
+            case 2:{
+                valor = edtNombre.getText().toString();
+                campo = "nombre";
+                break;
+            }
+            case 3:{
+                valor = edtClave.getText().toString();
+                campo = "clave";
+                break;
+            }
+            case 4:{
+                valor = edtRespuesta.getText().toString();
+                campo = "Rseguridad";
+                break;
+            }
+            default:{
+                valor=null;
+                campo=null;
+                break;
+            }
+        }
+
+        String palabras= valor+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo();
+        System.out.println("palabras = " + palabras);
+        Call<Number> call = iRetrofit.executeUpdateOneUser(palabras);
+        call.enqueue(new Callback<Number>() {
+            @Override
+            public void onResponse(Call<Number> call, Response<Number> response) {
+                if(response.code()==200){
+                    if(Integer.parseInt(String.valueOf(response.body()))==1){
+                        Toast.makeText(getContext(), campo+" Modificado a "+valor, Toast.LENGTH_LONG).show();
+                        NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<Number> call, Throwable t) {
+                Toast.makeText(getContext(), "Campo no modificado", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 }
