@@ -42,7 +42,8 @@ app.post('/registerUser', (req, res) => {
     {
         console.log(error)
     }else if(results!=null){
-        res.status(200).send()
+        console.log(results)
+        res.status(200).send(JSON.stringify(results["affectedRows"]))
     }
     else{
         res.status(404).send()

@@ -96,7 +96,7 @@ public class Registro extends Fragment {
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 
-          int Pregunta = 0;
+          int Pregunta = 1;
         switch (spnPreguntas.getSelectedItemPosition()){
             case 1:{
                 Pregunta = 1;
@@ -128,20 +128,22 @@ public class Registro extends Fragment {
                 System.out.println("objU RS = " + objU.getRseguridad());
                 System.out.println("objU rol = " + objU.getRol_id());
 
-                Call<Usuario> call = iRetrofit.executeRegister(objU);
-                call.enqueue(new Callback<Usuario>() {
+                Call<Number> call = iRetrofit.executeRegister(objU);
+                call.enqueue(new Callback<Number>() {
                     @Override
-                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                    public void onResponse(Call<Number> call, Response<Number> response) {
                         if(response.code()==200){
-                            Toast.makeText(getContext(), "Usuario Registrado Con Exito", Toast.LENGTH_LONG).show();
+                            if(Integer.parseInt(String.valueOf(response.body()))==1){
+                                Toast.makeText(getContext(), "Usuario Registrado Con Exito", Toast.LENGTH_LONG).show();
+                                NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_Home);
+                            }
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<Usuario> call, Throwable t) {
+                    public void onFailure(Call<Number> call, Throwable t) {
                         System.out.println("t = " + t);
                         Toast.makeText(getContext(), "Usuario No Registrado", Toast.LENGTH_LONG).show();
-                        NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_Home);
                     }
                 });
             }
