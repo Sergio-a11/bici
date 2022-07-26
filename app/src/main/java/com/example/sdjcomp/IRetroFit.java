@@ -21,7 +21,7 @@ public interface IRetroFit {
     Call<PreLoginUsuario> executeLogin(@Body HashMap<String,String> map);
 
     @POST("/registerUser")
-    Call<Usuario> executeRegister(@Body Usuario map);
+    Call<Number> executeRegister(@Body Usuario map);
 
     @GET("/getUser/{correo}")
     Call<Usuario> executeGetUser(@Path("correo") String correo);
