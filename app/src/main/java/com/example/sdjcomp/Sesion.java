@@ -1,31 +1,24 @@
 package com.example.sdjcomp;
 
-public class Usuario {
-    private String codigo;
-    private String nombre;
-    private String correo;
-    private String clave;
-    private int Pseguridad;
-    private String Rseguridad;
-    private int Rol_id;
+import android.app.Application;
 
-    public Usuario(String codigo, String nombre, String correo, String clave, int pseguridad, String rseguridad, int rol_id) {
+public class Sesion extends Application {
+    private String codigo,nombre,correo,clave,Rseguridad;
+    private int Rol_id,Pseguridad;
+    private boolean validado;
+
+    public Sesion() {
+    }
+
+    public Sesion(String codigo, String nombre, String correo, String clave, String rseguridad, int rol_id, int pseguridad, boolean validado) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.correo = correo;
         this.clave = clave;
-        Pseguridad = pseguridad;
         Rseguridad = rseguridad;
         Rol_id = rol_id;
-    }
-
-    public Usuario(String nombre, String correo, String clave, int pseguridad, String rseguridad, int rol_id) {
-        this.nombre = nombre;
-        this.correo = correo;
-        this.clave = clave;
         Pseguridad = pseguridad;
-        Rseguridad = rseguridad;
-        Rol_id = rol_id;
+        this.validado = validado;
     }
 
     public String getCodigo() {
@@ -60,14 +53,6 @@ public class Usuario {
         this.clave = clave;
     }
 
-    public int getPseguridad() {
-        return Pseguridad;
-    }
-
-    public void setPseguridad(int pseguridad) {
-        Pseguridad = pseguridad;
-    }
-
     public String getRseguridad() {
         return Rseguridad;
     }
@@ -82,5 +67,21 @@ public class Usuario {
 
     public void setRol_id(int rol_id) {
         Rol_id = rol_id;
+    }
+
+    public int getPseguridad() {
+        return Pseguridad;
+    }
+
+    public void setPseguridad(int pseguridad) {
+        Pseguridad = pseguridad;
+    }
+
+    public boolean isValidado() {
+        return validado;
+    }
+
+    public void setValidado(boolean validado) {
+        this.validado = validado;
     }
 }

@@ -119,24 +119,9 @@ public class Registro extends Fragment {
 
                 Usuario objU = new Usuario(edtCodigo.getText().toString(),edtNombre.getText().toString(),
                         edtCorreo.getText().toString(),edtClave.getText().toString(),
-                        1,edtRespuesta.getText().toString(),2);
+                        preguntaF,edtRespuesta.getText().toString(),2);
 
                 HashMap<String,Usuario> map = new HashMap<>();
-               /* map.put("codigo",edtCodigo.getText().toString());
-                map.put("nombre",edtNombre.getText().toString());
-                map.put("correo",edtCorreo.getText().toString());
-                map.put("clave",edtClave.getText().toString());
-                map.put("pregunta",String.valueOf(preguntaF));
-                map.put("respuesta",edtRespuesta.getText().toString());
-                map.put("rol", String.valueOf(2));*/
-
-                /*map.put("codigo","20192578014");
-                map.put("nombre","Sergio Cruz");
-                map.put("correo","seracruz@correo.udistrital.edu.co");
-                map.put("clave","clave");
-                map.put("pregunta",1);
-                map.put("respuesta","Morado");
-                map.put("rol", 2);*/
 
                 map.put("usuario",objU);
                 System.out.println("objU PS = " + objU.getPseguridad());
