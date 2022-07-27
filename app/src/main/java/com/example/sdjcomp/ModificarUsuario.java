@@ -183,7 +183,7 @@ public class ModificarUsuario extends Fragment {
             }
         }
 
-        String palabras= valor+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo();
+        String palabras= valor+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo()+"usuarios";
         System.out.println("palabras = " + palabras);
         Call<Number> call = iRetrofit.executeUpdateOneUser(palabras);
         call.enqueue(new Callback<Number>() {

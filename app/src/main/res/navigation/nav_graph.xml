@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_Home_to_fragment_registro"
             app:destination="@id/fragment_registro" />
+        <action
+            android:id="@+id/action_Home_to_interfaz_administrador"
+            app:destination="@id/interfaz_administrador" />
     </fragment>
     <fragment
         android:id="@+id/InterfazEstudiante"
@@ -51,5 +54,28 @@
         <action
             android:id="@+id/action_fragment_modificar_usuario_to_InterfazEstudiante"
             app:destination="@id/InterfazEstudiante" />
+    </fragment>
+    <fragment
+        android:id="@+id/interfaz_administrador"
+        android:name="com.example.sdjcomp.InterfazAdministrador"
+        android:label="@string/title"
+        tools:layout="@layout/interfaz_administrador">
+
+
+        <action
+            android:id="@+id/action_interfaz_administrador_to_Home"
+            app:destination="@id/Home" />
+        <action
+            android:id="@+id/action_interfaz_administrador_to_consultarCupo"
+            app:destination="@id/consultarCupo" />
+    </fragment>
+    <fragment
+        android:id="@+id/consultarCupo"
+        android:name="com.example.sdjcomp.ConsultarCupo"
+        android:label="consultar_cupo"
+        tools:layout="@layout/consultar_cupo" >
+        <action
+            android:id="@+id/action_consultarCupo_self"
+            app:destination="@id/consultarCupo" />
     </fragment>
 </navigation>

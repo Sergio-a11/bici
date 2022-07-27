@@ -32,7 +32,9 @@ public interface IRetroFit {
     @DELETE("/deleteUser/{codigo}")
     Call<Number> executeDeleteUser(@Path("codigo") String codigo);
     
-    //@FormUrlEncoded
     @PATCH("/updateOneUser/{palabras}")
     Call<Number> executeUpdateOneUser(@Path("palabras") String palabras);
+
+    @GET("/getOne/{palabras}")
+    Call<Usuario> executeGetUserByCode(@Path("palabras") String palabras);
 }

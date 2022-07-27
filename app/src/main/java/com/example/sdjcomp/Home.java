@@ -68,10 +68,18 @@ public class Home extends Fragment {
                             System.out.println(map.get("correo")+" " + result.getCorreo() + " " + map.get("correo").equals(result.getCorreo()));
                             if(map.get("correo").equals(result.getCorreo()) && map.get("clave").equals(result.getClave()))
                             {
-                                System.out.println("JULIAN!!!¡");
+
                                 validado=true;
                                 ((Sesion) getActivity().getApplicationContext()).setCorreo(txtCorreo.getText().toString());
-                                NavHostFragment.findNavController(Home.this).navigate(R.id.action_Home_to_InterfazEstudiante);
+                                System.out.println("response.body().getRol_id() = " + response.body().getRol_id());
+                                if(result.getRol_id()==1){
+                                    System.out.println("Logeado Como Administrador");
+                                    NavHostFragment.findNavController(Home.this).navigate(R.id.action_Home_to_interfaz_administrador);
+                                }else if(result.getRol_id()==2){
+                                    System.out.println("Logeado Como Estudiante");
+                                    NavHostFragment.findNavController(Home.this).navigate(R.id.action_Home_to_InterfazEstudiante);
+                                }
+
                             }
                         }
                     }
