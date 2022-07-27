@@ -155,8 +155,12 @@ app.delete('/deleteUser/:codigo', (req,res)=>{
 
 //↑↑↑↑↑↑va bien↑↑↑↑↑↑
 
+//------------ BICICLETAS
+
+//[ ] registrar bicicleta
+
+
 app.post('/registerBike', (req, res) => {
-    const idBicicleta = req.body.idBicicleta
     const cedulaPropietario = req.body.cedulaPropietario
     const fechaRegistro = req.body.fechaRegistro
     const lugarRegistro = req.body.lugarRegistro
@@ -166,13 +170,13 @@ app.post('/registerBike', (req, res) => {
     const color = req.body.color
     const Estudiante_id = req.body.Estudiante_id
 
-    conexion.query(`INSERT INTO bicicletas (idBicicleta,cedulaPropietario,fechaRegistro,lugarRegistro,Marca_id,numSerie,Tipo_id,color,Estudiante_id) 
-    VALUES('${idBicicleta}','${cedulaPropietario}','${fechaRegistro}','${lugarRegistro}',${Marca_id},'${numSerie}',${Tipo_id},'${color}','${Estudiante_id}')`,(error,results)=>{
+    conexion.query(`INSERT INTO bicicletas (cedulaPropietario,fechaRegistro,lugarRegistro,Marca_id,numSerie,Tipo_id,color,Estudiante_id) 
+    VALUES('${cedulaPropietario}','${fechaRegistro}','${lugarRegistro}',${Marca_id},'${numSerie}',${Tipo_id},'${color}','${Estudiante_id}')`,(error,results)=>{
     if(error)
     {
         console.log(error)
     }else if(results!=null){
-        res.status(200).send()
+        res.status(200).send(JSON.stringify(results["affectedRows"]))
     }
     else{
         res.status(404).send()
@@ -180,9 +184,11 @@ app.post('/registerBike', (req, res) => {
 })
 })
 
+//[ ] obtener una bicicleta
+
 app.get('/geBike', (req,res)=>{
     const Estudiante_id = req.body.Estudiante_id
-    console.log(codigo)
+    console.log(Estudiante_id)
     conexion.query('SELECT * FROM bicicletas WHERE ?',[{Estudiante_id}],(error,results)=>{
     if(error)
     {
@@ -197,6 +203,28 @@ app.get('/geBike', (req,res)=>{
     }
     })
 })
+
+//[ ] obtener varias bicicletas
+
+app.get('/getBikes/:Estudiante_id', (req,res)=>{
+    const Estudiante_id = req.params.Estudiante_id
+    console.log(Estudiante_id)
+    conexion.query('SELECT * FROM bicicletas WHERE ?',[{Estudiante_id}],(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        console.log(results)
+        res.status(200).send(JSON.stringify(results))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
 //updateBike
 //deleteBike
 

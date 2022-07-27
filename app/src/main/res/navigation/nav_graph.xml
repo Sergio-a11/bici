@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_InterfazEstudiante_to_fragment_modificar_usuario"
             app:destination="@id/fragment_modificar_usuario" />
+        <action
+            android:id="@+id/action_InterfazEstudiante_to_interfazBicicleta"
+            app:destination="@id/interfazBicicleta" />
     </fragment>
     <fragment
         android:id="@+id/fragment_registro"
@@ -52,4 +55,9 @@
             android:id="@+id/action_fragment_modificar_usuario_to_InterfazEstudiante"
             app:destination="@id/InterfazEstudiante" />
     </fragment>
+    <fragment
+        android:id="@+id/interfazBicicleta"
+        android:name="com.example.sdjcomp.InterfazBicicleta"
+        android:label="fragment_interfaz_bicicleta"
+        tools:layout="@layout/fragment_interfaz_bicicleta" />
 </navigation>

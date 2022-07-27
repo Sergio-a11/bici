@@ -26,10 +26,10 @@ public class InterfazEstudiante extends Fragment {
 
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
-    private String URL="http://192.168.1.14:3000/getUser/";
+    private String URL="http://192.168.20.25:3000/getUser/";
 
     private TextView txtTitulo;
-    private Button btnActualizarUsuario, btnEliminarUsuario;
+    private Button btnActualizarUsuario, btnEliminarUsuario, btnVerRegistros;
 
     @Override
     public View onCreateView(
@@ -45,6 +45,17 @@ public class InterfazEstudiante extends Fragment {
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
+
+        //ver registros
+
+        btnVerRegistros = (Button) v.findViewById(R.id.btnVerRegistros);
+        btnVerRegistros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(InterfazEstudiante.this)
+                        .navigate(R.id.action_InterfazEstudiante_to_interfazBicicleta);
+            }
+        });
 
         Call<Usuario> call = iRetrofit.executeGetUser(((Sesion)getActivity().getApplicationContext()).getCorreo());
         call.enqueue(new Callback<Usuario>() {
@@ -130,7 +141,7 @@ public class InterfazEstudiante extends Fragment {
 
     public void eliminar()
     {
-        URL = "http://192.168.1.14:3000/deleteUser/";
+        URL = "http://192.168.20.25:3000/deleteUser/";
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 
