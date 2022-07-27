@@ -42,7 +42,8 @@ app.post('/registerUser', (req, res) => {
     {
         console.log(error)
     }else if(results!=null){
-        res.status(200).send()
+        console.log(results)
+        res.status(200).send(JSON.stringify(results["affectedRows"]))
     }
     else{
         res.status(404).send()
@@ -50,10 +51,28 @@ app.post('/registerUser', (req, res) => {
 })
 })
 
-app.get('/getUser', (req,res)=>{
+app.get('/getUser/:correo', (req,res)=>{
+    const correo = req.params.correo   
+    console.log("Consultando a "+correo)
+    conexion.query(`SELECT * FROM usuarios WHERE correo='${correo}'`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results[0]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
+app.get('/getUsers', (req,res)=>{
     const codigo = req.body.codigo
-    console.log(codigo)
-    conexion.query(`SELECT * FROM usuarios WHERE ${codigo}`,(error,results)=>{
+    console.log("Consultando a "+codigo)
+    conexion.query(`SELECT * FROM usuarios`,(error,results)=>{
     if(error)
     {
         console.log(error)
@@ -68,7 +87,7 @@ app.get('/getUser', (req,res)=>{
     })
 })
 
-app.get('/updateUser', (req,res)=>{
+app.put('/updateUser', (req,res)=>{
     const codigo = req.body.codigo
     const nombre = req.body.nombre
     const correo = req.body.correo
@@ -76,13 +95,55 @@ app.get('/updateUser', (req,res)=>{
     const Pseguridad = req.body.Pseguridad
     const Rseguridad = req.body.Rseguridad
     const Rol_id = req.body.Rol_id
-    console.log(codigo)
-    conexion.query(`UPDATE usuarios set${nombre}, ${correo}, ${clave}, ${Pseguridad}, ${Rseguridad}, ${Rol_id} WHERE ${codigo}`,[{codigo}],(error,results)=>{
+    console.log("Modificando a :"+codigo)
+    conexion.query(`UPDATE usuarios SET nombre='${nombre}', clave='${clave}', Pseguridad=${Pseguridad}, Rseguridad='${Rseguridad}', Rol_id=${Rol_id} WHERE codigo=${codigo}`,(error,results)=>{
     if(error)
     {
         console.log(error)
     }else if(results!=null){
-        res.status(200).send(JSON.stringify(results[0]))
+        console.log(results)
+        res.status(200).send(JSON.stringify(results))
+    }
+    else{
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
+
+app.patch('/updateOneUser/:palabras', (req,res)=>{
+    const palabras = req.params.palabras
+    console.log(palabras)
+    const words = palabras.split(',')
+    const valor = words[0]
+    const campo = words[1]
+    const codigo = words[2]
+    console.log("Modificando a :"+codigo)
+    conexion.query(`UPDATE usuarios SET ${campo}='${valor}' WHERE codigo=${codigo}`, ( error,results) =>{
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null){
+            console.log(results)
+            res.status(200).send(JSON.stringify(results["affectedRows"]))
+        }
+        else{
+            console.log(results)
+            res.status(404).send()
+        }
+    })
+})
+
+app.delete('/deleteUser/:codigo', (req,res)=>{
+    const codigo = req.params.codigo
+    console.log(codigo)
+    conexion.query('DELETE FROM usuarios WHERE ?',[{codigo}],(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results["affectedRows"]))
     }
     else{
         console.log("3")
@@ -92,23 +153,7 @@ app.get('/updateUser', (req,res)=>{
     })
 })
 
-app.get('/deleteUser', (req,res)=>{
-    const codigo = req.body.codigo
-    console.log(codigo)
-    conexion.query('DELETE FROM usuarios WHERE ?',[{codigo}],(error,results)=>{
-    if(error)
-    {
-        console.log(error)
-    }else if(results!=null){
-        res.status(200).send(JSON.stringify(results[0]))
-    }
-    else{
-        console.log("3")
-        console.log(results)
-        res.status(404).send()
-    }
-    })
-})
+//↑↑↑↑↑↑va bien↑↑↑↑↑↑
 
 app.post('/registerBike', (req, res) => {
     const idBicicleta = req.body.idBicicleta
