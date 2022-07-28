@@ -26,7 +26,7 @@ public class Home extends Fragment {
     private HomeBinding binding;
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
-    private String URL="http://192.168.1.14:3000/login/";
+    private String URL="http://"+getResources().getString(R.string.ip_adress)+":3000/login/";
     private boolean validado;
 
     @Override

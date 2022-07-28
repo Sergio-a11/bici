@@ -32,7 +32,7 @@ public class ModificarUsuario extends Fragment {
     private HomeBinding binding;
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
-    private String URL="http://192.168.1.14:3000/updateUser/";
+    private String URL="http://"+getResources().getString(R.string.ip_adress)+":3000/updateUser/";
 
     private EditText edtNombre;
     private EditText edtClave;
@@ -154,7 +154,7 @@ public class ModificarUsuario extends Fragment {
     }
 
     public void CambiarAtributo(int i){
-        String URLaux = "http://192.168.1.14:3000/updateOneUser/";
+        String URLaux = "http://"+getResources().getString(R.string.ip_adress)+":3000/updateOneUser/";
         retrofit = new Retrofit.Builder().baseUrl(URLaux).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 

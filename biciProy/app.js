@@ -35,20 +35,47 @@ app.post('/registerUser', (req, res) => {
     const Pseguridad = req.body.Pseguridad
     const Rseguridad = req.body.Rseguridad
     const Rol_id = req.body.Rol_id
-
-    conexion.query(`INSERT INTO usuarios (codigo,nombre,correo,clave,Pseguridad,Rseguridad,Rol_id) VALUES('${codigo}',
-    '${nombre}','${correo}','${clave}',${Pseguridad},'${Rseguridad}',${Rol_id})`,(error,results)=>{
-    if(error)//brb
-    {
-        console.log(error)
-    }else if(results!=null){
-        console.log(results)
-        res.status(200).send(JSON.stringify(results["affectedRows"]))
-    }
-    else{
-        res.status(404).send()
-    }
-})
+    conexion.query(`SELECT * FROM usuarios WHERE correo='${correo}'`,(error,results)=>{
+        if(error) throw error
+        if(results){
+            console.log("error aca")
+        }
+        else{
+            console.log("entramo aca")/*
+            conexion.query(`INSERT INTO usuarios (codigo,nombre,correo,clave,Pseguridad,Rseguridad,Rol_id) VALUES('${codigo}',
+            '${nombre}','${correo}','${clave}',${Pseguridad},'${Rseguridad}',${Rol_id})`,(error,results)=>{
+            if(error)//brb
+            {
+                console.log(error)
+            }else if(results!=null){
+                console.log(results)
+                res.status(200).send(JSON.stringify(results["affectedRows"]))
+            }
+            else{
+                res.status(404).send()
+            }
+        })*/
+        }
+        })
+    })
+    
+    app.get('/getUsers', (req,res)=>{
+        const codigo = req.body.codigo
+        console.log("Consultando a "+codigo)
+        conexion.query(`SELECT * FROM usuarios`,(error,results)=>{
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null){
+            res.status(200).send(JSON.stringify(results))
+        }
+        else{
+            console.log("3")
+            console.log(results)
+            res.status(404).send()
+        }
+        })
+    
 })
 
 app.get('/getUser/:correo', (req,res)=>{
@@ -197,7 +224,30 @@ app.get('/geBike', (req,res)=>{
     }
     })
 })
-//updateBike
+
+app.put('/updateBike', (req,res)=>{
+    const idBicicleta = req.body.idBicicleta
+    const cedulaPropietario = req.body.cedulaPropietario
+    const fechaRegistro = req.body.fechaRegistro
+    const lugarRegistro = req.body.lugarRegistro
+    const Marca_id = req.body.Marca_id
+    const numSerie = req.body.numSerie
+    const Tipo_id = req.body.Tipo_id
+    const color = req.body.color
+    const Estudiante_id = req.body.Estudiante_id
+    conexion.queryconexion.queryconexion.query(`UPDATE bicicletas SET idBicicleta=${idBicicleta}, cedulaPropietario='${cedulaPropietario}', fechaRegistro='${fechaRegistro}', 
+    lugarRegistro='${lugarRegistro}', Marca_id=${Marca_id}, numSerie='${numSerie}', Tipo_id=${Tipo_id}, color='${color}' WHERE Estudiante_id='${Estudiante_id}'`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send()
+    }
+    else{
+        res.status(404).send()
+    }
+    })
+})
 //deleteBike
 
 app.post('/registerSlots', (req, res) => {

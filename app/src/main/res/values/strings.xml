@@ -16,7 +16,7 @@
         <item>¿Tu libro favorito?</item>
         <item>¿Tu pelicula favorita?</item>
     </string-array>
-
+    <string name="ip_adress">192.168.1.14</string>
     <string name="title">BICI UD</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
