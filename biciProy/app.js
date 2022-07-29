@@ -37,11 +37,7 @@ app.post('/registerUser', (req, res) => {
     const Rol_id = req.body.Rol_id
     conexion.query(`SELECT * FROM usuarios WHERE correo='${correo}'`,(error,results)=>{
         if(error) throw error
-        if(results){
-            console.log("error aca")
-        }
-        else{
-            console.log("entramo aca")/*
+        if(results[0]==undefined){
             conexion.query(`INSERT INTO usuarios (codigo,nombre,correo,clave,Pseguridad,Rseguridad,Rol_id) VALUES('${codigo}',
             '${nombre}','${correo}','${clave}',${Pseguridad},'${Rseguridad}',${Rol_id})`,(error,results)=>{
             if(error)//brb
@@ -54,7 +50,10 @@ app.post('/registerUser', (req, res) => {
             else{
                 res.status(404).send()
             }
-        })*/
+        })
+        }
+        else{
+            console.log("Duplicated email")
         }
         })
     })
