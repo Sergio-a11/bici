@@ -8,12 +8,15 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,7 +33,7 @@ public class Registro extends Fragment {
 
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
-    private String URL="http://192.168.1.14:3000/register/";
+    private String URL="";
 
     private EditText edtCodigo;
     private EditText edtNombre;
@@ -84,6 +87,7 @@ public class Registro extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        URL="http://"+getResources().getString(R.string.IP)+":3000/register/";
         View v = inflater.inflate(R.layout.fragment_registro, container, false);
         edtCodigo = (EditText) v.findViewById(R.id.edtCodigo);
         edtNombre = (EditText) v.findViewById(R.id.edtNombre);
@@ -96,27 +100,57 @@ public class Registro extends Fragment {
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 
-          int Pregunta = 1;
-        switch (spnPreguntas.getSelectedItemPosition()){
-            case 1:{
-                Pregunta = 1;
-                break;
-            }
-            case 2:{
-                Pregunta = 2;
-                break;
-            }
-            case 3:{
-                Pregunta = 3;
-                break;
-            }
-        }
+        ArrayList<Pregunta> listaPreguntas = new ArrayList<>();
+        ArrayList<String> listaPreguntasNom = new ArrayList<>();
 
-        final int preguntaF = Pregunta;
+        Call<List<Pregunta>> call = iRetrofit.executeGetAll("preguntas");
+        call.enqueue(new Callback<List<Pregunta>>() {
+            @Override
+            public void onResponse(Call<List<Pregunta>> call, Response<List<Pregunta>> response) {
+                if(response.code()==200){
+                    for(int i=0; i<response.body().size(); i++){
+                        listaPreguntas.add(response.body().get(i));
+                    }
+                    for (Pregunta i: listaPreguntas) {
+                        listaPreguntasNom.add(i.getPregunta());
+                    }
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                            listaPreguntasNom);
+                    spnPreguntas.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Pregunta>> call, Throwable t) {
+                System.out.println("Preguntas No Encontradas");
+            }
+        });
+
+
+
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                int preguntaF = 1;
+                switch (spnPreguntas.getSelectedItemPosition()){
+                    case 0:{
+                        System.out.println("1");
+                        preguntaF = 1;
+                        break;
+                    }
+                    case 1:{
+                        System.out.println("2");
+                        preguntaF = 2;
+                        break;
+                    }
+                    case 2:{
+                        System.out.println("3");
+                        preguntaF = 3;
+                        break;
+                    }
+                }
+                System.out.println("preguntaF = " + preguntaF);
+                System.out.println("spnPreguntas.getSelectedItemPosition() = " + spnPreguntas.getSelectedItemPosition());
                 Usuario objU = new Usuario(edtCodigo.getText().toString(),edtNombre.getText().toString(),
                         edtCorreo.getText().toString(),edtClave.getText().toString(),
                         preguntaF,edtRespuesta.getText().toString(),2);

@@ -37,4 +37,35 @@
         android:src="@drawable/ic_bx_search_alt"
         app:layout_constraintStart_toEndOf="@+id/edtConsultarCodigo"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSeccion1"
+        android:layout_width="46dp"
+        android:layout_height="190dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="52dp"
+        android:text="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblCupoConsultar" />
+
+    <Button
+        android:id="@+id/btnSeccion2"
+        android:layout_width="173dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginBottom="364dp"
+        android:text="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSeccion3"
+        android:layout_width="54dp"
+        android:layout_height="152dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="256dp"
+        android:text="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -68,6 +68,9 @@
         <action
             android:id="@+id/action_interfaz_administrador_to_consultarCupo"
             app:destination="@id/consultarCupo" />
+        <action
+            android:id="@+id/action_interfaz_administrador_to_asignarCupo"
+            app:destination="@id/asignarCupo" />
     </fragment>
     <fragment
         android:id="@+id/consultarCupo"
@@ -77,5 +80,14 @@
         <action
             android:id="@+id/action_consultarCupo_self"
             app:destination="@id/consultarCupo" />
+    </fragment>
+    <fragment
+        android:id="@+id/asignarCupo"
+        android:name="com.example.sdjcomp.AsignarCupo"
+        android:label="asignar_cupo"
+        tools:layout="@layout/asignar_cupo" >
+        <action
+            android:id="@+id/action_asignarCupo_to_interfaz_administrador"
+            app:destination="@id/interfaz_administrador" />
     </fragment>
 </navigation>

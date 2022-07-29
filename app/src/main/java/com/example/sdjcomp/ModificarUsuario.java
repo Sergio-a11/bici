@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -15,6 +16,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.sdjcomp.databinding.HomeBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,7 +36,7 @@ public class ModificarUsuario extends Fragment {
     private HomeBinding binding;
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
-    private String URL="http://192.168.1.14:3000/updateUser/";
+    private String URL="";
 
     private EditText edtNombre;
     private EditText edtClave;
@@ -84,6 +88,7 @@ public class ModificarUsuario extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        URL="http://"+getResources().getString(R.string.IP)+":3000/updateUser/";
         View v = inflater.inflate(R.layout.fragment_modificar_usuario,container,false);
 
         edtNombre = v.findViewById(R.id.edtNombreM);
@@ -102,6 +107,32 @@ public class ModificarUsuario extends Fragment {
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
+
+        ArrayList<Pregunta> listaPreguntas = new ArrayList<>();
+        ArrayList<String> listaPreguntasNom = new ArrayList<>();
+
+        Call<List<Pregunta>> call = iRetrofit.executeGetAll("preguntas");
+        call.enqueue(new Callback<List<Pregunta>>() {
+            @Override
+            public void onResponse(Call<List<Pregunta>> call, Response<List<Pregunta>> response) {
+                if(response.code()==200){
+                    for(int i=0; i<response.body().size(); i++){
+                        listaPreguntas.add(response.body().get(i));
+                    }
+                    for (Pregunta i: listaPreguntas) {
+                        listaPreguntasNom.add(i.getPregunta());
+                    }
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                            listaPreguntasNom);
+                    spnPreguntas.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Pregunta>> call, Throwable t) {
+                System.out.println("Preguntas No Encontradas");
+            }
+        });
 
         btnModificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,7 +185,7 @@ public class ModificarUsuario extends Fragment {
     }
 
     public void CambiarAtributo(int i){
-        String URLaux = "http://192.168.1.14:3000/updateOneUser/";
+        String URLaux = "http://"+getResources().getString(R.string.IP)+":3000/updateOne/";
         retrofit = new Retrofit.Builder().baseUrl(URLaux).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 
@@ -183,7 +214,7 @@ public class ModificarUsuario extends Fragment {
             }
         }
 
-        String palabras= valor+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo()+"usuarios";
+        String palabras= valor+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo()+",usuarios";
         System.out.println("palabras = " + palabras);
         Call<Number> call = iRetrofit.executeUpdateOneUser(palabras);
         call.enqueue(new Callback<Number>() {

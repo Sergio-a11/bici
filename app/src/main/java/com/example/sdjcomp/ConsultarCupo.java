@@ -30,7 +30,7 @@ public class ConsultarCupo extends Fragment {
 
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
-    private String URL="http://192.168.1.14:3000/getOne/";
+    private String URL="";
 
     private ImageButton btnConsultarEstudiante;
     private EditText edtConsultarEstudiante;
@@ -80,6 +80,7 @@ public class ConsultarCupo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        URL="http://"+getResources().getString(R.string.IP)+":3000/getOne/";
         View v = inflater.inflate(R.layout.consultar_cupo,container,false);
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();

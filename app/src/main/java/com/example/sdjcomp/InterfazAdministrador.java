@@ -19,6 +19,7 @@ public class InterfazAdministrador extends Fragment {
 
     private Button btnVerRegistrosCupos;
     private Button btnCerrarSesion;
+    private Button btnAsignarCupo;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,12 +68,21 @@ public class InterfazAdministrador extends Fragment {
 
         btnCerrarSesion = v.findViewById(R.id.btnCerrarSesion);
         btnVerRegistrosCupos = v.findViewById(R.id.btnVerRegistrosCupos);
+        btnAsignarCupo = v.findViewById(R.id.btnAsignarCupo);
 
         btnVerRegistrosCupos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(InterfazAdministrador.this)
                         .navigate(R.id.action_interfaz_administrador_to_consultarCupo);
+            }
+        });
+
+        btnAsignarCupo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(InterfazAdministrador.this)
+                        .navigate(R.id.action_interfaz_administrador_to_asignarCupo);
             }
         });
 

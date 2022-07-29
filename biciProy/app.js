@@ -8,6 +8,22 @@ app.listen(3000, () => {
     console.log("Listening on port 3000...")
 })
 
+app.get('/getAll/:tabla',(req,res)=>{
+    const tabla = req.params.tabla
+    conexion.query(`SELECT * FROM ${tabla}`,(error,results)=>{
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null){
+            res.status(200).send(JSON.stringify(results))
+        }
+        else{
+            console.log(results)
+            res.status(404).send()
+        }
+    })
+})
+
 app.post('/login', (req, res) => {
     const correo = req.body.correo
     const clave = req.body.clave
@@ -201,24 +217,6 @@ app.get('/geBike', (req,res)=>{
 //updateBike
 //deleteBike
 
-app.post('/createCupo', (req, res) => {
-    const idCupo = req.body.idCupo
-    const seccion = req.body.seccion
-    const estado = req.body.estado
-
-    conexion.query(`INSERT INTO cupos (idCupo,seccion,estado) VALUES (${idCupo},'${seccion}',${estado})`,(error,results)=>{
-    if(error)
-    {
-        console.log(error)
-    }else if(results!=null){
-        res.status(200).send(JSON.stringify(results))
-    }
-    else{
-        res.status(404).send()
-    }
-})
-})
-
 app.get('/getCupo/:idCupo', (req,res)=>{
     const idCupo = req.params.idCupo
     conexion.query(`SELECT * FROM cupos Where idCupo=${idCupo}`, (error,results)=>{
@@ -324,6 +322,23 @@ app.get('/getOne/:palabras', (req,res)=>{
             res.status(404).send()
         }
     })
+})
+
+app.post('/registerParqueadero', (req, res) => {
+    const Bicicleta_idBicicleta = req.body.Bicicleta_idBicicleta
+    const Cupo_idCupo = req.body.Cupo_idCupo
+
+    conexion.query(`INSERT INTO parqueaderos (Bicicleta_idBicicleta,Cupo_idCupo) VALUES ('${Bicicleta_idBicicleta}',${Cupo_idCupo})`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results))
+    }
+    else{
+        res.status(404).send()
+    }
+})
 })
 
 //getSlots

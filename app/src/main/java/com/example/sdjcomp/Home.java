@@ -26,7 +26,7 @@ public class Home extends Fragment {
     private HomeBinding binding;
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
-    private String URL="http://192.168.1.14:3000/login/";
+    private String URL="";
     private boolean validado;
 
     @Override
@@ -34,7 +34,8 @@ public class Home extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-
+        URL="http://"+getResources().getString(R.string.IP)+":3000/login/";
+        System.out.println("IP = " + getResources().getString(R.string.IP));
         View v = inflater.inflate(R.layout.home,container,false);
         Button btnIniciar = (Button) v.findViewById(R.id.btnIniciarSeseion);
         Button btnRegistrarse = (Button) v.findViewById(R.id.btnRegistrarse);
@@ -55,7 +56,12 @@ public class Home extends Fragment {
                 map.put("correo",txtCorreo.getText().toString());
                 map.put("clave",txtClave.getText().toString());
 
+                System.out.println("txtCorreo.getText().toString() = " + txtCorreo.getText().toString());
+                System.out.println("txtClave.getText().toString() = " + txtClave.getText().toString());
+                System.out.println("map = " + map);
+
                 Call<PreLoginUsuario> call = iRetrofit.executeLogin(map);
+                System.out.println("call.isExecuted() = " + call.isExecuted());
                 call.enqueue(new Callback<PreLoginUsuario>() {
                     @Override
                     public void onResponse(Call<PreLoginUsuario> call, Response<PreLoginUsuario> response) {
@@ -65,7 +71,8 @@ public class Home extends Fragment {
                         {
 
                             PreLoginUsuario result = response.body();
-                            System.out.println(map.get("correo")+" " + result.getCorreo() + " " + map.get("correo").equals(result.getCorreo()));
+                            System.out.println(map.get("correo")+" " + result.getCorreo() + " " +
+                                    map.get("correo").equals(result.getCorreo()));
                             if(map.get("correo").equals(result.getCorreo()) && map.get("clave").equals(result.getClave()))
                             {
 
@@ -74,10 +81,12 @@ public class Home extends Fragment {
                                 System.out.println("response.body().getRol_id() = " + response.body().getRol_id());
                                 if(result.getRol_id()==1){
                                     System.out.println("Logeado Como Administrador");
-                                    NavHostFragment.findNavController(Home.this).navigate(R.id.action_Home_to_interfaz_administrador);
+                                    NavHostFragment.findNavController(Home.this).
+                                            navigate(R.id.action_Home_to_interfaz_administrador);
                                 }else if(result.getRol_id()==2){
                                     System.out.println("Logeado Como Estudiante");
-                                    NavHostFragment.findNavController(Home.this).navigate(R.id.action_Home_to_InterfazEstudiante);
+                                    NavHostFragment.findNavController(Home.this).
+                                            navigate(R.id.action_Home_to_InterfazEstudiante);
                                 }
 
                             }

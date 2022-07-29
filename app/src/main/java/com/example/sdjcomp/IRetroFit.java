@@ -1,6 +1,7 @@
 package com.example.sdjcomp;
 
 import java.util.HashMap;
+import java.util.List;
 
 import kotlin.io.path.ExperimentalPathApi;
 import okhttp3.RequestBody;
@@ -32,9 +33,15 @@ public interface IRetroFit {
     @DELETE("/deleteUser/{codigo}")
     Call<Number> executeDeleteUser(@Path("codigo") String codigo);
     
-    @PATCH("/updateOneUser/{palabras}")
+    @PATCH("/updateOne/{palabras}")
     Call<Number> executeUpdateOneUser(@Path("palabras") String palabras);
 
     @GET("/getOne/{palabras}")
     Call<Usuario> executeGetUserByCode(@Path("palabras") String palabras);
+
+    @POST("/createCupo")
+    Call<Cupo> executeCreateCupo(@Body Cupo map);
+
+    @GET("/getAll/{tabla}")
+    Call<List<Pregunta>> executeGetAll(@Path("tabla") String tabla);
 }
