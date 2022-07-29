@@ -5,34 +5,23 @@ public class Bicicleta {
     private String cedulaPropietario;
     private String fechaRegistro;
     private String lugarRegistro;
-    private int Marca_id;
+    private String marca;
     private String numSerie;
-    private int Tipo_id;
+    private String tipo;
     private String color;
     private String Estudiante_id;
 
     public Bicicleta() {
     }
 
-    public Bicicleta(String cedulaPropietario, String fechaRegistro, String lugarRegistro, int marca_id, String numSerie, int tipo_id, String color, String estudiante_id) {
-        this.cedulaPropietario = cedulaPropietario;
-        this.fechaRegistro = fechaRegistro;
-        this.lugarRegistro = lugarRegistro;
-        Marca_id = marca_id;
-        this.numSerie = numSerie;
-        Tipo_id = tipo_id;
-        this.color = color;
-        Estudiante_id = estudiante_id;
-    }
-
-    public Bicicleta(int idBicicleta, String cedulaPropietario, String fechaRegistro, String lugarRegistro, int marca_id, String numSerie, int tipo_id, String color, String estudiante_id) {
+    public Bicicleta(int idBicicleta, String cedulaPropietario, String fechaRegistro, String lugarRegistro, String marca, String numSerie, String tipo, String color, String estudiante_id) {
         this.idBicicleta = idBicicleta;
         this.cedulaPropietario = cedulaPropietario;
         this.fechaRegistro = fechaRegistro;
         this.lugarRegistro = lugarRegistro;
-        Marca_id = marca_id;
+        this.marca = marca;
         this.numSerie = numSerie;
-        Tipo_id = tipo_id;
+        this.tipo = tipo;
         this.color = color;
         Estudiante_id = estudiante_id;
     }
@@ -69,28 +58,12 @@ public class Bicicleta {
         this.lugarRegistro = lugarRegistro;
     }
 
-    public int getMarca_id() {
-        return Marca_id;
-    }
-
-    public void setMarca_id(int marca_id) {
-        Marca_id = marca_id;
-    }
-
     public String getNumSerie() {
         return numSerie;
     }
 
     public void setNumSerie(String numSerie) {
         this.numSerie = numSerie;
-    }
-
-    public int getTipo_id() {
-        return Tipo_id;
-    }
-
-    public void setTipo_id(int tipo_id) {
-        Tipo_id = tipo_id;
     }
 
     public String getColor() {
@@ -107,5 +80,21 @@ public class Bicicleta {
 
     public void setEstudiante_id(String estudiante_id) {
         Estudiante_id = estudiante_id;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

@@ -209,7 +209,7 @@ app.get('/geBike', (req,res)=>{
 app.get('/getBikes/:Estudiante_id', (req,res)=>{
     const Estudiante_id = req.params.Estudiante_id
     console.log(Estudiante_id)
-    conexion.query('SELECT * FROM bicicletas WHERE ?',[{Estudiante_id}],(error,results)=>{
+    conexion.query('SELECT b.idBicicleta, b.cedulaPropietario, b.fechaRegistro, b.lugarRegistro, b.numSerie, t.tipo, b.color, b.Estudiante_id, m.marca FROM bicicletas as b join marcas as m join tipos as t WHERE b.Marca_id=m.id AND b.Tipo_id=t.id AND ?',[{Estudiante_id}],(error,results)=>{
     if(error)
     {
         console.log(error)
