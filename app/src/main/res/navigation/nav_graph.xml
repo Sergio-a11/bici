@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_InterfazEstudiante_to_interfazBicicleta"
             app:destination="@id/interfazBicicleta" />
+        <action
+            android:id="@+id/action_InterfazEstudiante_to_registrarBicicleta"
+            app:destination="@id/registrarBicicleta" />
     </fragment>
     <fragment
         android:id="@+id/fragment_registro"
@@ -47,7 +50,7 @@
     <fragment
         android:id="@+id/fragment_modificar_usuario"
         android:name="com.example.sdjcomp.ModificarUsuario"
-        android:label="@string/title"
+        android:label="Modificar Estudiante"
         tools:layout="@layout/fragment_modificar_usuario">
 
 
@@ -58,6 +61,11 @@
     <fragment
         android:id="@+id/interfazBicicleta"
         android:name="com.example.sdjcomp.InterfazBicicleta"
-        android:label="fragment_interfaz_bicicleta"
+        android:label="Mis Bicicletas"
         tools:layout="@layout/fragment_interfaz_bicicleta" />
+    <fragment
+        android:id="@+id/registrarBicicleta"
+        android:name="com.example.sdjcomp.RegistrarBicicleta"
+        android:label="Registrar Bicicleta"
+        tools:layout="@layout/fragment_registrar_bicicleta" />
 </navigation>

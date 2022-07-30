@@ -29,7 +29,7 @@ public class InterfazEstudiante extends Fragment {
     private String URL="http://192.168.20.25:3000/getUser/";
 
     private TextView txtTitulo;
-    private Button btnActualizarUsuario, btnEliminarUsuario, btnVerRegistros;
+    private Button btnActualizarUsuario, btnEliminarUsuario, btnVerRegistros, btnRegistrarBicicleta;
 
     @Override
     public View onCreateView(
@@ -42,6 +42,7 @@ public class InterfazEstudiante extends Fragment {
         txtTitulo = v.findViewById(R.id.lblTitulo);
         btnActualizarUsuario = v.findViewById(R.id.btnModificarUsuario);
         btnEliminarUsuario = v.findViewById(R.id.btnEliminarUsuario);
+        btnRegistrarBicicleta = v.findViewById(R.id.btnRegistrarBicicleta);
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
@@ -56,6 +57,17 @@ public class InterfazEstudiante extends Fragment {
                         .navigate(R.id.action_InterfazEstudiante_to_interfazBicicleta);
             }
         });
+
+        btnRegistrarBicicleta = (Button) v.findViewById(R.id.btnRegistrarBicicleta);
+        btnRegistrarBicicleta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(InterfazEstudiante.this)
+                        .navigate(R.id.action_InterfazEstudiante_to_registrarBicicleta);
+            }
+        });
+
+
 
         Call<Usuario> call = iRetrofit.executeGetUser(((Sesion)getActivity().getApplicationContext()).getCorreo());
         call.enqueue(new Callback<Usuario>() {
