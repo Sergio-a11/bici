@@ -26,7 +26,7 @@ public class InterfazBicicleta extends Fragment {
 
         private Retrofit retrofit;
     private IRetroFit iRetrofit;
-    private String URL="http://192.168.20.25:3000/getBikes/";
+    private String URL="";
     private RecyclerView recyclerViewCiclas;
     private RecyclerViewAdapter adapterCiclas;
     AlertDialog.Builder alertBici;
@@ -40,6 +40,7 @@ public class InterfazBicicleta extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        URL="http://"+getResources().getString(R.string.IP)+":3000/getBikes/";
         View v = inflater.inflate(R.layout.fragment_interfaz_bicicleta, container, false);
 
         //btnVer = (Button) v.findViewById(R.id.btnCargar);
