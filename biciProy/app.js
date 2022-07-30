@@ -201,27 +201,7 @@ app.post('/registerBike', (req, res) => {
 })
 })
 
-//[ ] obtener una bicicleta
-
-app.get('/geBike', (req,res)=>{
-    const Estudiante_id = req.body.Estudiante_id
-    console.log(Estudiante_id)
-    conexion.query('SELECT * FROM bicicletas WHERE ?',[{Estudiante_id}],(error,results)=>{
-    if(error)
-    {
-        console.log(error)
-    }else if(results!=null){
-        res.status(200).send(JSON.stringify(results[0]))
-    }
-    else{
-        console.log("3")
-        console.log(results)
-        res.status(404).send()
-    }
-    })
-})
-
-//[ ] obtener varias bicicletas
+//[x] obtener varias bicicletas
 
 app.get('/getBikes/:Estudiante_id', (req,res)=>{
     const Estudiante_id = req.params.Estudiante_id
@@ -244,6 +224,46 @@ app.get('/getBikes/:Estudiante_id', (req,res)=>{
 
 //updateBike
 //deleteBike
+
+//marcas
+app.get('/getMarcas', (req,res)=>{
+    conexion.query('SELECT * FROM marcas', (error, results)=>{
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null){
+            console.log(results)
+            res.status(200).send(JSON.stringify(results))
+        }
+        else{
+            console.log("3")
+            console.log(results)
+            res.status(404).send()
+        }
+        
+    })
+})
+
+//tipos
+app.get('/getTipos', (req,res)=>{
+    conexion.query('SELECT * FROM tipos', (error, results)=>{
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null){
+            console.log(results)
+            res.status(200).send(JSON.stringify(results))
+        }
+        else{
+            console.log("3")
+            console.log(results)
+            res.status(404).send()
+        }
+        
+    })
+})
+
+
 
 app.get('/getCupo/:idCupo', (req,res)=>{
     const idCupo = req.params.idCupo

@@ -56,4 +56,13 @@ public interface IRetroFit {
 
     @GET("/getAll/{tabla}")
     Call<List<Pregunta>> executeGetAll(@Path("tabla") String tabla);
+
+    @GET("/getMarcas")
+    Call<List<Marca>> executeGetMarca();
+
+    @GET("/getTipos")
+    Call<List<Tipo>> executeGetTipos();
+
+    @POST("/registerBike")
+    Call<Number> executeRegisterBike(@Body BicicletaRegistrar bici);
 }

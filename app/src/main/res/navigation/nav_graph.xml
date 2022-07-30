@@ -73,7 +73,11 @@
         android:id="@+id/registrarBicicleta"
         android:name="com.example.sdjcomp.RegistrarBicicleta"
         android:label="Registrar Bicicleta"
-        tools:layout="@layout/fragment_registrar_bicicleta" />
+        tools:layout="@layout/fragment_registrar_bicicleta" >
+        <action
+            android:id="@+id/action_registrarBicicleta_to_interfazBicicleta2"
+            app:destination="@id/interfazBicicleta" />
+    </fragment>
 
     <fragment
         android:id="@+id/interfaz_administrador"
