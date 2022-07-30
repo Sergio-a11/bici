@@ -26,7 +26,7 @@ public class InterfazEstudiante extends Fragment {
 
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
-    private String URL="http://192.168.20.25:3000/getUser/";
+    private String URL="";
 
     private TextView txtTitulo;
     private Button btnActualizarUsuario, btnEliminarUsuario, btnVerRegistros, btnRegistrarBicicleta;
@@ -36,6 +36,7 @@ public class InterfazEstudiante extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+        URL="http://"+getResources().getString(R.string.IP)+":3000/getUser/";
         View v = inflater.inflate(R.layout.interfaz_estudiante, container, false);
 
 
@@ -153,7 +154,7 @@ public class InterfazEstudiante extends Fragment {
 
     public void eliminar()
     {
-        URL = "http://192.168.20.25:3000/deleteUser/";
+        URL = "http://"+getResources().getString(R.string.IP)+":3000/deleteUser/";
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 

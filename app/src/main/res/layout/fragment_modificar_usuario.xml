@@ -93,7 +93,6 @@
         android:layout_height="48dp"
         android:layout_marginStart="21dp"
         android:layout_marginTop="28dp"
-        android:entries="@array/preguntas"
         app:layout_constraintStart_toEndOf="@+id/lblPregunta2"
         app:layout_constraintTop_toBottomOf="@+id/edtClaveM" />
 
@@ -160,6 +159,16 @@
         android:src="@drawable/ic_bxs_up_arrow_circle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/edtRespuestaM"
+        app:layout_constraintTop_toBottomOf="@+id/btnModificarClave" />
+
+    <ImageButton
+        android:id="@+id/btnModificarPregunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/ic_bxs_up_arrow_circle"
+        app:layout_constraintStart_toEndOf="@+id/spnPreguntasM"
         app:layout_constraintTop_toBottomOf="@+id/btnModificarClave" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -15,6 +16,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.sdjcomp.databinding.HomeBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,14 +36,14 @@ public class ModificarUsuario extends Fragment {
     private HomeBinding binding;
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
-    private String URL="http://192.168.1.14:3000/updateUser/";
+    private String URL="";
 
     private EditText edtNombre;
     private EditText edtClave;
     private EditText edtRespuesta;
     private Spinner spnPreguntas;
     private Button btnModificar;
-    private ImageButton btnModificarCorreo,btnModificarNombre,btnModificarClave,btnModificarRespuesta;
+    private ImageButton btnModificarPregunta,btnModificarNombre,btnModificarClave,btnModificarRespuesta;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -84,6 +88,7 @@ public class ModificarUsuario extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        URL="http://"+getResources().getString(R.string.IP)+":3000/updateUser/";
         View v = inflater.inflate(R.layout.fragment_modificar_usuario,container,false);
 
         edtNombre = v.findViewById(R.id.edtNombreM);
@@ -94,6 +99,7 @@ public class ModificarUsuario extends Fragment {
         btnModificarNombre = v.findViewById(R.id.btnModificarNombre);
         btnModificarClave = v.findViewById(R.id.btnModificarClave);
         btnModificarRespuesta = v.findViewById(R.id.btnModificarRespuesta);
+        btnModificarPregunta = v.findViewById(R.id.btnModificarPregunta);
 
         edtNombre.setText(((Sesion)getActivity().getApplicationContext()).getNombre());
         edtClave.setText(((Sesion)getActivity().getApplicationContext()).getClave());
@@ -102,6 +108,32 @@ public class ModificarUsuario extends Fragment {
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
+
+        ArrayList<Pregunta> listaPreguntas = new ArrayList<>();
+        ArrayList<String> listaPreguntasNom = new ArrayList<>();
+
+        Call<List<Pregunta>> call = iRetrofit.executeGetAll("preguntas");
+        call.enqueue(new Callback<List<Pregunta>>() {
+            @Override
+            public void onResponse(Call<List<Pregunta>> call, Response<List<Pregunta>> response) {
+                if(response.code()==200){
+                    for(int i=0; i<response.body().size(); i++){
+                        listaPreguntas.add(response.body().get(i));
+                    }
+                    for (Pregunta i: listaPreguntas) {
+                        listaPreguntasNom.add(i.getPregunta());
+                    }
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                            listaPreguntasNom);
+                    spnPreguntas.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Pregunta>> call, Throwable t) {
+                System.out.println("Preguntas No Encontradas");
+            }
+        });
 
         btnModificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,30 +182,48 @@ public class ModificarUsuario extends Fragment {
             }
         });
 
+        btnModificarPregunta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CambiarAtributo(1);
+            }
+        });
+
         return v;
     }
 
     public void CambiarAtributo(int i){
-        String URLaux = "http://192.168.1.14:3000/updateOneUser/";
+        String URLaux = "http://"+getResources().getString(R.string.IP)+":3000/updateOne/";
         retrofit = new Retrofit.Builder().baseUrl(URLaux).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 
         String valor,campo;
+        String palabras="";
+        int valorp=0;
 
         switch (i){
+            case 1:{
+                valorp = spnPreguntas.getSelectedItemPosition()+1;
+                campo = "Pseguridad";
+                 palabras= valorp+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo()+",usuarios";
+                break;
+            }
             case 2:{
                 valor = edtNombre.getText().toString();
                 campo = "nombre";
+                 palabras= valor+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo()+",usuarios";
                 break;
             }
             case 3:{
                 valor = edtClave.getText().toString();
                 campo = "clave";
+                 palabras= valor+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo()+",usuarios";
                 break;
             }
             case 4:{
                 valor = edtRespuesta.getText().toString();
                 campo = "Rseguridad";
+                 palabras= valor+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo()+",usuarios";
                 break;
             }
             default:{
@@ -183,7 +233,7 @@ public class ModificarUsuario extends Fragment {
             }
         }
 
-        String palabras= valor+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo();
+
         System.out.println("palabras = " + palabras);
         Call<Number> call = iRetrofit.executeUpdateOneUser(palabras);
         call.enqueue(new Callback<Number>() {
@@ -191,7 +241,7 @@ public class ModificarUsuario extends Fragment {
             public void onResponse(Call<Number> call, Response<Number> response) {
                 if(response.code()==200){
                     if(Integer.parseInt(String.valueOf(response.body()))==1){
-                        Toast.makeText(getContext(), campo+" Modificado a "+valor, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), campo+" Modificado", Toast.LENGTH_LONG).show();
                         NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
                     }
                 }

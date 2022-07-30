@@ -41,14 +41,19 @@ public interface IRetroFit {
     @DELETE("/deleteUser/{codigo}")
     Call<Number> executeDeleteUser(@Path("codigo") String codigo);
     
-    //@FormUrlEncoded
-    @PATCH("/updateOneUser/{palabras}")
+    @PATCH("/updateOne/{palabras}")
     Call<Number> executeUpdateOneUser(@Path("palabras") String palabras);
 
     //BICICLETAS
     @GET("/getBikes/{codigo}")
     Call<List<Bicicleta>> executeGetBikes(@Path("codigo") String codigo);
 
+    @GET("/getOne/{palabras}")
+    Call<Usuario> executeGetUserByCode(@Path("palabras") String palabras);
 
+    @POST("/createCupo")
+    Call<Cupo> executeCreateCupo(@Body Cupo map);
 
+    @GET("/getAll/{tabla}")
+    Call<List<Pregunta>> executeGetAll(@Path("tabla") String tabla);
 }
