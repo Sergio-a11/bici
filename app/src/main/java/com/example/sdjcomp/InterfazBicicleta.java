@@ -1,10 +1,8 @@
 package com.example.sdjcomp;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,17 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,12 +24,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class InterfazBicicleta extends Fragment {
 
-    private TextView text;
-    private Retrofit retrofit;
+        private Retrofit retrofit;
     private IRetroFit iRetrofit;
     private String URL="http://192.168.20.25:3000/getBikes/";
     private RecyclerView recyclerViewCiclas;
     private RecyclerViewAdapter adapterCiclas;
+    AlertDialog.Builder alertBici;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +46,7 @@ public class InterfazBicicleta extends Fragment {
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 
+        alertBici = new AlertDialog.Builder(getActivity());
         //cardView = (CardView) v.findViewById(R.id.cardView);
 
         List<Bicicleta> lstBicicletas = new ArrayList<>();
@@ -72,6 +65,21 @@ public class InterfazBicicleta extends Fragment {
                     recyclerViewCiclas=(RecyclerView)v.findViewById(R.id.recBicicleta);
                     recyclerViewCiclas.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapterCiclas=new RecyclerViewAdapter(lstBicicletas);
+
+                    adapterCiclas.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            System.out.println("Averrer");
+                            System.out.println(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getMarca());
+                            alertBici.setMessage("Marca: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getMarca()+
+                            "\nTipo: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getTipo()+
+                            "\nId: "+String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())+
+                            "\nColor: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getColor())
+                                    .setCancelable(true).setTitle("Tu Bicicleta")
+                                    .create().show();
+                        }
+                    });
                     recyclerViewCiclas.setAdapter(adapterCiclas);
                 }
             }
@@ -82,8 +90,6 @@ public class InterfazBicicleta extends Fragment {
                 System.out.println("Fail");
             }
         });
-
-
 
         return v;
     }
