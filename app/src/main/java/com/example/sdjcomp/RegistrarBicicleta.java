@@ -27,7 +27,7 @@ public class RegistrarBicicleta extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_registrar_bicicleta, container, false);
 
-        btnRegistrar = (Button) v.findViewById(R.id.btnRegistrarBicicleta);
+        btnRegistrar = (Button) v.findViewById(R.id.btnRegistrarBicicletaDesdePantallaRegistro);
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,10 +40,10 @@ public class RegistrarBicicleta extends Fragment {
                 txtTipo = (TextView) v.findViewById(R.id.txtTipo);
                 txtColor = (TextView) v.findViewById(R.id.txtColorCicla);
 
-                switch (txtMarca.getText().toString())
+                /*switch (txtMarca.getText().toString())
                 {
-                    
-                }
+
+                }*/
 
             }
         });
