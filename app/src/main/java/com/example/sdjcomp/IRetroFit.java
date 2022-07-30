@@ -51,9 +51,12 @@ public interface IRetroFit {
     @GET("/getOne/{palabras}")
     Call<Usuario> executeGetUserByCode(@Path("palabras") String palabras);
 
-    @POST("/createCupo")
-    Call<Cupo> executeCreateCupo(@Body Cupo map);
+    @POST("/registerParqueadero/{parqueadero}")
+    Call<Parqueadero> executeCreateParqueadero(@Path("parqueadero") String parqueadero);
 
     @GET("/getAll/{tabla}")
     Call<List<Pregunta>> executeGetAll(@Path("tabla") String tabla);
+
+    @GET("/getCupo/{seccion}")
+    Call<List<Cupo>> executeGetCuposEnable(@Path("seccion") String seccion);
 }

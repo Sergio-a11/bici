@@ -7,7 +7,8 @@ public class Sesion extends Application {
     private int Rol_id,Pseguridad;
     private boolean validado;
 
-
+    private int cupo, bicicleta;
+    private String codio;
 
     public Sesion() {
         this.codigo = "";
@@ -18,6 +19,9 @@ public class Sesion extends Application {
         Rol_id = 0;
         Pseguridad = 0;
         this.validado = false;
+        this.cupo = 0;
+        this.bicicleta = 0;
+        this.codio = "";
     }
 
     public Sesion(String codigo, String nombre, String correo, String clave, String rseguridad, int rol_id, int pseguridad, boolean validado) {
@@ -94,4 +98,35 @@ public class Sesion extends Application {
     public void setValidado(boolean validado) {
         this.validado = validado;
     }
+
+    public Sesion(int cupo, int bicicleta, String codio) {
+        this.cupo = cupo;
+        this.bicicleta = bicicleta;
+        this.codio = codio;
+    }
+
+    public int getCupo() {
+        return cupo;
+    }
+
+    public void setCupo(int cupo) {
+        this.cupo = cupo;
+    }
+
+    public int getBicicleta() {
+        return bicicleta;
+    }
+
+    public void setBicicleta(int bicicleta) {
+        this.bicicleta = bicicleta;
+    }
+
+    public String getCodio() {
+        return codio;
+    }
+
+    public void setCodio(String codio) {
+        this.codio = codio;
+    }
+
 }

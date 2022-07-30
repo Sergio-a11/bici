@@ -67,6 +67,12 @@
         android:name="com.example.sdjcomp.InterfazBicicleta"
         android:label="Mis Bicicletas"
         tools:layout="@layout/fragment_interfaz_bicicleta" >
+        <action
+            android:id="@+id/action_interfazBicicleta_to_InterfazEstudiante"
+            app:destination="@id/InterfazEstudiante" />
+        <action
+            android:id="@+id/action_interfazBicicleta_to_interfaz_administrador"
+            app:destination="@id/interfaz_administrador" />
     </fragment>
 
     <fragment
@@ -110,5 +116,8 @@
         <action
             android:id="@+id/action_asignarCupo_to_interfaz_administrador"
             app:destination="@id/interfaz_administrador" />
+        <action
+            android:id="@+id/action_asignarCupo_to_interfazBicicleta"
+            app:destination="@id/interfazBicicleta" />
     </fragment>
 </navigation>

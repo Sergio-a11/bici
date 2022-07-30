@@ -1,9 +1,11 @@
 package com.example.sdjcomp;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -52,7 +54,13 @@ public class InterfazBicicleta extends Fragment {
 
         List<Bicicleta> lstBicicletas = new ArrayList<>();
         System.out.println("((Sesion)getActivity().getApplicationContext()).getCodigo() = " + ((Sesion)getActivity().getApplicationContext()).getCodigo());
-        Call<List<Bicicleta>> call = iRetrofit.executeGetBikes(((Sesion)getActivity().getApplicationContext()).getCodigo());
+        Call<List<Bicicleta>> call = null;
+        if(((Sesion)getActivity().getApplicationContext()).getRol_id()==1){
+            call=iRetrofit.executeGetBikes(((Sesion)getActivity().getApplicationContext()).getCodio());
+        }else if(((Sesion)getActivity().getApplicationContext()).getRol_id()==2){
+            call=iRetrofit.executeGetBikes(((Sesion)getActivity().getApplicationContext()).getCodigo());
+        }
+
         call.enqueue(new Callback<List<Bicicleta>>() {
             @Override
             public void onResponse(Call<List<Bicicleta>> call, Response<List<Bicicleta>> response) {
@@ -73,12 +81,50 @@ public class InterfazBicicleta extends Fragment {
 
                             System.out.println("Averrer");
                             System.out.println(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getMarca());
-                            alertBici.setMessage("Marca: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getMarca()+
-                            "\nTipo: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getTipo()+
-                            "\nId: "+String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())+
-                            "\nColor: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getColor())
-                                    .setCancelable(true).setTitle("Tu Bicicleta")
-                                    .create().show();
+                            if(((Sesion)getActivity().getApplicationContext()).getRol_id()==1){
+                                alertBici.setMessage("Marca: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getMarca()+
+                                                "\nTipo: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getTipo()+
+                                                "\nId: "+String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())+
+                                                "\nColor: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getColor())
+                                        .setCancelable(true).setTitle("Tu Bicicleta")
+                                        .setPositiveButton("Asignar", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                String palabras =String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())
+                                                        +","+((Sesion)getActivity().getApplicationContext()).getCupo();
+                                                Call<Parqueadero> callParqueadero = iRetrofit.executeCreateParqueadero(palabras);
+                                                callParqueadero.enqueue(new Callback<Parqueadero>() {
+                                                    @Override
+                                                    public void onResponse(Call<Parqueadero> call, Response<Parqueadero> response) {
+                                                        if(response.code()==200){
+                                                            NavHostFragment.findNavController(InterfazBicicleta.this)
+                                                                    .navigate(R.id.action_interfazBicicleta_to_interfaz_administrador);
+                                                        }
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Call<Parqueadero> call, Throwable t) {
+
+                                                    }
+                                                });
+                                            }
+                                        })
+                                        .create().show();
+                            }else if(((Sesion)getActivity().getApplicationContext()).getRol_id()==2){
+                                alertBici.setMessage("Marca: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getMarca()+
+                                                "\nTipo: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getTipo()+
+                                                "\nId: "+String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())+
+                                                "\nColor: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getColor())
+                                        .setCancelable(true).setTitle("Tu Bicicleta")
+                                        .setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                NavHostFragment.findNavController(InterfazBicicleta.this)
+                                                        .navigate(R.id.action_interfazBicicleta_to_InterfazEstudiante);
+                                            }
+                                        })
+                                        .create().show();
+                            }
                         }
                     });
                     recyclerViewCiclas.setAdapter(adapterCiclas);

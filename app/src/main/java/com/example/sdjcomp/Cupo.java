@@ -3,18 +3,18 @@ package com.example.sdjcomp;
 public class Cupo {
     private int idCupo;
     private String seccion;
-    private boolean estado;
+    private int estado;
 
     public Cupo() {
     }
 
-    public Cupo(int idCupo, String seccion, boolean estado) {
+    public Cupo(int idCupo, String seccion, int estado) {
         this.idCupo = idCupo;
         this.seccion = seccion;
         this.estado = estado;
     }
 
-    public Cupo( String seccion, boolean estado) {
+    public Cupo( String seccion, int estado) {
         this.seccion = seccion;
         this.estado = estado;
     }
@@ -35,11 +35,11 @@ public class Cupo {
         this.seccion = seccion;
     }
 
-    public boolean isEstado() {
+    public int isEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 }

@@ -201,28 +201,6 @@ app.post('/registerBike', (req, res) => {
 })
 })
 
-//[ ] obtener una bicicleta
-
-app.get('/geBike', (req,res)=>{
-    const Estudiante_id = req.body.Estudiante_id
-    console.log(Estudiante_id)
-    conexion.query('SELECT * FROM bicicletas WHERE ?',[{Estudiante_id}],(error,results)=>{
-    if(error)
-    {
-        console.log(error)
-    }else if(results!=null){
-        res.status(200).send(JSON.stringify(results[0]))
-    }
-    else{
-        console.log("3")
-        console.log(results)
-        res.status(404).send()
-    }
-    })
-})
-
-//[ ] obtener varias bicicletas
-
 app.get('/getBikes/:Estudiante_id', (req,res)=>{
     const Estudiante_id = req.params.Estudiante_id
     console.log(Estudiante_id)
@@ -245,13 +223,14 @@ app.get('/getBikes/:Estudiante_id', (req,res)=>{
 //updateBike
 //deleteBike
 
-app.get('/getCupo/:idCupo', (req,res)=>{
-    const idCupo = req.params.idCupo
-    conexion.query(`SELECT * FROM cupos Where idCupo=${idCupo}`, (error,results)=>{
+app.get('/getCupo/:seccion', (req,res)=>{
+    const seccion = req.params.seccion
+    conexion.query(`SELECT * FROM cupos WHERE seccion='${seccion}' AND estado=0`, (error,results)=>{
         if(error)
         {
             console.log(error)
         }else if(results!=null){
+            console.log(results)
             res.status(200).send(JSON.stringify(results))
         }
         else{
@@ -352,10 +331,11 @@ app.get('/getOne/:palabras', (req,res)=>{
     })
 })
 
-app.post('/registerParqueadero', (req, res) => {
-    const Bicicleta_idBicicleta = req.body.Bicicleta_idBicicleta
-    const Cupo_idCupo = req.body.Cupo_idCupo
-
+app.post('/registerParqueadero/:parqueadero', (req, res) => {
+    const parqueadero = req.params.parqueadero
+    const words = parqueadero.split(',')
+    const Bicicleta_idBicicleta = words[0]
+    const Cupo_idCupo = words[1]
     conexion.query(`INSERT INTO parqueaderos (Bicicleta_idBicicleta,Cupo_idCupo) VALUES ('${Bicicleta_idBicicleta}',${Cupo_idCupo})`,(error,results)=>{
     if(error)
     {
