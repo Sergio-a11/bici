@@ -7,7 +7,7 @@ app.use(express.json())
 app.listen(3000, () => {
     console.log("Listening on port 3000...")
 })
-
+//login and register
 app.post('/login', (req, res) => {
     const correo = req.body.correo
     const clave = req.body.clave
@@ -27,7 +27,7 @@ app.post('/login', (req, res) => {
     })
 })
 
-app.post('/registerUser', (req, res) => {
+app.post('/registrarUsuario', (req, res) => {
     const codigo = req.body.codigo
     const nombre = req.body.nombre
     const correo = req.body.correo
@@ -57,27 +57,8 @@ app.post('/registerUser', (req, res) => {
         }
         })
     })
-    
-    app.get('/getUsers', (req,res)=>{
-        const codigo = req.body.codigo
-        console.log("Consultando a "+codigo)
-        conexion.query(`SELECT * FROM usuarios`,(error,results)=>{
-        if(error)
-        {
-            console.log(error)
-        }else if(results!=null){
-            res.status(200).send(JSON.stringify(results))
-        }
-        else{
-            console.log("3")
-            console.log(results)
-            res.status(404).send()
-        }
-        })
-    
-})
-
-app.get('/getUser/:correo', (req,res)=>{
+//Users CRUD
+app.get('/getUsuario/:correo', (req,res)=>{
     const correo = req.params.correo   
     console.log("Consultando a "+correo)
     conexion.query(`SELECT * FROM usuarios WHERE correo='${correo}'`,(error,results)=>{
@@ -95,9 +76,7 @@ app.get('/getUser/:correo', (req,res)=>{
     })
 })
 
-app.get('/getUsers', (req,res)=>{
-    const codigo = req.body.codigo
-    console.log("Consultando a "+codigo)
+app.get('/getUsuarios', (req,res)=>{
     conexion.query(`SELECT * FROM usuarios`,(error,results)=>{
     if(error)
     {
@@ -113,7 +92,7 @@ app.get('/getUsers', (req,res)=>{
     })
 })
 
-app.put('/updateUser', (req,res)=>{
+app.put('/updateUsuario', (req,res)=>{
     const codigo = req.body.codigo
     const nombre = req.body.nombre
     const correo = req.body.correo
@@ -122,7 +101,7 @@ app.put('/updateUser', (req,res)=>{
     const Rseguridad = req.body.Rseguridad
     const Rol_id = req.body.Rol_id
     console.log("Modificando a :"+codigo)
-    conexion.query(`UPDATE usuarios SET nombre='${nombre}', clave='${clave}', Pseguridad=${Pseguridad}, Rseguridad='${Rseguridad}', Rol_id=${Rol_id} WHERE codigo=${codigo}`,(error,results)=>{
+    conexion.query(`UPDATE usuarios SET nombre='${nombre}', clave='${clave}', correo='${correo}', Pseguridad=${Pseguridad}, Rseguridad='${Rseguridad}', Rol_id=${Rol_id} WHERE codigo=${codigo}`,(error,results)=>{
     if(error)
     {
         console.log(error)
@@ -138,7 +117,7 @@ app.put('/updateUser', (req,res)=>{
 })
 
 
-app.patch('/updateOneUser/:palabras', (req,res)=>{
+app.patch('/updateUnUsuario/:palabras', (req,res)=>{
     const palabras = req.params.palabras
     console.log(palabras)
     const words = palabras.split(',')
@@ -161,7 +140,7 @@ app.patch('/updateOneUser/:palabras', (req,res)=>{
     })
 })
 
-app.delete('/deleteUser/:codigo', (req,res)=>{
+app.delete('/deleteUsuario/:codigo', (req,res)=>{
     const codigo = req.params.codigo
     console.log(codigo)
     conexion.query('DELETE FROM usuarios WHERE ?',[{codigo}],(error,results)=>{
@@ -178,10 +157,8 @@ app.delete('/deleteUser/:codigo', (req,res)=>{
     }
     })
 })
-
-//↑↑↑↑↑↑va bien↑↑↑↑↑↑
-
-app.post('/registerBike', (req, res) => {
+//Bikes CRUD
+app.post('/registrarBicicleta', (req, res) => {
     const idBicicleta = req.body.idBicicleta
     const cedulaPropietario = req.body.cedulaPropietario
     const fechaRegistro = req.body.fechaRegistro
@@ -206,10 +183,10 @@ app.post('/registerBike', (req, res) => {
 })
 })
 
-app.get('/geBike', (req,res)=>{
-    const Estudiante_id = req.body.Estudiante_id
-    console.log(codigo)
-    conexion.query('SELECT * FROM bicicletas WHERE ?',[{Estudiante_id}],(error,results)=>{
+app.get('/getBicicleta/:idBicicleta', (req,res)=>{
+    const idBicicleta = req.params.idBicicleta   
+    console.log("Consultando a "+idBicicleta)
+    conexion.query(`SELECT * FROM bicicletas WHERE idBicicleta='${idBicicleta}'`,(error,results)=>{
     if(error)
     {
         console.log(error)
@@ -224,7 +201,23 @@ app.get('/geBike', (req,res)=>{
     })
 })
 
-app.put('/updateBike', (req,res)=>{
+app.get('/getBicicletas', (req,res)=>{
+    conexion.query('SELECT * FROM bicicletas',(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results[0]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+/* update bicicleta por parte del admin y usuario // no funciona
+app.put('/updateBicicleta', (req,res)=>{
     const idBicicleta = req.body.idBicicleta
     const cedulaPropietario = req.body.cedulaPropietario
     const fechaRegistro = req.body.fechaRegistro
@@ -233,9 +226,8 @@ app.put('/updateBike', (req,res)=>{
     const numSerie = req.body.numSerie
     const Tipo_id = req.body.Tipo_id
     const color = req.body.color
-    const Estudiante_id = req.body.Estudiante_id
-    conexion.queryconexion.queryconexion.query(`UPDATE bicicletas SET idBicicleta=${idBicicleta}, cedulaPropietario='${cedulaPropietario}', fechaRegistro='${fechaRegistro}', 
-    lugarRegistro='${lugarRegistro}', Marca_id=${Marca_id}, numSerie='${numSerie}', Tipo_id=${Tipo_id}, color='${color}' WHERE Estudiante_id='${Estudiante_id}'`,(error,results)=>{
+    conexion.queryconexion.queryconexion.query(`UPDATE bicicletas SET cedulaPropietario='${cedulaPropietario}', fechaRegistro='${fechaRegistro}', 
+    lugarRegistro='${lugarRegistro}', Marca_id=${Marca_id}, numSerie='${numSerie}', Tipo_id=${Tipo_id}, color='${color}' WHERE idBicicleta='${idBicicleta}'`,(error,results)=>{
     if(error)
     {
         console.log(error)
@@ -247,8 +239,50 @@ app.put('/updateBike', (req,res)=>{
     }
     })
 })
-//deleteBike
+app.put('/updateBikeadmin', (req,res)=>{
+    const idBicicleta = req.body.idBicicleta
+    const cedulaPropietario = req.body.cedulaPropietario
+    const fechaRegistro = req.body.fechaRegistro
+    const lugarRegistro = req.body.lugarRegistro
+    const Marca_id = req.body.Marca_id
+    const numSerie = req.body.numSerie
+    const Tipo_id = req.body.Tipo_id
+    const color = req.body.color
+    conexion.queryconexion.queryconexion.query(`UPDATE bicicletas SET idBicicleta=${idBicicleta}, cedulaPropietario='${cedulaPropietario}', fechaRegistro='${fechaRegistro}', 
+    lugarRegistro='${lugarRegistro}', Marca_id=${Marca_id}, numSerie='${numSerie}', Tipo_id=${Tipo_id}, color='${color}' WHERE idBicicleta='${Estudiante_id}'`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send()
+    }
+    else{
+        res.status(404).send()
+    }
+    })
+})
+*/
 
+app.delete('/deleteBicicleta/:idBicicleta', (req,res)=>{
+    const idBicicleta = req.params.idBicicleta
+    console.log(idBicicleta)
+    conexion.query('DELETE FROM bicicletas WHERE ?',[{idBicicleta}],(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results["affectedRows"]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+/* registro-obtener uno y todos-actualizar y borrar cupos, 
+lo tenia antes pero vi que en sus ramas ya lo tienen y escrito en español
+no como slots como lo hice, igual aca esta el codigo por si acaso
 app.post('/registerSlots', (req, res) => {
     const idCupo = req.body.idCupo
     const seccion = req.body.seccion
@@ -262,15 +296,82 @@ app.post('/registerSlots', (req, res) => {
     }else if(results!=null){
         res.status(200).send()
     }
-    else{
+    else{   
         res.status(404).send()
     }
 })
 })
-//getSlots
-//updateSlots
-//deleteSlots
 
+app.get('/getSlots', (req,res)=>{
+    conexion.query(`SELECT * FROM cupos`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
+app.get('/getSlot/:idCupo', (req,res)=>{
+    const idCupo = req.params.idCupo   
+    console.log("Consultando a "+idCupo)
+    conexion.query(`SELECT * FROM cupos WHERE idCupo='${idCupo}'`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results[0]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
+app.put('/updateSlots', (req,res)=>{
+    const idCupo = req.body.idCupo
+    const seccion = req.body.seccion
+    const estado = req.body.estado
+
+    conexion.queryconexion.queryconexion.query(`UPDATE cupos SET seccion=${seccion}, estado='${estado}' WHERE idCupo='${idCupo}'`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send()
+    }
+    else{
+        res.status(404).send()
+    }
+    })
+})
+
+app.delete('/deleteSlots/:idCupo', (req,res)=>{
+    const idCupo = req.params.idCupo
+    console.log(idCupo)
+    conexion.query('DELETE FROM cupos WHERE ?',[{idCupo}],(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results["affectedRows"]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+*/
 //registerBrands
 //getBrands
 //updateBrands
