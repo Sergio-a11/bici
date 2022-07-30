@@ -131,24 +131,8 @@ public class Registro extends Fragment {
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int preguntaF = 1;
-                switch (spnPreguntas.getSelectedItemPosition()){
-                    case 0:{
-                        System.out.println("1");
-                        preguntaF = 1;
-                        break;
-                    }
-                    case 1:{
-                        System.out.println("2");
-                        preguntaF = 2;
-                        break;
-                    }
-                    case 2:{
-                        System.out.println("3");
-                        preguntaF = 3;
-                        break;
-                    }
-                }
+                int preguntaF = spnPreguntas.getSelectedItemPosition()+1;
+
                 System.out.println("preguntaF = " + preguntaF);
                 System.out.println("spnPreguntas.getSelectedItemPosition() = " + spnPreguntas.getSelectedItemPosition());
                 Usuario objU = new Usuario(edtCodigo.getText().toString(),edtNombre.getText().toString(),

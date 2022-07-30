@@ -43,7 +43,7 @@ public class ModificarUsuario extends Fragment {
     private EditText edtRespuesta;
     private Spinner spnPreguntas;
     private Button btnModificar;
-    private ImageButton btnModificarCorreo,btnModificarNombre,btnModificarClave,btnModificarRespuesta;
+    private ImageButton btnModificarPregunta,btnModificarNombre,btnModificarClave,btnModificarRespuesta;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -99,6 +99,7 @@ public class ModificarUsuario extends Fragment {
         btnModificarNombre = v.findViewById(R.id.btnModificarNombre);
         btnModificarClave = v.findViewById(R.id.btnModificarClave);
         btnModificarRespuesta = v.findViewById(R.id.btnModificarRespuesta);
+        btnModificarPregunta = v.findViewById(R.id.btnModificarPregunta);
 
         edtNombre.setText(((Sesion)getActivity().getApplicationContext()).getNombre());
         edtClave.setText(((Sesion)getActivity().getApplicationContext()).getClave());
@@ -181,6 +182,13 @@ public class ModificarUsuario extends Fragment {
             }
         });
 
+        btnModificarPregunta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CambiarAtributo(1);
+            }
+        });
+
         return v;
     }
 
@@ -190,21 +198,32 @@ public class ModificarUsuario extends Fragment {
         iRetrofit = retrofit.create(IRetroFit.class);
 
         String valor,campo;
+        String palabras="";
+        int valorp=0;
 
         switch (i){
+            case 1:{
+                valorp = spnPreguntas.getSelectedItemPosition()+1;
+                campo = "Pseguridad";
+                 palabras= valorp+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo()+",usuarios";
+                break;
+            }
             case 2:{
                 valor = edtNombre.getText().toString();
                 campo = "nombre";
+                 palabras= valor+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo()+",usuarios";
                 break;
             }
             case 3:{
                 valor = edtClave.getText().toString();
                 campo = "clave";
+                 palabras= valor+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo()+",usuarios";
                 break;
             }
             case 4:{
                 valor = edtRespuesta.getText().toString();
                 campo = "Rseguridad";
+                 palabras= valor+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo()+",usuarios";
                 break;
             }
             default:{
@@ -214,7 +233,7 @@ public class ModificarUsuario extends Fragment {
             }
         }
 
-        String palabras= valor+","+campo+","+((Sesion)getActivity().getApplicationContext()).getCodigo()+",usuarios";
+
         System.out.println("palabras = " + palabras);
         Call<Number> call = iRetrofit.executeUpdateOneUser(palabras);
         call.enqueue(new Callback<Number>() {
@@ -222,7 +241,7 @@ public class ModificarUsuario extends Fragment {
             public void onResponse(Call<Number> call, Response<Number> response) {
                 if(response.code()==200){
                     if(Integer.parseInt(String.valueOf(response.body()))==1){
-                        Toast.makeText(getContext(), campo+" Modificado a "+valor, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), campo+" Modificado", Toast.LENGTH_LONG).show();
                         NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
                     }
                 }
