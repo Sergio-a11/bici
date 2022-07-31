@@ -7,7 +7,17 @@ public class Sesion extends Application {
     private int Rol_id,Pseguridad;
     private boolean validado;
 
+
+
     public Sesion() {
+        this.codigo = "";
+        this.nombre = "";
+        this.correo = "";
+        this.clave = "";
+        Rseguridad = "";
+        Rol_id = 0;
+        Pseguridad = 0;
+        this.validado = false;
     }
 
     public Sesion(String codigo, String nombre, String correo, String clave, String rseguridad, int rol_id, int pseguridad, boolean validado) {

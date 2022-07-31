@@ -1,6 +1,7 @@
 package com.example.sdjcomp;
 
 import java.util.HashMap;
+import java.util.List;
 
 import kotlin.io.path.ExperimentalPathApi;
 import okhttp3.RequestBody;
@@ -17,6 +18,14 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface IRetroFit {
+
+    /*
+    * @METHOD_HTTP
+    * Call<Clase a la que convierte> nombreMetodo(@Body para enviar la info apra el match en el cuerpo de la peticion
+    *                                              @Path para enviar por la ruta de la petion como un get)
+    *
+    * */
+
     @POST("/login")
     Call<PreLoginUsuario> executeLogin(@Body HashMap<String,String> map);
 
@@ -32,7 +41,19 @@ public interface IRetroFit {
     @DELETE("/deleteUser/{codigo}")
     Call<Number> executeDeleteUser(@Path("codigo") String codigo);
     
-    //@FormUrlEncoded
-    @PATCH("/updateOneUser/{palabras}")
+    @PATCH("/updateOne/{palabras}")
     Call<Number> executeUpdateOneUser(@Path("palabras") String palabras);
+
+    //BICICLETAS
+    @GET("/getBikes/{codigo}")
+    Call<List<Bicicleta>> executeGetBikes(@Path("codigo") String codigo);
+
+    @GET("/getOne/{palabras}")
+    Call<Usuario> executeGetUserByCode(@Path("palabras") String palabras);
+
+    @POST("/createCupo")
+    Call<Cupo> executeCreateCupo(@Body Cupo map);
+
+    @GET("/getAll/{tabla}")
+    Call<List<Pregunta>> executeGetAll(@Path("tabla") String tabla);
 }
