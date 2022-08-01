@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class InterfazBicicleta extends Fragment {
 
-        private Retrofit retrofit;
+    private Retrofit retrofit;
     private IRetroFit iRetrofit;
     private String URL="";
     private RecyclerView recyclerViewCiclas;

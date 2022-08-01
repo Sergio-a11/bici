@@ -27,9 +27,6 @@
         tools:layout="@layout/interfaz_estudiante">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/Home" />
-        <action
             android:id="@+id/action_InterfazEstudiante_to_fragment_modificar_usuario"
             app:destination="@id/fragment_modificar_usuario" />
         <action
@@ -38,6 +35,12 @@
         <action
             android:id="@+id/action_InterfazEstudiante_to_registrarBicicleta"
             app:destination="@id/registrarBicicleta" />
+        <action
+            android:id="@+id/action_InterfazEstudiante_to_Home"
+            app:destination="@id/Home" />
+        <action
+            android:id="@+id/action_InterfazEstudiante_to_modificarYEliminarBicicleta"
+            app:destination="@id/modificarYEliminarBicicleta" />
     </fragment>
     <fragment
         android:id="@+id/fragment_registro"
@@ -115,4 +118,9 @@
             android:id="@+id/action_asignarCupo_to_interfaz_administrador"
             app:destination="@id/interfaz_administrador" />
     </fragment>
+    <fragment
+        android:id="@+id/modificarYEliminarBicicleta"
+        android:name="com.example.sdjcomp.ModificarYEliminarBicicleta"
+        android:label="fragment_modificar_y_eliminar_bicicleta"
+        tools:layout="@layout/fragment_modificar_y_eliminar_bicicleta" />
 </navigation>

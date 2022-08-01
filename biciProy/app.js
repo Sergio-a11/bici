@@ -222,6 +222,26 @@ app.get('/getBikes/:Estudiante_id', (req,res)=>{
     })
 })
 
+app.get('/getBike/:Estudiante_id/:idBicicleta', (req,res)=>{
+    const Estudiante_id = req.params.Estudiante_id
+    const idBicicleta = req.params.idBicicleta
+    console.log(Estudiante_id)
+    conexion.query(`SELECT b.idBicicleta, b.cedulaPropietario, b.fechaRegistro, b.lugarRegistro, b.numSerie, t.tipo, b.color, b.Estudiante_id, m.marca FROM bicicletas as b join marcas as m join tipos as t WHERE b.Marca_id=m.id AND b.Tipo_id=t.id AND b.Estudiante_id='${Estudiante_id}' AND b.idBicicleta=${idBicicleta}`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        console.log(results)
+        res.status(200).send(JSON.stringify(results[0]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
 //updateBike
 //deleteBike
 
@@ -417,3 +437,36 @@ app.post('/registerParqueadero', (req, res) => {
 //getTypes
 //updateTypes
 //deleteTypes
+
+app.post("/updatePassword", (req,res)=> {
+    const codigo = req.body.codigo
+    const Pseguridad = req.body.Pseguridad
+    const Rseguridad = req.body.Rseguridad
+    const clave = req.body.clave
+    conexion.query(`SELECT * FROM usuarios WHERE codigo='${codigo}' AND Pseguridad=${Pseguridad} AND Rseguridad='${Rseguridad}'`,(error,results)=>{
+    //lo probe de muchas formas xd y ajam puse mil codigos hay pero me da error el post pille, coje disq undefined los values
+        if(error) throw error
+        console.log(results.length==0)
+        console.log((results))
+        if(results.length!=0){
+            conexion.query(`UPDATE usuarios SET clave='${clave}' WHERE codigo='${codigo}'`,(error,results)=>{ //aca
+                if(error)//brb
+                {
+                    console.log(2)
+                    console.log(error)
+                }else if(results!=null){
+                    console.log(3)
+                    console.log(results)
+                    res.status(200).send(JSON.stringify(results["affectedRows"]))
+                }
+                else{
+
+                    res.status(404).send()
+                }
+            })
+        }
+        else{
+            res.status(412).send()
+        }
+        })
+})

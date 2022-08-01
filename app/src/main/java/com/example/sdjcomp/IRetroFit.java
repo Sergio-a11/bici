@@ -48,6 +48,9 @@ public interface IRetroFit {
     @GET("/getBikes/{codigo}")
     Call<List<Bicicleta>> executeGetBikes(@Path("codigo") String codigo);
 
+    @GET("/getBike/{codigo}/{id}")
+    Call<Bicicleta> executeGetBike(@Path("codigo") String codigo, @Path("id") int id);
+
     @GET("/getOne/{palabras}")
     Call<Usuario> executeGetUserByCode(@Path("palabras") String palabras);
 

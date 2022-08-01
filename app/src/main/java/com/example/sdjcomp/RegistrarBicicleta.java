@@ -148,7 +148,8 @@ public class RegistrarBicicleta extends Fragment {
 
                     @Override
                     public void onFailure(Call<Number> call, Throwable t) {
-
+                        Toast.makeText(getContext(), "Bicicleta NO Registrado", Toast.LENGTH_LONG).show();
+                        NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_interfazBicicleta2);
                     }
                 });
 

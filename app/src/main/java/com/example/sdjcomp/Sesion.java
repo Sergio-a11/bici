@@ -4,7 +4,7 @@ import android.app.Application;
 
 public class Sesion extends Application {
     private String codigo,nombre,correo,clave,Rseguridad;
-    private int Rol_id,Pseguridad;
+    private int Rol_id,Pseguridad,idBici;
     private boolean validado;
 
 
@@ -93,5 +93,13 @@ public class Sesion extends Application {
 
     public void setValidado(boolean validado) {
         this.validado = validado;
+    }
+
+    public int getIdBici() {
+        return idBici;
+    }
+
+    public void setIdBici(int idBici) {
+        this.idBici = idBici;
     }
 }

@@ -29,7 +29,7 @@ public class InterfazEstudiante extends Fragment {
     private String URL="";
 
     private TextView txtTitulo;
-    private Button btnActualizarUsuario, btnEliminarUsuario, btnVerRegistros, btnRegistrarBicicleta;
+    private Button btnActualizarUsuario, btnEliminarUsuario, btnVerRegistros, btnRegistrarBicicleta, btnVolver, btnActualizarBicicleta, btnEliminarBicicleta;
 
     @Override
     public View onCreateView(
@@ -44,6 +44,9 @@ public class InterfazEstudiante extends Fragment {
         btnActualizarUsuario = v.findViewById(R.id.btnModificarUsuario);
         btnEliminarUsuario = v.findViewById(R.id.btnEliminarUsuario);
         btnRegistrarBicicleta = v.findViewById(R.id.btnRegistrarBicicleta);
+        btnVolver = v.findViewById(R.id.btnVolver);
+        btnActualizarBicicleta = v.findViewById(R.id.btnActualizarBicicleta);
+        btnEliminarBicicleta = v.findViewById(R.id.btnEliminarBicicleta);
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
@@ -114,7 +117,7 @@ public class InterfazEstudiante extends Fragment {
                         if(response.code()==200) {
                             if (Integer.parseInt(String.valueOf(response.body())) == 1) {
                                 NavHostFragment.findNavController(InterfazEstudiante.this)
-                                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+                                        .navigate(R.id.action_InterfazEstudiante_to_Home);
                             } else {
                                 Toast.makeText(getContext(), "Usuario no eliminado", Toast.LENGTH_LONG).show();
                             }
@@ -128,22 +131,37 @@ public class InterfazEstudiante extends Fragment {
             }
         });
 
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((Sesion) getActivity().getApplicationContext()).setCorreo("");
+                ((Sesion) getActivity().getApplicationContext()).setClave("");
+                ((Sesion) getActivity().getApplicationContext()).setValidado(false);
+
+                NavHostFragment.findNavController(InterfazEstudiante.this)
+                        .navigate(R.id.action_InterfazEstudiante_to_Home);
+            }
+        });
+
+        btnActualizarBicicleta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(InterfazEstudiante.this)
+                        .navigate(R.id.action_InterfazEstudiante_to_modificarYEliminarBicicleta);
+            }
+        });
+
+        btnEliminarBicicleta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(InterfazEstudiante.this)
+                        .navigate(R.id.action_InterfazEstudiante_to_modificarYEliminarBicicleta);
+            }
+        });
 
         binding = InterfazEstudianteBinding.inflate(inflater, container, false);
         return v;
 
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(InterfazEstudiante.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-            }
-        });
     }
 
     @Override
