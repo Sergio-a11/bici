@@ -28,6 +28,12 @@ public class Usuario {
         Rol_id = rol_id;
     }
 
+    public Usuario(String codigo, int pseguridad, String rseguridad) {
+        this.codigo = codigo;
+        Pseguridad = pseguridad;
+        Rseguridad = rseguridad;
+    }
+
     public String getCodigo() {
         return codigo;
     }

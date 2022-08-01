@@ -20,8 +20,13 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+    
+    <string-array name="preguntas">
+        <item>¿Comida Favorita?</item>
+        <item>¿Pelicula Favorita?</item>
+    </string-array>
 
-    <string name="IP">192.168.1.10</string>
+    <string name="IP">192.168.0.7</string>
 
     <string name="title">BICI UD</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>

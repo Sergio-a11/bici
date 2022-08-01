@@ -56,4 +56,7 @@ public interface IRetroFit {
 
     @GET("/getAll/{tabla}")
     Call<List<Pregunta>> executeGetAll(@Path("tabla") String tabla);
+
+    @POST("/updatePassword")
+    Call<Number> executeChangePassword(@Body Usuario map);
 }

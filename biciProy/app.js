@@ -524,6 +524,40 @@ app.delete('/deleteSlots/:idCupo', (req,res)=>{
     })
 })
 
+app.post("/updatePassword", (req,res)=> {
+    const codigo = req.params.codigo
+    const Pseguridad = req.params.Pseguridad
+    const Rseguridad = req.params.Rseguridad
+    const clave = req.params.clave
+    conexion.query(`SELECT * FROM usuarios WHERE codigo='${codigo}' AND Pseguridad=${Pseguridad} AND Rseguridad='${Rseguridad}'`,(error,results)=>{
+        if(error) throw error
+        if(results.length){
+            conexion.query(`UPDATE usuarios SET clave='${clave}' WHERE codigo='${codigo}'`,(error,results)=>{ //aca
+                if(error)//brb
+                {
+                    console.log(2)
+                    console.log(error)
+                }else if(results!=null){
+                    console.log(3)
+                    console.log(results)
+                    res.status(200).send(JSON.stringify(results["affectedRows"]))
+                }
+                else{
+                    
+                    res.status(404).send()
+                }
+            })
+        }
+        else{
+            res.status(412).send()
+        }
+        })
+})
+
+
+    
+
+
 //registerBrands
 //getBrands
 //updateBrands
