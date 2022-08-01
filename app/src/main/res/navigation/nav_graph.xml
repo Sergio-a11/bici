@@ -73,6 +73,9 @@
         <action
             android:id="@+id/action_interfazBicicleta_to_interfaz_administrador"
             app:destination="@id/interfaz_administrador" />
+        <action
+            android:id="@+id/action_interfazBicicleta_self"
+            app:destination="@id/interfazBicicleta" />
     </fragment>
 
     <fragment
@@ -106,6 +109,9 @@
         <action
             android:id="@+id/action_consultarCupo_self"
             app:destination="@id/consultarCupo" />
+        <action
+            android:id="@+id/action_consultarCupo_to_consultarParqueaderoSeccion"
+            app:destination="@id/consultarParqueaderoSeccion" />
     </fragment>
 
     <fragment
@@ -119,5 +125,17 @@
         <action
             android:id="@+id/action_asignarCupo_to_interfazBicicleta"
             app:destination="@id/interfazBicicleta" />
+    </fragment>
+    <fragment
+        android:id="@+id/consultarParqueaderoSeccion"
+        android:name="com.example.sdjcomp.ConsultarParqueaderoSeccion"
+        android:label="consultar_parqueadero_seccion"
+        tools:layout="@layout/consultar_parqueadero_seccion" >
+        <action
+            android:id="@+id/action_consultarParqueaderoSeccion_to_consultarCupo"
+            app:destination="@id/consultarCupo" />
+        <action
+            android:id="@+id/action_consultarParqueaderoSeccion_self"
+            app:destination="@id/consultarParqueaderoSeccion" />
     </fragment>
 </navigation>

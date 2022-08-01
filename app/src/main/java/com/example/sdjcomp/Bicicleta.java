@@ -23,8 +23,9 @@ public class Bicicleta {
         this.numSerie = numSerie;
         this.tipo = tipo;
         this.color = color;
-        Estudiante_id = estudiante_id;
     }
+
+
 
     public int getIdBicicleta() {
         return idBicicleta;

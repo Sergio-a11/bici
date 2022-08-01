@@ -33,6 +33,7 @@ public class ConsultarCupo extends Fragment {
     private String URL="";
 
     private ImageButton btnConsultarEstudiante;
+    private Button btnseccion1,btnseccion2,btnseccion3;
     private EditText edtConsultarEstudiante;
 
     AlertDialog.Builder fin;
@@ -88,6 +89,11 @@ public class ConsultarCupo extends Fragment {
 
         btnConsultarEstudiante = v.findViewById(R.id.btnConsultarCodigo);
         edtConsultarEstudiante = v.findViewById(R.id.edtConsultarCodigo);
+
+        btnseccion1 = v.findViewById(R.id.btnSeccion1);
+        btnseccion2 = v.findViewById(R.id.btnSeccion2);
+        btnseccion3 = v.findViewById(R.id.btnSeccion3);
+
         fin = new AlertDialog.Builder(getActivity());
 
 
@@ -119,6 +125,30 @@ public class ConsultarCupo extends Fragment {
                         Toast.makeText(getContext(), "Usuario No Encontrado", Toast.LENGTH_LONG).show();
                     }
                 });
+            }
+        });
+
+        btnseccion1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((Sesion)getActivity().getApplicationContext()).setSeccion("1");
+                NavHostFragment.findNavController(ConsultarCupo.this).navigate(R.id.action_consultarCupo_to_consultarParqueaderoSeccion);
+            }
+        });
+
+        btnseccion2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((Sesion)getActivity().getApplicationContext()).setSeccion("2");
+                NavHostFragment.findNavController(ConsultarCupo.this).navigate(R.id.action_consultarCupo_to_consultarParqueaderoSeccion);
+            }
+        });
+
+        btnseccion3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((Sesion)getActivity().getApplicationContext()).setSeccion("3");
+                NavHostFragment.findNavController(ConsultarCupo.this).navigate(R.id.action_consultarCupo_to_consultarParqueaderoSeccion);
             }
         });
 

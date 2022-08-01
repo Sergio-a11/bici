@@ -59,4 +59,7 @@ public interface IRetroFit {
 
     @GET("/getCupo/{seccion}")
     Call<List<Cupo>> executeGetCuposEnable(@Path("seccion") String seccion);
+
+    @GET("/getParqueadero/{seccion}")
+    Call<List<Bicicleta>> executeGetParqueaderos(@Path("seccion") String seccion);
 }

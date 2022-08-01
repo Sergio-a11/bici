@@ -26,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class InterfazBicicleta extends Fragment {
 
-        private Retrofit retrofit;
+    private Retrofit retrofit;
     private IRetroFit iRetrofit;
     private String URL="";
     private RecyclerView recyclerViewCiclas;
@@ -120,7 +120,7 @@ public class InterfazBicicleta extends Fragment {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 NavHostFragment.findNavController(InterfazBicicleta.this)
-                                                        .navigate(R.id.action_interfazBicicleta_to_InterfazEstudiante);
+                                                        .navigate(R.id.action_interfazBicicleta_self);
                                             }
                                         })
                                         .create().show();

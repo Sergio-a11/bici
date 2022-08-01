@@ -8,7 +8,7 @@ public class Sesion extends Application {
     private boolean validado;
 
     private int cupo, bicicleta;
-    private String codio;
+    private String codio,seccion;
 
     public Sesion() {
         this.codigo = "";
@@ -22,6 +22,7 @@ public class Sesion extends Application {
         this.cupo = 0;
         this.bicicleta = 0;
         this.codio = "";
+        this.seccion="";
     }
 
     public Sesion(String codigo, String nombre, String correo, String clave, String rseguridad, int rol_id, int pseguridad, boolean validado) {
@@ -129,4 +130,11 @@ public class Sesion extends Application {
         this.codio = codio;
     }
 
+    public String getSeccion() {
+        return seccion;
+    }
+
+    public void setSeccion(String seccion) {
+        this.seccion = seccion;
+    }
 }

@@ -336,17 +336,44 @@ app.post('/registerParqueadero/:parqueadero', (req, res) => {
     const words = parqueadero.split(',')
     const Bicicleta_idBicicleta = words[0]
     const Cupo_idCupo = words[1]
-    conexion.query(`INSERT INTO parqueaderos (Bicicleta_idBicicleta,Cupo_idCupo) VALUES ('${Bicicleta_idBicicleta}',${Cupo_idCupo})`,(error,results)=>{
+    conexion.query(`INSERT INTO parqueaderos (Bicicleta_idBicicleta,Cupo_idCupo) 
+    VALUES ('${Bicicleta_idBicicleta}',${Cupo_idCupo})`,(error,results)=>{
     if(error)
     {
         console.log(error)
     }else if(results!=null){
-        res.status(200).send(JSON.stringify(results))
+        conexion.query(`UPDATE cupos SET estado=1 WHERE idCupo=${Cupo_idCupo}`,(error,results)=>{
+            if(error){
+                throw error
+            }else{
+                res.status(200).send(JSON.stringify(results))
+            }
+        })        
     }
     else{
         res.status(404).send()
     }
 })
+})
+
+app.get('/getParqueadero/:seccion',(req,res)=>{
+    const seccion = req.params.seccion
+    conexion.query(`SELECT b.idBicicleta, b.cedulaPropietario, b.fechaRegistro, b.lugarRegistro, b.numSerie,  t.tipo, b.color, b.Estudiante_id,  u.nombre as marca
+    FROM bicicletas as b 
+    JOIN parqueaderos as p 
+    JOIN tipos as t 
+    JOIN usuarios as u
+    JOIN cupos as c ON  b.Tipo_id=t.id 
+    AND b.idBicicleta=p.Bicicleta_idBicicleta 
+    AND p.Cupo_idCupo=c.idCupo 
+    AND b.Estudiante_id = u.codigo
+    AND c.seccion ='${seccion}'`,(error,results)=>{
+        if(error){
+            throw error
+        }else{
+            res.status(200).send(JSON.stringify(results))
+        }
+     })
 })
 
 //getSlots

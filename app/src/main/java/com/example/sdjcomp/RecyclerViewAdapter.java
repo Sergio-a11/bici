@@ -52,6 +52,7 @@ public class RecyclerViewAdapter
         holder.txtColor.setText(lstCiclas.get(position).getColor());
         holder.txtMarca.setText(lstCiclas.get(position).getMarca());
         holder.txtTipo.setText(lstCiclas.get(position).getTipo());
+
         //holder.imgBicicleta.setImageResource(lstCiclas.get(position).getImageCicla);
     }
 
