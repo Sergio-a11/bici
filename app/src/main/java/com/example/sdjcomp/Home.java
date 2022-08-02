@@ -1,6 +1,5 @@
 package com.example.sdjcomp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +39,6 @@ public class Home extends Fragment {
         View v = inflater.inflate(R.layout.home,container,false);
         Button btnIniciar = (Button) v.findViewById(R.id.btnIniciarSeseion);
         Button btnRegistrarse = (Button) v.findViewById(R.id.btnRegistrarse);
-        Button btnRecuperar = (Button) v.findViewById(R.id.btnRecuperarClave);
         binding = HomeBinding.inflate(inflater, container, false);
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
@@ -113,15 +111,6 @@ public class Home extends Fragment {
                 NavHostFragment.findNavController(Home.this).navigate(R.id.action_Home_to_fragment_registro);
             }
         });
-
-        btnRecuperar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(Home.this).navigate(R.id.recuperarContrasena);
-
-            }
-        });
-
 
         return v;
 
