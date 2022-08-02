@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_Home_to_interfaz_administrador"
             app:destination="@id/interfaz_administrador" />
+        <action
+            android:id="@+id/action_Home_to_recuperarcontrasena"
+            app:destination="@id/recuperarcontrasena" />
     </fragment>
     <fragment
         android:id="@+id/InterfazEstudiante"
@@ -110,5 +113,14 @@
         <action
             android:id="@+id/action_asignarCupo_to_interfaz_administrador"
             app:destination="@id/interfaz_administrador" />
+    </fragment>
+    <fragment
+        android:id="@+id/recuperarcontrasena"
+        android:name="com.example.sdjcomp.Recuperarcontrasena"
+        android:label="fragment_recuperarcontrasena"
+        tools:layout="@layout/fragment_recuperarcontrasena" >
+        <action
+            android:id="@+id/action_recuperarcontrasena_to_Home"
+            app:destination="@id/Home" />
     </fragment>
 </navigation>

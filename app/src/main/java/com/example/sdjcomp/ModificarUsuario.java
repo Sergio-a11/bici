@@ -105,7 +105,6 @@ public class ModificarUsuario extends Fragment {
         edtClave.setText(((Sesion)getActivity().getApplicationContext()).getClave());
         edtRespuesta.setText(((Sesion)getActivity().getApplicationContext()).getRseguridad());
 
-
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 
