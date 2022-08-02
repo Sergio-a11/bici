@@ -27,6 +27,7 @@ public class InterfazAdministrador extends Fragment {
     private Button btnVerRegistrosCupos;
     private Button btnCerrarSesion;
     private Button btnAsignarCupo;
+    private Button btnDeAsignarCupo;
 
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
@@ -80,6 +81,7 @@ public class InterfazAdministrador extends Fragment {
         btnCerrarSesion = v.findViewById(R.id.btnCerrarSesion);
         btnVerRegistrosCupos = v.findViewById(R.id.btnVerRegistrosCupos);
         btnAsignarCupo = v.findViewById(R.id.btnAsignarCupo);
+        btnDeAsignarCupo = v.findViewById(R.id.btnDesAsignarCupo);
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
@@ -120,6 +122,14 @@ public class InterfazAdministrador extends Fragment {
             public void onClick(View view) {
                 NavHostFragment.findNavController(InterfazAdministrador.this)
                         .navigate(R.id.action_interfaz_administrador_to_asignarCupo);
+            }
+        });
+
+        btnDeAsignarCupo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(InterfazAdministrador.this)
+                        .navigate(R.id.action_interfaz_administrador_to_desasignarCupo);
             }
         });
 

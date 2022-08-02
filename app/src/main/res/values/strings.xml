@@ -12,7 +12,7 @@
     <string name="verRegistros">Ver Registros</string>
     <string name="verRegistrosCupos">Ver registros de cupos en uso</string>
     <string name="AsignarCupo">AsignarCupo</string>
-    <string name="DesAsignarCupo">DesAsignarCupo</string>
+    <string name="DesAsignarCupo">DesAsignar Cupo</string>
     <string name="CerrarSesion">Cerrar Sesion</string>
 
     <string-array name="seccion">

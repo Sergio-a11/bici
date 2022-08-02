@@ -25,7 +25,11 @@ public class Bicicleta {
         this.color = color;
     }
 
-
+    public Bicicleta(String marca, String tipo, String color) {
+        this.marca = marca;
+        this.tipo = tipo;
+        this.color = color;
+    }
 
     public int getIdBicicleta() {
         return idBicicleta;

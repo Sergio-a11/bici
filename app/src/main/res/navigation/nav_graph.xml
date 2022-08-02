@@ -99,6 +99,9 @@
         <action
             android:id="@+id/action_interfaz_administrador_to_asignarCupo"
             app:destination="@id/asignarCupo" />
+        <action
+            android:id="@+id/action_interfaz_administrador_to_desasignarCupo"
+            app:destination="@id/desasignarCupo" />
     </fragment>
 
     <fragment
@@ -137,5 +140,14 @@
         <action
             android:id="@+id/action_consultarParqueaderoSeccion_self"
             app:destination="@id/consultarParqueaderoSeccion" />
+    </fragment>
+    <fragment
+        android:id="@+id/desasignarCupo"
+        android:name="com.example.sdjcomp.DesasignarCupo"
+        android:label="desasignar_cupo"
+        tools:layout="@layout/desasignar_cupo" >
+        <action
+            android:id="@+id/action_desasignarCupo_to_interfaz_administrador"
+            app:destination="@id/interfaz_administrador" />
     </fragment>
 </navigation>

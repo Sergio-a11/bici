@@ -336,24 +336,32 @@ app.post('/registerParqueadero/:parqueadero', (req, res) => {
     const words = parqueadero.split(',')
     const Bicicleta_idBicicleta = words[0]
     const Cupo_idCupo = words[1]
-    conexion.query(`INSERT INTO parqueaderos (Bicicleta_idBicicleta,Cupo_idCupo) 
-    VALUES ('${Bicicleta_idBicicleta}',${Cupo_idCupo})`,(error,results)=>{
-    if(error)
-    {
-        console.log(error)
-    }else if(results!=null){
-        conexion.query(`UPDATE cupos SET estado=1 WHERE idCupo=${Cupo_idCupo}`,(error,results)=>{
-            if(error){
-                throw error
-            }else{
-                res.status(200).send(JSON.stringify(results))
+    conexion.query(`SELECT * FROM parqueaderos WHERE Bicicleta_idBicicleta=${Bicicleta_idBicicleta}`,(error,results)=>{
+        if(error){
+            throw error
+        }else if(results[0]==undefined){
+            conexion.query(`INSERT INTO parqueaderos (Bicicleta_idBicicleta,Cupo_idCupo) 
+            VALUES ('${Bicicleta_idBicicleta}',${Cupo_idCupo})`,(error,results)=>{
+            if(error)
+            {
+                console.log(error)
+            }else if(results!=null){
+                conexion.query(`UPDATE cupos SET estado=1 WHERE idCupo=${Cupo_idCupo}`,(error,results)=>{
+                    if(error){
+                        throw error
+                    }else{
+                        res.status(200).send(JSON.stringify(results))
+                    }
+                })        
             }
-        })        
-    }
-    else{
-        res.status(404).send()
-    }
-})
+            else{
+                res.status(404).send()
+            }
+            })
+        }else{
+            res.status(404).send()
+        }
+    })    
 })
 
 app.get('/getParqueadero/:seccion',(req,res)=>{
@@ -375,6 +383,49 @@ app.get('/getParqueadero/:seccion',(req,res)=>{
         }
      })
 })
+
+app.delete('/deleteParqueadero/:idBicicleta', (req,res)=>{
+    const idBicicleta = req.params.idBicicleta
+    conexion.query(`SELECT Cupo_idCupo FROM parqueaderos WHERE Bicicleta_idBicicleta=${idBicicleta}`, (error,results)=>{
+        console.log(results)
+        if(error){
+            throw error
+        }else{
+            const idCupo = results[0].Cupo_idCupo
+            conexion.query(`UPDATE cupos SET estado=0 WHERE idCupo=${idCupo}`,(error,results)=>{
+                if(error){
+                    throw error
+                }else{
+                    conexion.query(`DELETE FROM parqueaderos WHERE Bicicleta_idBicicleta=${idBicicleta}`, (error,results)=>{
+                        if(error){
+                            throw error
+                        }else{
+                            res.status(200).send(JSON.stringify(results["affectedRows"]))
+                        }
+                    })
+                }                
+            })
+        }
+    })
+    
+})
+
+app.get('/getBikeForDesasignar/:numSerie',(req,res)=>{
+    const numSerie = req.params.numSerie
+    console.log(numSerie)
+    conexion.query(`SELECT b.idBicicleta, u.nombre , t.tipo, b.color FROM bicicletas as b JOIN usuarios as u JOIN tipos as t
+     ON b.numSerie=${numSerie} 
+     AND b.Estudiante_id=u.codigo
+     AND b.Tipo_id=t.id`, (error,results)=>{
+        if(error){
+            throw error
+        }else{
+            res.status(200).send(JSON.stringify(results[0]))
+        }
+     })
+})
+
+
 
 //getSlots
 //updateSlots

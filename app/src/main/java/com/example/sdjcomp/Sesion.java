@@ -6,6 +6,7 @@ public class Sesion extends Application {
     private String codigo,nombre,correo,clave,Rseguridad;
     private int Rol_id,Pseguridad;
     private boolean validado;
+    private int idBici;
 
     private int cupo, bicicleta;
     private String codio,seccion;
@@ -136,5 +137,13 @@ public class Sesion extends Application {
 
     public void setSeccion(String seccion) {
         this.seccion = seccion;
+    }
+
+    public int getIdBici() {
+        return idBici;
+    }
+
+    public void setIdBici(int idBici) {
+        this.idBici = idBici;
     }
 }

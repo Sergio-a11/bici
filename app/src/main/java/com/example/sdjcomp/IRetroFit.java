@@ -62,4 +62,9 @@ public interface IRetroFit {
 
     @GET("/getParqueadero/{seccion}")
     Call<List<Bicicleta>> executeGetParqueaderos(@Path("seccion") String seccion);
+
+    @GET("/getBikeForDesasignar/{numSerie}")
+    Call<BicicletaParaBorrar> executeGetBikeForDelete(@Path("numSerie") String numSerie);
+    @DELETE("/deleteParqueadero/{idBicicleta}")
+    Call<Number> executeDeleteParqueadero(@Path("idBicicleta") Number idBicicleta);
 }
