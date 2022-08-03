@@ -7,6 +7,7 @@ public class BicicletaRegistrar {
     private int Marca_id;
     private String numSerie;
     private int Tipo_id;
+    private int idBicicleta;
     private String color;
     private String Estudiante_id;
 
@@ -22,6 +23,18 @@ public class BicicletaRegistrar {
         this.Tipo_id = tipo;
         this.color = color;
         Estudiante_id = estudiante_id;
+    }
+
+    public BicicletaRegistrar(String cedulaPropietario, String fechaRegistro, String lugarRegistro, int marca, String numSerie, int tipo, String color, String estudiante_id, int idBicicleta) {
+        this.cedulaPropietario = cedulaPropietario;
+        this.fechaRegistro = fechaRegistro;
+        this.lugarRegistro = lugarRegistro;
+        this.Marca_id = marca;
+        this.numSerie = numSerie;
+        this.Tipo_id = tipo;
+        this.color = color;
+        this.Estudiante_id = estudiante_id;
+        this.idBicicleta = idBicicleta;
     }
 
     public String getCedulaPropietario() {
@@ -86,5 +99,29 @@ public class BicicletaRegistrar {
 
     public void setEstudiante_id(String estudiante_id) {
         Estudiante_id = estudiante_id;
+    }
+
+    public int getMarca_id() {
+        return Marca_id;
+    }
+
+    public void setMarca_id(int marca_id) {
+        Marca_id = marca_id;
+    }
+
+    public int getTipo_id() {
+        return Tipo_id;
+    }
+
+    public void setTipo_id(int tipo_id) {
+        Tipo_id = tipo_id;
+    }
+
+    public int getIdBicicleta() {
+        return idBicicleta;
+    }
+
+    public void setIdBicicleta(int idBicicleta) {
+        this.idBicicleta = idBicicleta;
     }
 }

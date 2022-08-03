@@ -122,5 +122,21 @@
         android:id="@+id/modificarYEliminarBicicleta"
         android:name="com.example.sdjcomp.ModificarYEliminarBicicleta"
         android:label="fragment_modificar_y_eliminar_bicicleta"
-        tools:layout="@layout/fragment_modificar_y_eliminar_bicicleta" />
+        tools:layout="@layout/fragment_modificar_y_eliminar_bicicleta" >
+        <action
+            android:id="@+id/action_modificarYEliminarBicicleta_to_modificarBicicleta"
+            app:destination="@id/modificarBicicleta" />
+        <action
+            android:id="@+id/action_modificarYEliminarBicicleta_to_InterfazEstudiante"
+            app:destination="@id/InterfazEstudiante" />
+    </fragment>
+    <fragment
+        android:id="@+id/modificarBicicleta"
+        android:name="com.example.sdjcomp.ModificarBicicleta"
+        android:label="fragment_modificar_bicicleta"
+        tools:layout="@layout/fragment_modificar_bicicleta" >
+        <action
+            android:id="@+id/action_modificarBicicleta_to_modificarYEliminarBicicleta"
+            app:destination="@id/modificarYEliminarBicicleta" />
+    </fragment>
 </navigation>

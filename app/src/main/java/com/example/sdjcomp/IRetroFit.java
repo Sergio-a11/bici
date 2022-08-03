@@ -68,4 +68,10 @@ public interface IRetroFit {
 
     @POST("/registerBike")
     Call<Number> executeRegisterBike(@Body BicicletaRegistrar bici);
+
+    @PUT("/updateBicicleta")
+    Call<Number> executeUpdateBicicleta(@Body BicicletaRegistrar bici);
+
+    @DELETE("/deleteBicicleta/{idBicicleta}")
+    Call<Number> executeDeleteBicicleta(@Path("idBicicleta") int idBicicleta);
 }

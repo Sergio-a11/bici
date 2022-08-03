@@ -3,11 +3,14 @@ package com.example.sdjcomp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -23,6 +26,7 @@ public class ModificarYEliminarBicicleta extends Fragment {
     private IRetroFit iRetrofit;
     private String URL="";
     private TextView txtCedula, txtFecha, txtLugar, txtMarca, txtnum, txtTipo, txtColor;
+    private Button btnModficarBici, btnEliminarBici;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,8 @@ public class ModificarYEliminarBicicleta extends Fragment {
         txtnum = (TextView) v.findViewById(R.id.txtNumSerieBici);
         txtTipo = (TextView) v.findViewById(R.id.txtTipoBici);
         txtColor = (TextView) v.findViewById(R.id.txtColorBici);
+        btnModficarBici = (Button) v.findViewById(R.id.btnModificarBici);
+        btnEliminarBici = (Button) v.findViewById(R.id.btnEliminarBici);
 
         int id = ((Sesion)getActivity().getApplicationContext()).getIdBici();
         System.out.println("id = " + id);
@@ -72,6 +78,37 @@ public class ModificarYEliminarBicicleta extends Fragment {
                 System.out.println(t.getMessage());
             }
         });
+
+        btnModficarBici.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ModificarYEliminarBicicleta.this).navigate(R.id.action_modificarYEliminarBicicleta_to_modificarBicicleta);
+            }
+        });
+
+        btnEliminarBici.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                URL="http://"+getResources().getString(R.string.IP)+":3000/deleteBicicleta/";
+                Call<Number> call = iRetrofit.executeDeleteBicicleta(((Sesion)getActivity().getApplicationContext()).getIdBici());
+                call.enqueue(new Callback<Number>() {
+                    @Override
+                    public void onResponse(Call<Number> call, Response<Number> response) {
+                        if(Integer.parseInt(String.valueOf(response.body()))==1){
+                            Toast.makeText(getContext(), "Bicicleta eliminada", Toast.LENGTH_LONG).show();
+                            NavHostFragment.findNavController(ModificarYEliminarBicicleta.this).navigate(R.id.action_modificarYEliminarBicicleta_to_InterfazEstudiante);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Number> call, Throwable t) {
+                        Toast.makeText(getContext(), "Bicicleta no eliminada", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+        });
+
 
         return v;
     }

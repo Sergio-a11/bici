@@ -231,7 +231,8 @@ app.get('/getBike/:Estudiante_id/:idBicicleta', (req,res)=>{
     {
         console.log(error)
     }else if(results!=null){
-        console.log(results)
+        console.log(4)
+        console.log(results[0])
         res.status(200).send(JSON.stringify(results[0]))
     }
     else{
@@ -284,6 +285,49 @@ app.get('/getTipos', (req,res)=>{
 })
 
 
+app.put('/updateBicicleta', (req,res) => {
+    const cedulaPropietario = req.body.cedulaPropietario
+    const fechaRegistro = req.body.fechaRegistro
+    const lugarRegistro = req.body.lugarRegistro
+    const Marca_id = req.body.Marca_id
+    const numSerie = req.body.numSerie
+    const Tipo_id = req.body.Tipo_id
+    const color = req.body.color
+    const Estudiante_id = req.body.Estudiante_id
+    const idBicicleta = req.body.idBicicleta
+    conexion.query(`UPDATE bicicletas SET cedulaPropietario='${cedulaPropietario}',fechaRegistro='${fechaRegistro}',lugarRegistro='${lugarRegistro}',Marca_id=${Marca_id},numSerie='${numSerie}',Tipo_id=${Tipo_id},color='${color}' WHERE Estudiante_id='${Estudiante_id}' AND idBicicleta=${idBicicleta}`,(error, results) => {
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null)
+        {
+            res.status(200).send(JSON.stringify(results["affectedRows"]))
+        }
+        else
+        {
+            console.log(results)
+            res.status(404).send()
+        }
+    })
+})
+
+
+app.delete('/deleteBicicleta/:idBicicleta', (req, res) => {
+    const idBicicleta = req.params.idBicicleta
+    conexion.query('DELETE FROM bicicletas WHERE ?',[{idBicicleta}],(error,results)=>{
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null){
+            res.status(200).send(JSON.stringify(results["affectedRows"]))
+        }
+        else{
+            console.log("3")
+            console.log(results)
+            res.status(404).send()
+        }
+        })
+})
 
 app.get('/getCupo/:idCupo', (req,res)=>{
     const idCupo = req.params.idCupo
