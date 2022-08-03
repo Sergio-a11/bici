@@ -144,7 +144,7 @@ public class ModificarUsuario extends Fragment {
                 {
                     Usuario objU = new Usuario(((Sesion)getActivity().getApplicationContext()).getCodigo(),edtNombre.getText().toString(),
                             ((Sesion)getActivity().getApplicationContext()).getCorreo(),edtClave.getText().toString(),
-                            1,edtRespuesta.getText().toString(),2);
+                            spnPreguntas.getSelectedItemPosition()+1,edtRespuesta.getText().toString(),2);
 
                     Call<Usuario> call = iRetrofit.executeUpdateUser(objU);
                     call.enqueue(new Callback<Usuario>() {

@@ -51,7 +51,7 @@ app.post('/registrarUsuario', (req, res) => {
     const Pseguridad = req.body.Pseguridad
     const Rseguridad = req.body.Rseguridad
     const Rol_id = req.body.Rol_id
-    conexion.query(`SELECT * FROM usuarios WHERE correo='${correo}'`,(error,results)=>{
+    conexion.query(`SELECT * FROM usuarios WHERE correo='${correo}' OR codigo='${codigo}'`,(error,results)=>{
         if(error) throw error
         if(results[0]==undefined){
             conexion.query(`INSERT INTO usuarios (codigo,nombre,correo,clave,Pseguridad,Rseguridad,Rol_id) VALUES('${codigo}',

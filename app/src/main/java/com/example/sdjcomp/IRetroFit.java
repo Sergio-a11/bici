@@ -29,7 +29,7 @@ public interface IRetroFit {
     @POST("/login")
     Call<PreLoginUsuario> executeLogin(@Body HashMap<String,String> map);
 
-    @POST("/registerUser")
+    @POST("/registrarUsuario")
     Call<Number> executeRegister(@Body Usuario map);
 
     @GET("/getUser/{correo}")

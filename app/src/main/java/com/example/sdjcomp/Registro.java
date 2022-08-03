@@ -87,7 +87,7 @@ public class Registro extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        URL="http://"+getResources().getString(R.string.IP)+":3000/register/";
+        URL="http://"+getResources().getString(R.string.IP)+":3000/registrarUsuario/";
         View v = inflater.inflate(R.layout.fragment_registro, container, false);
         edtCodigo = (EditText) v.findViewById(R.id.edtCodigo);
         edtNombre = (EditText) v.findViewById(R.id.edtNombre);
@@ -161,6 +161,8 @@ public class Registro extends Fragment {
                                     Toast.makeText(getContext(), "Usuario Registrado Con Exito", Toast.LENGTH_LONG).show();
                                     NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_Home);
                                 }
+                            }else if(response.code()==412){
+                                Toast.makeText(getContext(), "Este usuario ya existe", Toast.LENGTH_LONG).show();
                             }
                         }
 
