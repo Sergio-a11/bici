@@ -39,6 +39,7 @@ public class Home extends Fragment {
         View v = inflater.inflate(R.layout.home,container,false);
         Button btnIniciar = (Button) v.findViewById(R.id.btnIniciarSeseion);
         Button btnRegistrarse = (Button) v.findViewById(R.id.btnRegistrarse);
+        Button btnOlvideContrasena = (Button) v.findViewById((R.id.btnOlvido));
         binding = HomeBinding.inflate(inflater, container, false);
         EditText txtCorreo = (EditText) v.findViewById(R.id.txtCorreo);
         EditText txtClave = (EditText) v.findViewById(R.id.txtClave);
@@ -111,6 +112,13 @@ public class Home extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(Home.this).navigate(R.id.action_Home_to_fragment_registro);
+            }
+        });
+
+        btnOlvideContrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(Home.this).navigate(R.id.action_Home_to_recuperarcontrasena);
             }
         });
 

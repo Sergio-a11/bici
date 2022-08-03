@@ -38,6 +38,9 @@ public interface IRetroFit {
     @PUT("/updateUser")
     Call<Usuario> executeUpdateUser(@Body Usuario codigo);
 
+    @POST("/updatePassword")
+    Call<Number> executeUpdatePassword(@Body Usuario codigo);
+
     @DELETE("/deleteUser/{codigo}")
     Call<Number> executeDeleteUser(@Path("codigo") String codigo);
     

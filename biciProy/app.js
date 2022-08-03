@@ -43,7 +43,7 @@ app.post('/login', (req, res) => {
     })
 })
 
-app.post('/registerUser', (req, res) => {
+app.post('/registrarUsuario', (req, res) => {
     const codigo = req.body.codigo
     const nombre = req.body.nombre
     const correo = req.body.correo
@@ -51,20 +51,46 @@ app.post('/registerUser', (req, res) => {
     const Pseguridad = req.body.Pseguridad
     const Rseguridad = req.body.Rseguridad
     const Rol_id = req.body.Rol_id
-
-    conexion.query(`INSERT INTO usuarios (codigo,nombre,correo,clave,Pseguridad,Rseguridad,Rol_id) VALUES('${codigo}',
-    '${nombre}','${correo}','${clave}',${Pseguridad},'${Rseguridad}',${Rol_id})`,(error,results)=>{
-    if(error)//brb
+    conexion.query(`SELECT * FROM usuarios WHERE correo='${correo}'`,(error,results)=>{
+        if(error) throw error
+        if(results[0]==undefined){
+            conexion.query(`INSERT INTO usuarios (codigo,nombre,correo,clave,Pseguridad,Rseguridad,Rol_id) VALUES('${codigo}',
+            '${nombre}','${correo}','${clave}',${Pseguridad},'${Rseguridad}',${Rol_id})`,(error,results)=>{
+            if(error)//brb
+            {
+                console.log(error)
+            }else if(results!=null){
+                console.log(results)
+                res.status(200).send(JSON.stringify(results["affectedRows"]))
+            }
+            else{
+                res.status(404).send()
+            }
+        })
+        }
+        else{
+            console.log("Duplicated email")
+            res.status(412).send()
+        }
+        })
+    })
+//Users CRUD
+app.get('/getUsuario/:correo', (req,res)=>{
+    const correo = req.params.correo   
+    console.log("Consultando a "+correo)
+    conexion.query(`SELECT * FROM usuarios WHERE correo='${correo}'`,(error,results)=>{
+    if(error)
     {
         console.log(error)
     }else if(results!=null){
-        console.log(results)
-        res.status(200).send(JSON.stringify(results["affectedRows"]))
+        res.status(200).send(JSON.stringify(results[0]))
     }
     else{
+        console.log("3")
+        console.log(results)
         res.status(404).send()
     }
-})
+    })
 })
 
 app.get('/getUser/:correo', (req,res)=>{
@@ -431,25 +457,108 @@ app.get('/getBikeForDesasignar/:numSerie',(req,res)=>{
 //updateSlots
 //deleteSlots
 
+app.get('/getSlots', (req,res)=>{
+    conexion.query(`SELECT * FROM cupos`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
+app.get('/getSlot/:idCupo', (req,res)=>{
+    const idCupo = req.params.idCupo   
+    console.log("Consultando a "+idCupo)
+    conexion.query(`SELECT * FROM cupos WHERE idCupo='${idCupo}'`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results[0]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
+app.put('/updateSlots', (req,res)=>{
+    const idCupo = req.body.idCupo
+    const seccion = req.body.seccion
+    const estado = req.body.estado
+
+    conexion.queryconexion.queryconexion.query(`UPDATE cupos SET seccion=${seccion}, estado='${estado}' WHERE idCupo='${idCupo}'`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send()
+    }
+    else{
+        res.status(404).send()
+    }
+    })
+})
+
+app.delete('/deleteSlots/:idCupo', (req,res)=>{
+    const idCupo = req.params.idCupo
+    console.log(idCupo)
+    conexion.query('DELETE FROM cupos WHERE ?',[{idCupo}],(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results["affectedRows"]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
+app.post("/updatePassword", (req,res)=> {
+    const codigo = req.body.codigo
+    const Pseguridad = req.body.Pseguridad
+    const Rseguridad = req.body.Rseguridad
+    const clave = req.body.clave
+    conexion.query(`SELECT * FROM usuarios WHERE codigo='${codigo}' AND Pseguridad=${Pseguridad} AND Rseguridad='${Rseguridad}'`,(error,results)=>{
+        if(error) throw error
+        console.log(results.length==0)
+        if(results.length!=0){
+            conexion.query(`UPDATE usuarios SET clave='${clave}' WHERE codigo='${codigo}'`,(error,results)=>{ 
+                if(error)
+                {
+                    console.log(error)
+                }else if(results!=null){
+                    console.log(results)
+                    res.status(200).send(JSON.stringify(results["affectedRows"]))
+                }
+                else{
+                    res.status(404).send()
+                }
+            })
+        }
+        else{
+            res.status(412).send()
+        }
+        })
+})
+
 //registerBrands
 //getBrands
 //updateBrands
 //deleteBrands
-
-//registerParkinglot
-//getParkinglot
-//updateParkinglots
-//deleteParkinglot
-
-//registerQuestions
-//getQuestions
-//updateQuestions
-//deleteQuestions
-
-//registerRoles
-//getRoles
-//updateRoles
-//deleteRoles
 
 //registerTypes
 //getTypes
