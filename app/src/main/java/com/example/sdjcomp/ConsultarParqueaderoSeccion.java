@@ -126,7 +126,8 @@ public class ConsultarParqueaderoSeccion extends Fragment {
                             alertBici.setMessage("Marca: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getMarca()+
                                             "\nTipo: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getTipo()+
                                             "\nId: "+String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())+
-                                            "\nColor: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getColor())
+                                            "\nColor: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getColor()+
+                                            "\nNumSerie: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getNumSerie())
                                     .setCancelable(true).setTitle("Tu Bicicleta")
                                     .setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
                                         @Override

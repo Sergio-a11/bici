@@ -115,6 +115,9 @@
         <action
             android:id="@+id/action_consultarCupo_to_consultarParqueaderoSeccion"
             app:destination="@id/consultarParqueaderoSeccion" />
+        <action
+            android:id="@+id/action_consultarCupo_to_interfaz_administrador"
+            app:destination="@id/interfaz_administrador" />
     </fragment>
 
     <fragment

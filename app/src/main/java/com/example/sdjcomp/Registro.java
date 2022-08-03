@@ -131,39 +131,48 @@ public class Registro extends Fragment {
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int preguntaF = spnPreguntas.getSelectedItemPosition()+1;
+                if(!edtCodigo.getText().toString().isEmpty() &&
+                   !edtNombre.getText().toString().isEmpty() &&
+                   !edtCorreo.getText().toString().isEmpty() &&
+                   !edtClave.getText().toString().isEmpty() &&
+                   !edtRespuesta.getText().toString().isEmpty())
+                {
+                    int preguntaF = spnPreguntas.getSelectedItemPosition()+1;
 
-                System.out.println("preguntaF = " + preguntaF);
-                System.out.println("spnPreguntas.getSelectedItemPosition() = " + spnPreguntas.getSelectedItemPosition());
-                Usuario objU = new Usuario(edtCodigo.getText().toString(),edtNombre.getText().toString(),
-                        edtCorreo.getText().toString(),edtClave.getText().toString(),
-                        preguntaF,edtRespuesta.getText().toString(),2);
+                    System.out.println("preguntaF = " + preguntaF);
+                    System.out.println("spnPreguntas.getSelectedItemPosition() = " + spnPreguntas.getSelectedItemPosition());
+                    Usuario objU = new Usuario(edtCodigo.getText().toString(),edtNombre.getText().toString(),
+                            edtCorreo.getText().toString(),edtClave.getText().toString(),
+                            preguntaF,edtRespuesta.getText().toString(),2);
 
-                HashMap<String,Usuario> map = new HashMap<>();
+                    HashMap<String,Usuario> map = new HashMap<>();
 
-                map.put("usuario",objU);
-                System.out.println("objU PS = " + objU.getPseguridad());
-                System.out.println("objU RS = " + objU.getRseguridad());
-                System.out.println("objU rol = " + objU.getRol_id());
+                    map.put("usuario",objU);
+                    System.out.println("objU PS = " + objU.getPseguridad());
+                    System.out.println("objU RS = " + objU.getRseguridad());
+                    System.out.println("objU rol = " + objU.getRol_id());
 
-                Call<Number> call = iRetrofit.executeRegister(objU);
-                call.enqueue(new Callback<Number>() {
-                    @Override
-                    public void onResponse(Call<Number> call, Response<Number> response) {
-                        if(response.code()==200){
-                            if(Integer.parseInt(String.valueOf(response.body()))==1){
-                                Toast.makeText(getContext(), "Usuario Registrado Con Exito", Toast.LENGTH_LONG).show();
-                                NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_Home);
+                    Call<Number> call = iRetrofit.executeRegister(objU);
+                    call.enqueue(new Callback<Number>() {
+                        @Override
+                        public void onResponse(Call<Number> call, Response<Number> response) {
+                            if(response.code()==200){
+                                if(Integer.parseInt(String.valueOf(response.body()))==1){
+                                    Toast.makeText(getContext(), "Usuario Registrado Con Exito", Toast.LENGTH_LONG).show();
+                                    NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_Home);
+                                }
                             }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<Number> call, Throwable t) {
-                        System.out.println("t = " + t);
-                        Toast.makeText(getContext(), "Usuario No Registrado", Toast.LENGTH_LONG).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<Number> call, Throwable t) {
+                            System.out.println("t = " + t);
+                            Toast.makeText(getContext(), "Usuario No Registrado", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }else{
+                    Toast.makeText(getContext(), "Debe Rellenar Todos los campos", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

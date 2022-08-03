@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,14 +112,19 @@ public class AsignarCupo extends Fragment {
         btnAsignar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int seccion=spnSeccion.getSelectedItemPosition()+1;
-                int cupo=Integer.parseInt(spnCupos.getSelectedItem().toString());
-                String codigo = edtCodigo.getText().toString();
-                ((Sesion)getActivity().getApplicationContext()).setCupo(cupo);
-                ((Sesion)getActivity().getApplicationContext()).setBicicleta(seccion);
-                ((Sesion)getActivity().getApplicationContext()).setCodio(codigo);
-                NavHostFragment.findNavController(AsignarCupo.this).
-                        navigate(R.id.action_asignarCupo_to_interfazBicicleta);
+                if(!edtCodigo.getText().toString().isEmpty()){
+                    int seccion=spnSeccion.getSelectedItemPosition()+1;
+                    int cupo=Integer.parseInt(spnCupos.getSelectedItem().toString());
+                    String codigo = edtCodigo.getText().toString();
+                    ((Sesion)getActivity().getApplicationContext()).setCupo(cupo);
+                    ((Sesion)getActivity().getApplicationContext()).setBicicleta(seccion);
+                    ((Sesion)getActivity().getApplicationContext()).setCodio(codigo);
+                    NavHostFragment.findNavController(AsignarCupo.this).
+                            navigate(R.id.action_asignarCupo_to_interfazBicicleta);
+                }else{
+                    Toast.makeText(getContext(), "Debe rellenar el campo codigo", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

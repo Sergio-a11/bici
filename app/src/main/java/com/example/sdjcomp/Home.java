@@ -40,70 +40,72 @@ public class Home extends Fragment {
         Button btnIniciar = (Button) v.findViewById(R.id.btnIniciarSeseion);
         Button btnRegistrarse = (Button) v.findViewById(R.id.btnRegistrarse);
         binding = HomeBinding.inflate(inflater, container, false);
+        EditText txtCorreo = (EditText) v.findViewById(R.id.txtCorreo);
+        EditText txtClave = (EditText) v.findViewById(R.id.txtClave);
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 
         btnIniciar.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
-                EditText txtCorreo = (EditText) v.findViewById(R.id.txtCorreo);
-                EditText txtClave = (EditText) v.findViewById(R.id.txtClave);
+                if(!txtCorreo.getText().toString().isEmpty() && !txtClave.getText().toString().isEmpty()){
+                    HashMap<String,String> map = new HashMap<>();
+                    map.put("correo",txtCorreo.getText().toString());
+                    map.put("clave",txtClave.getText().toString());
 
+                    System.out.println("txtCorreo.getText().toString() = " + txtCorreo.getText().toString());
+                    System.out.println("txtClave.getText().toString() = " + txtClave.getText().toString());
+                    System.out.println("map = " + map);
 
-                HashMap<String,String> map = new HashMap<>();
-                map.put("correo",txtCorreo.getText().toString());
-                map.put("clave",txtClave.getText().toString());
-
-                System.out.println("txtCorreo.getText().toString() = " + txtCorreo.getText().toString());
-                System.out.println("txtClave.getText().toString() = " + txtClave.getText().toString());
-                System.out.println("map = " + map);
-
-                Call<PreLoginUsuario> call = iRetrofit.executeLogin(map);
-                System.out.println("call.isExecuted() = " + call.isExecuted());
-                call.enqueue(new Callback<PreLoginUsuario>() {
-                    @Override
-                    public void onResponse(Call<PreLoginUsuario> call, Response<PreLoginUsuario> response) {
-                        System.out.println(response.code());
-                        //si la bd devuel 200 y luego se revisa por segunda vez si coinciden
-                        if(response.code()==200)
-                        {
-
-                            PreLoginUsuario result = response.body();
-                            System.out.println(map.get("correo")+" " + result.getCorreo() + " " +
-                                    map.get("correo").equals(result.getCorreo()));
-                            if(map.get("correo").equals(result.getCorreo()) && map.get("clave").equals(result.getClave()))
+                    Call<PreLoginUsuario> call = iRetrofit.executeLogin(map);
+                    System.out.println("call.isExecuted() = " + call.isExecuted());
+                    call.enqueue(new Callback<PreLoginUsuario>() {
+                        @Override
+                        public void onResponse(Call<PreLoginUsuario> call, Response<PreLoginUsuario> response) {
+                            System.out.println(response.code());
+                            //si la bd devuel 200 y luego se revisa por segunda vez si coinciden
+                            if(response.code()==200)
                             {
 
-                                validado=true;
-                                ((Sesion) getActivity().getApplicationContext()).setCorreo(txtCorreo.getText().toString());
-                                System.out.println("response.body().getRol_id() = " + response.body().getRol_id());
-                                if(result.getRol_id()==1){
-                                    System.out.println("Logeado Como Administrador");
-                                    NavHostFragment.findNavController(Home.this).
-                                            navigate(R.id.action_Home_to_interfaz_administrador);
-                                }else if(result.getRol_id()==2){
-                                    System.out.println("Logeado Como Estudiante");
-                                    NavHostFragment.findNavController(Home.this).
-                                            navigate(R.id.action_Home_to_InterfazEstudiante);
-                                }
+                                PreLoginUsuario result = response.body();
+                                System.out.println(map.get("correo")+" " + result.getCorreo() + " " +
+                                        map.get("correo").equals(result.getCorreo()));
+                                if(map.get("correo").equals(result.getCorreo()) && map.get("clave").equals(result.getClave()))
+                                {
 
+                                    validado=true;
+                                    ((Sesion) getActivity().getApplicationContext()).setCorreo(txtCorreo.getText().toString());
+                                    System.out.println("response.body().getRol_id() = " + response.body().getRol_id());
+                                    if(result.getRol_id()==1){
+                                        System.out.println("Logeado Como Administrador");
+                                        NavHostFragment.findNavController(Home.this).
+                                                navigate(R.id.action_Home_to_interfaz_administrador);
+                                    }else if(result.getRol_id()==2){
+                                        System.out.println("Logeado Como Estudiante");
+                                        NavHostFragment.findNavController(Home.this).
+                                                navigate(R.id.action_Home_to_InterfazEstudiante);
+                                    }
+
+                                }
                             }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<PreLoginUsuario> call, Throwable t) {
-                        //cuando no coinciden las credenciales
-                        validado=false;
-                        //TODO QUItar
-                        System.out.println("BULIAN1!!!¡");
-                        Toast.makeText(getContext(), "UPSI", Toast.LENGTH_LONG).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<PreLoginUsuario> call, Throwable t) {
+                            //cuando no coinciden las credenciales
+                            validado=false;
+                            //TODO QUItar
+                            System.out.println("BULIAN1!!!¡");
+                            Toast.makeText(getContext(), "Correo o Contraseña Incorrectos", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }else{
+                    Toast.makeText(getContext(), "Debe rellenar ambos campos obligatoriamente", Toast.LENGTH_LONG).show();
+                }
             }
         });
+
 
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override

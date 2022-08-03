@@ -33,7 +33,7 @@ public class ConsultarCupo extends Fragment {
     private String URL="";
 
     private ImageButton btnConsultarEstudiante;
-    private Button btnseccion1,btnseccion2,btnseccion3;
+    private Button btnseccion1,btnseccion2,btnseccion3, btnVolver;
     private EditText edtConsultarEstudiante;
 
     AlertDialog.Builder fin;
@@ -94,37 +94,43 @@ public class ConsultarCupo extends Fragment {
         btnseccion2 = v.findViewById(R.id.btnSeccion2);
         btnseccion3 = v.findViewById(R.id.btnSeccion3);
 
+        btnVolver = v.findViewById(R.id.btnVolverConsultarCupo);
+
         fin = new AlertDialog.Builder(getActivity());
 
 
         btnConsultarEstudiante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Call<Usuario> call = iRetrofit.executeGetUserByCode(edtConsultarEstudiante.getText().toString()+",codigo,usuarios");
-                call.enqueue(new Callback<Usuario>() {
-                    @Override
-                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                        if(response.code()==200){
-                            System.out.println("Usuario Encontrado");
+                if(!edtConsultarEstudiante.getText().toString().isEmpty()){
+                    Call<Usuario> call = iRetrofit.executeGetUserByCode(edtConsultarEstudiante.getText().toString()+",codigo,usuarios");
+                    call.enqueue(new Callback<Usuario>() {
+                        @Override
+                        public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                            if(response.code()==200){
+                                System.out.println("Usuario Encontrado");
 
-                            fin.setMessage(response.body().getCodigo()+"\n"+response.body().getCorreo()
-                                    +"\n"+response.body().getNombre()).setCancelable(false).setNegativeButton("Volver al menu principal", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    NavHostFragment.findNavController(ConsultarCupo.this).navigate(R.id.action_consultarCupo_self);
-                                }
-                            });
-                            AlertDialog alerta = fin.create();
-                            alerta.setTitle("Informacion Estudiante");
-                            alerta.show();
+                                fin.setMessage(response.body().getCodigo()+"\n"+response.body().getCorreo()
+                                        +"\n"+response.body().getNombre()).setCancelable(false).setNegativeButton("Volver al menu principal", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        NavHostFragment.findNavController(ConsultarCupo.this).navigate(R.id.action_consultarCupo_self);
+                                    }
+                                });
+                                AlertDialog alerta = fin.create();
+                                alerta.setTitle("Informacion Estudiante");
+                                alerta.show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<Usuario> call, Throwable t) {
-                        Toast.makeText(getContext(), "Usuario No Encontrado", Toast.LENGTH_LONG).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<Usuario> call, Throwable t) {
+                            Toast.makeText(getContext(), "Estudiante no encontrado", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }else{
+                    Toast.makeText(getContext(), "Debe rellenar el campo", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -149,6 +155,13 @@ public class ConsultarCupo extends Fragment {
             public void onClick(View view) {
                 ((Sesion)getActivity().getApplicationContext()).setSeccion("3");
                 NavHostFragment.findNavController(ConsultarCupo.this).navigate(R.id.action_consultarCupo_to_consultarParqueaderoSeccion);
+            }
+        });
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ConsultarCupo.this).navigate(R.id.action_consultarCupo_to_interfaz_administrador);
             }
         });
 

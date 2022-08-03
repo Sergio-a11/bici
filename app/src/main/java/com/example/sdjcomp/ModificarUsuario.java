@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+
 import com.example.sdjcomp.databinding.HomeBinding;
 
 import java.util.ArrayList;
@@ -138,25 +139,33 @@ public class ModificarUsuario extends Fragment {
         btnModificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Usuario objU = new Usuario(((Sesion)getActivity().getApplicationContext()).getCodigo(),edtNombre.getText().toString(),
-                        ((Sesion)getActivity().getApplicationContext()).getCorreo(),edtClave.getText().toString(),
-                        1,edtRespuesta.getText().toString(),2);
+                if(!edtNombre.getText().toString().isEmpty()&&
+                    !edtClave.getText().toString().isEmpty()&&
+                    !edtRespuesta.getText().toString().isEmpty())
+                {
+                    Usuario objU = new Usuario(((Sesion)getActivity().getApplicationContext()).getCodigo(),edtNombre.getText().toString(),
+                            ((Sesion)getActivity().getApplicationContext()).getCorreo(),edtClave.getText().toString(),
+                            1,edtRespuesta.getText().toString(),2);
 
-                Call<Usuario> call = iRetrofit.executeUpdateUser(objU);
-                call.enqueue(new Callback<Usuario>() {
-                    @Override
-                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                        if(response.code()==200){
-                            Toast.makeText(getContext(), "Usuario Modificado", Toast.LENGTH_LONG).show();
-                            NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
+                    Call<Usuario> call = iRetrofit.executeUpdateUser(objU);
+                    call.enqueue(new Callback<Usuario>() {
+                        @Override
+                        public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                            if(response.code()==200){
+                                Toast.makeText(getContext(), "Usuario Modificado", Toast.LENGTH_LONG).show();
+                                NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<Usuario> call, Throwable t) {
-                        Toast.makeText(getContext(), "No redirigio", Toast.LENGTH_LONG).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<Usuario> call, Throwable t) {
+                            Toast.makeText(getContext(), "No redirigio", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }else{
+                    Toast.makeText(getContext(), "Todos los campos deben estar llenos", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -164,21 +173,33 @@ public class ModificarUsuario extends Fragment {
         btnModificarNombre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CambiarAtributo(2);
+                if(!edtNombre.getText().toString().isEmpty()){
+                    CambiarAtributo(2);
+                }else{
+                    Toast.makeText(getContext(), "El campo Nombre debe estar lleno", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         btnModificarClave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CambiarAtributo(3);
+                if(!edtNombre.getText().toString().isEmpty()){
+                    CambiarAtributo(3);
+                }else{
+                    Toast.makeText(getContext(), "El campo Clave debe estar lleno", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         btnModificarRespuesta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CambiarAtributo(4);
+                if(!edtNombre.getText().toString().isEmpty()){
+                    CambiarAtributo(4);
+                }else{
+                    Toast.makeText(getContext(), "El campo Respuesta debe estar lleno", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

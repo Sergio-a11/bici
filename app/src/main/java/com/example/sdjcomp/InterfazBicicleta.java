@@ -97,14 +97,18 @@ public class InterfazBicicleta extends Fragment {
                                                     @Override
                                                     public void onResponse(Call<Parqueadero> call, Response<Parqueadero> response) {
                                                         if(response.code()==200){
+                                                            Toast.makeText(getContext(), "Bicicleta Asignada al cupo", Toast.LENGTH_LONG).show();
+                                                            NavHostFragment.findNavController(InterfazBicicleta.this)
+                                                                    .navigate(R.id.action_interfazBicicleta_to_interfaz_administrador);
+                                                        }else if(response.code()==412){
+                                                            Toast.makeText(getContext(), "La Bicicleta ya tiene un cupo asignado", Toast.LENGTH_LONG).show();
                                                             NavHostFragment.findNavController(InterfazBicicleta.this)
                                                                     .navigate(R.id.action_interfazBicicleta_to_interfaz_administrador);
                                                         }
                                                     }
-
                                                     @Override
                                                     public void onFailure(Call<Parqueadero> call, Throwable t) {
-
+                                                        Toast.makeText(getContext(), "La Bicicleta no se pudo asignar", Toast.LENGTH_LONG).show();
                                                     }
                                                 });
                                             }
