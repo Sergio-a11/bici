@@ -51,6 +51,9 @@ public interface IRetroFit {
     @GET("/getBikes/{codigo}")
     Call<List<Bicicleta>> executeGetBikes(@Path("codigo") String codigo);
 
+    @GET("/getBike/{codigo}/{id}")
+    Call<Bicicleta> executeGetBike(@Path("codigo") String codigo, @Path("id") int id);
+
     @GET("/getOne/{palabras}")
     Call<Usuario> executeGetUserByCode(@Path("palabras") String palabras);
 
@@ -70,4 +73,18 @@ public interface IRetroFit {
     Call<BicicletaParaBorrar> executeGetBikeForDelete(@Path("numSerie") String numSerie);
     @DELETE("/deleteParqueadero/{idBicicleta}")
     Call<Number> executeDeleteParqueadero(@Path("idBicicleta") Number idBicicleta);
+    @GET("/getMarcas")
+    Call<List<Marca>> executeGetMarca();
+
+    @GET("/getTipos")
+    Call<List<Tipo>> executeGetTipos();
+
+    @POST("/registerBike")
+    Call<Number> executeRegisterBike(@Body BicicletaRegistrar bici);
+
+    @PUT("/updateBicicleta")
+    Call<Number> executeUpdateBicicleta(@Body BicicletaRegistrar bici);
+
+    @DELETE("/deleteBicicleta/{idBicicleta}")
+    Call<Number> executeDeleteBicicleta(@Path("idBicicleta") int idBicicleta);
 }

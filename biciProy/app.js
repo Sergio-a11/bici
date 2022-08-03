@@ -227,6 +227,8 @@ app.post('/registerBike', (req, res) => {
 })
 })
 
+//[x] obtener varias bicicletas
+
 app.get('/getBikes/:Estudiante_id', (req,res)=>{
     const Estudiante_id = req.params.Estudiante_id
     console.log(Estudiante_id)
@@ -246,8 +248,112 @@ app.get('/getBikes/:Estudiante_id', (req,res)=>{
     })
 })
 
+app.get('/getBike/:Estudiante_id/:idBicicleta', (req,res)=>{
+    const Estudiante_id = req.params.Estudiante_id
+    const idBicicleta = req.params.idBicicleta
+    console.log(Estudiante_id)
+    conexion.query(`SELECT b.idBicicleta, b.cedulaPropietario, b.fechaRegistro, b.lugarRegistro, b.numSerie, t.tipo, b.color, b.Estudiante_id, m.marca FROM bicicletas as b join marcas as m join tipos as t WHERE b.Marca_id=m.id AND b.Tipo_id=t.id AND b.Estudiante_id='${Estudiante_id}' AND b.idBicicleta=${idBicicleta}`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        console.log(4)
+        console.log(results[0])
+        res.status(200).send(JSON.stringify(results[0]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
 //updateBike
 //deleteBike
+
+//marcas
+app.get('/getMarcas', (req,res)=>{
+    conexion.query('SELECT * FROM marcas', (error, results)=>{
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null){
+            console.log(results)
+            res.status(200).send(JSON.stringify(results))
+        }
+        else{
+            console.log("3")
+            console.log(results)
+            res.status(404).send()
+        }
+        
+    })
+})
+
+//tipos
+app.get('/getTipos', (req,res)=>{
+    conexion.query('SELECT * FROM tipos', (error, results)=>{
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null){
+            console.log(results)
+            res.status(200).send(JSON.stringify(results))
+        }
+        else{
+            console.log("3")
+            console.log(results)
+            res.status(404).send()
+        }
+        
+    })
+})
+
+
+app.put('/updateBicicleta', (req,res) => {
+    const cedulaPropietario = req.body.cedulaPropietario
+    const fechaRegistro = req.body.fechaRegistro
+    const lugarRegistro = req.body.lugarRegistro
+    const Marca_id = req.body.Marca_id
+    const numSerie = req.body.numSerie
+    const Tipo_id = req.body.Tipo_id
+    const color = req.body.color
+    const Estudiante_id = req.body.Estudiante_id
+    const idBicicleta = req.body.idBicicleta
+    conexion.query(`UPDATE bicicletas SET cedulaPropietario='${cedulaPropietario}',fechaRegistro='${fechaRegistro}',lugarRegistro='${lugarRegistro}',Marca_id=${Marca_id},numSerie='${numSerie}',Tipo_id=${Tipo_id},color='${color}' WHERE Estudiante_id='${Estudiante_id}' AND idBicicleta=${idBicicleta}`,(error, results) => {
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null)
+        {
+            res.status(200).send(JSON.stringify(results["affectedRows"]))
+        }
+        else
+        {
+            console.log(results)
+            res.status(404).send()
+        }
+    })
+})
+
+
+app.delete('/deleteBicicleta/:idBicicleta', (req, res) => {
+    const idBicicleta = req.params.idBicicleta
+    conexion.query('DELETE FROM bicicletas WHERE ?',[{idBicicleta}],(error,results)=>{
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null){
+            res.status(200).send(JSON.stringify(results["affectedRows"]))
+        }
+        else{
+            console.log("3")
+            console.log(results)
+            res.status(404).send()
+        }
+        })
+})
 
 app.get('/getCupo/:seccion', (req,res)=>{
     const seccion = req.params.seccion
@@ -564,3 +670,36 @@ app.post("/updatePassword", (req,res)=> {
 //getTypes
 //updateTypes
 //deleteTypes
+
+app.post("/updatePassword", (req,res)=> {
+    const codigo = req.body.codigo
+    const Pseguridad = req.body.Pseguridad
+    const Rseguridad = req.body.Rseguridad
+    const clave = req.body.clave
+    conexion.query(`SELECT * FROM usuarios WHERE codigo='${codigo}' AND Pseguridad=${Pseguridad} AND Rseguridad='${Rseguridad}'`,(error,results)=>{
+    //lo probe de muchas formas xd y ajam puse mil codigos hay pero me da error el post pille, coje disq undefined los values
+        if(error) throw error
+        console.log(results.length==0)
+        console.log((results))
+        if(results.length!=0){
+            conexion.query(`UPDATE usuarios SET clave='${clave}' WHERE codigo='${codigo}'`,(error,results)=>{ //aca
+                if(error)//brb
+                {
+                    console.log(2)
+                    console.log(error)
+                }else if(results!=null){
+                    console.log(3)
+                    console.log(results)
+                    res.status(200).send(JSON.stringify(results["affectedRows"]))
+                }
+                else{
+
+                    res.status(404).send()
+                }
+            })
+        }
+        else{
+            res.status(412).send()
+        }
+        })
+})

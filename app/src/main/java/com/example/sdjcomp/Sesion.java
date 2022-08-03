@@ -4,9 +4,8 @@ import android.app.Application;
 
 public class Sesion extends Application {
     private String codigo,nombre,correo,clave,Rseguridad;
-    private int Rol_id,Pseguridad;
+    private int Rol_id,Pseguridad,idBici;
     private boolean validado;
-    private int idBici;
 
     private int cupo, bicicleta;
     private String codio,seccion;
