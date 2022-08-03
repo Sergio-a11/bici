@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,8 @@ public class InterfazBicicleta extends Fragment {
     private RecyclerViewAdapter adapterCiclas;
     AlertDialog.Builder alertBici;
 
+    private Button btnCerrar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,8 @@ public class InterfazBicicleta extends Fragment {
         //btnVer = (Button) v.findViewById(R.id.btnCargar);
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
+
+        btnCerrar = v.findViewById(R.id.btnCerrarBicicletas);
 
         alertBici = new AlertDialog.Builder(getActivity());
         //cardView = (CardView) v.findViewById(R.id.cardView);
@@ -120,11 +125,16 @@ public class InterfazBicicleta extends Fragment {
                                                 "\nId: "+String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())+
                                                 "\nColor: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getColor())
                                         .setCancelable(true).setTitle("Tu Bicicleta")
-                                        .setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
+                                        .setNegativeButton("Cerrar", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 NavHostFragment.findNavController(InterfazBicicleta.this)
                                                         .navigate(R.id.action_interfazBicicleta_self);
+                                            }
+                                        }).setPositiveButton("Modificar", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                ((Sesion)getActivity().getApplicationContext()).setIdBici(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta());
                                             }
                                         })
                                         .create().show();
@@ -139,6 +149,19 @@ public class InterfazBicicleta extends Fragment {
             public void onFailure(Call<List<Bicicleta>> call, Throwable t) {
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
                 System.out.println("Fail");
+            }
+        });
+
+        btnCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(((Sesion)getActivity().getApplicationContext()).getRol_id()==1){
+                    NavHostFragment.findNavController(InterfazBicicleta.this)
+                            .navigate(R.id.action_interfazBicicleta_to_interfaz_administrador);
+                }else if(((Sesion)getActivity().getApplicationContext()).getRol_id()==2){
+                    NavHostFragment.findNavController(InterfazBicicleta.this)
+                            .navigate(R.id.action_interfazBicicleta_to_InterfazEstudiante);
+                }
             }
         });
 

@@ -112,18 +112,45 @@ public class AsignarCupo extends Fragment {
         btnAsignar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!edtCodigo.getText().toString().isEmpty()){
-                    int seccion=spnSeccion.getSelectedItemPosition()+1;
-                    int cupo=Integer.parseInt(spnCupos.getSelectedItem().toString());
-                    String codigo = edtCodigo.getText().toString();
-                    ((Sesion)getActivity().getApplicationContext()).setCupo(cupo);
-                    ((Sesion)getActivity().getApplicationContext()).setBicicleta(seccion);
-                    ((Sesion)getActivity().getApplicationContext()).setCodio(codigo);
-                    NavHostFragment.findNavController(AsignarCupo.this).
-                            navigate(R.id.action_asignarCupo_to_interfazBicicleta);
+                if(spnCupos.getSelectedItem()!=null){
+                    if(!edtCodigo.getText().toString().isEmpty() ){
+                        int seccion=spnSeccion.getSelectedItemPosition()+1;
+                        int cupo=Integer.parseInt(spnCupos.getSelectedItem().toString());
+                        String codigo = edtCodigo.getText().toString();
+                        ((Sesion)getActivity().getApplicationContext()).setCupo(cupo);
+                        ((Sesion)getActivity().getApplicationContext()).setBicicleta(seccion);
+                        ((Sesion)getActivity().getApplicationContext()).setCodio(codigo);
+                        Call<List<Bicicleta>> call = iRetrofit.executeGetBikes(((Sesion)getActivity().getApplicationContext()).getCodio());
+                        System.out.println("call.isExecuted() = " + call.isExecuted());
+                        call.enqueue(new Callback<List<Bicicleta>>() {
+                            @Override
+                            public void onResponse(Call<List<Bicicleta>> call, Response<List<Bicicleta>> response) {
+                                if(response.code()==200 && !response.body().isEmpty()){
+                                    Toast.makeText(getContext(), "Eliga la bicicleta que desea registrar", Toast.LENGTH_LONG).show();
+                                    NavHostFragment.findNavController(AsignarCupo.this).
+                                            navigate(R.id.action_asignarCupo_to_interfazBicicleta);
+                                }else{
+                                    Toast.makeText(getContext(), "Este estudiante no tiene bicicletas", Toast.LENGTH_LONG).show();
+                                    NavHostFragment.findNavController(AsignarCupo.this).
+                                            navigate(R.id.action_asignarCupo_to_interfaz_administrador);
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<Bicicleta>> call, Throwable t) {
+                                Toast.makeText(getContext(), "Este estudiante no tiene bicicletas", Toast.LENGTH_LONG).show();
+                                NavHostFragment.findNavController(AsignarCupo.this).
+                                        navigate(R.id.action_asignarCupo_to_interfaz_administrador);
+                            }
+                        });
+
+                    }else{
+                        Toast.makeText(getContext(), "Debe rellenar el campo codigo", Toast.LENGTH_LONG).show();
+                    }
                 }else{
-                    Toast.makeText(getContext(), "Debe rellenar el campo codigo", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "No hay cupos disponibles", Toast.LENGTH_LONG).show();
                 }
+
 
             }
         });

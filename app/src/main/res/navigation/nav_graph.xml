@@ -30,9 +30,6 @@
         tools:layout="@layout/interfaz_estudiante">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/Home" />
-        <action
             android:id="@+id/action_InterfazEstudiante_to_fragment_modificar_usuario"
             app:destination="@id/fragment_modificar_usuario" />
         <action
@@ -41,6 +38,9 @@
         <action
             android:id="@+id/action_InterfazEstudiante_to_registrarBicicleta"
             app:destination="@id/registrarBicicleta" />
+        <action
+            android:id="@+id/action_InterfazEstudiante_to_Home"
+            app:destination="@id/Home" />
     </fragment>
     <fragment
         android:id="@+id/fragment_registro"

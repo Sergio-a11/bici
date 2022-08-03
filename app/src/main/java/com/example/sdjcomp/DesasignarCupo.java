@@ -130,13 +130,14 @@ public class DesasignarCupo extends Fragment {
                     call.enqueue(new Callback<Number>() {
                         @Override
                         public void onResponse(Call<Number> call, Response<Number> response) {
+                            Toast.makeText(getContext(), "Cupo de Parqueadero Eliminado", Toast.LENGTH_LONG).show();
                             NavHostFragment.findNavController(DesasignarCupo.this)
                                     .navigate(R.id.action_desasignarCupo_to_interfaz_administrador);
                         }
 
                         @Override
                         public void onFailure(Call<Number> call, Throwable t) {
-                            Toast.makeText(getContext(), "Parqueadero No Eliminado", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "Cupo de Parqueadero No Eliminado", Toast.LENGTH_LONG).show();
                         }
                     });
                 }else{
