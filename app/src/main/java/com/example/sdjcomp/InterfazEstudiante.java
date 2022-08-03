@@ -29,7 +29,7 @@ public class InterfazEstudiante extends Fragment {
     private String URL="";
 
     private TextView txtTitulo;
-    private Button btnActualizarUsuario, btnEliminarUsuario, btnVerRegistros, btnRegistrarBicicleta, btnVolver, btnActualizarBicicleta, btnEliminarBicicleta;
+    private Button btnActualizarUsuario, btnEliminarUsuario, btnVerRegistros, btnRegistrarBicicleta, btnVolver;
 
     @Override
     public View onCreateView(
@@ -45,8 +45,7 @@ public class InterfazEstudiante extends Fragment {
         btnEliminarUsuario = v.findViewById(R.id.btnEliminarUsuario);
         btnRegistrarBicicleta = v.findViewById(R.id.btnRegistrarBicicleta);
         btnVolver = v.findViewById(R.id.btnVolver);
-        btnActualizarBicicleta = v.findViewById(R.id.btnActualizarBicicleta);
-        btnEliminarBicicleta = v.findViewById(R.id.btnEliminarBicicleta);
+
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
@@ -143,21 +142,6 @@ public class InterfazEstudiante extends Fragment {
             }
         });
 
-        btnActualizarBicicleta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(InterfazEstudiante.this)
-                        .navigate(R.id.action_InterfazEstudiante_to_modificarYEliminarBicicleta);
-            }
-        });
-
-        btnEliminarBicicleta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(InterfazEstudiante.this)
-                        .navigate(R.id.action_InterfazEstudiante_to_modificarYEliminarBicicleta);
-            }
-        });
 
         binding = InterfazEstudianteBinding.inflate(inflater, container, false);
         return v;

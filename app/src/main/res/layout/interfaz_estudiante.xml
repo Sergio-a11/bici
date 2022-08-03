@@ -45,22 +45,6 @@
                 android:text="Registrar Bicicleta" />
 
             <Button
-                android:id="@+id/btnActualizarBicicleta"
-                android:layout_width="255dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="32dp"
-                android:text="Actualizar Bicicleta" />
-
-            <Button
-                android:id="@+id/btnEliminarBicicleta"
-                android:layout_width="241dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:layout_marginTop="32dp"
-                android:text="Eliminar Bicleta" />
-
-            <Button
                 android:id="@+id/btnModificarUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

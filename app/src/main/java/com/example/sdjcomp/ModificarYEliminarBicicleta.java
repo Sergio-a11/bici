@@ -42,7 +42,7 @@ public class ModificarYEliminarBicicleta extends Fragment {
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
         //va al alert dialog del card view
-        ((Sesion)getActivity().getApplicationContext()).setIdBici(1);
+        //((Sesion)getActivity().getApplicationContext()).setIdBici(1);
 
         txtCedula = (TextView) v.findViewById(R.id.txtCedulaBici);
         txtFecha = (TextView) v.findViewById(R.id.txtFechaRegistroBici);

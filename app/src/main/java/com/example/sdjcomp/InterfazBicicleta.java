@@ -135,6 +135,8 @@ public class InterfazBicicleta extends Fragment {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 ((Sesion)getActivity().getApplicationContext()).setIdBici(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta());
+                                                NavHostFragment.findNavController(InterfazBicicleta.this)
+                                                        .navigate(R.id.action_interfazBicicleta_to_modificarYEliminarBicicleta);
                                             }
                                         })
                                         .create().show();

@@ -82,6 +82,9 @@
         <action
             android:id="@+id/action_interfazBicicleta_self"
             app:destination="@id/interfazBicicleta" />
+        <action
+            android:id="@+id/action_interfazBicicleta_to_modificarYEliminarBicicleta"
+            app:destination="@id/modificarYEliminarBicicleta" />
     </fragment>
 
     <fragment
