@@ -14,6 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegistrarBicicleta extends Fragment {
 
     private TextView txtCedulaPropietario, txtFechaRegistro, txtLugarRegistro, txtMarca, txtNumSerie, txtTipo, txtColor;
-    private Button btnRegistrar;
+    private Button btnRegistrar, btnVolver;
     private Spinner spnMarcas, spnTipos;
     private String URL="";
     private Retrofit retrofit;
@@ -49,6 +51,8 @@ public class RegistrarBicicleta extends Fragment {
 
         spnMarcas = (Spinner) v.findViewById(R.id.spnMarca);
         spnTipos = (Spinner) v.findViewById(R.id.spnTipo);
+
+        btnVolver = v.findViewById(R.id.btnVolverRegBici);
 
         //rellenar spinner marcas
 
@@ -118,47 +122,59 @@ public class RegistrarBicicleta extends Fragment {
                 txtCedulaPropietario = (TextView) v.findViewById(R.id.txtCedulaPropietario);
                 txtFechaRegistro = (TextView) v.findViewById(R.id.txtFechaRegistro);
                 txtLugarRegistro = (TextView) v.findViewById(R.id.txtLugarRegistro);
-                txtMarca = (TextView) v.findViewById(R.id.txtMarca);
                 txtNumSerie = (TextView) v.findViewById(R.id.txtNumSerie);
-                txtTipo = (TextView) v.findViewById(R.id.txtTipo);
                 txtColor = (TextView) v.findViewById(R.id.txtColorCicla);
                 int marca = spnMarcas.getSelectedItemPosition()+1;
                 int tipo = spnTipos.getSelectedItemPosition()+1;
 
-                BicicletaRegistrar objB = new BicicletaRegistrar();
-                objB.setCedulaPropietario(txtCedulaPropietario.getText().toString());
-                objB.setFechaRegistro(txtFechaRegistro.getText().toString());
-                objB.setLugarRegistro(txtLugarRegistro.getText().toString());
-                objB.setMarca(marca);
-                objB.setNumSerie(txtNumSerie.getText().toString());
-                objB.setTipo(tipo);
-                objB.setColor(txtColor.getText().toString());
-                objB.setEstudiante_id(((Sesion)getActivity().getApplicationContext()).getCodigo());
+                if(!txtCedulaPropietario.getText().toString().isEmpty()
+                        && !txtFechaRegistro.getText().toString().isEmpty()
+                        && !txtLugarRegistro.getText().toString().isEmpty()
+                        && !txtNumSerie.getText().toString().isEmpty()
+                        && !txtColor.getText().toString().isEmpty())
+                {
+                    BicicletaRegistrar objB = new BicicletaRegistrar();
+                    objB.setCedulaPropietario(txtCedulaPropietario.getText().toString());
+                    objB.setFechaRegistro(txtFechaRegistro.getText().toString());
+                    objB.setLugarRegistro(txtLugarRegistro.getText().toString());
+                    objB.setMarca(marca);
+                    objB.setNumSerie(txtNumSerie.getText().toString());
+                    objB.setTipo(tipo);
+                    objB.setColor(txtColor.getText().toString());
+                    objB.setEstudiante_id(((Sesion)getActivity().getApplicationContext()).getCodigo());
 
-                //registrar bicicleta
-                Call<Number> call = iRetrofit.executeRegisterBike(objB);
-                call.enqueue(new Callback<Number>() {
-                    @Override
-                    public void onResponse(Call<Number> call, Response<Number> response) {
-                        if(Integer.parseInt(String.valueOf(response.body()))==1){
-                            Toast.makeText(getContext(), "Bicicleta Registrado Con Exito", Toast.LENGTH_LONG).show();
+                    //registrar bicicleta
+                    Call<Number> call = iRetrofit.executeRegisterBike(objB);
+                    call.enqueue(new Callback<Number>() {
+                        @Override
+                        public void onResponse(Call<Number> call, Response<Number> response) {
+                            if(Integer.parseInt(String.valueOf(response.body()))==1){
+                                Toast.makeText(getContext(), "Bicicleta Registrado Con Exito", Toast.LENGTH_LONG).show();
+                                NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_interfazBicicleta2);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Number> call, Throwable t) {
+                            Toast.makeText(getContext(), "Bicicleta NO Registrado", Toast.LENGTH_LONG).show();
                             NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_interfazBicicleta2);
                         }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Number> call, Throwable t) {
-                        Toast.makeText(getContext(), "Bicicleta NO Registrado", Toast.LENGTH_LONG).show();
-                        NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_interfazBicicleta2);
-                    }
-                });
+                    });
+                }
+                else
+                {
+                    Snackbar.make(v, "Debe completar todos los campos", Snackbar.LENGTH_LONG).show();
+                }
 
             }
         });
 
-
-
-
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_InterfazEstudiante);
+            }
+        });
 
         return v;
     }

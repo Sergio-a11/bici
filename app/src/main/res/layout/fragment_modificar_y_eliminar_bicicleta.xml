@@ -20,8 +20,8 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="426dp"
-        android:layout_height="281dp"
+        android:layout_width="428dp"
+        android:layout_height="250dp"
         android:layout_marginTop="33dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
@@ -124,4 +124,14 @@
         android:text="Eliminar Bicicleta"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnModificarBici" />
+
+    <Button
+        android:id="@+id/btnVolverModyElim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="8dp"
+        android:text="Volver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEliminarBici" />
 </androidx.constraintlayout.widget.ConstraintLayout>

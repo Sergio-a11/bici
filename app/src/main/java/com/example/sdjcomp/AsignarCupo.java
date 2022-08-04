@@ -33,7 +33,7 @@ public class AsignarCupo extends Fragment {
 
     private EditText edtCodigo;
     private Spinner spnSeccion,spnCupos;
-    private Button btnAsignar;
+    private Button btnAsignar, btnVolver;
 
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
@@ -89,6 +89,7 @@ public class AsignarCupo extends Fragment {
         spnSeccion = v.findViewById(R.id.spnSeccionAsignar);
         btnAsignar = v.findViewById(R.id.btnAsignar);
         spnCupos = v.findViewById(R.id.spnCupos);
+        btnVolver = v.findViewById(R.id.btnVolverAsignar);
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
@@ -155,7 +156,13 @@ public class AsignarCupo extends Fragment {
             }
         });
 
-
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(AsignarCupo.this).
+                        navigate(R.id.action_asignarCupo_to_interfaz_administrador);
+            }
+        });
 
         return v;
     }

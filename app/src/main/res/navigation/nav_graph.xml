@@ -95,6 +95,9 @@
         <action
             android:id="@+id/action_registrarBicicleta_to_interfazBicicleta2"
             app:destination="@id/interfazBicicleta" />
+        <action
+            android:id="@+id/action_registrarBicicleta_to_InterfazEstudiante"
+            app:destination="@id/InterfazEstudiante" />
     </fragment>
 
     <fragment

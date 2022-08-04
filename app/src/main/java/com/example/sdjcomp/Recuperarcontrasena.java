@@ -35,7 +35,7 @@ public class Recuperarcontrasena extends Fragment {
     private EditText txtRespuesta;
     private EditText txtContraseña;
     private Spinner spnPregunta;
-    private Button btnCambiarpw;
+    private Button btnCambiarpw, btnVolver;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -77,6 +77,7 @@ public class Recuperarcontrasena extends Fragment {
         txtContraseña = v.findViewById(R.id.txtContrasenaR);
         btnCambiarpw = v.findViewById(R.id.btnCambiarPw);
         spnPregunta = v.findViewById(R.id.spnPreguntaR);
+        btnVolver = v.findViewById(R.id.btnVolverRecuperar);
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
@@ -139,6 +140,12 @@ public class Recuperarcontrasena extends Fragment {
             }
         });
 
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(Recuperarcontrasena.this).navigate(R.id.action_recuperarcontrasena_to_Home);
+            }
+        });
 
         return v;
     }

@@ -212,19 +212,27 @@ app.post('/registerBike', (req, res) => {
     const Tipo_id = req.body.Tipo_id
     const color = req.body.color
     const Estudiante_id = req.body.Estudiante_id
-
-    conexion.query(`INSERT INTO bicicletas (cedulaPropietario,fechaRegistro,lugarRegistro,Marca_id,numSerie,Tipo_id,color,Estudiante_id) 
-    VALUES('${cedulaPropietario}','${fechaRegistro}','${lugarRegistro}',${Marca_id},'${numSerie}',${Tipo_id},'${color}','${Estudiante_id}')`,(error,results)=>{
-    if(error)
-    {
-        console.log(error)
-    }else if(results!=null){
-        res.status(200).send(JSON.stringify(results["affectedRows"]))
-    }
-    else{
-        res.status(404).send()
-    }
-})
+    
+    conexion.query(`SELECT * FROM bicicletas WHERE numSerie='${numSerie}'`,(error,results)=>{
+        if(error){
+            throw error
+        }else if(results[0]==undefined){
+            conexion.query(`INSERT INTO bicicletas (cedulaPropietario,fechaRegistro,lugarRegistro,Marca_id,numSerie,Tipo_id,color,Estudiante_id) 
+            VALUES('${cedulaPropietario}','${fechaRegistro}','${lugarRegistro}',${Marca_id},'${numSerie}',${Tipo_id},'${color}','${Estudiante_id}')`,(error,results)=>{
+            if(error)
+            {
+                console.log(error)
+            }else if(results!=null){
+                res.status(200).send(JSON.stringify(results["affectedRows"]))
+            }
+            else{
+                res.status(404).send()
+            }
+        })
+        }else{
+            res.status(412).send()
+        }
+    })    
 })
 
 //[x] obtener varias bicicletas
@@ -321,20 +329,29 @@ app.put('/updateBicicleta', (req,res) => {
     const color = req.body.color
     const Estudiante_id = req.body.Estudiante_id
     const idBicicleta = req.body.idBicicleta
-    conexion.query(`UPDATE bicicletas SET cedulaPropietario='${cedulaPropietario}',fechaRegistro='${fechaRegistro}',lugarRegistro='${lugarRegistro}',Marca_id=${Marca_id},numSerie='${numSerie}',Tipo_id=${Tipo_id},color='${color}' WHERE Estudiante_id='${Estudiante_id}' AND idBicicleta=${idBicicleta}`,(error, results) => {
-        if(error)
-        {
-            console.log(error)
-        }else if(results!=null)
-        {
-            res.status(200).send(JSON.stringify(results["affectedRows"]))
-        }
-        else
-        {
-            console.log(results)
-            res.status(404).send()
+    conexion.query(`SELECT * FROM bicicletas WHERE numSerie=${numSerie}`,(error,results)=>{
+        if(error){
+            throw error
+        }else if(results[0]==undefined){
+            conexion.query(`UPDATE bicicletas SET cedulaPropietario='${cedulaPropietario}',fechaRegistro='${fechaRegistro}',lugarRegistro='${lugarRegistro}',Marca_id=${Marca_id},numSerie='${numSerie}',Tipo_id=${Tipo_id},color='${color}' WHERE Estudiante_id='${Estudiante_id}' AND idBicicleta=${idBicicleta}`,(error, results) => {
+                if(error)
+                {
+                    console.log(error)
+                }else if(results!=null)
+                {
+                    res.status(200).send(JSON.stringify(results["affectedRows"]))
+                }
+                else
+                {
+                    console.log(results)
+                    res.status(404).send()
+                }
+            })
+        }else{
+            res.status(412).send()
         }
     })
+    
 })
 
 

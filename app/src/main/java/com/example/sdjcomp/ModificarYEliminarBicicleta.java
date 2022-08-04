@@ -26,7 +26,7 @@ public class ModificarYEliminarBicicleta extends Fragment {
     private IRetroFit iRetrofit;
     private String URL="";
     private TextView txtCedula, txtFecha, txtLugar, txtMarca, txtnum, txtTipo, txtColor;
-    private Button btnModficarBici, btnEliminarBici;
+    private Button btnModficarBici, btnEliminarBici, btnVolver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class ModificarYEliminarBicicleta extends Fragment {
         txtColor = (TextView) v.findViewById(R.id.txtColorBici);
         btnModficarBici = (Button) v.findViewById(R.id.btnModificarBici);
         btnEliminarBici = (Button) v.findViewById(R.id.btnEliminarBici);
+        btnVolver = (Button) v.findViewById(R.id.btnVolverModyElim);
 
         int id = ((Sesion)getActivity().getApplicationContext()).getIdBici();
         System.out.println("id = " + id);
@@ -109,6 +110,12 @@ public class ModificarYEliminarBicicleta extends Fragment {
             }
         });
 
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ModificarYEliminarBicicleta.this).navigate(R.id.action_modificarYEliminarBicicleta_to_InterfazEstudiante);
+            }
+        });
 
         return v;
     }

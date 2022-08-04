@@ -43,7 +43,7 @@ public class ModificarUsuario extends Fragment {
     private EditText edtClave;
     private EditText edtRespuesta;
     private Spinner spnPreguntas;
-    private Button btnModificar;
+    private Button btnModificar, btnVolver;
     private ImageButton btnModificarPregunta,btnModificarNombre,btnModificarClave,btnModificarRespuesta;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -101,6 +101,7 @@ public class ModificarUsuario extends Fragment {
         btnModificarClave = v.findViewById(R.id.btnModificarClave);
         btnModificarRespuesta = v.findViewById(R.id.btnModificarRespuesta);
         btnModificarPregunta = v.findViewById(R.id.btnModificarPregunta);
+        btnVolver = v.findViewById(R.id.btnVolverModUsuario);
 
         edtNombre.setText(((Sesion)getActivity().getApplicationContext()).getNombre());
         edtClave.setText(((Sesion)getActivity().getApplicationContext()).getClave());
@@ -206,6 +207,13 @@ public class ModificarUsuario extends Fragment {
             @Override
             public void onClick(View view) {
                 CambiarAtributo(1);
+            }
+        });
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
             }
         });
 

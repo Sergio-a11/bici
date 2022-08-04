@@ -15,6 +15,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +33,7 @@ public class ModificarBicicleta extends Fragment {
     private String URL="";
     private EditText txtCedula, txtFecha, txtLugar, txtnum, txtColor;
     private Spinner spnMarca, spnTipo;
-    private Button btnModficarBici;
+    private Button btnModficarBici, btnVolver;
     private String auxMarca, auxTipo, auxCodigo;
 
     public ModificarBicicleta() {
@@ -64,6 +66,7 @@ public class ModificarBicicleta extends Fragment {
         spnTipo = (Spinner) v.findViewById(R.id.spnTipoBici1);
         txtColor = (EditText) v.findViewById(R.id.txtColorBici1);
         btnModficarBici = (Button) v.findViewById(R.id.btnModificarBici1);
+        btnVolver = (Button) v.findViewById(R.id.btnVolverModBici);
 
         int id = ((Sesion) getActivity().getApplicationContext()).getIdBici();
         System.out.println("id = " + id);
@@ -186,27 +189,48 @@ public class ModificarBicicleta extends Fragment {
                 objB.setIdBicicleta(id);
                 objB.setCedulaPropietario(txtCedula.getText().toString());
 
-                Call<Number> call = iRetrofit.executeUpdateBicicleta(objB);
-                call.enqueue(new Callback<Number>() {
-                    @Override
-                    public void onResponse(Call<Number> call, Response<Number> response) {
-                        if(Integer.parseInt(String.valueOf(response.body()))==1){
-                            Toast.makeText(getContext(), "Bicicleta actualizada", Toast.LENGTH_LONG).show();
-                            NavHostFragment.findNavController(ModificarBicicleta.this).navigate(R.id.action_modificarBicicleta_to_modificarYEliminarBicicleta);
+                if(!txtCedula.getText().toString().isEmpty()
+                        && !txtFecha.getText().toString().isEmpty()
+                        && !txtLugar.getText().toString().isEmpty()
+                        && !txtnum.getText().toString().isEmpty()
+                        && !txtColor.getText().toString().isEmpty())
+                {
+                    Call<Number> call = iRetrofit.executeUpdateBicicleta(objB);
+                    call.enqueue(new Callback<Number>() {
+                        @Override
+                        public void onResponse(Call<Number> call, Response<Number> response) {
+                            if(response.code()==200){
+                                if(Integer.parseInt(String.valueOf(response.body()))==1){
+                                    Toast.makeText(getContext(), "Bicicleta actualizada", Toast.LENGTH_LONG).show();
+                                    NavHostFragment.findNavController(ModificarBicicleta.this).navigate(R.id.action_modificarBicicleta_to_modificarYEliminarBicicleta);
+                                }
+                            }else if(response.code()==412){
+                                Snackbar.make(v, "Este numero de serie ya esta registrado", Snackbar.LENGTH_LONG).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<Number> call, Throwable t) {
-                        Toast.makeText(getContext(), "Bicicleta no actualizada", Toast.LENGTH_LONG).show();
+                        @Override
+                        public void onFailure(Call<Number> call, Throwable t) {
+                            Toast.makeText(getContext(), "Bicicleta no actualizada", Toast.LENGTH_LONG).show();
 
-                    }
-                });
+                        }
+                    });
+                }else{
+                    Snackbar.make(v, "Debe Rellenar Todos los Campos", Snackbar.LENGTH_LONG).show();
+                }
+
+
                 //falta el node y en la interfaz y ver que no destrui registrar
 
             }
         });
 
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ModificarBicicleta.this).navigate(R.id.action_modificarBicicleta_to_modificarYEliminarBicicleta);
+            }
+        });
 
         return v;
     }

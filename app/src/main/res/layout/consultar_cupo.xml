@@ -25,6 +25,7 @@
         android:layout_marginTop="91dp"
         android:ems="10"
         android:inputType="number"
+        android:maxLength="50"
         app:layout_constraintStart_toEndOf="@+id/lblCupoConsultar"
         app:layout_constraintTop_toTopOf="parent" />
 

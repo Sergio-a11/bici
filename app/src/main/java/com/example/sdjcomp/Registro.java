@@ -41,7 +41,7 @@ public class Registro extends Fragment {
     private EditText edtClave;
     private EditText edtRespuesta;
     private Spinner spnPreguntas;
-    private Button btnRegistrar;
+    private Button btnRegistrar, btnVolver;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -96,6 +96,7 @@ public class Registro extends Fragment {
         edtRespuesta = (EditText) v.findViewById(R.id.edtRespuesta);
         btnRegistrar = (Button) v.findViewById(R.id.btnRegistrarUsuario);
         spnPreguntas = (Spinner) v.findViewById(R.id.spnPreguntas);
+        btnVolver = (Button) v.findViewById(R.id.btnVolverRegistro);
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
@@ -175,6 +176,13 @@ public class Registro extends Fragment {
                 }else{
                     Toast.makeText(getContext(), "Debe Rellenar Todos los campos", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_Home);
             }
         });
 

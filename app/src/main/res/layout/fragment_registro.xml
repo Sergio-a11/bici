@@ -208,4 +208,13 @@
         app:layout_constraintTop_toBottomOf="@+id/scrollView4"
         app:rippleColor="#7E7E7E" />
 
+    <Button
+        android:id="@+id/btnVolverRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:text="Volver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarUsuario" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -109,7 +109,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             <TextView
-                android:id="@+id/txtNumSerie"
+                android:id="@+id/lblNumSerie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="57dp"
@@ -119,17 +119,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/spnMarca" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName3"
+                android:id="@+id/txtNumSerie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="9dp"
                 android:layout_marginTop="9dp"
                 android:ems="10"
                 android:hint="1234e"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:maxLength="45"
                 app:layout_constraintStart_toEndOf="@+id/txtsad"
-                app:layout_constraintTop_toBottomOf="@+id/txtNumSerie" />
+                app:layout_constraintTop_toBottomOf="@+id/lblNumSerie" />
 
             <TextView
                 android:id="@+id/txtsad"
@@ -139,7 +139,7 @@
                 android:layout_marginTop="64dp"
                 android:text="Tipo"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtNumSerie" />
+                app:layout_constraintTop_toBottomOf="@+id/lblNumSerie" />
 
             <Spinner
                 android:id="@+id/spnTipo"
@@ -148,7 +148,7 @@
                 android:layout_marginStart="94dp"
                 android:layout_marginTop="41dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNumSerie" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -184,6 +184,16 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtColorCicla" />
+
+            <Button
+                android:id="@+id/btnVolverRegBici"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="149dp"
+                android:layout_marginTop="10dp"
+                android:text="Volver"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnRegistrarBicicletaDesdePantallaRegistro" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

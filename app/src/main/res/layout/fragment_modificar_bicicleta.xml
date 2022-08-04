@@ -143,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:maxLength="45"
                     android:minHeight="48dp"
                     android:text="Name" />
@@ -214,6 +214,14 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:text="Modificar" />
+
+        <Button
+            android:id="@+id/btnVolverModBici"
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="Volver" />
+
     </LinearLayout>
 
 </FrameLayout>
