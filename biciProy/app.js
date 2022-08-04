@@ -330,9 +330,10 @@ app.put('/updateBicicleta', (req,res) => {
     const Estudiante_id = req.body.Estudiante_id
     const idBicicleta = req.body.idBicicleta
     conexion.query(`SELECT * FROM bicicletas WHERE numSerie=${numSerie}`,(error,results)=>{
+        //const idBici = results[0].idBicicleta
         if(error){
             throw error
-        }else if(results[0]==undefined){
+        }else if(results[0]==undefined || results[0].idBicicleta==idBicicleta){
             conexion.query(`UPDATE bicicletas SET cedulaPropietario='${cedulaPropietario}',fechaRegistro='${fechaRegistro}',lugarRegistro='${lugarRegistro}',Marca_id=${Marca_id},numSerie='${numSerie}',Tipo_id=${Tipo_id},color='${color}' WHERE Estudiante_id='${Estudiante_id}' AND idBicicleta=${idBicicleta}`,(error, results) => {
                 if(error)
                 {
@@ -540,8 +541,8 @@ app.delete('/deleteParqueadero/:idBicicleta', (req,res)=>{
         if(error){
             throw error
         }else{
-            const idCupo = results[0].Cupo_idCupo
-            conexion.query(`UPDATE cupos SET estado=0 WHERE idCupo=${idCupo}`,(error,results)=>{
+            //const idCupo = results[0].Cupo_idCupo
+            conexion.query(`UPDATE cupos SET estado=0 WHERE idCupo=${results[0].Cupo_idCupo}`,(error,results)=>{
                 if(error){
                     throw error
                 }else{
