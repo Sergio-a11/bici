@@ -15,6 +15,11 @@ public class Admin extends Fragment {
     private Button btnRoles;
     private Button btnBicicletas;
     private Button btnCupos;
+    private Button btnParqueaderos;
+    private Button btnMarcas;
+    private Button btnPreguntas;
+    private Button btnTipos;
+    private Button btnUsuarios;
     private String URL="";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -62,6 +67,42 @@ public class Admin extends Fragment {
         btnRoles = v.findViewById(R.id.btnRoles);
         btnBicicletas = v.findViewById(R.id.btnBicicletas);
         btnCupos = v.findViewById(R.id.btnCupos);
+        btnParqueaderos = v.findViewById(R.id.btnParqueaderos);
+        btnMarcas = v.findViewById(R.id.btnMarcas);
+        btnPreguntas = v.findViewById(R.id.btnPreguntas);
+        btnTipos = v.findViewById(R.id.btnTipos);
+        btnUsuarios = v.findViewById(R.id.btnUsuarios);
+
+        btnParqueaderos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(Admin.this).navigate(R.id.action_admin_to_admParqueaderos);
+            }
+        });
+        btnMarcas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(Admin.this).navigate(R.id.action_admin_to_admMarcas);
+            }
+        });
+        btnPreguntas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(Admin.this).navigate(R.id.action_admin_to_admPreguntas);
+            }
+        });
+        btnTipos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(Admin.this).navigate(R.id.action_admin_to_admTipos);
+            }
+        });
+        btnUsuarios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(Admin.this).navigate(R.id.action_admin_to_admUsuarios);
+            }
+        });
         btnBicicletas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

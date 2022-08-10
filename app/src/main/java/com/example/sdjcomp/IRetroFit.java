@@ -79,6 +79,9 @@ public interface IRetroFit {
     @GET("/getMarcas")
     Call<List<Marca>> executeGetMarca();
 
+    @GET("/getParqueaderos")
+    Call<List<Parqueadero>> executeGetadmParqueaderos();
+
     @GET("/getTipos")
     Call<List<Tipo>> executeGetTipos();
 

@@ -1,6 +1,5 @@
 package com.example.sdjcomp;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,12 +19,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class admCupos extends Fragment {
+public class admParqueaderos extends Fragment {
 
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
     private String URL="";
-    private TableLayout tablaCupos;
+    private TableLayout tablaParqueaderos;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -33,7 +32,7 @@ public class admCupos extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public admCupos() {
+    public admParqueaderos() {
         // Required empty public constructor
     }
 
@@ -43,11 +42,11 @@ public class admCupos extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment admCupos.
+     * @return A new instance of fragment admParqueaderos.
      */
     // TODO: Rename and change types and number of parameters
-    public static admCupos newInstance(String param1, String param2) {
-        admCupos fragment = new admCupos();
+    public static admParqueaderos newInstance(String param1, String param2) {
+        admParqueaderos fragment = new admParqueaderos();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,33 +66,33 @@ public class admCupos extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        URL="http://"+getResources().getString(R.string.IP)+":3000/getAll/cupos/";
-        View v = inflater.inflate(R.layout.fragment_adm_cupos,container,false);
+        URL="http://"+getResources().getString(R.string.IP)+":3000/getAll/parqueaderos/";
+        View v = inflater.inflate(R.layout.fragment_adm_parqueaderos,container,false);
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
-        tablaCupos = v.findViewById(R.id.tablaCupos);
-        Call<List<Cupo>> call = iRetrofit.executeGetCupos();
-        call.enqueue(new Callback<List<Cupo>>() {
+        tablaParqueaderos = v.findViewById(R.id.tablaParqueaderos);
+        Call<List<Parqueadero>> call = iRetrofit.executeGetadmParqueaderos();
+        call.enqueue(new Callback<List<Parqueadero>>() {
             @Override
-            public void onResponse(Call<List<Cupo>> call, Response<List<Cupo>> response) {
+            public void onResponse(Call<List<Parqueadero>> call, Response<List<Parqueadero>> response) {
                 for(int i=0; i<response.body().size(); i++){
                     TableRow fila = new TableRow(getActivity());
                     TextView textId = new TextView(getActivity());
-                    TextView textSeccion = new TextView(getActivity());
-                    TextView textEstado = new TextView(getActivity());
-                    textId.setText(String.valueOf(response.body().get(i).getIdCupo()));
-                    textSeccion.setText(response.body().get(i).getSeccion());
-                    textEstado.setText(String.valueOf(response.body().get(i).getEstado()));
+                    TextView textIdBici = new TextView(getActivity());
+                    TextView textIdCupo = new TextView(getActivity());
+                    textId.setText(String.valueOf(response.body().get(i).getIdParqueadero()));
+                    textIdBici.setText(String.valueOf(response.body().get(i).getBicicleta_idBicicleta()));
+                    textIdCupo.setText(String.valueOf(response.body().get(i).getCupo_idCupo()));
                     fila.addView(textId);
-                    fila.addView(textSeccion);
-                    fila.addView(textEstado);
-                    tablaCupos.addView(fila);
+                    fila.addView(textIdBici);
+                    fila.addView(textIdCupo);
+                    tablaParqueaderos.addView(fila);
                 }
 
             }
 
             @Override
-            public void onFailure(Call<List<Cupo>> call, Throwable t) {
+            public void onFailure(Call<List<Parqueadero>> call, Throwable t) {
                 System.out.println("fail");
             }
         });

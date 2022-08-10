@@ -67,7 +67,6 @@ public class admBicicletas extends Fragment {
         iRetrofit = retrofit.create(IRetroFit.class);
 
         tablaBicicletas1 = v.findViewById(R.id.tablaBicicletas);
-        tablaBicicletas2 = v.findViewById(R.id.tablaBicicletas2);
         Call<List<Bicicleta>> call = iRetrofit.executeGetadmbicicletas();
 
         call.enqueue(new Callback<List<Bicicleta>>() {
@@ -80,48 +79,29 @@ public class admBicicletas extends Fragment {
                     TextView textFecharegistro = new TextView(getActivity());
                     TextView textLugarRegistro = new TextView(getActivity());
                     TextView textMarcaID = new TextView(getActivity());
-                    textIdbici.setBackgroundResource(R.drawable.columna_bicis);
-                    textIdbici.setTypeface(null, Typeface.BOLD);
-                    textCCpropietario.setBackgroundResource(R.drawable.columna_bicis);
-                    textCCpropietario.setTypeface(null, Typeface.BOLD);
-                    textFecharegistro.setBackgroundResource(R.drawable.columna_bicis);
-                    textFecharegistro.setTypeface(null, Typeface.BOLD);
-                    textLugarRegistro.setBackgroundResource(R.drawable.columna_bicis);
-                    textLugarRegistro.setTypeface(null, Typeface.BOLD);
-                    textMarcaID.setBackgroundResource(R.drawable.columna_bicis);
-                    textMarcaID.setTypeface(null, Typeface.BOLD);
-                    textIdbici.setText(String.valueOf(response.body().get(i).getCedulaPropietario()));
-
-                    textCCpropietario.setText(response.body().get(i).getCedulaPropietario());
-                    textFecharegistro.setText(response.body().get(i).getFechaRegistro());
-                    textLugarRegistro.setText(response.body().get(i).getLugarRegistro());
-                    textMarcaID.setText(String.valueOf(response.body().get(i).getMarca()));
-                    fila.addView(textIdbici);
-                    fila.addView(textCCpropietario);
-                    fila.addView(textFecharegistro);
-                    fila.addView(textMarcaID);
-                    tablaBicicletas1.addView(fila);
-                    //tabla 2
-
-                    TableRow fila2 = new TableRow(getActivity());
-                    TextView textIdbici2 = new TextView(getActivity());
                     TextView textNSerie = new TextView(getActivity());
                     TextView textTipoID = new TextView(getActivity());
                     TextView textColor = new TextView(getActivity());
                     TextView textEstudianteID = new TextView(getActivity());
-                    textIdbici2.setBackgroundResource(R.drawable.columna_1);
-                    textIdbici2.setText(String.valueOf(response.body().get(i).getIdBicicleta()));
-                    textIdbici2.setTypeface(null, Typeface.BOLD);
+                    textIdbici.setText(String.valueOf(response.body().get(i).getIdBicicleta()));
+                    textCCpropietario.setText(response.body().get(i).getCedulaPropietario());
+                    textFecharegistro.setText(response.body().get(i).getFechaRegistro());
+                    textLugarRegistro.setText(response.body().get(i).getLugarRegistro());
+                    textMarcaID.setText(String.valueOf(response.body().get(i).getMarca()));
                     textNSerie.setText(response.body().get(i).getNumSerie());
                     textTipoID.setText(String.valueOf(response.body().get(i).getTipo()));
                     textColor.setText(response.body().get(i).getColor());
                     textEstudianteID.setText(response.body().get(i).getEstudiante_id());
-                    fila2.addView(textIdbici2);
-                    fila2.addView(textNSerie);
-                    fila2.addView(textTipoID);
-                    fila2.addView(textColor);
-                    fila2.addView(textEstudianteID);
-                    tablaBicicletas2.addView(fila2);
+                    fila.addView(textIdbici);
+                    fila.addView(textCCpropietario);
+                    fila.addView(textFecharegistro);
+                    fila.addView(textLugarRegistro);
+                    fila.addView(textMarcaID);
+                    fila.addView(textNSerie);
+                    fila.addView(textTipoID);
+                    fila.addView(textColor);
+                    fila.addView(textEstudianteID);
+                    tablaBicicletas1.addView(fila);
                 }
 
             }

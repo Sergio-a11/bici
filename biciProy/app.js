@@ -495,6 +495,22 @@ app.get('/getOne/:palabras', (req,res)=>{
     })
 })
 
+app.get('/getParqueaderos', (req,res)=>{
+    conexion.query(`SELECT * FROM parqueaderos`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
 app.post('/registerParqueadero/:parqueadero', (req, res) => {
     const parqueadero = req.params.parqueadero
     const words = parqueadero.split(',')
