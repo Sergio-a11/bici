@@ -235,7 +235,21 @@ app.post('/registerBike', (req, res) => {
     })    
 })
 
-//[x] obtener varias bicicletas
+app.get('/getadmBicicletas',(req,res)=>{
+    const tabla = req.params.tabla
+    conexion.query(`SELECT * FROM bicicletas`,(error,results)=>{
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null){
+            res.status(200).send(JSON.stringify(results))
+        }
+        else{
+            console.log(results)
+            res.status(404).send()
+        }
+    })
+})
 
 app.get('/getBikes/:Estudiante_id', (req,res)=>{
     const Estudiante_id = req.params.Estudiante_id
@@ -679,6 +693,20 @@ app.post("/updatePassword", (req,res)=> {
         })
 })
 
+
+app.get("/getRoles" , (req,res) =>{
+    console.log("getroles ejecutado")
+    conexion.query(`SELECT * FROM roles` , (error,results)=>{
+        if(error) throw error
+        else if(results!=null){
+            console.log(results)
+            res.status(200).send(JSON.stringify(results))
+        }else{
+            res.status(404).send()
+        }
+
+    })
+})
 //registerBrands
 //getBrands
 //updateBrands
