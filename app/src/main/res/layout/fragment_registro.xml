@@ -20,36 +20,39 @@
 
             <TextView
                 android:id="@+id/lblTitulo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
-                android:layout_marginEnd="92dp"
-                android:layout_marginBottom="1dp"
-                android:text="Registrarte como nuevo usuario" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="Registrarte como nuevo usuario"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="100px"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/lblCodigo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="1dp"
-                    android:text="Codigo" />
+                    android:layout_width="134dp"
+                    android:layout_height="31dp"
+                    android:gravity="center"
+                    android:text="Codigo"
+                    android:textColor="#FFFFFF" />
 
                 <EditText
+                    android:background="@drawable/edt_texto_campos"
+                    android:gravity="center"
                     android:id="@+id/edtCodigo"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginEnd="80dp"
-                    android:layout_marginBottom="8dp"
                     android:ems="10"
                     android:hint="20192578140"
                     android:inputType="number"
@@ -60,25 +63,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="50px"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
                 <TextView
+
                     android:id="@+id/lblNombre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Nombre" />
+                    android:layout_width="134dp"
+                    android:layout_height="31dp"
+                    android:gravity="center"
+                    android:textColor="#FFFFFF"
+                    android:text="Nombre"/>
 
                 <EditText
+                    android:background="@drawable/edt_texto_campos"
                     android:id="@+id/edtNombre"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
                     android:ems="10"
+                    android:gravity="center"
                     android:hint="Juanito Alcachofa"
                     android:inputType="textPersonName"
                     android:minHeight="48dp" />
@@ -88,26 +93,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="50px"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/lblCorreo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_width="134dp"
+                    android:layout_height="31dp"
+                    android:gravity="center"
+                    android:textColor="#FFFFFF"
                     android:text="Correo" />
 
                 <EditText
+                    android:background="@drawable/edt_texto_campos"
                     android:id="@+id/edtCorreo"
-                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
                     android:ems="10"
-                    android:hint="estudiante@correo.udsitrital.edu.co"
+                    android:hint="estudiante@correo.com"
                     android:inputType="textEmailAddress"
                     android:minHeight="48dp" />
 
@@ -116,25 +122,26 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="50px"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/lblClave"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_width="134dp"
+                    android:layout_height="31dp"
+                    android:gravity="center"
+                    android:textColor="#FFFFFF"
                     android:text="Clave" />
 
                 <EditText
+                    android:background="@drawable/edt_texto_campos"
                     android:id="@+id/edtClave"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
                     android:ems="10"
+                    android:gravity="center"
                     android:inputType="textPassword"
                     android:minHeight="48dp" />
             </LinearLayout>
@@ -142,47 +149,52 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="50px"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/lblPregunta"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_width="134dp"
+                    android:layout_height="31dp"
+                    android:gravity="center"
+                    android:textColor="#FFFFFF"
                     android:text="Preguntas" />
 
                 <Spinner
                     android:id="@+id/spnPreguntas"
-                    android:layout_width="209dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="80dp" />
+                    android:layout_width="261dp"
+                    android:layout_height="54dp"
+                    android:layout_marginEnd="80dp"
+
+                    android:background="@drawable/edt_texto_campos"
+                    android:dropDownSelector="@drawable/edt_texto_campos"
+                    android:theme="@style/Theme.SdjComp.AppBarOverlay" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="50px"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/lblRespuesta"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_width="134dp"
+                    android:layout_height="31dp"
+                    android:gravity="center"
+                    android:textColor="#FFFFFF"
                     android:text="Respuesta" />
 
                 <EditText
+                    android:background="@drawable/edt_texto_campos"
                     android:id="@+id/edtRespuesta"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
+                    android:gravity="center"
                     android:ems="10"
                     android:hint="Amante de la comida"
                     android:inputType="textPersonName"
@@ -196,15 +208,16 @@
         android:id="@+id/btnRegistrarUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="61dp"
+        android:background="@drawable/radius"
         android:text="Registrar"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FF0000"
         android:textColorHint="#FF0000"
         android:textColorLink="#ED0000"
         app:iconTint="#DA0000"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView4"
         app:rippleColor="#7E7E7E" />
 
@@ -212,9 +225,11 @@
         android:id="@+id/btnVolverRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/radius"
         android:text="Volver"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

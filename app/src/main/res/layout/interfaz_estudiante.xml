@@ -22,13 +22,19 @@
 
             <TextView
                 android:id="@+id/lblTitulo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="118dp"
-                android:layout_marginTop="108dp"
-                android:text="Bienvenido Nombre Usuario" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="Bienvenido Nombre Usuario"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
 
             <Button
+                android:background="@drawable/radius"
                 android:id="@+id/btnVerRegistros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,6 +43,7 @@
                 android:text="@string/verRegistros" />
 
             <Button
+                android:background="@drawable/radius"
                 android:id="@+id/btnRegistrarBicicleta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,6 +52,7 @@
                 android:text="Registrar Bicicleta" />
 
             <Button
+                android:background="@drawable/radius"
                 android:id="@+id/btnModificarUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,6 +61,7 @@
                 android:text="Modificar Usuario" />
 
             <Button
+                android:background="@drawable/radius"
                 android:id="@+id/btnEliminarUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,6 +70,7 @@
                 android:text="Eliminar Usuario" />
 
             <Button
+                android:background="@drawable/radius"
                 android:id="@+id/btnVolver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
