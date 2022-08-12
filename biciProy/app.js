@@ -112,13 +112,13 @@ app.get('/getUser/:correo', (req,res)=>{
 })
 
 app.get('/getUsers', (req,res)=>{
-    const codigo = req.body.codigo
-    console.log("Consultando a "+codigo)
+    console.log("getUsers")
     conexion.query(`SELECT * FROM usuarios`,(error,results)=>{
     if(error)
     {
         console.log(error)
     }else if(results!=null){
+        console.log(results)
         res.status(200).send(JSON.stringify(results))
     }
     else{

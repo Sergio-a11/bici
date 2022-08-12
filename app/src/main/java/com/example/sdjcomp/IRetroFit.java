@@ -91,6 +91,9 @@ public interface IRetroFit {
     @GET("/getadmBicicletas")
     Call<List<Bicicleta>> executeGetadmbicicletas();
 
+    @GET("/getUsers")
+    Call<List<Usuario>> executeGetUsers();
+
     @POST("/registerBike")
     Call<Number> executeRegisterBike(@Body BicicletaRegistrar bici);
 

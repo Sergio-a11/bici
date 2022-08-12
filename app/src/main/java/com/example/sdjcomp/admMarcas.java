@@ -7,16 +7,24 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link admMarcas#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class admMarcas extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private Retrofit retrofit;
+    private IRetroFit iRetrofit;
+    private String URL = "";
+    private TableLayout tablaMarcas;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -58,7 +66,33 @@ public class admMarcas extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_adm_marcas, container, false);
+        URL = "http://" + getResources().getString(R.string.IP) + ":3000/getMarcas/";
+        View v = inflater.inflate(R.layout.fragment_adm_marcas, container, false);
+        retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
+        iRetrofit = retrofit.create(IRetroFit.class);
+        tablaMarcas = v.findViewById(R.id.tablaMarcas);
+        Call<List<Marca>> call = iRetrofit.executeGetMarca();
+
+        call.enqueue(new Callback<List<Marca>>() {
+            @Override
+            public void onResponse(Call<List<Marca>> call, Response<List<Marca>> response) {
+                for (int i = 0; i < response.body().size(); i++) {
+                    TableRow fila = new TableRow(getActivity());
+                    TextView textId = new TextView(getActivity());
+                    TextView textMarca = new TextView(getActivity());
+                    textId.setText(String.valueOf(response.body().get(i).getId()));
+                    textMarca.setText(response.body().get(i).getMarca());
+                    fila.addView(textId);
+                    fila.addView(textMarca);
+                    tablaMarcas.addView(fila);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Marca>> call, Throwable t) {
+
+            }
+        });
+        return v;
     }
 }

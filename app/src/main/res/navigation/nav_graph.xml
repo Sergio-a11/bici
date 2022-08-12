@@ -226,14 +226,14 @@
             android:id="@+id/action_admin_to_admParqueaderos"
             app:destination="@id/admParqueaderos" />
         <action
-            android:id="@+id/action_admin_to_admMarcas"
-            app:destination="@id/admMarcas" />
-        <action
             android:id="@+id/action_admin_to_admPreguntas"
             app:destination="@id/admPreguntas" />
         <action
             android:id="@+id/action_admin_to_admTipos"
             app:destination="@id/admTipos" />
+        <action
+            android:id="@+id/action_admin_to_admMarcas"
+            app:destination="@id/admMarcas" />
     </fragment>
     <fragment
         android:id="@+id/roles"
@@ -254,11 +254,6 @@
         android:name="com.example.sdjcomp.admParqueaderos"
         android:label="admParqueaderos" />
     <fragment
-        android:id="@+id/admMarcas"
-        android:name="com.example.sdjcomp.admMarcas"
-        android:label="fragment_adm_marcas"
-        tools:layout="@layout/fragment_adm_marcas" />
-    <fragment
         android:id="@+id/admPreguntas"
         android:name="com.example.sdjcomp.admPreguntas"
         android:label="fragment_adm_preguntas"
@@ -273,4 +268,9 @@
         android:name="com.example.sdjcomp.admUsuarios"
         android:label="fragment_adm_usuarios"
         tools:layout="@layout/fragment_adm_usuarios" />
+    <fragment
+        android:id="@+id/admMarcas"
+        android:name="com.example.sdjcomp.admMarcas"
+        android:label="fragment_adm_marcas"
+        tools:layout="@layout/fragment_adm_marcas" />
 </navigation>

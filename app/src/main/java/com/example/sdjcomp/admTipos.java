@@ -7,6 +7,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,8 +26,10 @@ import android.view.ViewGroup;
  */
 public class admTipos extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private Retrofit retrofit;
+    private IRetroFit iRetrofit;
+    private String URL="";
+    private TableLayout tablaTipos;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -58,7 +71,32 @@ public class admTipos extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_adm_tipos, container, false);
+        URL="http://"+getResources().getString(R.string.IP)+":3000/getTipos/";
+        View v = inflater.inflate(R.layout.fragment_adm_tipos,container,false);
+        retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
+        iRetrofit = retrofit.create(IRetroFit.class);
+        tablaTipos = v.findViewById(R.id.tablaTipos);
+        Call<List<Tipo>> call = iRetrofit.executeGetTipos();
+        call.enqueue(new Callback<List<Tipo>>() {
+            @Override
+            public void onResponse(Call<List<Tipo>> call, Response<List<Tipo>> response) {
+                for(int i=0; i<response.body().size(); i++){
+                    TableRow fila = new TableRow(getActivity());
+                    TextView textId = new TextView(getActivity());
+                    TextView textTipo = new TextView(getActivity());
+                    textId.setText(String.valueOf(response.body().get(i).getId()));
+                    textTipo.setText(response.body().get(i).getTipo());
+                    fila.addView(textId);
+                    fila.addView(textTipo);
+                    tablaTipos.addView(fila);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Tipo>> call, Throwable t) {
+
+            }
+        });
+        return v;
     }
 }
