@@ -66,6 +66,9 @@ public interface IRetroFit {
     @GET("/getCupo/{seccion}")
     Call<List<Cupo>> executeGetCuposEnable(@Path("seccion") String seccion);
 
+    @GET("/getSlots/")
+    Call<List<Cupo>> executeGetCupos();
+
     @GET("/getParqueadero/{seccion}")
     Call<List<Bicicleta>> executeGetParqueaderos(@Path("seccion") String seccion);
 
@@ -76,8 +79,20 @@ public interface IRetroFit {
     @GET("/getMarcas")
     Call<List<Marca>> executeGetMarca();
 
+    @GET("/getParqueaderos")
+    Call<List<Parqueadero>> executeGetadmParqueaderos();
+
     @GET("/getTipos")
     Call<List<Tipo>> executeGetTipos();
+
+    @GET("/getRoles")
+    Call<List<Rol>> executeGetRoles();
+
+    @GET("/getadmBicicletas")
+    Call<List<Bicicleta>> executeGetadmbicicletas();
+
+    @GET("/getUsers")
+    Call<List<Usuario>> executeGetUsers();
 
     @POST("/registerBike")
     Call<Number> executeRegisterBike(@Body BicicletaRegistrar bici);

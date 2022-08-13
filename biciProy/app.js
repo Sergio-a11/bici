@@ -117,17 +117,17 @@ app.get("/getUser/:correo", (req, res) => {
   );
 });
 
-app.get("/getUsers", (req, res) => {
-  const codigo = req.body.codigo;
-  console.log("Consultando a " + codigo);
-  conexion.query(`SELECT * FROM usuarios`, (error, results) => {
-    if (error) {
-      console.log(error);
-    } else if (results != null) {
-      res.status(200).send(JSON.stringify(results));
-    } else {
-      console.log("3");
-      console.log(results);
+
+app.get('/getUsers', (req,res)=>{
+    console.log("getUsers")
+    conexion.query(`SELECT * FROM usuarios`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        console.log(results)
+        res.status(200).send(JSON.stringify(results))
+    }else{
       res.status(404).send();
     }
   });
@@ -245,7 +245,21 @@ app.post("/registerBike", (req, res) => {
   );
 });
 
-//[x] obtener varias bicicletas
+app.get('/getadmBicicletas',(req,res)=>{
+    const tabla = req.params.tabla
+    conexion.query(`SELECT * FROM bicicletas`,(error,results)=>{
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null){
+            res.status(200).send(JSON.stringify(results))
+        }
+        else{
+            console.log(results)
+            res.status(404).send()
+        }
+    })
+})
 
 app.get("/getBikes/:Estudiante_id", (req, res) => {
   const Estudiante_id = req.params.Estudiante_id;
@@ -355,6 +369,111 @@ app.put("/updateBicicleta", (req, res) => {
             } else {
               console.log(results);
               res.status(404).send();
+            }
+          }
+        );
+      } else {
+        res.status(412).send();
+      }
+    }
+  );
+});
+
+app.delete('/deleteCupos/:idCupo', (req,res)=>{
+    const idCupo = req.params.idCupo
+    conexion.query('DELETE FROM cupos WHERE ?',[{idCupo}],(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results["affectedRows"]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
+app.get('/get/:codigo', (req,res)=>{
+    const codigo = req.params.codigo   
+    console.log("Consultando a "+codigo)
+    conexion.query(`SELECT * FROM usuarios WHERE correo='${correo}'`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results[0]))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
+app.get('/getOne/:palabras', (req,res)=>{
+    const palabras = req.params.palabras
+    console.log(palabras)
+    const words = palabras.split(',')
+    const valor = words[0]
+    const campo = words[1]
+    const tabla = words[2]
+    conexion.query(`SELECT * FROM ${tabla} WHERE ${campo}='${valor}'`, ( error,results) =>{
+        if(error)
+        {
+            console.log(error)
+        }else if(results!=null){
+            console.log(results)
+            res.status(200).send(JSON.stringify(results[0]))
+        }
+        else{
+            console.log(results)
+            res.status(404).send()
+        }
+    })
+})
+
+app.get('/getParqueaderos', (req,res)=>{
+    conexion.query(`SELECT * FROM parqueaderos`,(error,results)=>{
+    if(error)
+    {
+        console.log(error)
+    }else if(results!=null){
+        res.status(200).send(JSON.stringify(results))
+    }
+    else{
+        console.log("3")
+        console.log(results)
+        res.status(404).send()
+    }
+    })
+})
+
+app.post('/registerParqueadero/:parqueadero', (req, res) => {
+    const parqueadero = req.params.parqueadero
+    const words = parqueadero.split(',')
+    const Bicicleta_idBicicleta = words[0]
+    const Cupo_idCupo = words[1]
+    conexion.query(`SELECT * FROM parqueaderos WHERE Bicicleta_idBicicleta=${Bicicleta_idBicicleta}`,(error,results)=>{
+        if(error){
+            throw error
+        }else if(results[0]==undefined){
+            conexion.query(`INSERT INTO parqueaderos (Bicicleta_idBicicleta,Cupo_idCupo) 
+            VALUES ('${Bicicleta_idBicicleta}',${Cupo_idCupo})`,(error,results)=>{
+            if(error)
+            {
+                console.log(error)
+            }else if(results!=null){
+                conexion.query(`UPDATE cupos SET estado=1 WHERE idCupo=${Cupo_idCupo}`,(error,results)=>{
+                    if(error){
+                        throw error
+                    }else{
+                        res.status(200).send(JSON.stringify(results))
+                    }
+                })        
             }
           }
         );
@@ -612,10 +731,6 @@ app.get("/getBikeForDesasignar/:numSerie", (req, res) => {
   );
 });
 
-//getSlots
-//updateSlots
-//deleteSlots
-
 app.get("/getSlots", (req, res) => {
   conexion.query(`SELECT * FROM cupos`, (error, results) => {
     if (error) {
@@ -719,15 +834,20 @@ app.post("/updatePassword", (req, res) => {
   );
 });
 
-//registerBrands
-//getBrands
-//updateBrands
-//deleteBrands
 
-//registerTypes
-//getTypes
-//updateTypes
-//deleteTypes
+app.get("/getRoles" , (req,res) =>{
+    console.log("getroles ejecutado")
+    conexion.query(`SELECT * FROM roles` , (error,results)=>{
+        if(error) throw error
+        else if(results!=null){
+            console.log(results)
+            res.status(200).send(JSON.stringify(results))
+        }else{
+            res.status(404).send()
+        }
+
+    })
+})
 
 app.post("/updatePassword", (req, res) => {
   const codigo = req.body.codigo;

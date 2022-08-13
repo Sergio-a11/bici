@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_Home_to_recuperarcontrasena"
             app:destination="@id/recuperarcontrasena" />
+        <action
+            android:id="@+id/action_Home_to_admin"
+            app:destination="@id/admin" />
     </fragment>
     <fragment
         android:id="@+id/InterfazEstudiante"
@@ -199,4 +202,75 @@
             android:id="@+id/action_modificarBicicleta_to_modificarYEliminarBicicleta"
             app:destination="@id/modificarYEliminarBicicleta" />
     </fragment>
+    <fragment
+        android:id="@+id/admin"
+        android:name="com.example.sdjcomp.Admin"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" >
+        <action
+            android:id="@+id/action_admin_to_Home"
+            app:destination="@id/Home" />
+        <action
+            android:id="@+id/action_admin_to_roles"
+            app:destination="@id/roles" />
+        <action
+            android:id="@+id/action_admin_to_admBicicletas"
+            app:destination="@id/admBicicletas" />
+        <action
+            android:id="@+id/action_admin_to_admCupos"
+            app:destination="@id/admCupos" />
+        <action
+            android:id="@+id/action_admin_to_admUsuarios"
+            app:destination="@id/admUsuarios" />
+        <action
+            android:id="@+id/action_admin_to_admParqueaderos"
+            app:destination="@id/admParqueaderos" />
+        <action
+            android:id="@+id/action_admin_to_admPreguntas"
+            app:destination="@id/admPreguntas" />
+        <action
+            android:id="@+id/action_admin_to_admTipos"
+            app:destination="@id/admTipos" />
+        <action
+            android:id="@+id/action_admin_to_admMarcas"
+            app:destination="@id/admMarcas" />
+    </fragment>
+    <fragment
+        android:id="@+id/roles"
+        android:name="com.example.sdjcomp.Roles"
+        android:label="Roles" />
+    <fragment
+        android:id="@+id/admBicicletas"
+        android:name="com.example.sdjcomp.admBicicletas"
+        android:label="fragment_adm_bicicletas"
+        tools:layout="@layout/fragment_adm_bicicletas" />
+    <fragment
+        android:id="@+id/admCupos"
+        android:name="com.example.sdjcomp.admCupos"
+        android:label="fragment_adm_cupos"
+        tools:layout="@layout/fragment_adm_cupos" />
+    <fragment
+        android:id="@+id/admParqueaderos"
+        android:name="com.example.sdjcomp.admParqueaderos"
+        android:label="admParqueaderos" />
+    <fragment
+        android:id="@+id/admPreguntas"
+        android:name="com.example.sdjcomp.admPreguntas"
+        android:label="fragment_adm_preguntas"
+        tools:layout="@layout/fragment_adm_preguntas" />
+    <fragment
+        android:id="@+id/admTipos"
+        android:name="com.example.sdjcomp.admTipos"
+        android:label="fragment_adm_tipos"
+        tools:layout="@layout/fragment_adm_tipos" />
+    <fragment
+        android:id="@+id/admUsuarios"
+        android:name="com.example.sdjcomp.admUsuarios"
+        android:label="fragment_adm_usuarios"
+        tools:layout="@layout/fragment_adm_usuarios" />
+    <fragment
+        android:id="@+id/admMarcas"
+        android:name="com.example.sdjcomp.admMarcas"
+        android:label="fragment_adm_marcas"
+        tools:layout="@layout/fragment_adm_marcas" />
 </navigation>

@@ -1,15 +1,31 @@
 package com.example.sdjcomp;
 
 public class Parqueadero {
-    private int Bicicleta_idBicicleta, Cupo_idCupo;
+    private int idParqueadero, Bicicleta_idBicicleta, Cupo_idCupo;
 
     public Parqueadero(int bicicleta_idBicicleta, int cupo_idCupo) {
         Bicicleta_idBicicleta = bicicleta_idBicicleta;
         Cupo_idCupo = cupo_idCupo;
     }
+
+    public Parqueadero(int idParqueadero, int bicicleta_idBicicleta, int cupo_idCupo) {
+        this.idParqueadero = idParqueadero;
+        Bicicleta_idBicicleta = bicicleta_idBicicleta;
+        Cupo_idCupo = cupo_idCupo;
+    }
+
     public Parqueadero() {
+        idParqueadero=0;
         Bicicleta_idBicicleta = 0;
         Cupo_idCupo = 0;
+    }
+
+    public int getIdParqueadero() {
+        return idParqueadero;
+    }
+
+    public void setIdParqueadero(int idParqueadero) {
+        this.idParqueadero = idParqueadero;
     }
 
     public int getBicicleta_idBicicleta() {
