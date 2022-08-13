@@ -7,6 +7,7 @@
         <entry key="..\:/Repositorios/bici/app/src/main/res/drawable/diseno_btn_iniciar_sesion.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/drawable/edt_amarillo.xml" value="0.3635" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/drawable/edt_label_campos.xml" value="0.3625" />
+        <entry key="..\:/Repositorios/bici/app/src/main/res/drawable/edt_morado.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/drawable/edt_texto_campos.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/drawable/ic_bxs_up_arrow_circle.xml" value="0.3635" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/drawable/radius.xml" value="0.3625" />
@@ -23,7 +24,7 @@
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_modificar_y_eliminar_bicicleta.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_recuperarcontrasena.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_registrar_bicicleta.xml" value="0.33" />
-        <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_registro.xml" value="0.33" />
+        <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_registro.xml" value="0.1" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_scrolling.xml" value="0.3061594202898551" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/home.xml" value="0.3061594202898551" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/interfas_administrador.xml" value="0.3484375" />

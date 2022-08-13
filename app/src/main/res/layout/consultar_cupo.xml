@@ -7,6 +7,40 @@
     android:layout_height="match_parent"
     tools:context=".ConsultarCupo" >
 
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="214dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="84dp"
+        android:background="#99828282"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtConsultarCodigo">
+
+        <Button
+            android:id="@+id/btnSeccion1"
+            android:layout_width="46dp"
+            android:layout_height="190dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/btnSeccion2"
+            android:layout_width="173dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="10dp"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/btnSeccion3"
+            android:layout_width="54dp"
+            android:layout_height="152dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="35dp"
+            android:text="3" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/lblCupoConsultar"
         android:layout_width="wrap_content"
@@ -14,15 +48,18 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="105dp"
         android:text="Codigo"
+        android:textColor="#ffffff"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:textAlignment="center"
         android:id="@+id/edtConsultarCodigo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="45dp"
         android:layout_marginStart="11dp"
         android:layout_marginTop="91dp"
+        android:background="@drawable/edt_texto_campos"
         android:ems="10"
         android:inputType="number"
         android:maxLength="50"
@@ -38,36 +75,6 @@
         android:src="@drawable/ic_bx_search_alt"
         app:layout_constraintStart_toEndOf="@+id/edtConsultarCodigo"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnSeccion1"
-        android:layout_width="46dp"
-        android:layout_height="190dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="52dp"
-        android:text="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCupoConsultar" />
-
-    <Button
-        android:id="@+id/btnSeccion2"
-        android:layout_width="173dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginBottom="364dp"
-        android:text="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnSeccion3"
-        android:layout_width="54dp"
-        android:layout_height="152dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="256dp"
-        android:text="3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnVolverConsultarCupo"

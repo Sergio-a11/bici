@@ -11,9 +11,10 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="154dp"
+        android:layout_marginStart="140dp"
         android:layout_marginTop="60dp"
-        android:text="Tu bicicleta"
+        android:text="TU BICICLETA"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,6 +41,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
                 android:text="TextView"
+                android:textColor="#FFFFFF"
                 android:textSize="20dp" />
 
             <TextView
@@ -49,7 +51,9 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
+                android:shadowColor="#FFFFFF"
                 android:text="TextView"
+                android:textColor="#FFFFFF"
                 android:textSize="20dp" />
 
             <TextView
@@ -60,6 +64,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
                 android:text="TextView"
+                android:textColor="#FFFFFF"
                 android:textSize="20dp" />
 
             <TextView
@@ -70,6 +75,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
                 android:text="TextView"
+                android:textColor="#FFFFFF"
                 android:textSize="20dp" />
 
             <TextView
@@ -80,6 +86,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
                 android:text="TextView"
+                android:textColor="#FFFFFF"
                 android:textSize="20dp" />
 
             <TextView
@@ -90,6 +97,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
                 android:text="TextView"
+                android:textColor="#FFFFFF"
                 android:textSize="20dp" />
 
             <TextView
@@ -100,6 +108,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
                 android:text="TextView"
+                android:textColor="#FFFFFF"
                 android:textSize="20dp" />
 
         </LinearLayout>
