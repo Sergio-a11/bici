@@ -9,11 +9,14 @@
 
     <TextView
         android:id="@+id/txtCodigo"
+        android:textColor="#FFFFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="120dp"
+        android:gravity="center"
         android:text="Codigo"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,25 +31,31 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
+        android:gravity="center"
         android:id="@+id/spnCupos"
-        android:layout_width="243dp"
-        android:layout_height="28dp"
+        android:layout_width="246dp"
+        android:layout_height="37dp"
         android:layout_marginTop="208dp"
         android:layout_marginEnd="56dp"
+        android:background="@drawable/edt_texto_campos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textColor="#FFFFFF"
+        android:gravity="center"
         android:id="@+id/txtSeccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="164dp"
         android:text="Seccion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCodigo" />
 
     <Spinner
+        android:gravity="center"
+        android:background="@drawable/edt_texto_campos"
         android:id="@+id/spnSeccionAsignar"
         android:layout_width="212dp"
         android:layout_height="32dp"
@@ -57,21 +66,25 @@
         app:layout_constraintTop_toBottomOf="@+id/spnCupos" />
 
     <TextView
+        android:textColor="#FFFFFF"
+        android:gravity="center"
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="69dp"
+        android:layout_marginTop="84dp"
         android:text="Cupos"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCodigo" />
 
     <EditText
+        android:gravity="center"
         android:id="@+id/edtCodigoEnCupos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="212dp"
+        android:layout_height="40dp"
         android:layout_marginTop="105dp"
         android:layout_marginEnd="87dp"
+        android:background="@drawable/edt_texto_campos"
         android:ems="10"
         android:inputType="number"
         android:maxLength="50"

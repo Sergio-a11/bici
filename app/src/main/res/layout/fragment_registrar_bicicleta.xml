@@ -49,7 +49,8 @@
                         android:layout_width="134dp"
                         android:layout_height="31dp"
                         android:gravity="center"
-                        android:text="Cedula propietario" />
+                        android:text="Cedula propietario"
+                        android:textColor="#FFFFFF" />
 
                     <EditText
                         android:id="@+id/txtCedulaPropietario"
@@ -76,6 +77,7 @@
                         android:id="@+id/textView4"
                         android:layout_width="134dp"
                         android:layout_height="31dp"
+                        android:textColor="#FFFFFF"
                         android:gravity="center"
                         android:text="Fecha Registro" />
 
@@ -104,6 +106,7 @@
                         android:id="@+id/textView5"
                         android:layout_width="134dp"
                         android:layout_height="31dp"
+                        android:textColor="#FFFFFF"
                         android:gravity="center"
                         android:text="Lugar Registro" />
 
@@ -132,6 +135,7 @@
                         android:layout_width="134dp"
                         android:layout_height="31dp"
                         android:gravity="center"
+                        android:textColor="#FFFFFF"
                         android:text="Marca" />
 
                     <Spinner
@@ -158,6 +162,7 @@
                         android:layout_width="134dp"
                         android:layout_height="31dp"
                         android:gravity="center"
+                        android:textColor="#FFFFFF"
                         android:text="Número de serie" />
 
                     <EditText
@@ -186,6 +191,7 @@
                         android:layout_width="134dp"
                         android:layout_height="31dp"
                         android:gravity="center"
+                        android:textColor="#FFFFFF"
                         android:text="Tipo" />
 
                     <Spinner
@@ -213,6 +219,7 @@
                         android:layout_width="134dp"
                         android:layout_height="31dp"
                         android:gravity="center"
+                        android:textColor="#FFFFFF"
                         android:text="Color" />
 
                     <EditText

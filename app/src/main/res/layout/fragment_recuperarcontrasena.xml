@@ -44,6 +44,7 @@
                 android:textColor="#FFFFFF" />
 
             <EditText
+                android:gravity="center"
                 android:id="@+id/txtCodigoR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,6 +71,7 @@
                 android:textColor="#FFFFFF" />
 
             <Spinner
+                android:gravity="center"
                 android:id="@+id/spnPreguntaR"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -94,6 +96,7 @@
                 android:textColor="#FFFFFF" />
 
             <EditText
+                android:gravity="center"
                 android:id="@+id/txtRespuestaR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,6 +124,7 @@
                 android:textColor="#FFFFFF" />
 
             <EditText
+                android:gravity="center"
                 android:id="@+id/txtContrasenaR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
