@@ -234,6 +234,9 @@
         <action
             android:id="@+id/action_admin_to_admMarcas"
             app:destination="@id/admMarcas" />
+        <action
+            android:id="@+id/action_admin_to_reportes"
+            app:destination="@id/reportes" />
     </fragment>
     <fragment
         android:id="@+id/roles"
@@ -273,4 +276,9 @@
         android:name="com.example.sdjcomp.admMarcas"
         android:label="fragment_adm_marcas"
         tools:layout="@layout/fragment_adm_marcas" />
+    <fragment
+        android:id="@+id/reportes"
+        android:name="com.example.sdjcomp.Reportes"
+        android:label="fragment_reportes"
+        tools:layout="@layout/fragment_reportes" />
 </navigation>

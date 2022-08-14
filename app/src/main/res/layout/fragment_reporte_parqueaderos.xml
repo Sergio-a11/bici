@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReporteParqueaderos">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TableLayout
+                android:id="@+id/tblCP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/txtidControlParqueaderos"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="ID"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtidCupoCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="ID Cupo"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtSeccionCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="Seccion"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtIdParqueaderoCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="ID Parqueadero"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtIdBiciletaCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="ID Bicicleta"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtCedulaCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="Cedula Propiedario"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtFechaRegistroCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="Fecha Registro"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtLugarRegistroCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="Lugar Registro"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtIdMarcaCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="ID Marca"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtNumSerieCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="# Serie"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtIdTipoCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="ID Tipo"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtColorCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="Color"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtCodigoCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="Codigo Estudiante"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtNombreCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="Nombre"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtCorreoCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="Correo"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtArriveTimeCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="Fecha y Hora de Llegada"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtDepartureTimeCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="Fecha y Hora de Salida"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txtEstadoCP"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:padding="10sp"
+                        android:text="Estado"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+</RelativeLayout>

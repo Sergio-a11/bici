@@ -20,43 +20,18 @@ public class Admin extends Fragment {
     private Button btnPreguntas;
     private Button btnTipos;
     private Button btnUsuarios;
+    private Button btnReportes;
     private String URL="";
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public Admin() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Admin.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Admin newInstance(String param1, String param2) {
-        Admin fragment = new Admin();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -72,6 +47,7 @@ public class Admin extends Fragment {
         btnPreguntas = v.findViewById(R.id.btnPreguntas);
         btnTipos = v.findViewById(R.id.btnTipos);
         btnUsuarios = v.findViewById(R.id.btnUsuarios);
+        btnReportes = v.findViewById(R.id.btnReportes);
 
         btnParqueaderos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +97,14 @@ public class Admin extends Fragment {
                 NavHostFragment.findNavController(Admin.this).navigate(R.id.action_admin_to_admCupos);
             }
         });
+
+        btnReportes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(Admin.this).navigate(R.id.action_admin_to_reportes);
+            }
+        });
+
 
         return v;
     }
