@@ -9,6 +9,7 @@
         <entry key="..\:/Repositorios/bici/app/src/main/res/drawable/edt_label_campos.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/drawable/edt_morado.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/drawable/edt_texto_campos.xml" value="0.3625" />
+        <entry key="..\:/Repositorios/bici/app/src/main/res/drawable/ic_bx_cycling.xml" value="0.3635" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/drawable/ic_bxs_up_arrow_circle.xml" value="0.3635" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/drawable/radius.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/activity_main.xml" value="0.3625" />
@@ -18,6 +19,7 @@
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/content_main.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/desasignar_cupo.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_adm_bicicletas.xml" value="0.3625" />
+        <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_adm_marcas.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_interfaz_bicicleta.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_login.xml" value="0.3061594202898551" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_modificar_bicicleta.xml" value="0.3625" />
@@ -26,6 +28,10 @@
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_recuperarcontrasena.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_registrar_bicicleta.xml" value="0.33" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_registro.xml" value="0.25" />
+        <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_reporte_bicicletas.xml" value="0.3625" />
+        <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_reporte_parqueaderos.xml" value="0.3625" />
+        <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_reporte_usuarios.xml" value="0.3625" />
+        <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_reportes.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_roles.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_scrolling.xml" value="0.3061594202898551" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/home.xml" value="0.3061594202898551" />
@@ -33,6 +39,7 @@
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/interfaz_administrador.xml" value="0.35597826086956524" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/interfaz_estudiante.xml" value="0.3061594202898551" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/item_bicicleta.xml" value="0.3625" />
+        <entry key="..\:/Repositorios/bici/app/src/main/res/layout/modificar_marca.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/ntefaz_administrador.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/ver_cupos.xml" value="0.35597826086956524" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/menu/menu_main.xml" value="0.3625" />
@@ -43,23 +50,13 @@
         <entry key="..\:/U/S6/bici/app/src/main/res/drawable/ic_bxs_up_arrow_circle.xml" value="0.3385" />
         <entry key="..\:/U/S6/bici/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3385" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/U/S6/bici/app/src/main/res/layout/consultar_parqueadero_seccion.xml" value="0.33695652173913043" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/content_main.xml" value="0.16018518518518518" />
-        <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_adm_bicicletas.xml" value="0.33695652173913043" />
-        <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_adm_cupos.xml" value="0.33695652173913043" />
-        <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_adm_parqueaderos.xml" value="0.33695652173913043" />
-        <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_adm_usuarios.xml" value="0.33695652173913043" />
-        <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_admin.xml" value="0.33695652173913043" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_interfaz_bicicleta.xml" value="0.33" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_modificar_bicicleta.xml" value="0.33" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_modificar_usuario.xml" value="0.5" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_modificar_y_eliminar_bicicleta.xml" value="0.25" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_registrar_bicicleta.xml" value="0.22" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_registro.xml" value="0.16018518518518518" />
-        <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_reporte_bicicletas.xml" value="0.3625" />
-        <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_reporte_parqueaderos.xml" value="0.33" />
-        <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_reporte_usuarios.xml" value="0.3625" />
-        <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_reportes.xml" value="0.5" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/home.xml" value="0.16018518518518518" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/interfaz_administrador.xml" value="0.26403985507246375" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/interfaz_estudiante.xml" value="0.33" />

@@ -275,7 +275,12 @@
         android:id="@+id/admMarcas"
         android:name="com.example.sdjcomp.admMarcas"
         android:label="fragment_adm_marcas"
-        tools:layout="@layout/fragment_adm_marcas" />
+        tools:layout="@layout/fragment_adm_marcas">
+        <action
+            android:id="@+id/action_admMarcas_to_admin"
+            app:destination="@id/admin" />
+    </fragment>
+
     <fragment
         android:id="@+id/reportes"
         android:name="com.example.sdjcomp.Reportes"
