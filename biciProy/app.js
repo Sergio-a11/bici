@@ -885,3 +885,48 @@ app.post("/updatePassword", (req, res) => {
     }
   );
 });
+
+
+//Reportes
+
+app.get("/getControlBicicletas", (req,res) => {
+  conexion.query("SELECT * FROM control_bicicletas", (error, results) => {
+    if (error) throw error;
+    else if(results!=null)
+    {
+        res.status(200).send(JSON.stringify(results))
+    }
+    else{
+      res.status(404).send();
+    }
+  })
+});
+
+
+app.get("/getControlParqueaderos", (req,res) => {
+  console.log("hola")
+  conexion.query("SELECT * FROM control_parqueaderos", (error, results) => {
+    if (error) throw error;
+    else if(results!=null)
+    {
+      console.log(results)
+        res.status(200).send(JSON.stringify(results))
+    }
+    else{
+      res.status(404).send();
+    }
+  })
+});
+
+app.get("/getControlUsuarios", (req,res) => {
+  conexion.query("SELECT * FROM control_usuarios", (error, results) => {
+    if (error) throw error;
+    else if(results!=null)
+    {
+        res.status(200).send(JSON.stringify(results))
+    }
+    else{
+      res.status(404).send();
+    }
+  })
+});

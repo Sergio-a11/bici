@@ -102,4 +102,8 @@ public interface IRetroFit {
 
     @DELETE("/deleteBicicleta/{idBicicleta}")
     Call<Number> executeDeleteBicicleta(@Path("idBicicleta") int idBicicleta);
+
+    //reportes
+    @GET("/getControlParqueaderos")
+    Call<List<ControlParqueaderos>> executeGetControlParquederos();
 }

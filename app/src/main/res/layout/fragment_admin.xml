@@ -7,94 +7,97 @@
     android:layout_height="match_parent"
     tools:context=".Admin">
 
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="230dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="16dp"
-        android:text="Interfaz Super Admin"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnBicicletas"
-        android:layout_width="290dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="11dp"
-        android:text="Bicicletas"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/btnCupos"
-        android:layout_width="290dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="19dp"
-        android:text="Cupos"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBicicletas" />
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="230dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="104dp"
+                android:layout_marginTop="16dp"
+                android:text="Interfaz Super Admin"
+                android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/btnMarcas"
-        android:layout_width="290dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="14dp"
-        android:text="Marcas"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCupos" />
+            <Button
+                android:id="@+id/btnBicicletas"
+                android:layout_width="290dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="11dp"
+                android:text="Bicicletas" />
 
-    <Button
-        android:id="@+id/btnParqueaderos"
-        android:layout_width="290dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="17dp"
-        android:text="Parqueaderos"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMarcas" />
+            <Button
+                android:id="@+id/btnCupos"
+                android:layout_width="290dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="19dp"
+                android:text="Cupos"
+                tools:ignore="TextContrastCheck" />
 
-    <Button
-        android:id="@+id/btnPreguntas"
-        android:layout_width="290dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="15dp"
-        android:text="Preguntas"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnParqueaderos" />
+            <Button
+                android:id="@+id/btnMarcas"
+                android:layout_width="290dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="14dp"
+                android:text="Marcas" />
 
-    <Button
-        android:id="@+id/btnRoles"
-        android:layout_width="290dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
-        android:text="Roles"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPreguntas" />
+            <Button
+                android:id="@+id/btnParqueaderos"
+                android:layout_width="290dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="17dp"
+                android:text="Parqueaderos" />
 
-    <Button
-        android:id="@+id/btnUsuarios"
-        android:layout_width="290dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="13dp"
-        android:text="Usuarios"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTipos" />
+            <Button
+                android:id="@+id/btnPreguntas"
+                android:layout_width="290dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="15dp"
+                android:text="Preguntas" />
 
-    <Button
-        android:id="@+id/btnTipos"
-        android:layout_width="290dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="10dp"
-        android:text="Tipos"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRoles" />
+            <Button
+                android:id="@+id/btnRoles"
+                android:layout_width="290dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="16dp"
+                android:text="Roles" />
+
+            <Button
+                android:id="@+id/btnUsuarios"
+                android:layout_width="290dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="13dp"
+                android:text="Usuarios" />
+
+            <Button
+                android:id="@+id/btnTipos"
+                android:layout_width="290dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
+                android:text="Tipos" />
+
+            <Button
+                android:id="@+id/btnReportes"
+                android:layout_width="290dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
+                android:text="Reportes" />
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
