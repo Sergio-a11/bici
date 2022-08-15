@@ -106,4 +106,10 @@ public interface IRetroFit {
     //reportes
     @GET("/getControlParqueaderos")
     Call<List<ControlParqueaderos>> executeGetControlParquederos();
+
+    @GET("/getControlBicicletas")
+    Call<List<ControlBicicletas>> executeGetControlBicicletas();
+
+    @GET("/getControlUsuarios")
+    Call<List<ControlUsuarios>> executeGetControlUsuarios();
 }

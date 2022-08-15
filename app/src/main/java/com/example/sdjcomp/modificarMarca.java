@@ -22,15 +22,14 @@ public class modificarMarca extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        txtPrueba.setText(savedInstanceState.getString("idMarca"));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.modificar_marca,container,false);
-
-        txtPrueba = v.findViewById(R.id.txtPruebaMarca);
+        //Bundle bundle = this.getArguments();
+        //txtPrueba.setText(bundle.getString("idMarca"));
 
         return v;
     }
