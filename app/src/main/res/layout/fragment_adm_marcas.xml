@@ -8,6 +8,8 @@
     tools:context=".MainActivity">
 
 
+
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="411dp"
@@ -45,13 +47,13 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/btnCrearMarca"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Crear" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/btnVolverAdmMarca"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Volver" />
@@ -79,6 +81,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical" >
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
                     <TableLayout
                         android:id="@+id/tablaMarcas"

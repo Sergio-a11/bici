@@ -930,3 +930,56 @@ app.get("/getControlUsuarios", (req,res) => {
     }
   })
 });
+
+app.put("/updateMarca",(req,res)=>{
+  const id = req.body.id
+  const marca = req.body.marca
+  conexion.query(`UPDATE marcas SET marca='${marca}' WHERE id=${id}`,(error,results)=>{
+    if(error){
+      throw error
+    }else if(results!=null){
+      res.status(200).send(JSON.stringify(results["affectedRows"]))
+    }else{
+      res.status(404).send();
+    }
+  })
+})
+
+app.get("/getMarca/:id", (req, res) => {
+ const id = req.params.id
+  conexion.query(`SELECT * FROM marcas WHERE id=${id}`, (error, results) => {
+    if (error) {
+      throw error
+    } else if (results != null) {
+      res.status(200).send(JSON.stringify(results[0]));
+    } else {
+      res.status(404).send();
+    }
+  });
+});
+
+app.delete("/deleteMarca/:id",(req,res)=>{
+  const id = req.params.id
+  console.log(id)
+  conexion.query(`DELETE FROM marcas WHERE id=${id}`,(error,results)=>{
+    if(error){
+      throw error
+    }else{
+      res.status(200).send(JSON.stringify(results["affectedRows"]))
+    }
+  })
+})
+
+app.post("/createMarca",(req,res)=>{
+  const id = req.body.id
+  const marca = req.body.marca
+  conexion.query(`INSERT INTO marcas (marca) VALUES ('${marca}')`,(error,results)=>{
+    if(error){
+      throw error
+    }else if(results!=null){
+      res.status(200).send(JSON.stringify(results["affectedRows"]))
+    }else{
+      res.status(404).send()
+    }
+  })
+})

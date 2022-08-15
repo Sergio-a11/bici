@@ -12,6 +12,10 @@ public class Marca {
         this.marca = marca;
     }
 
+    public Marca( String marca) {
+        this.marca = marca;
+    }
+
     public int getId() {
         return id;
     }

@@ -279,6 +279,12 @@
         <action
             android:id="@+id/action_admMarcas_to_admin"
             app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admMarcas_to_modificarMarca"
+            app:destination="@id/modificarMarca" />
+        <action
+            android:id="@+id/action_admMarcas_to_registrarMarca"
+            app:destination="@id/registrarMarca" />
     </fragment>
 
     <fragment
@@ -286,4 +292,22 @@
         android:name="com.example.sdjcomp.Reportes"
         android:label="fragment_reportes"
         tools:layout="@layout/fragment_reportes" />
+    <fragment
+        android:id="@+id/modificarMarca"
+        android:name="com.example.sdjcomp.modificarMarca"
+        android:label="modificar_marca"
+        tools:layout="@layout/modificar_marca" >
+        <action
+            android:id="@+id/action_modificarMarca_to_admMarcas"
+            app:destination="@id/admMarcas" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrarMarca"
+        android:name="com.example.sdjcomp.registrarMarca"
+        android:label="fragment_registrar_marca"
+        tools:layout="@layout/fragment_registrar_marca" >
+        <action
+            android:id="@+id/action_registrarMarca_to_admMarcas"
+            app:destination="@id/admMarcas" />
+    </fragment>
 </navigation>

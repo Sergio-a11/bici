@@ -106,4 +106,16 @@ public interface IRetroFit {
     //reportes
     @GET("/getControlParqueaderos")
     Call<List<ControlParqueaderos>> executeGetControlParquederos();
+
+    @GET("/getMarca/{id}")
+    Call<Marca> executeGetMarcas(@Path("id") Number id);
+
+    @PUT("/updateMarca")
+    Call<Number> executeUpdateMarca(@Body Marca marca);
+
+    @DELETE("/deleteMarca/{id}")
+    Call<Number> executeDeleteMarca(@Path("id") Number id);
+
+    @POST("/createMarca")
+    Call<Number> executeRegisterMarca(@Body Marca marca);
 }
