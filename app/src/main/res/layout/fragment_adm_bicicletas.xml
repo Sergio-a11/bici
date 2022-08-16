@@ -1,145 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:id="@+id/relativeLayout3">
 
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scrollView6"
+        android:layout_width="412dp"
+        android:layout_height="259dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TableLayout
-                android:id="@+id/tablaBicicletas"
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="40dp"
-                android:background="@android:color/white">
+                android:layout_height="match_parent">
 
-                <!-- Table Heading -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <TableRow
-
-                    android:layout_width="369dp"
-                    android:background="@color/colorGreen">
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-
-                    <TextView
-                        android:id="@+id/tvidBicicleta"
-                        android:layout_width="134dp"
+                    <TableLayout
+                        android:id="@+id/tablaBicicletas"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="4"
-                        android:gravity="center_horizontal"
-                        android:padding="10sp"
-                        android:text="Id"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp" />
+                        android:background="@android:color/white"
+                        tools:layout_conversion_absoluteHeight="39dp"
+                        tools:layout_conversion_absoluteWidth="1341dp">
 
-                    <TextView
-                        android:id="@+id/tvCedulaPropietario"
-                        android:layout_width="151dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="center_horizontal"
-                        android:padding="10sp"
-                        android:text="PropietarioC.C"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp" />
+                        <!-- Table Heading -->
 
-                    <TextView
-                        android:id="@+id/tvFecha"
-                        android:layout_width="151dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="center_horizontal"
-                        android:padding="10sp"
-                        android:text="Fecha Registro"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp" />
+                        <TableRow
 
-                    <TextView
-                        android:id="@+id/tvLugarRegistro"
-                        android:layout_width="151dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="center_horizontal"
-                        android:padding="10sp"
-                        android:text="Lugar Registro"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp" />
+                            android:layout_width="369dp"
+                            android:background="@color/colorGreen">
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
 
-                    <TextView
-                        android:id="@+id/tvMarca_id"
-                        android:layout_width="151dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="center_horizontal"
-                        android:padding="10sp"
-                        android:text="Marca id"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp" />
+                            <TextView
+                                android:id="@+id/tvidBicicleta"
+                                android:layout_width="134dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Id"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/tvNumberoSerie"
-                        android:layout_width="151dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="center_horizontal"
-                        android:padding="10sp"
-                        android:text="#Serie"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp" />
+                            <TextView
+                                android:id="@+id/tvCedulaPropietario"
+                                android:layout_width="151dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="PropietarioC.C"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/tvTipo"
-                        android:layout_width="151dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="center_horizontal"
-                        android:padding="10sp"
-                        android:text="Tipo"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp" />
+                            <TextView
+                                android:id="@+id/tvFecha"
+                                android:layout_width="151dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Fecha Registro"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/tvnColor"
-                        android:layout_width="151dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="center_horizontal"
-                        android:padding="10sp"
-                        android:text="Color"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp" />
+                            <TextView
+                                android:id="@+id/tvLugarRegistro"
+                                android:layout_width="151dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Lugar Registro"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/tvEstudiante_id"
-                        android:layout_width="151dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="center_horizontal"
-                        android:padding="10sp"
-                        android:text="Estudiante id"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp" />
+                            <TextView
+                                android:id="@+id/tvMarca_id"
+                                android:layout_width="151dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Marca id"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvNumberoSerie"
+                                android:layout_width="151dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="#Serie"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvTipo"
+                                android:layout_width="151dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Tipo"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvnColor"
+                                android:layout_width="151dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Color"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvEstudiante_id"
+                                android:layout_width="151dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Estudiante id"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp" />
 
 
-                </TableRow>
+                        </TableRow>
 
-                <!-- Table Data -->
+                        <!-- Table Data -->
 
 
-            </TableLayout>
+                    </TableLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
         </LinearLayout>
-    </HorizontalScrollView>
+    </ScrollView>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="410dp"
+        android:layout_height="262dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView6">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/edt_texto_campos"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnBuscarBicicletaAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Buscar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnVolverBicicletaAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Volver" />
+
+            <Button
+                android:id="@+id/btnCrearBicicletaAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Crear" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

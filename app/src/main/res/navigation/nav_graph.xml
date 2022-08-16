@@ -107,6 +107,9 @@
         <action
             android:id="@+id/action_registrarBicicleta_to_InterfazEstudiante"
             app:destination="@id/InterfazEstudiante" />
+        <action
+            android:id="@+id/action_registrarBicicleta_to_admBicicletas"
+            app:destination="@id/admBicicletas" />
     </fragment>
 
     <fragment
@@ -207,6 +210,9 @@
         <action
             android:id="@+id/action_modificarBicicleta_to_modificarYEliminarBicicleta"
             app:destination="@id/modificarYEliminarBicicleta" />
+        <action
+            android:id="@+id/action_modificarBicicleta_to_admBicicletas"
+            app:destination="@id/admBicicletas" />
     </fragment>
     <fragment
         android:id="@+id/admin"
@@ -255,7 +261,17 @@
         android:id="@+id/admBicicletas"
         android:name="com.example.sdjcomp.admBicicletas"
         android:label="fragment_adm_bicicletas"
-        tools:layout="@layout/fragment_adm_bicicletas" />
+        tools:layout="@layout/fragment_adm_bicicletas" >
+        <action
+            android:id="@+id/action_admBicicletas_to_admin"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admBicicletas_to_registrarBicicleta"
+            app:destination="@id/registrarBicicleta" />
+        <action
+            android:id="@+id/action_admBicicletas_to_modificarBicicleta"
+            app:destination="@id/modificarBicicleta" />
+    </fragment>
     <fragment
         android:id="@+id/admCupos"
         android:name="com.example.sdjcomp.admCupos"

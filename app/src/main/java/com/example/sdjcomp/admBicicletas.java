@@ -4,10 +4,12 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ public class admBicicletas extends Fragment {
     private String URL="";
     private TableLayout tablaBicicletas1;
     private TableLayout tablaBicicletas2;
+    private Button btnCrear,btnVolver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,8 @@ public class admBicicletas extends Fragment {
         View v = inflater.inflate(R.layout.fragment_adm_bicicletas,container,false);
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
+        btnCrear = v.findViewById(R.id.btnCrearBicicletaAdmin);
+        btnVolver = v.findViewById(R.id.btnVolverBicicletaAdmin);
 
         tablaBicicletas1 = v.findViewById(R.id.tablaBicicletas);
         Call<List<Bicicleta>> call = iRetrofit.executeGetadmbicicletas();
@@ -61,6 +66,8 @@ public class admBicicletas extends Fragment {
                     TextView textTipoID = new TextView(getActivity());
                     TextView textColor = new TextView(getActivity());
                     TextView textEstudianteID = new TextView(getActivity());
+                    Button btnModificar = new Button(getActivity());
+                    Button btnEliminar = new Button(getActivity());
                     textIdbici.setText(String.valueOf(response.body().get(i).getIdBicicleta()));
                     textCCpropietario.setText(response.body().get(i).getCedulaPropietario());
                     textFecharegistro.setText(response.body().get(i).getFechaRegistro());
@@ -70,6 +77,35 @@ public class admBicicletas extends Fragment {
                     textTipoID.setText(String.valueOf(response.body().get(i).getTipo()));
                     textColor.setText(response.body().get(i).getColor());
                     textEstudianteID.setText(response.body().get(i).getEstudiante_id());
+                    btnModificar.setText("Modificar");
+                    btnModificar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ((Sesion)getActivity().getApplicationContext()).setIdBici(Integer.parseInt(textIdbici.getText().toString()));
+                            ((Sesion)getActivity().getApplicationContext()).setCodigo(textEstudianteID.getText().toString());
+                            NavHostFragment.findNavController(admBicicletas.this).navigate(R.id.action_admBicicletas_to_modificarBicicleta);
+                        }
+                    });
+                    btnEliminar.setText("Eliminar");
+                    btnEliminar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Call call1 = iRetrofit.executeDeleteBicicleta(Integer.parseInt(textIdbici.getText().toString()));
+                            call1.enqueue(new Callback() {
+                                @Override
+                                public void onResponse(Call call, Response response) {
+                                    Snackbar.make(v, "Bicicleta Borrada", Snackbar.LENGTH_LONG).show();
+                                    NavHostFragment.findNavController(admBicicletas.this).
+                                            navigate(R.id.action_admBicicletas_to_admin);
+                                }
+
+                                @Override
+                                public void onFailure(Call call, Throwable t) {
+                                    Snackbar.make(v, "No se pudo borrar la bicicleta", Snackbar.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    });
                     fila.addView(textIdbici);
                     fila.addView(textCCpropietario);
                     fila.addView(textFecharegistro);
@@ -79,6 +115,8 @@ public class admBicicletas extends Fragment {
                     fila.addView(textTipoID);
                     fila.addView(textColor);
                     fila.addView(textEstudianteID);
+                    fila.addView(btnModificar);
+                    fila.addView(btnEliminar);
                     tablaBicicletas1.addView(fila);
                 }
 
@@ -89,6 +127,21 @@ public class admBicicletas extends Fragment {
                 Snackbar.make(v, "No se pudieron encontrar las bicicletas", Snackbar.LENGTH_LONG).show();
             }
         });
+
+        btnCrear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(admBicicletas.this).navigate(R.id.action_admBicicletas_to_registrarBicicleta);
+            }
+        });
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(admBicicletas.this).navigate(R.id.action_admBicicletas_to_admin);
+            }
+        });
+
         return v;
     }
 }

@@ -235,6 +235,34 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/HlayoutBicicleta"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblCodigoEstudianteRegistrarBici"
+                        android:layout_width="134dp"
+                        android:layout_height="31dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Codigo Estudiante"
+                        android:textColor="#FFFFFF" />
+
+                    <EditText
+                        android:id="@+id/edtEstudianteCrearBicicleta"
+                        android:layout_width="258dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/edt_texto_campos"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"

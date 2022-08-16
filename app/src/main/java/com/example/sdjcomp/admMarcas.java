@@ -111,7 +111,6 @@ public class admMarcas extends Fragment {
                                     Snackbar.make(v, "No se pudo borrar la marca", Snackbar.LENGTH_LONG).show();
                                 }
                             });
-
                         }
                     });
                     textId.setGravity(Gravity.CENTER);

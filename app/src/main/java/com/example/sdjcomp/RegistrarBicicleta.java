@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,12 +30,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegistrarBicicleta extends Fragment {
 
     private TextView txtCedulaPropietario, txtFechaRegistro, txtLugarRegistro, txtMarca, txtNumSerie, txtTipo, txtColor;
+    private EditText edtEstudiante;
     private Button btnRegistrar, btnVolver;
     private Spinner spnMarcas, spnTipos;
     private String URL="";
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
-
+    private LinearLayout ly;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,13 @@ public class RegistrarBicicleta extends Fragment {
         URL="http://"+getResources().getString(R.string.IP)+":3000/getMarcas/";
         View v = inflater.inflate(R.layout.fragment_registrar_bicicleta, container, false);
 
+
+        ly = v.findViewById(R.id.HlayoutBicicleta);
+        if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+            ly.setVisibility(View.VISIBLE);
+        }else{
+            ly.setVisibility(View.GONE);
+        }
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
 
@@ -122,6 +132,7 @@ public class RegistrarBicicleta extends Fragment {
                 txtLugarRegistro = (TextView) v.findViewById(R.id.txtLugarRegistro);
                 txtNumSerie = (TextView) v.findViewById(R.id.txtNumSerie);
                 txtColor = (TextView) v.findViewById(R.id.txtColorCicla);
+                edtEstudiante = v.findViewById(R.id.edtEstudianteCrearBicicleta);
                 int marca = spnMarcas.getSelectedItemPosition()+1;
                 int tipo = spnTipos.getSelectedItemPosition()+1;
 
@@ -139,7 +150,12 @@ public class RegistrarBicicleta extends Fragment {
                     objB.setNumSerie(txtNumSerie.getText().toString());
                     objB.setTipo(tipo);
                     objB.setColor(txtColor.getText().toString());
-                    objB.setEstudiante_id(((Sesion)getActivity().getApplicationContext()).getCodigo());
+                    if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                        objB.setEstudiante_id(edtEstudiante.getText().toString());
+                    }else{
+                        objB.setEstudiante_id(((Sesion)getActivity().getApplicationContext()).getCodigo());
+                    }
+
 
                     Call<Number> call = iRetrofit.executeRegisterBike(objB);
                     call.enqueue(new Callback<Number>() {
@@ -147,14 +163,22 @@ public class RegistrarBicicleta extends Fragment {
                         public void onResponse(Call<Number> call, Response<Number> response) {
                             if(Integer.parseInt(String.valueOf(response.body()))==1){
                                 Snackbar.make(v, "Bicicleta Registrado Con Exito", Snackbar.LENGTH_LONG).show();
-                                NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_interfazBicicleta2);
+                                if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                                    NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_admBicicletas);
+                                }else{
+                                    NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_interfazBicicleta2);
+                                }
                             }
                         }
 
                         @Override
                         public void onFailure(Call<Number> call, Throwable t) {
                             Snackbar.make(v, "Bicicleta NO Registrado", Snackbar.LENGTH_LONG).show();
-                            NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_interfazBicicleta2);
+                            if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                                NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_admBicicletas);
+                            }else{
+                                NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_interfazBicicleta2);
+                            }
                         }
                     });
                 }
@@ -169,7 +193,11 @@ public class RegistrarBicicleta extends Fragment {
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_InterfazEstudiante);
+                if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                    NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_admBicicletas);
+                }else{
+                    NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_InterfazEstudiante);
+                }
             }
         });
 

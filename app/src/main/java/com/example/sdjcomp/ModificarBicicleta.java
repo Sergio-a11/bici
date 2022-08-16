@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class ModificarBicicleta extends Fragment {
     private Button btnModficarBici, btnVolver;
     private String auxMarca, auxTipo, auxCodigo;
 
+
     public ModificarBicicleta() {
         // Required empty public constructor
     }
@@ -52,6 +54,7 @@ public class ModificarBicicleta extends Fragment {
                              Bundle savedInstanceState) {
         URL = "http://" + getResources().getString(R.string.IP) + ":3000/getBike/";
         View v = inflater.inflate(R.layout.fragment_modificar_bicicleta, container, false);
+
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
@@ -196,7 +199,11 @@ public class ModificarBicicleta extends Fragment {
                             if(response.code()==200){
                                 if(Integer.parseInt(String.valueOf(response.body()))==1){
                                     Snackbar.make(v, "Bicicleta actualizada", Snackbar.LENGTH_LONG).show();
-                                    NavHostFragment.findNavController(ModificarBicicleta.this).navigate(R.id.action_modificarBicicleta_to_modificarYEliminarBicicleta);
+                                    if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                                        NavHostFragment.findNavController(ModificarBicicleta.this).navigate(R.id.action_modificarBicicleta_to_admBicicletas);
+                                    }else{
+                                        NavHostFragment.findNavController(ModificarBicicleta.this).navigate(R.id.action_modificarBicicleta_to_modificarYEliminarBicicleta);
+                                    }
                                 }
                             }else if(response.code()==412){
                                 Snackbar.make(v, "Este numero de serie ya esta registrado", Snackbar.LENGTH_LONG).show();
@@ -217,7 +224,11 @@ public class ModificarBicicleta extends Fragment {
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(ModificarBicicleta.this).navigate(R.id.action_modificarBicicleta_to_modificarYEliminarBicicleta);
+                if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                    NavHostFragment.findNavController(ModificarBicicleta.this).navigate(R.id.action_modificarBicicleta_to_admBicicletas);
+                }else{
+                    NavHostFragment.findNavController(ModificarBicicleta.this).navigate(R.id.action_modificarBicicleta_to_modificarYEliminarBicicleta);
+                }
             }
         });
 
