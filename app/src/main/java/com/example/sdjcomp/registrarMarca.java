@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,29 +49,30 @@ public class registrarMarca extends Fragment {
         btnVolver = v.findViewById(R.id.btnVolverCrearMarca);
         btnCrear = v.findViewById(R.id.btnCrearMarcaAdm);
 
+
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Marca objM = new Marca(edtNombre.getText().toString());
-                System.out.println("objM = " + objM);
-                Call<Number> call = iRetrofit.executeRegisterMarca(objM);
-                call.enqueue(new Callback<Number>() {
-                    @Override
-                    public void onResponse(Call<Number> call, Response<Number> response) {
-                        NavHostFragment.findNavController(registrarMarca.this).
-                                navigate(R.id.action_registrarMarca_to_admMarcas);
-                    }
+                if(edtNombre.getText().toString()!=null){
+                    Marca objM = new Marca(edtNombre.getText().toString());
+                    Call<Number> call = iRetrofit.executeRegisterMarca(objM);
+                    call.enqueue(new Callback<Number>() {
+                        @Override
+                        public void onResponse(Call<Number> call, Response<Number> response) {
+                            NavHostFragment.findNavController(registrarMarca.this).
+                                    navigate(R.id.action_registrarMarca_to_admMarcas);
+                        }
 
-                    @Override
-                    public void onFailure(Call<Number> call, Throwable t) {
-                        Toast.makeText(getContext(), "No se pudo crear la marca", Toast.LENGTH_LONG).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<Number> call, Throwable t) {
+                            Snackbar.make(v, "No se pudo modificar la marca", Snackbar.LENGTH_LONG).show();
+                        }
+                    });
+                }else{
+                    Snackbar.make(v, "Rellene los campos", Snackbar.LENGTH_LONG).show();
+                }
             }
         });
-
-
-
         return v;
     }
 }

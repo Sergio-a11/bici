@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -125,11 +127,11 @@ public class ConsultarCupo extends Fragment {
 
                         @Override
                         public void onFailure(Call<Usuario> call, Throwable t) {
-                            Toast.makeText(getContext(), "Estudiante no encontrado", Toast.LENGTH_LONG).show();
+                            Snackbar.make(v, "Estudiante no encontrado", Snackbar.LENGTH_LONG).show();
                         }
                     });
                 }else{
-                    Toast.makeText(getContext(), "Debe rellenar el campo", Toast.LENGTH_LONG).show();
+                    Snackbar.make(v, "Debe rellenar el campo", Snackbar.LENGTH_LONG).show();
                 }
             }
         });

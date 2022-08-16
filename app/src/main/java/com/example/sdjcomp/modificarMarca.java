@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,8 +39,6 @@ public class modificarMarca extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,7 +68,7 @@ public class modificarMarca extends Fragment {
 
             @Override
             public void onFailure(Call<Marca> call, Throwable t) {
-                Toast.makeText(getContext(), "Problema inesperado para encontrar la marca", Toast.LENGTH_LONG).show();
+                Snackbar.make(v, "Problema inesperado para encontrar la marca", Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -80,14 +80,14 @@ public class modificarMarca extends Fragment {
                 call1.enqueue(new Callback<Number>() {
                     @Override
                     public void onResponse(Call<Number> call, Response<Number> response) {
-                        Toast.makeText(getContext(), "Marca Actualizada", Toast.LENGTH_LONG).show();
+                        Snackbar.make(v, "Marca Actualizada", Snackbar.LENGTH_LONG).show();
                         NavHostFragment.findNavController(modificarMarca.this).
                                 navigate(R.id.action_modificarMarca_to_admMarcas);
                     }
 
                     @Override
                     public void onFailure(Call<Number> call, Throwable t) {
-                        Toast.makeText(getContext(), "No se pudo actualizar la marca", Toast.LENGTH_LONG).show();
+                        Snackbar.make(v, "No se pudo actualizar la marca", Snackbar.LENGTH_LONG).show();
                     }
                 });
             }

@@ -12,6 +12,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,44 +23,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Roles#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Roles extends Fragment {
 
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
     private String URL="";
     private TableLayout tablaRoles;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Roles() {
-        // Required empty public constructor
-    }
-
-    public static Roles newInstance(String param1, String param2) {
-        Roles fragment = new Roles();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -92,7 +66,7 @@ public class Roles extends Fragment {
 
             @Override
             public void onFailure(Call<List<Rol>> call, Throwable t) {
-                System.out.println("fail");
+                Snackbar.make(v, "No se encontraron los roles", Snackbar.LENGTH_LONG).show();
             }
         });
         return v;

@@ -54,8 +54,6 @@ public class RegistrarBicicleta extends Fragment {
 
         btnVolver = v.findViewById(R.id.btnVolverRegBici);
 
-        //rellenar spinner marcas
-
         ArrayList<Marca> lstMarcas = new ArrayList<>();
         ArrayList<String> auxLstMarcas = new ArrayList<>();
 
@@ -80,7 +78,7 @@ public class RegistrarBicicleta extends Fragment {
 
             @Override
             public void onFailure(Call<List<Marca>> call, Throwable t) {
-                System.out.println("Marcas No Encontradas");
+                Snackbar.make(v, "Marcas No Encontradas", Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -110,7 +108,7 @@ public class RegistrarBicicleta extends Fragment {
 
             @Override
             public void onFailure(Call<List<Tipo>> call, Throwable t) {
-                System.out.println("Tipos No Encontradas");
+                Snackbar.make(v, "Tipos No Encontradas", Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -143,20 +141,19 @@ public class RegistrarBicicleta extends Fragment {
                     objB.setColor(txtColor.getText().toString());
                     objB.setEstudiante_id(((Sesion)getActivity().getApplicationContext()).getCodigo());
 
-                    //registrar bicicleta
                     Call<Number> call = iRetrofit.executeRegisterBike(objB);
                     call.enqueue(new Callback<Number>() {
                         @Override
                         public void onResponse(Call<Number> call, Response<Number> response) {
                             if(Integer.parseInt(String.valueOf(response.body()))==1){
-                                Toast.makeText(getContext(), "Bicicleta Registrado Con Exito", Toast.LENGTH_LONG).show();
+                                Snackbar.make(v, "Bicicleta Registrado Con Exito", Snackbar.LENGTH_LONG).show();
                                 NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_interfazBicicleta2);
                             }
                         }
 
                         @Override
                         public void onFailure(Call<Number> call, Throwable t) {
-                            Toast.makeText(getContext(), "Bicicleta NO Registrado", Toast.LENGTH_LONG).show();
+                            Snackbar.make(v, "Bicicleta NO Registrado", Snackbar.LENGTH_LONG).show();
                             NavHostFragment.findNavController(RegistrarBicicleta.this).navigate(R.id.action_registrarBicicleta_to_interfazBicicleta2);
                         }
                     });

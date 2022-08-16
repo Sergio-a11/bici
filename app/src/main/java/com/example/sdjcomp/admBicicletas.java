@@ -12,6 +12,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,33 +31,9 @@ public class admBicicletas extends Fragment {
     private TableLayout tablaBicicletas1;
     private TableLayout tablaBicicletas2;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public admBicicletas() {
-        // Required empty public constructor
-    }
-
-    public static admBicicletas newInstance(String param1, String param2) {
-        admBicicletas fragment = new admBicicletas();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -108,7 +86,7 @@ public class admBicicletas extends Fragment {
 
             @Override
             public void onFailure(Call<List<Bicicleta>> call, Throwable t) {
-                System.out.println("fail");
+                Snackbar.make(v, "No se pudieron encontrar las bicicletas", Snackbar.LENGTH_LONG).show();
             }
         });
         return v;

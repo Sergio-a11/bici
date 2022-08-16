@@ -55,8 +55,6 @@ public class ModificarBicicleta extends Fragment {
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
-        //va al alert dialog del card view
-        //((Sesion) getActivity().getApplicationContext()).setIdBici(1);
 
         txtCedula = (EditText) v.findViewById(R.id.txtCedulaBici1);
         txtFecha = (EditText) v.findViewById(R.id.txtFechaRegistroBici1);
@@ -69,16 +67,13 @@ public class ModificarBicicleta extends Fragment {
         btnVolver = (Button) v.findViewById(R.id.btnVolverModBici);
 
         int id = ((Sesion) getActivity().getApplicationContext()).getIdBici();
-        System.out.println("id = " + id);
 
         Call<Bicicleta> call = iRetrofit.executeGetBike(((Sesion) getActivity().getApplicationContext()).getCodigo(), id);
-        System.out.println("((Sesion)getActivity().getApplicationContext()).getCodigo() = " + ((Sesion) getActivity().getApplicationContext()).getCodigo());
         call.enqueue(new Callback<Bicicleta>() {
             @Override
             public void onResponse(Call<Bicicleta> call, Response<Bicicleta> response) {
                 if(response.code()==200)
                 {
-                    System.out.println("xd" + response.body().getCedulaPropietario());
                     txtCedula.setText(response.body().getCedulaPropietario());
                     txtFecha.setText(response.body().getFechaRegistro());
                     txtLugar.setText(response.body().getLugarRegistro());
@@ -93,8 +88,7 @@ public class ModificarBicicleta extends Fragment {
 
             @Override
             public void onFailure(Call<Bicicleta> call, Throwable t) {
-                System.out.println("321");
-                System.out.println(t.getMessage());
+                Snackbar.make(v, t.getMessage(), Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -133,7 +127,7 @@ public class ModificarBicicleta extends Fragment {
 
             @Override
             public void onFailure(Call<List<Marca>> call, Throwable t) {
-                System.out.println("Marcas No Encontradas");
+                Snackbar.make(v, "Marcas No Encontradas", Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -170,7 +164,7 @@ public class ModificarBicicleta extends Fragment {
 
             @Override
             public void onFailure(Call<List<Tipo>> call, Throwable t) {
-                System.out.println("Tipos No Encontradas");
+                Snackbar.make(v, "Tipos No Encontradas", Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -201,7 +195,7 @@ public class ModificarBicicleta extends Fragment {
                         public void onResponse(Call<Number> call, Response<Number> response) {
                             if(response.code()==200){
                                 if(Integer.parseInt(String.valueOf(response.body()))==1){
-                                    Toast.makeText(getContext(), "Bicicleta actualizada", Toast.LENGTH_LONG).show();
+                                    Snackbar.make(v, "Bicicleta actualizada", Snackbar.LENGTH_LONG).show();
                                     NavHostFragment.findNavController(ModificarBicicleta.this).navigate(R.id.action_modificarBicicleta_to_modificarYEliminarBicicleta);
                                 }
                             }else if(response.code()==412){
@@ -211,17 +205,12 @@ public class ModificarBicicleta extends Fragment {
 
                         @Override
                         public void onFailure(Call<Number> call, Throwable t) {
-                            Toast.makeText(getContext(), "Bicicleta no actualizada", Toast.LENGTH_LONG).show();
-
+                            Snackbar.make(v, "Bicicleta no actualizada", Snackbar.LENGTH_LONG).show();
                         }
                     });
                 }else{
                     Snackbar.make(v, "Debe Rellenar Todos los Campos", Snackbar.LENGTH_LONG).show();
                 }
-
-
-                //falta el node y en la interfaz y ver que no destrui registrar
-
             }
         });
 

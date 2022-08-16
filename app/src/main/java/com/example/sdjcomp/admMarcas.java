@@ -20,6 +20,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -100,14 +101,14 @@ public class admMarcas extends Fragment {
                             call1.enqueue(new Callback() {
                                 @Override
                                 public void onResponse(Call call, Response response) {
-                                    Toast.makeText(getContext(), "Marca Borrada", Toast.LENGTH_LONG).show();
+                                    Snackbar.make(v, "Marca Borrada", Snackbar.LENGTH_LONG).show();
                                     NavHostFragment.findNavController(admMarcas.this).
                                             navigate(R.id.action_admMarcas_to_admin);
                                 }
 
                                 @Override
                                 public void onFailure(Call call, Throwable t) {
-                                    Toast.makeText(getContext(), "No se pudo borrar la marca", Toast.LENGTH_LONG).show();
+                                    Snackbar.make(v, "No se pudo borrar la marca", Snackbar.LENGTH_LONG).show();
                                 }
                             });
 

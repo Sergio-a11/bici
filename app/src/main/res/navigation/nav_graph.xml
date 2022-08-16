@@ -237,6 +237,9 @@
         <action
             android:id="@+id/action_admin_to_reportes"
             app:destination="@id/reportes" />
+        <action
+            android:id="@+id/action_admin_to_Home2"
+            app:destination="@id/Home" />
     </fragment>
     <fragment
         android:id="@+id/roles"

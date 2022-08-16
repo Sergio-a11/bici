@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,45 +45,9 @@ public class Registro extends Fragment {
     private Spinner spnPreguntas;
     private Button btnRegistrar, btnVolver;
 
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Registro() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Registro.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Registro newInstance(String param1, String param2) {
-        Registro fragment = new Registro();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -123,7 +89,7 @@ public class Registro extends Fragment {
 
             @Override
             public void onFailure(Call<List<Pregunta>> call, Throwable t) {
-                System.out.println("Preguntas No Encontradas");
+                Snackbar.make(v, "Preguntas No Encontradas", Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -140,8 +106,6 @@ public class Registro extends Fragment {
                 {
                     int preguntaF = spnPreguntas.getSelectedItemPosition()+1;
 
-                    System.out.println("preguntaF = " + preguntaF);
-                    System.out.println("spnPreguntas.getSelectedItemPosition() = " + spnPreguntas.getSelectedItemPosition());
                     Usuario objU = new Usuario(edtCodigo.getText().toString(),edtNombre.getText().toString(),
                             edtCorreo.getText().toString(),edtClave.getText().toString(),
                             preguntaF,edtRespuesta.getText().toString(),2);
@@ -159,22 +123,21 @@ public class Registro extends Fragment {
                         public void onResponse(Call<Number> call, Response<Number> response) {
                             if(response.code()==200){
                                 if(Integer.parseInt(String.valueOf(response.body()))==1){
-                                    Toast.makeText(getContext(), "Usuario Registrado Con Exito", Toast.LENGTH_LONG).show();
+                                    Snackbar.make(v, "Usuario Registrado Con Exito", Snackbar.LENGTH_LONG).show();
                                     NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_Home);
                                 }
                             }else if(response.code()==412){
-                                Toast.makeText(getContext(), "Este usuario ya existe", Toast.LENGTH_LONG).show();
+                                Snackbar.make(v, "Este usuario ya existe", Snackbar.LENGTH_LONG).show();
                             }
                         }
 
                         @Override
                         public void onFailure(Call<Number> call, Throwable t) {
-                            System.out.println("t = " + t);
-                            Toast.makeText(getContext(), "Usuario No Registrado", Toast.LENGTH_LONG).show();
+                            Snackbar.make(v, "Usuario No Registrado", Snackbar.LENGTH_LONG).show();
                         }
                     });
                 }else{
-                    Toast.makeText(getContext(), "Debe Rellenar Todos los campos", Toast.LENGTH_LONG).show();
+                    Snackbar.make(v, "Debe Rellenar Todos los campos", Snackbar.LENGTH_LONG).show();
                 }
             }
         });

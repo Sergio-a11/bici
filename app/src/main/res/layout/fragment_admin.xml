@@ -23,6 +23,7 @@
                 android:layout_marginStart="104dp"
                 android:layout_marginTop="16dp"
                 android:text="Interfaz Super Admin"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 
             <Button
@@ -97,6 +98,15 @@
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="10dp"
                 android:text="Reportes" />
+
+            <Button
+                android:id="@+id/btnCerrarSesionSuperAdmin"
+                android:layout_width="290dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
+                android:text="Cerrar Sesion" />
+
         </LinearLayout>
     </ScrollView>
 

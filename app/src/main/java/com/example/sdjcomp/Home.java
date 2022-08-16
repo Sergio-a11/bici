@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import com.example.sdjcomp.databinding.HomeBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.HashMap;
 
@@ -102,11 +103,11 @@ public class Home extends Fragment {
                             validado=false;
                             //TODO QUItar
                             System.out.println("BULIAN1!!!¡");
-                            Toast.makeText(getContext(), "Correo o Contraseña Incorrectos", Toast.LENGTH_LONG).show();
+                            Snackbar.make(v, "Correo o Contraseña Incorrectos", Snackbar.LENGTH_LONG).show();
                         }
                     });
                 }else{
-                    Toast.makeText(getContext(), "Debe rellenar ambos campos obligatoriamente", Toast.LENGTH_LONG).show();
+                    Snackbar.make(v, "Debe rellenar ambos campos obligatoriamente", Snackbar.LENGTH_LONG).show();
                 }
             }
         });

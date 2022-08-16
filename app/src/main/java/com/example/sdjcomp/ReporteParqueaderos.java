@@ -15,6 +15,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -57,7 +59,6 @@ public class ReporteParqueaderos extends Fragment {
             public void onResponse(Call<List<ControlParqueaderos>> call, Response<List<ControlParqueaderos>> response) {
                 for(int i=0; i<response.body().size(); i++)
                 {
-                    System.out.println("hey");
                     TableRow fila = new TableRow(getActivity());
                     TextView txtID = new TextView(getActivity());
                     txtID.setTextColor(Color.rgb(255,255,255));
@@ -123,8 +124,7 @@ public class ReporteParqueaderos extends Fragment {
 
             @Override
             public void onFailure(Call<List<ControlParqueaderos>> call, Throwable t) {
-                System.out.println("hola");
-                System.out.println(t.getMessage());
+                Snackbar.make(v, t.getMessage(), Snackbar.LENGTH_LONG).show();
             }
         });
         return v;

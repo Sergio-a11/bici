@@ -21,6 +21,7 @@ public class Admin extends Fragment {
     private Button btnTipos;
     private Button btnUsuarios;
     private Button btnReportes;
+    private Button btnCerrarSesion;
     private String URL="";
 
 
@@ -48,6 +49,7 @@ public class Admin extends Fragment {
         btnTipos = v.findViewById(R.id.btnTipos);
         btnUsuarios = v.findViewById(R.id.btnUsuarios);
         btnReportes = v.findViewById(R.id.btnReportes);
+        btnCerrarSesion = v.findViewById(R.id.btnCerrarSesionSuperAdmin);
 
         btnParqueaderos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +107,12 @@ public class Admin extends Fragment {
             }
         });
 
+        btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(Admin.this).navigate(R.id.action_admin_to_Home);
+            }
+        });
 
         return v;
     }

@@ -11,6 +11,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -19,44 +21,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link admUsuarios#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class admUsuarios extends Fragment {
 
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
     private String URL="";
     private TableLayout tablaUsuarios;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public admUsuarios() {
-        // Required empty public constructor
-    }
-
-    public static admUsuarios newInstance(String param1, String param2) {
-        admUsuarios fragment = new admUsuarios();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -101,7 +75,7 @@ public class admUsuarios extends Fragment {
 
             @Override
             public void onFailure(Call<List<Usuario>> call, Throwable t) {
-
+                Snackbar.make(v, "No se pudieron encontrar los usuarios", Snackbar.LENGTH_LONG).show();
             }
         });
         return v;

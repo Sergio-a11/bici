@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,18 +104,18 @@ public class InterfazBicicleta extends Fragment {
                                                     @Override
                                                     public void onResponse(Call<Parqueadero> call, Response<Parqueadero> response) {
                                                         if(response.code()==200){
-                                                            Toast.makeText(getContext(), "Bicicleta Asignada al cupo", Toast.LENGTH_LONG).show();
+                                                            Snackbar.make(v, "Bicicleta Asignada al cupo", Snackbar.LENGTH_LONG).show();
                                                             NavHostFragment.findNavController(InterfazBicicleta.this)
                                                                     .navigate(R.id.action_interfazBicicleta_to_interfaz_administrador);
                                                         }else if(response.code()==412){
-                                                            Toast.makeText(getContext(), "La Bicicleta ya tiene un cupo asignado", Toast.LENGTH_LONG).show();
+                                                            Snackbar.make(v, "La Bicicleta ya tiene un cupo asignado", Snackbar.LENGTH_LONG).show();
                                                             NavHostFragment.findNavController(InterfazBicicleta.this)
                                                                     .navigate(R.id.action_interfazBicicleta_to_interfaz_administrador);
                                                         }
                                                     }
                                                     @Override
                                                     public void onFailure(Call<Parqueadero> call, Throwable t) {
-                                                        Toast.makeText(getContext(), "La Bicicleta no se pudo asignar", Toast.LENGTH_LONG).show();
+                                                        Snackbar.make(v, "La Bicicleta no se pudo asignar", Snackbar.LENGTH_LONG).show();
                                                     }
                                                 });
                                             }
@@ -149,7 +151,7 @@ public class InterfazBicicleta extends Fragment {
 
             @Override
             public void onFailure(Call<List<Bicicleta>> call, Throwable t) {
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                Snackbar.make(v, t.getMessage(), Snackbar.LENGTH_LONG).show();
                 System.out.println("Fail");
             }
         });
