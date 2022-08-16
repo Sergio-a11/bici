@@ -124,7 +124,11 @@ public class Registro extends Fragment {
                             if(response.code()==200){
                                 if(Integer.parseInt(String.valueOf(response.body()))==1){
                                     Snackbar.make(v, "Usuario Registrado Con Exito", Snackbar.LENGTH_LONG).show();
-                                    NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_Home);
+                                    if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                                        NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_admUsuarios);
+                                    }else{
+                                        NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_Home);
+                                    }
                                 }
                             }else if(response.code()==412){
                                 Snackbar.make(v, "Este usuario ya existe", Snackbar.LENGTH_LONG).show();
@@ -145,7 +149,11 @@ public class Registro extends Fragment {
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_Home);
+                if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                    NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_admUsuarios);
+                }else{
+                    NavHostFragment.findNavController(Registro.this).navigate(R.id.action_fragment_registro_to_Home);
+                }
             }
         });
 

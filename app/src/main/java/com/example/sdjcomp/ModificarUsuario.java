@@ -114,7 +114,11 @@ public class ModificarUsuario extends Fragment {
                         public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                             if(response.code()==200){
                                 Snackbar.make(v, "Usuario Modificado", Snackbar.LENGTH_LONG).show();
-                                NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
+                                if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                                    NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_admUsuarios);
+                                }else{
+                                    NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
+                                }
                             }
                         }
 
@@ -174,7 +178,11 @@ public class ModificarUsuario extends Fragment {
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
+                if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                    NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_admUsuarios);
+                }else{
+                    NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
+                }
             }
         });
 
@@ -229,7 +237,11 @@ public class ModificarUsuario extends Fragment {
                 if(response.code()==200){
                     if(Integer.parseInt(String.valueOf(response.body()))==1){
                         Toast.makeText(getContext(), campo+" Modificado", Toast.LENGTH_LONG).show();
-                        NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
+                        if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                            NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_admUsuarios);
+                        }else{
+                            NavHostFragment.findNavController(ModificarUsuario.this).navigate(R.id.action_fragment_modificar_usuario_to_InterfazEstudiante);
+                        }
                     }
                 }
             }

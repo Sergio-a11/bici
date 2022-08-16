@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_fragment_registro_to_Home"
             app:destination="@id/Home" />
+        <action
+            android:id="@+id/action_fragment_registro_to_admUsuarios"
+            app:destination="@id/admUsuarios" />
     </fragment>
 
     <fragment
@@ -69,6 +72,9 @@
         <action
             android:id="@+id/action_fragment_modificar_usuario_to_InterfazEstudiante"
             app:destination="@id/InterfazEstudiante" />
+        <action
+            android:id="@+id/action_fragment_modificar_usuario_to_admUsuarios"
+            app:destination="@id/admUsuarios" />
     </fragment>
 
     <fragment
@@ -273,7 +279,17 @@
         android:id="@+id/admUsuarios"
         android:name="com.example.sdjcomp.admUsuarios"
         android:label="fragment_adm_usuarios"
-        tools:layout="@layout/fragment_adm_usuarios" />
+        tools:layout="@layout/fragment_adm_usuarios" >
+        <action
+            android:id="@+id/action_admUsuarios_to_fragment_registro2"
+            app:destination="@id/fragment_registro" />
+        <action
+            android:id="@+id/action_admUsuarios_to_admin2"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admUsuarios_to_fragment_modificar_usuario"
+            app:destination="@id/fragment_modificar_usuario" />
+    </fragment>
     <fragment
         android:id="@+id/admMarcas"
         android:name="com.example.sdjcomp.admMarcas"

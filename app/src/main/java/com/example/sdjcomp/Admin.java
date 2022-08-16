@@ -39,6 +39,7 @@ public class Admin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //URL="http://"+getResources().getString(R.string.IP)+":3000/updateUser/";
+        ((Sesion)getActivity().getApplicationContext()).setRol_id(3);
         View v = inflater.inflate(R.layout.fragment_admin,container,false);
         btnRoles = v.findViewById(R.id.btnRoles);
         btnBicicletas = v.findViewById(R.id.btnBicicletas);

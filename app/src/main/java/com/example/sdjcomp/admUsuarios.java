@@ -3,10 +3,12 @@ package com.example.sdjcomp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ public class admUsuarios extends Fragment {
     private IRetroFit iRetrofit;
     private String URL="";
     private TableLayout tablaUsuarios;
+    private Button btnCrear,btnVolver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,8 @@ public class admUsuarios extends Fragment {
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
         tablaUsuarios = v.findViewById(R.id.tablaUsuarios);
+        btnVolver = v.findViewById(R.id.btnVolverUsuarioAdmin);
+        btnCrear = v.findViewById(R.id.btnCrearUsuarioAdmin);
         Call<List<Usuario>> call = iRetrofit.executeGetUsers();
         call.enqueue(new Callback<List<Usuario>>() {
             @Override
@@ -54,7 +59,8 @@ public class admUsuarios extends Fragment {
                     TextView textPseguridad = new TextView(getActivity());
                     TextView textRseguridad = new TextView(getActivity());
                     TextView textRol = new TextView(getActivity());
-
+                    Button btnModificar = new Button(getActivity());
+                    Button btnEliminar = new Button(getActivity());
                     textCodigo.setText(response.body().get(i).getCodigo());
                     textNombre.setText(response.body().get(i).getNombre());
                     textCorreo.setText(response.body().get(i).getCorreo());
@@ -62,6 +68,40 @@ public class admUsuarios extends Fragment {
                     textPseguridad.setText(String.valueOf(response.body().get(i).getPseguridad()));
                     textRseguridad.setText(response.body().get(i).getRseguridad());
                     textRol.setText(String.valueOf(response.body().get(i).getRol_id()));
+                    btnModificar.setText("Modificar");
+                    btnModificar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ((Sesion)getActivity().getApplicationContext()).setCodigo(textCodigo.getText().toString());
+                            ((Sesion)getActivity().getApplicationContext()).setNombre(textNombre.getText().toString());
+                            ((Sesion)getActivity().getApplicationContext()).setCorreo(textCorreo.getText().toString());
+                            ((Sesion)getActivity().getApplicationContext()).setClave(textClave.getText().toString());
+                            ((Sesion)getActivity().getApplicationContext()).setPseguridad(textPseguridad.getText().charAt(0));
+                            ((Sesion)getActivity().getApplicationContext()).setRseguridad(textRseguridad.getText().toString());
+                            NavHostFragment.findNavController(admUsuarios.this).navigate(R.id.action_admUsuarios_to_fragment_modificar_usuario);
+                        }
+                    });
+                    btnEliminar.setText("Eliminar");
+                    btnEliminar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Call call1 = iRetrofit.executeDeleteUser(textCodigo.getText().toString());
+                            call1.enqueue(new Callback() {
+                                @Override
+                                public void onResponse(Call call, Response response) {
+                                    Snackbar.make(v, "Usuario Borrado", Snackbar.LENGTH_LONG).show();
+                                    NavHostFragment.findNavController(admUsuarios.this).
+                                            navigate(R.id.action_admUsuarios_to_admin2);
+                                }
+
+                                @Override
+                                public void onFailure(Call call, Throwable t) {
+                                    Snackbar.make(v, "No se pudo borrar el usuario", Snackbar.LENGTH_LONG).show();
+                                }
+                            });
+
+                        }
+                    });
                     fila.addView(textCodigo);
                     fila.addView(textNombre);
                     fila.addView(textCorreo);
@@ -69,6 +109,8 @@ public class admUsuarios extends Fragment {
                     fila.addView(textPseguridad);
                     fila.addView(textRseguridad);
                     fila.addView(textRol);
+                    fila.addView(btnModificar);
+                    fila.addView(btnEliminar);
                     tablaUsuarios.addView(fila);
                 }
             }
@@ -78,6 +120,21 @@ public class admUsuarios extends Fragment {
                 Snackbar.make(v, "No se pudieron encontrar los usuarios", Snackbar.LENGTH_LONG).show();
             }
         });
+
+        btnCrear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(admUsuarios.this).navigate(R.id.action_admUsuarios_to_fragment_registro2);
+            }
+        });
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(admUsuarios.this).navigate(R.id.action_admUsuarios_to_admin2);
+            }
+        });
+
         return v;
     }
 }
