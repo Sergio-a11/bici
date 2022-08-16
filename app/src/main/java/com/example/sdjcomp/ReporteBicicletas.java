@@ -13,6 +13,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -82,8 +85,21 @@ public class ReporteBicicletas extends Fragment {
                     txtColor.setText(response.body().get(i).getColor());
                     txtCodigo.setText(response.body().get(i).getEstudiante_id());
                     txtEstatus.setText(response.body().get(i).getStatus());
-                    txtCreated.setText(response.body().get(i).getCreated_date());
-                    txtModified.setText(response.body().get(i).getLast_modified_date());
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                    SimpleDateFormat output = new SimpleDateFormat("EEEE, yyyy/MM/dd - HH:mm:ss");
+
+                    try {
+                        Date d = null;
+                        d = sdf.parse(response.body().get(i).getCreated_date());
+                        txtCreated.setText(output.format(d));
+                        d = sdf.parse(response.body().get(i).getLast_modified_date());
+                        txtModified.setText(output.format(d));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        txtCreated.setText(response.body().get(i).getCreated_date());
+                        txtModified.setText(response.body().get(i).getLast_modified_date());
+                    }
 
                     fila.addView(txtID);
                     fila.addView(txtIDbici);

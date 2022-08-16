@@ -59,9 +59,10 @@
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_registrar_bicicleta.xml" value="0.22" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_registro.xml" value="0.16018518518518518" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_reporte_bicicletas.xml" value="0.1" />
+        <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_reporte_parametrizados.xml" value="0.9" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_reporte_parqueaderos.xml" value="0.1" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_reporte_usuarios.xml" value="0.1" />
-        <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_reportes.xml" value="0.1" />
+        <entry key="..\:/U/S6/bici/app/src/main/res/layout/fragment_reportes.xml" value="0.5" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/home.xml" value="0.16018518518518518" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/interfaz_administrador.xml" value="0.26403985507246375" />
         <entry key="..\:/U/S6/bici/app/src/main/res/layout/interfaz_estudiante.xml" value="0.33" />

@@ -15,6 +15,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -96,8 +99,21 @@ public class ReporteParqueaderos extends Fragment {
                     txtNombre.setText(response.body().get(i).getNombre());
                     txtCorreo.setText(response.body().get(i).getCorreo());
                     txtEstatus.setText(response.body().get(i).getStatus());
-                    txtArrive.setText(response.body().get(i).getArrived_time());
-                    txtDeparture.setText(response.body().get(i).getDeparture_time());
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                    SimpleDateFormat output = new SimpleDateFormat("EEEE, yyyy/MM/dd - HH:mm:ss");
+
+                    try {
+                        Date d = null;
+                        d = sdf.parse(response.body().get(i).getArrived_time());
+                        txtArrive.setText(output.format(d));
+                        d = sdf.parse(response.body().get(i).getDeparture_time());
+                        txtDeparture.setText(output.format(d));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        txtArrive.setText(response.body().get(i).getArrived_time());
+                        txtDeparture.setText(response.body().get(i).getDeparture_time());
+                    }
 
                     fila.addView(txtID);
                     fila.addView(txtIDcupo);

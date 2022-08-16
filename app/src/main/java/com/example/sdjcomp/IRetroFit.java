@@ -112,4 +112,11 @@ public interface IRetroFit {
 
     @GET("/getControlUsuarios")
     Call<List<ControlUsuarios>> executeGetControlUsuarios();
+
+    //parametros
+    @GET("/getReporteEntradas/{codigo}/{numSerie}")
+    Call<List<ControlParqueaderos>> executeGetReporteEntradas(@Path("codigo") String codigo, @Path("numSerie")  String numSerie);
+
+    @GET("/getReporteBiciCiudad/{ciudad}")
+    Call<List<ControlBicicletas>> executeGetReporteCiudad(@Path("ciudad") String ciudad);
 }
