@@ -3,6 +3,7 @@ package com.example.sdjcomp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,6 @@ public class crearRoles extends Fragment {
         URL="http://"+getResources().getString(R.string.IP)+":3000/getAll/roles/";
         View v = inflater.inflate(R.layout.fragment_crear_roles,container,false);
         btnCrear = v.findViewById(R.id.btnCrearRol);
-        edtIdRol = v.findViewById(R.id.edtCrearIdRol);
         edtRol = v.findViewById(R.id.edtCrearRol);
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
@@ -44,8 +44,7 @@ public class crearRoles extends Fragment {
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Rol objr = new Rol(Integer.parseInt(edtIdRol.getText().toString()),
-                        edtRol.getText().toString());
+                Rol objr = new Rol(edtRol.getText().toString());
                 Call<Number> call = iRetrofit.executeRegisterRol(objr);
                 call.enqueue(new Callback<Number>() {
                     @Override
@@ -53,7 +52,8 @@ public class crearRoles extends Fragment {
                         if(response.code()==200){
                             if(Integer.parseInt(String.valueOf(response.body()))==1){
                                 Toast.makeText(getContext(), "Rol Registrado Con Exito", Toast.LENGTH_LONG).show();
-                                //NavHostFragment.findNavController(crearCupos.this).navigate(R.id.action_fragment_registro_to_Home);
+
+                                NavHostFragment.findNavController(crearRoles.this).navigate(R.id.action_crearRoles_to_roles);
                             }
                         }else if(response.code()==412){
                             Toast.makeText(getContext(), "Rol ya existe", Toast.LENGTH_LONG).show();

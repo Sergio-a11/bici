@@ -77,7 +77,6 @@ public class crearPregunta extends Fragment {
                              Bundle savedInstanceState) {
         URL="http://"+getResources().getString(R.string.IP)+":3000/getAll/cupos/";
         View v = inflater.inflate(R.layout.fragment_crear_pregunta,container,false);
-        edtCodigo = v.findViewById(R.id.edtCodigoPreguntaCrear);
         edtPregunta = v.findViewById(R.id.edtPreguntaCrear);
         btnCrear = v.findViewById(R.id.btnCrearPreguntaadm);
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
@@ -86,7 +85,7 @@ public class crearPregunta extends Fragment {
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pregunta objP = new Pregunta(edtCodigo.getText().toString(), edtPregunta.getText().toString());
+                Pregunta objP = new Pregunta(edtPregunta.getText().toString());
                 Call<Number> call = iRetrofit.executeRegisterPregunta(objP);
                 call.enqueue(new Callback<Number>() {
                     @Override
@@ -94,6 +93,7 @@ public class crearPregunta extends Fragment {
                         if(response.code()==200){
                             if(Integer.parseInt(String.valueOf(response.body()))==1){
                                 Toast.makeText(getContext(), "Pregunta Registrada Con Exito", Toast.LENGTH_LONG).show();
+                                NavHostFragment.findNavController(crearPregunta.this).navigate(R.id.action_crearPregunta_to_admPreguntas);
                             } else if(response.code()==412){
                                 Toast.makeText(getContext(), "Esta pregunta ya existe", Toast.LENGTH_LONG).show();
                             }

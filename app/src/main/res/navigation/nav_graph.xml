@@ -436,17 +436,29 @@
         android:id="@+id/crearPregunta"
         android:name="com.example.sdjcomp.crearPregunta"
         android:label="fragment_crear_pregunta"
-        tools:layout="@layout/fragment_crear_pregunta" />
+        tools:layout="@layout/fragment_crear_pregunta" >
+        <action
+            android:id="@+id/action_crearPregunta_to_admPreguntas"
+            app:destination="@id/admPreguntas" />
+    </fragment>
     <fragment
         android:id="@+id/crearCupos"
         android:name="com.example.sdjcomp.crearCupos"
         android:label="fragment_crear_cupos"
-        tools:layout="@layout/fragment_crear_cupos" />
+        tools:layout="@layout/fragment_crear_cupos" >
+        <action
+            android:id="@+id/action_crearCupos_to_admCupos"
+            app:destination="@id/admCupos" />
+    </fragment>
     <fragment
         android:id="@+id/crearRoles"
         android:name="com.example.sdjcomp.crearRoles"
         android:label="fragment_crear_roles"
-        tools:layout="@layout/fragment_crear_roles" />
+        tools:layout="@layout/fragment_crear_roles" >
+        <action
+            android:id="@+id/action_crearRoles_to_roles"
+            app:destination="@id/roles" />
+    </fragment>
     <fragment
         android:id="@+id/modificarRoles"
         android:name="com.example.sdjcomp.modificarRoles"

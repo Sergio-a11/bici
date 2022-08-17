@@ -1075,10 +1075,9 @@ app.delete("/deletePregunta/:codigo", (req, res) => {
 });
 
 app.post("/createCupo",(req,res)=>{
-  const idCupo = req.body.idCupo
   const seccion = req.body.seccion
   const estado = req.body.estado
-  conexion.query(`INSERT INTO cupos (idCupo,seccion,estado) VALUES (${idCupo},'${seccion}',${estado})`,(error,results)=>{
+  conexion.query(`INSERT INTO cupos (seccion,estado) VALUES ('${seccion}',${estado})`,(error,results)=>{
     if(error){
       throw error
     }else if(results!=null){
@@ -1090,9 +1089,8 @@ app.post("/createCupo",(req,res)=>{
 })
 
 app.post("/createPregunta",(req,res)=>{
-  const codigo = req.body.codigo
   const pregunta = req.body.pregunta
-  conexion.query(`INSERT INTO preguntas (codigo,pregunta) VALUES (${codigo},'${pregunta}')`,(error,results)=>{
+  conexion.query(`INSERT INTO preguntas (pregunta) VALUES ('${pregunta}')`,(error,results)=>{
     if(error){
       throw error
     }else if(results!=null){
