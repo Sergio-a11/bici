@@ -241,12 +241,25 @@ CREATE TRIGGER control_tipos_delete BEFORE DELETE ON tipos FOR EACH ROW
 UPDATE bicicletas SET Tipo_id=(SELECT id from marcas where marca="otro") WHERE Tipo_id=OLD.id;
 
 
-INSERT INTO Marcas (marca) VALUES ("otro"),("SHIMANO"),("GW");
-INSERT INTO Tipos (tipo) VALUES ("otro"),("BMX"),("Ruta");
+INSERT INTO Marcas (marca) VALUES ("otro"),("SHIMANO"),("GW"),("TITAN"),("JUPITER"),("HELICOPTER"),("CAMARON"),("TALIYA"),("LISCRAM");
+INSERT INTO Tipos (tipo) VALUES ("otro"),("BMX"),("Ruta"),("Playa"),("Fija"),("Tambel"),("Monociclo"),("Triciclo"),("Patinete electrico");
 INSERT INTO Roles (rol) VALUES ("Admin"),("User"),("SuperAdmin");
-INSERT INTO Preguntas (pregunta) VALUES ("¿Comida favorita?"),("¿Julian es real?"),("¿Y ahora que?");
-INSERT INTO Usuarios  VALUES ("20192578005", "Juan Suarez", "juan@correo.udistrital.edu.co","clave",1,"No",2),('20172838741', 'Brian', 'brian@gmail.com', 'clave', 2, 'Colegio La Gaviota', 1),
-('20192578094', 'josue', 'josue@correo.com', 'joselito', 1, 'hamburguesa', 3);
-INSERT INTO Bicicletas (cedulaPropietario, fechaRegistro, lugarRegistro, Marca_id, numSerie, Tipo_id, color, Estudiante_id) VALUES ("12567876", "2019/12/23","Bogota",1,"345678",1,"Azul","20192578005"),('100795365', '2022/02/13', 'Bogota', 2, '789937', 1, 'rojo', '20192578094');
-INSERT INTO Cupos (seccion, estado) VALUES ("2",1), ("3",0),("1",0);
-INSERT INTO Parqueaderos (Bicicleta_idBicicleta, Cupo_idCupo) VALUES (1,1);
+INSERT INTO Preguntas (pregunta) VALUES ("¿Comida favorita?"),("¿Julian es real?"),("¿Y ahora que?"),("¿Personaje Favorito de LoL?"),("¿Perro o gato?"),("¿Clima Frio o Caliente?"),("Lengueje de programación?"),("¿Insulto que no usas?");
+INSERT INTO Usuarios  VALUES 
+("20192578005", "Juan Suarez", "juan@correo.udistrital.edu.co","clave",2,"No",2),
+('20172838741', 'Brian', 'brian@gmail.com', 'clave', 7, 'Colegio La Gaviota', 1),
+('20192578094', 'josue', 'josue@correo.com', 'joselito', 1, 'hamburguesa', 3),
+('20192578104', 'Miguel', 'miguel@correo.com', 'miguelo', 4, 'Cristo', 3),
+('20192578014', 'Checho', 'sech@correo.com', 'clave', 5, 'gato', 3),
+('20192578001', 'Dan', 'dan@correo.com', 'clave', 3, 'NPI', 3);
+
+INSERT INTO Bicicletas (cedulaPropietario, fechaRegistro, lugarRegistro, Marca_id, numSerie, Tipo_id, color, Estudiante_id) VALUES 
+("12567876", "2019/12/23","Bogota",1,"345678",3,"Azul","20192578005"),
+('100795365', '2022/02/13', 'Bogota', 2, '789937', 6, 'rojo', '20192578094'),
+("100023567", "2018/12/24","Bucaramanga",3,"123678",8,"Azul","20192578005"),
+("100614891", "2019/05/02","Barranquilla",4,"234987",4,"Verde","20192578104"),
+("1033876102", "2017/10/15","Pasto",5,"345123",9,"Curuba","20192578001"),
+("2001456789", "2020/12/30","Bogota",6,"987456",5,"Morado","20192578014");
+
+INSERT INTO Cupos (seccion, estado) VALUES ("2",1),("3",0),("1",0),("2",1),("3",0),("1",1),("2",0),("3",0),("1",0);
+INSERT INTO Parqueaderos (Bicicleta_idBicicleta, Cupo_idCupo) VALUES (1,1),(2,4),(3,6);
