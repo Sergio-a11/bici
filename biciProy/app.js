@@ -1208,7 +1208,7 @@ app.post("/crearTipo/",(req,res)=>{
     if(error){
       throw error
     }else if(results!=null){
-      res.status(200).send(results["affectedRows"])
+      res.status(200).send(JSON.stringify(results["affectedRows"]))
     }else{
       res.status(400).send()
     }
