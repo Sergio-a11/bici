@@ -3,13 +3,17 @@ package com.example.sdjcomp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -25,42 +29,11 @@ public class admPreguntas extends Fragment {
     private IRetroFit iRetrofit;
     private String URL="";
     private TableLayout tablaPreguntas;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public admPreguntas() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment admPreguntas.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static admPreguntas newInstance(String param1, String param2) {
-        admPreguntas fragment = new admPreguntas();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private Button btnVolver,btnCrear;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -71,6 +44,8 @@ public class admPreguntas extends Fragment {
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
         tablaPreguntas = v.findViewById(R.id.tablaPreguntas);
+        btnVolver = v.findViewById(R.id.btnPreguToAdmin);
+        btnCrear = v.findViewById(R.id.btnCrearPregunta);
         Call<List<Pregunta>> call = iRetrofit.executeGetAll("preguntas");
 
         call.enqueue(new Callback<List<Pregunta>>() {
@@ -80,10 +55,47 @@ public class admPreguntas extends Fragment {
                     TableRow fila = new TableRow(getActivity());
                     TextView textId = new TextView(getActivity());
                     TextView textPregunta = new TextView(getActivity());
+                    Button btnModificar = new Button(getActivity());
+                    Button btnEliminar = new Button(getActivity());
                     textId.setText(String.valueOf(response.body().get(i).getCodigo()));
                     textPregunta.setText(response.body().get(i).getPregunta());
+                    btnModificar.setText("Modificar");
+                    btnModificar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            System.out.println("id pregunta = " + Integer.parseInt(textId.getText().toString()));
+                            ((Sesion)getActivity().getApplicationContext()).setIdPreguntas(Integer.parseInt(textId.getText().toString()));
+                            NavHostFragment.findNavController(admPreguntas.this).
+                                    navigate(R.id.action_admPreguntas_to_modificarPreguntas);
+                        }
+                    });
+                    btnEliminar.setText("Eliminar");
+                    btnEliminar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Call call1 = iRetrofit.executeDeletePregunta(Integer.parseInt(textId.getText().toString()));
+                            call1.enqueue(new Callback() {
+                                @Override
+                                public void onResponse(Call call, Response response) {
+                                    Toast.makeText(getContext(), "Pregunta Borrada", Toast.LENGTH_LONG).show();
+                                    NavHostFragment.findNavController(admPreguntas.this).
+                                            navigate(R.id.action_admPreguntas_to_admin);
+                                }
+
+                                @Override
+                                public void onFailure(Call call, Throwable t) {
+                                    Toast.makeText(getContext(), "No se pudo borrar la pregunta", Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                        }
+                    });
+                    textId.setGravity(Gravity.CENTER);
+                    textPregunta.setGravity(Gravity.CENTER);
                     fila.addView(textId);
                     fila.addView(textPregunta);
+                    fila.addView(btnModificar);
+                    fila.addView(btnEliminar);
                     tablaPreguntas.addView(fila);
                 }
             }
@@ -91,6 +103,22 @@ public class admPreguntas extends Fragment {
             @Override
             public void onFailure(Call<List<Pregunta>> call, Throwable t) {
 
+            }
+        });
+
+        btnCrear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(admPreguntas.this).
+                        navigate(R.id.action_admPreguntas_to_crearPregunta);
+            }
+        });
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(admPreguntas.this).
+                        navigate(R.id.action_admPreguntas_to_admin);
             }
         });
 

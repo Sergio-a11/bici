@@ -2,26 +2,19 @@ package com.example.sdjcomp;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EdgeEffect;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.List;
 
@@ -40,7 +33,6 @@ public class admMarcas extends Fragment {
     private EditText edtCupoAdmin;
     private TextView txtPruebamMarca;
     private Button btnCrear,btnVolver;
-
     public admMarcas() {
         // Required empty public constructor
     }
@@ -60,8 +52,8 @@ public class admMarcas extends Fragment {
         URL = "http://" + getResources().getString(R.string.IP) + ":3000/getMarcas/";
         View v = inflater.inflate(R.layout.fragment_adm_marcas, container, false);
 
-        btnCrear = v.findViewById(R.id.btnCrearMarca);
-        btnVolver = v.findViewById(R.id.btnVolverAdmMarca);
+        btnCrear = v.findViewById(R.id.btnadmCrearCupo);
+        btnVolver = v.findViewById(R.id.btnVolverAdmCupos);
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);

@@ -19,12 +19,7 @@ import retrofit2.http.Path;
 
 public interface IRetroFit {
 
-    /*
-    * @METHOD_HTTP
-    * Call<Clase a la que convierte> nombreMetodo(@Body para enviar la info apra el match en el cuerpo de la peticion
-    *                                              @Path para enviar por la ruta de la petion como un get)
-    *
-    * */
+// Usuarios
 
     @POST("/login")
     Call<PreLoginUsuario> executeLogin(@Body HashMap<String,String> map);
@@ -63,12 +58,16 @@ public interface IRetroFit {
     @GET("/getAll/{tabla}")
     Call<List<Pregunta>> executeGetAll(@Path("tabla") String tabla);
 
+    //Cupo
     @GET("/getCupo/{seccion}")
     Call<List<Cupo>> executeGetCuposEnable(@Path("seccion") String seccion);
 
+    @DELETE("/deleteCupos/{id}")
+    Call<Number> executeDeleteCupos(@Path("id") Number id);
+
     @GET("/getSlots/")
     Call<List<Cupo>> executeGetCupos();
-
+    //Parqueadero
     @GET("/getParqueadero/{seccion}")
     Call<List<Bicicleta>> executeGetParqueaderos(@Path("seccion") String seccion);
 
@@ -118,4 +117,38 @@ public interface IRetroFit {
 
     @POST("/createMarca")
     Call<Number> executeRegisterMarca(@Body Marca marca);
+
+    @PUT("/updateCupo")
+    Call<Number> executeUpdateCupo(@Body Cupo cupo);
+
+    @GET("/getCupoa/{id}")
+    Call<Cupo> executeGetCupoa(@Path("id") Number id);
+
+    @DELETE("/deletePregunta/{id}")
+    Call<Number> executeDeletePregunta(@Path("id") Number id);
+
+    @POST("/createCupo")
+    Call<Number> executeRegisterCupo(@Body Cupo map);
+
+    @POST("/createPregunta")
+    Call<Number> executeRegisterPregunta(@Body Pregunta map);
+
+    @POST("/createRol")
+    Call<Number> executeRegisterRol(@Body Rol map);
+
+    @DELETE("/deleteRol/{id}")
+    Call<Number> executeDeleteRol(@Path("id") Number id);
+
+    @GET("/getRol/{id}")
+    Call<Rol> executeGetRol(@Path("id") Number id);
+
+    @PUT("/updateRol")
+    Call<Number> executeUpdateRol(@Body Rol rol);
+
+    @GET("/getPregunta/{id}")
+    Call<Pregunta> executeGetPregunta(@Path("id") Number id);
+
+    @PUT("/updatePregunta")
+    Call<Number> executeUpdatePregunta(@Body Pregunta pregunta);
+
 }

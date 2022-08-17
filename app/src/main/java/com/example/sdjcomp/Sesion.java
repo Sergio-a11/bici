@@ -6,7 +6,7 @@ public class Sesion extends Application {
     private String codigo,nombre,correo,clave,Rseguridad;
     private int Rol_id,Pseguridad,idBici,idMarca,idTipo,idPreguntas,idRol;
     private boolean validado;
-
+    private int idCupo;
     private int cupo, bicicleta;
     private String codio,seccion;
 
@@ -176,5 +176,13 @@ public class Sesion extends Application {
 
     public void setIdRol(int idRol) {
         this.idRol = idRol;
+    }
+
+    public void setIdCupo(int idCupo) {
+        this.idCupo = idCupo;
+    }
+
+    public int getIdCupo() {
+        return idCupo;
     }
 }
