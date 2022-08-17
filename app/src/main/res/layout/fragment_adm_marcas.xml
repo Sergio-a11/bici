@@ -34,7 +34,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btnAdmCupoUso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Buscar" />
@@ -47,13 +47,13 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnCrearMarca"
+                android:id="@+id/btnadmCrearCupo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Crear" />
 
             <Button
-                android:id="@+id/btnVolverAdmMarca"
+                android:id="@+id/btnVolverAdmCupos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Volver" />

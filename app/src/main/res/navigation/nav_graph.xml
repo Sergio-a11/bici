@@ -262,7 +262,17 @@
     <fragment
         android:id="@+id/roles"
         android:name="com.example.sdjcomp.Roles"
-        android:label="Roles" />
+        android:label="Roles" >
+        <action
+            android:id="@+id/action_roles_to_crearRoles"
+            app:destination="@id/crearRoles" />
+        <action
+            android:id="@+id/action_roles_to_admin"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_roles_to_modificarRoles"
+            app:destination="@id/modificarRoles" />
+    </fragment>
     <fragment
         android:id="@+id/admBicicletas"
         android:name="com.example.sdjcomp.admBicicletas"
@@ -282,7 +292,26 @@
         android:id="@+id/admCupos"
         android:name="com.example.sdjcomp.admCupos"
         android:label="fragment_adm_cupos"
-        tools:layout="@layout/fragment_adm_cupos" />
+        tools:layout="@layout/fragment_adm_cupos" >
+        <action
+            android:id="@+id/action_admCupos_to_consultarCupo"
+            app:destination="@id/consultarCupo" />
+        <action
+            android:id="@+id/action_admCupos_to_desasignarCupo"
+            app:destination="@id/desasignarCupo" />
+        <action
+            android:id="@+id/action_admCupos_to_asignarCupo"
+            app:destination="@id/asignarCupo" />
+        <action
+            android:id="@+id/action_admCupos_to_modificarCupos"
+            app:destination="@id/modificarCupos" />
+        <action
+            android:id="@+id/action_admCupos_to_admin"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admCupos_to_crearCupos"
+            app:destination="@id/crearCupos" />
+    </fragment>
     <fragment
         android:id="@+id/admParqueaderos"
         android:name="com.example.sdjcomp.admParqueaderos"
@@ -301,7 +330,17 @@
         android:id="@+id/admPreguntas"
         android:name="com.example.sdjcomp.admPreguntas"
         android:label="fragment_adm_preguntas"
-        tools:layout="@layout/fragment_adm_preguntas" />
+        tools:layout="@layout/fragment_adm_preguntas" >
+        <action
+            android:id="@+id/action_admPreguntas_to_modificarPreguntas"
+            app:destination="@id/modificarPreguntas" />
+        <action
+            android:id="@+id/action_admPreguntas_to_admin"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admPreguntas_to_crearPregunta"
+            app:destination="@id/crearPregunta" />
+    </fragment>
     <fragment
         android:id="@+id/admTipos"
         android:name="com.example.sdjcomp.admTipos"
@@ -372,5 +411,52 @@
         <action
             android:id="@+id/action_modificarParqueadero_to_interfazBicicleta"
             app:destination="@id/interfazBicicleta" />
+    </fragment>
+    <fragment
+        android:id="@+id/modificarCupos"
+        android:name="com.example.sdjcomp.modificarCupos"
+        android:label="modificarCupos" >
+        <action
+            android:id="@+id/action_modificarCupos_to_admCupos"
+            app:destination="@id/admCupos" />
+        <action
+            android:id="@+id/action_modificarCupos_to_admCupos2"
+            app:destination="@id/admCupos" />
+    </fragment>
+    <fragment
+        android:id="@+id/modificarPreguntas"
+        android:name="com.example.sdjcomp.modificarPreguntas"
+        android:label="fragment_modificar_preguntas"
+        tools:layout="@layout/fragment_modificar_preguntas" >
+        <action
+            android:id="@+id/action_modificarPreguntas_to_admPreguntas"
+            app:destination="@id/admPreguntas" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearPregunta"
+        android:name="com.example.sdjcomp.crearPregunta"
+        android:label="fragment_crear_pregunta"
+        tools:layout="@layout/fragment_crear_pregunta" />
+    <fragment
+        android:id="@+id/crearCupos"
+        android:name="com.example.sdjcomp.crearCupos"
+        android:label="fragment_crear_cupos"
+        tools:layout="@layout/fragment_crear_cupos" />
+    <fragment
+        android:id="@+id/crearRoles"
+        android:name="com.example.sdjcomp.crearRoles"
+        android:label="fragment_crear_roles"
+        tools:layout="@layout/fragment_crear_roles" />
+    <fragment
+        android:id="@+id/modificarRoles"
+        android:name="com.example.sdjcomp.modificarRoles"
+        android:label="fragment_modificar_roles"
+        tools:layout="@layout/fragment_modificar_roles" >
+        <action
+            android:id="@+id/action_modificarRoles_to_roles"
+            app:destination="@id/roles" />
+        <action
+            android:id="@+id/action_modificarRoles_to_roles2"
+            app:destination="@id/roles" />
     </fragment>
 </navigation>

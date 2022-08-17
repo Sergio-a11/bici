@@ -194,12 +194,12 @@ public class Sesion extends Application {
     public void setObjParqueadero(Parqueadero objParqueadero) {
         this.objParqueadero = objParqueadero;
     }
+    public void setIdCupo(int idCupo) {
+        this.idCupo = idCupo;
+    }
 
     public int getIdCupo() {
         return idCupo;
     }
 
-    public void setIdCupo(int idCupo) {
-        this.idCupo = idCupo;
-    }
 }

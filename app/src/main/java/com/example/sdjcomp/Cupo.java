@@ -35,6 +35,8 @@ public class Cupo {
         return estado;
     }
 
+
+
     public void setSeccion(String seccion) {
         this.seccion = seccion;
     }

@@ -8,67 +8,90 @@
     tools:context=".modificarMarca">
 
     <TextView
-        android:id="@+id/txtPruebaMarca"
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:text="Estado"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+    <EditText
+        android:id="@+id/edtEstado"
+        android:layout_width="215dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/edt_texto_campos"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/textView20"
+        app:layout_constraintTop_toBottomOf="@+id/edtSeccion" />
+
+    <TextView
+        android:id="@+id/txtPruebaCupo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="152dp"
         android:layout_marginTop="92dp"
-        android:text="Modificar Marca"
+        android:text="Modificar Cupo"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtModMarca"
+        android:id="@+id/txtModificandoCupo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="65dp"
-        android:text="Id Marca No Encontrado"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="69dp"
+        android:text="No se encontro cupo con el ID"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPruebaMarca" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPruebaCupo" />
 
     <EditText
-        android:id="@+id/edtMarca"
+        android:id="@+id/edtSeccion"
         android:layout_width="215dp"
         android:layout_height="47dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="35dp"
         android:background="@drawable/edt_texto_campos"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textView19"
-        app:layout_constraintTop_toBottomOf="@+id/txtModMarca" />
+        app:layout_constraintTop_toBottomOf="@+id/txtModificandoCupo" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="286dp"
-        android:text="Nombre Marca"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="57dp"
+        android:text="Seccion"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtModificandoCupo" />
 
     <Button
         android:id="@+id/btnVolverModificarMarca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="61dp"
         android:text="Volver"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <Button
-        android:id="@+id/btnModificarMarca"
+        android:id="@+id/btnModCupo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="36dp"
         android:text="Modificar"
         app:layout_constraintStart_toEndOf="@+id/btnVolverModificarMarca"
-        app:layout_constraintTop_toBottomOf="@+id/edtMarca" />
+        app:layout_constraintTop_toBottomOf="@+id/edtEstado" />
 </androidx.constraintlayout.widget.ConstraintLayout>

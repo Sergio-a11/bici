@@ -536,15 +536,15 @@ app.put("/updateCupo", (req, res) => {
   const idCupo = req.body.idCupo;
   const seccion = req.body.seccion;
   const estado = req.body.estado;
-  console.log("Modificando a :" + codigo);
   conexion.query(
-    `UPDATE cupos SET idCupo='${idCupo}', seccion='${seccion}', estado=${estado} WHERE idCupo=${idCupo}`,
+    `UPDATE cupos SET seccion='${seccion}', estado=${estado} WHERE idCupo=${idCupo}`,
     (error, results) => {
+      console.log("updateCupo = ",results)
       if (error) {
         console.log(error);
       } else if (results != null) {
         console.log(results);
-        res.status(200).send(JSON.stringify(results));
+        res.status(200).send(JSON.stringify(results["affectedRows"]));
       } else {
         console.log(results);
         res.status(404).send();
@@ -1036,3 +1036,168 @@ conexion.query(`SELECT * FROM bicicletas EXCEPT SELECT b.* FROM parqueaderos AS 
   }
 })
 })
+app.get("/getCupoa/:idCupo", (req, res) => {
+  const idCupo = req.params.idCupo;
+  conexion.query(
+    `SELECT * FROM cupos WHERE idCupo='${idCupo}'`,
+    (error, results) => {
+      console.log("id",idCupo,"resultados",results)
+      if (error) {
+        console.log(error);
+      } else if (results != null) {
+        console.log(results);
+        res.status(200).send(JSON.stringify(results[0]));
+      } else {
+        res.status(404).send();
+      }
+    }
+  );
+});
+
+app.delete("/deletePregunta/:codigo", (req, res) => {
+  const codigo = req.params.codigo;
+  console.log(codigo);
+  conexion.query(
+    "DELETE FROM preguntas WHERE ?",
+    [{ codigo }],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else if (results != null) {
+        res.status(200).send(JSON.stringify(results["affectedRows"]));
+      } else {
+        console.log("3");
+        console.log(results);
+        res.status(404).send();
+      }
+    }
+  );
+});
+
+app.post("/createCupo",(req,res)=>{
+  const idCupo = req.body.idCupo
+  const seccion = req.body.seccion
+  const estado = req.body.estado
+  conexion.query(`INSERT INTO cupos (idCupo,seccion,estado) VALUES (${idCupo},'${seccion}',${estado})`,(error,results)=>{
+    if(error){
+      throw error
+    }else if(results!=null){
+      res.status(200).send(JSON.stringify(results["affectedRows"]))
+    }else{
+      res.status(404).send()
+    }
+  })
+})
+
+app.post("/createPregunta",(req,res)=>{
+  const codigo = req.body.codigo
+  const pregunta = req.body.pregunta
+  conexion.query(`INSERT INTO preguntas (codigo,pregunta) VALUES (${codigo},'${pregunta}')`,(error,results)=>{
+    if(error){
+      throw error
+    }else if(results!=null){
+      res.status(200).send(JSON.stringify(results["affectedRows"]))
+    }else{
+      res.status(404).send()
+    }
+  })
+})
+
+app.post("/createRol",(req,res)=>{
+  const codigo = req.body.codigo
+  const rol = req.body.rol
+  conexion.query(`INSERT INTO roles (codigo,rol) VALUES (${codigo},'${rol}')`,(error,results)=>{
+    if(error){
+      throw error
+    }else if(results!=null){
+      res.status(200).send(JSON.stringify(results["affectedRows"]))
+    }else{
+      res.status(404).send()
+    }
+  })
+})
+
+app.delete("/deleteRol/:codigo", (req, res) => {
+  const codigo = req.params.codigo;
+  console.log(codigo);
+  conexion.query(
+    "DELETE FROM roles WHERE ?",
+    [{ codigo }],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else if (results != null) {
+        res.status(200).send(JSON.stringify(results["affectedRows"]));
+      } else {
+        console.log("3");
+        console.log(results);
+        res.status(404).send();
+      }
+    }
+  );
+});
+
+app.get("/getRol/:codigo", (req, res) => {
+  const codigo = req.params.codigo
+   conexion.query(`SELECT * FROM roles WHERE codigo=${codigo}`, (error, results) => {
+     if (error) {
+       throw error
+     } else if (results != null) {
+       res.status(200).send(JSON.stringify(results[0]));
+     } else {
+       res.status(404).send();
+     }
+   });
+ });
+
+ app.put("/updateRol", (req, res) => {
+  const codigo = req.body.codigo;
+  const rol = req.body.rol;
+  conexion.query(
+    `UPDATE roles SET rol='${rol}' WHERE codigo=${codigo}`,
+    (error, results) => {
+      if (error) {
+        console.log(error);
+      } else if (results != null) {
+        console.log(results);
+        res.status(200).send(JSON.stringify(results["affectedRows"]));
+      } else {
+        console.log(results);
+        res.status(404).send();
+      }
+    }
+  );
+});
+
+app.get("/getPregunta/:codigo", (req, res) => {
+  const codigo = req.params.codigo
+   conexion.query(`SELECT * FROM preguntas WHERE codigo=${codigo}`, (error, results) => {
+     if (error) {
+       throw error
+     } else if (results != null) {
+       res.status(200).send(JSON.stringify(results[0]));
+     } else {
+       res.status(404).send();
+     }
+   });
+ });
+
+ app.put("/updatePregunta", (req, res) => {
+  const codigo = req.body.codigo;
+  const pregunta = req.body.pregunta;
+  conexion.query(
+    `UPDATE preguntas SET pregunta='${pregunta}' WHERE codigo=${codigo}`,
+    (error, results) => {
+      console.log(pregunta)
+      if (error) {
+        console.log(error);
+      } else if (results != null) {
+        console.log(results);
+        res.status(200).send(JSON.stringify(results["affectedRows"]));
+      } else {
+        console.log(results);
+        res.status(404).send();
+      }
+    }
+  );
+});
