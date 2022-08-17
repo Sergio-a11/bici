@@ -19,26 +19,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:textColor="#FFFFFF"
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="129dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="136dp"
         android:text="ID Bicicleta"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="78dp"
-        android:layout_marginTop="41dp"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/textView22"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <TextView
         android:textColor="#FFFFFF"
@@ -56,10 +45,10 @@
         android:layout_width="213dp"
         android:layout_height="32dp"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="22dp"
         android:background="@drawable/edt_texto_campos"
         app:layout_constraintStart_toEndOf="@+id/textView24"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toBottomOf="@+id/edtIDBICIModificarParq" />
 
     <TextView
         android:textColor="#FFFFFF"
@@ -79,6 +68,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/edt_texto_campos"
+        android:entries="@array/seccion"
         app:layout_constraintStart_toEndOf="@+id/textView25"
         app:layout_constraintTop_toBottomOf="@+id/spnCuposModParq" />
 
@@ -101,4 +91,17 @@
         android:text="Modificar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnSeccionModParq" />
+
+    <EditText
+        android:id="@+id/edtIDBICIModificarParq"
+        android:layout_width="207dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/edt_texto_campos"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="none"
+        app:layout_constraintStart_toEndOf="@+id/textView22"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
 </androidx.constraintlayout.widget.ConstraintLayout>

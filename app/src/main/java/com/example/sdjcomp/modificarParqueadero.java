@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -29,7 +30,7 @@ public class modificarParqueadero extends Fragment {
 
     private Spinner spnSeccion,spnCupos;
     private Button btnModificar,btnVolver;
-    private TextView edtCodigo;
+    private EditText edtCodigo;
 
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
@@ -46,8 +47,11 @@ public class modificarParqueadero extends Fragment {
         View v = inflater.inflate(R.layout.fragment_modificar_parqueadero,container,false);
         spnCupos = v.findViewById(R.id.spnCuposModParq);
         spnSeccion = v.findViewById(R.id.spnSeccionModParq);
+        edtCodigo = v.findViewById(R.id.edtIDBICIModificarParq);
         btnModificar = v.findViewById(R.id.btnVolverModificarParqueadero);
         btnVolver = v.findViewById(R.id.btnVolverModificarParqueadero);
+
+        edtCodigo.setText(String.valueOf(((Sesion)getActivity().getApplicationContext()).getIdBici()));
 
         spnSeccion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -107,7 +111,8 @@ public class modificarParqueadero extends Fragment {
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                NavHostFragment.findNavController(modificarParqueadero.this).
+                        navigate(R.id.action_modificarParqueadero_to_admParqueaderos);
             }
         });
 
