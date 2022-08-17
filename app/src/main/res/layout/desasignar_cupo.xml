@@ -88,7 +88,6 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="22dp"
         android:background="@drawable/edt_texto_campos"
-        android:editable="false"
         android:ems="10"
         android:gravity="center"
         android:inputType="none"

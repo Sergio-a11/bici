@@ -985,15 +985,18 @@ app.post("/createMarca",(req,res)=>{
 })
 
 app.put("/updateParqueadero/:palabras",(req,res)=>{
-  const parqueadero = req.params.parqueadero
-    const words = parqueadero.split(',')
+    const palabras = req.params.palabras
+    const words = palabras.split(',')
     const Bicicleta_idBicicleta = words[0]
     const Cupo_idCupo = words[1]
-    conexion.query(`SELECT * FROM parqueaderos WHERE Bicicleta_idBicicleta=${Bicicleta_idBicicleta}`,(error,results)=>{
+    const Cupo_idCupo2= words[2]
+    console.log(palabras)
+    conexion.query(`SELECT idParqueadero FROM parqueaderos WHERE Bicicleta_idBicicleta=${Bicicleta_idBicicleta}`,(error,results)=>{
         if(error){
             throw error
-        }else if(results[0]==undefined){
-          conexion.query(`UPDATE parqueaderos SET Bicicleta_idBicicleta=${Bicicleta_idBicicleta}, Cupo_idCupo=${Cupo_idCupo} WHERE idParqueadero=${idParqueadero}`,(error,results)=>{
+        }else if(results[0]!=undefined){
+          console.log("encontro parqueadero")
+          conexion.query(`UPDATE parqueaderos SET Bicicleta_idBicicleta=${Bicicleta_idBicicleta}, Cupo_idCupo=${Cupo_idCupo} WHERE idParqueadero=${results[0].idParqueadero}`,(error,results)=>{
             if(error){
               throw error
             }else if(results!=null){
@@ -1001,16 +1004,40 @@ app.put("/updateParqueadero/:palabras",(req,res)=>{
                 if(error){
                     throw error
                 }else{
-                    res.status(200).send(JSON.stringify(results["affectedRows"]))
+                  conexion.query(`UPDATE cupos SET estado=0 WHERE idCupo=${Cupo_idCupo2}`,(error,results)=>{
+                    if(error){
+                        throw error
+                    }else{
+                        res.status(200).send(JSON.stringify(results["affectedRows"]))
+                    }
+                });
                 }
             }); 
             }else{
               res.status(404).send()
             }
-          });            
+          });
       } else {
         res.status(412).send();
       }
     }
   );  
+})
+
+app.get("/getStudentBike/:idBicicleta",(req,res)=>{
+  const idBicicleta = req.params.idBicicleta
+  conexion.query(`SELECT u.* FROM bicicletas as b JOIN usuarios AS u ON b.idBicicleta=${idBicicleta} AND b.Estudiante_id=u.codigo`,(error,results)=>{
+    if(error){
+      throw error
+    }else if(results!=null){
+      res.status(200).send(results)
+    }else{
+      res.status(400).send()
+    }
+  })
+})
+
+app.get("/getParqueaderoByBici/:id",(req,res)=>{
+  const Bicicleta_idBicicleta = req.params.id
+  conexion.query()
 })

@@ -97,9 +97,11 @@ public class InterfazBicicleta extends Fragment {
                                         .setPositiveButton("Asignar", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
-                                                String palabras =String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())
-                                                        +","+((Sesion)getActivity().getApplicationContext()).getCupo();
+
                                                 if(((Sesion)getActivity().getApplicationContext()).isModificando()){
+                                                    System.out.println("Modificando");
+                                                    String palabras =String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())
+                                                            +","+((Sesion)getActivity().getApplicationContext()).getCupo()+","+((Sesion)getActivity().getApplicationContext()).getIdCupo();
                                                     Call<Number> callActualizarParqueadero = iRetrofit.executeUpdateParqueadero(palabras);
                                                     callActualizarParqueadero.enqueue(new Callback<Number>() {
                                                         @Override
@@ -112,11 +114,12 @@ public class InterfazBicicleta extends Fragment {
                                                         @Override
                                                         public void onFailure(Call<Number> call, Throwable t) {
                                                             Snackbar.make(v, "La Bicicleta no se pudo asignar", Snackbar.LENGTH_LONG).show();
-                                                            NavHostFragment.findNavController(InterfazBicicleta.this)
-                                                                    .navigate(R.id.action_interfazBicicleta_to_admParqueaderos);
                                                         }
                                                     });
                                                 }else {
+                                                    System.out.println("No modificando");
+                                                    String palabras =String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())
+                                                            +","+((Sesion)getActivity().getApplicationContext()).getCupo();
                                                     Call<Parqueadero> callParqueadero = iRetrofit.executeCreateParqueadero(palabras);
                                                     callParqueadero.enqueue(new Callback<Parqueadero>() {
                                                         @Override

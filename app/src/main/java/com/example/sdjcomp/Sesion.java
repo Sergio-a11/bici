@@ -4,7 +4,7 @@ import android.app.Application;
 
 public class Sesion extends Application {
     private String codigo,nombre,correo,clave,Rseguridad;
-    private int Rol_id,Pseguridad,idBici,idMarca,idTipo,idPreguntas,idRol;
+    private int Rol_id,Pseguridad,idBici,idMarca,idTipo,idPreguntas,idRol,idCupo;
     private boolean validado, modificando;
     private Parqueadero objParqueadero;
 
@@ -193,5 +193,13 @@ public class Sesion extends Application {
 
     public void setObjParqueadero(Parqueadero objParqueadero) {
         this.objParqueadero = objParqueadero;
+    }
+
+    public int getIdCupo() {
+        return idCupo;
+    }
+
+    public void setIdCupo(int idCupo) {
+        this.idCupo = idCupo;
     }
 }

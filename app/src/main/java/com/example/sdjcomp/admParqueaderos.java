@@ -65,6 +65,7 @@ public class admParqueaderos extends Fragment {
                         @Override
                         public void onClick(View view) {
                             ((Sesion)getActivity().getApplicationContext()).setIdBici(Integer.parseInt(textIdBici.getText().toString()));
+                            ((Sesion)getActivity().getApplicationContext()).setIdCupo(Integer.parseInt(textIdCupo.getText().toString()));
                             ((Sesion)getActivity().getApplicationContext()).setModificando(true);
                             NavHostFragment.findNavController(admParqueaderos.this).
                                     navigate(R.id.action_admParqueaderos_to_modificarParqueadero);
