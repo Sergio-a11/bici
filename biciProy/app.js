@@ -1203,10 +1203,11 @@ app.get("/getPregunta/:codigo", (req, res) => {
 app.post("/crearTipo/",(req,res)=>{
   const tipo = req.body.tipo
   conexion.query(`INSERT INTO tipos (tipo) VALUES ('${tipo}')`,(error,results)=>{
+    console.log(results)
     if(error){
       throw error
     }else if(results!=null){
-      res.status(200).send(results["affectedRows"])
+      res.status(200).send(JSON.stringify(results["affectedRows"]))
     }else{
       res.status(400).send()
     }
