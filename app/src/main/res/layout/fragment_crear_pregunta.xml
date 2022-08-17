@@ -65,8 +65,10 @@
         android:id="@+id/textView29"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="133dp"
         android:text="Pregunta"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="276dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,6 +32,7 @@ public class admCupos extends Fragment {
     private IRetroFit iRetrofit;
     private String URL="";
     private TableLayout tablaCupos;
+    private Button btnCrear,btnVolver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
