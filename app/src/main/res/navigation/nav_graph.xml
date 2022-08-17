@@ -94,6 +94,9 @@
         <action
             android:id="@+id/action_interfazBicicleta_to_modificarYEliminarBicicleta"
             app:destination="@id/modificarYEliminarBicicleta" />
+        <action
+            android:id="@+id/action_interfazBicicleta_to_admParqueaderos"
+            app:destination="@id/admParqueaderos" />
     </fragment>
 
     <fragment
@@ -159,6 +162,9 @@
         <action
             android:id="@+id/action_asignarCupo_to_interfazBicicleta"
             app:destination="@id/interfazBicicleta" />
+        <action
+            android:id="@+id/action_asignarCupo_to_admParqueaderos"
+            app:destination="@id/admParqueaderos" />
     </fragment>
     <fragment
         android:id="@+id/consultarParqueaderoSeccion"
@@ -280,7 +286,17 @@
     <fragment
         android:id="@+id/admParqueaderos"
         android:name="com.example.sdjcomp.admParqueaderos"
-        android:label="admParqueaderos" />
+        android:label="admParqueaderos" >
+        <action
+            android:id="@+id/action_admParqueaderos_to_admin"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admParqueaderos_to_asignarCupo"
+            app:destination="@id/asignarCupo" />
+        <action
+            android:id="@+id/action_admParqueaderos_to_modificarParqueadero"
+            app:destination="@id/modificarParqueadero" />
+    </fragment>
     <fragment
         android:id="@+id/admPreguntas"
         android:name="com.example.sdjcomp.admPreguntas"
@@ -344,5 +360,17 @@
         <action
             android:id="@+id/action_registrarMarca_to_admMarcas"
             app:destination="@id/admMarcas" />
+    </fragment>
+    <fragment
+        android:id="@+id/modificarParqueadero"
+        android:name="com.example.sdjcomp.modificarParqueadero"
+        android:label="fragment_modificar_parqueadero"
+        tools:layout="@layout/fragment_modificar_parqueadero" >
+        <action
+            android:id="@+id/action_modificarParqueadero_to_admParqueaderos"
+            app:destination="@id/admParqueaderos" />
+        <action
+            android:id="@+id/action_modificarParqueadero_to_interfazBicicleta"
+            app:destination="@id/interfazBicicleta" />
     </fragment>
 </navigation>

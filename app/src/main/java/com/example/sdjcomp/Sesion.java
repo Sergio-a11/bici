@@ -5,7 +5,8 @@ import android.app.Application;
 public class Sesion extends Application {
     private String codigo,nombre,correo,clave,Rseguridad;
     private int Rol_id,Pseguridad,idBici,idMarca,idTipo,idPreguntas,idRol;
-    private boolean validado;
+    private boolean validado, modificando;
+    private Parqueadero objParqueadero;
 
     private int cupo, bicicleta;
     private String codio,seccion;
@@ -176,5 +177,21 @@ public class Sesion extends Application {
 
     public void setIdRol(int idRol) {
         this.idRol = idRol;
+    }
+
+    public boolean isModificando() {
+        return modificando;
+    }
+
+    public void setModificando(boolean modificando) {
+        this.modificando = modificando;
+    }
+
+    public Parqueadero getObjParqueadero() {
+        return objParqueadero;
+    }
+
+    public void setObjParqueadero(Parqueadero objParqueadero) {
+        this.objParqueadero = objParqueadero;
     }
 }

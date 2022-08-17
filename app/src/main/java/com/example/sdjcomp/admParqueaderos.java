@@ -3,10 +3,12 @@ package com.example.sdjcomp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ public class admParqueaderos extends Fragment {
     private IRetroFit iRetrofit;
     private String URL="";
     private TableLayout tablaParqueaderos;
+    private Button btnCrear,btnVolver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,8 @@ public class admParqueaderos extends Fragment {
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
         tablaParqueaderos = v.findViewById(R.id.tablaParqueaderos);
+        btnCrear = v.findViewById(R.id.btnCrearParqueaderoAdmin);
+        btnVolver = v.findViewById(R.id.btnVolverParqueaderoAdmin);
         Call<List<Parqueadero>> call = iRetrofit.executeGetadmParqueaderos();
         call.enqueue(new Callback<List<Parqueadero>>() {
             @Override
@@ -50,12 +55,45 @@ public class admParqueaderos extends Fragment {
                     TextView textId = new TextView(getActivity());
                     TextView textIdBici = new TextView(getActivity());
                     TextView textIdCupo = new TextView(getActivity());
+                    Button btnModificar = new Button(getActivity());
+                    Button btnEliminar = new Button(getActivity());
                     textId.setText(String.valueOf(response.body().get(i).getIdParqueadero()));
                     textIdBici.setText(String.valueOf(response.body().get(i).getBicicleta_idBicicleta()));
                     textIdCupo.setText(String.valueOf(response.body().get(i).getCupo_idCupo()));
+                    btnModificar.setText("Modificar");
+                    btnModificar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ((Sesion)getActivity().getApplicationContext()).setModificando(true);
+                            NavHostFragment.findNavController(admParqueaderos.this).
+                                    navigate(R.id.action_admParqueaderos_to_modificarParqueadero);
+                        }
+                    });
+                    btnEliminar.setText("Eliminar");
+                    btnEliminar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Call<Number> call1 = iRetrofit.executeDeleteParqueadero(Integer.parseInt(textIdBici.getText().toString()));
+                            call1.enqueue(new Callback<Number>() {
+                                @Override
+                                public void onResponse(Call<Number> call, Response<Number> response) {
+                                    Snackbar.make(v, "Parqueadero Borrado", Snackbar.LENGTH_LONG).show();
+                                    NavHostFragment.findNavController(admParqueaderos.this).
+                                            navigate(R.id.action_admParqueaderos_to_admin);
+                                }
+
+                                @Override
+                                public void onFailure(Call<Number> call, Throwable t) {
+                                    Snackbar.make(v, "No se pudo borrar el parqueadero", Snackbar.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    });
                     fila.addView(textId);
                     fila.addView(textIdBici);
                     fila.addView(textIdCupo);
+                    fila.addView(btnModificar);
+                    fila.addView(btnEliminar);
                     tablaParqueaderos.addView(fila);
                 }
 
@@ -66,6 +104,23 @@ public class admParqueaderos extends Fragment {
                 Snackbar.make(v, "No se pudieron encontrar los parqueaderos", Snackbar.LENGTH_LONG).show();
             }
         });
+
+        btnCrear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(admParqueaderos.this).
+                        navigate(R.id.action_admParqueaderos_to_asignarCupo);
+            }
+        });
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(admParqueaderos.this).
+                        navigate(R.id.action_admParqueaderos_to_admin);
+            }
+        });
+
         return v;
     }
 }

@@ -62,7 +62,7 @@ public class InterfazBicicleta extends Fragment {
         List<Bicicleta> lstBicicletas = new ArrayList<>();
         System.out.println("((Sesion)getActivity().getApplicationContext()).getCodigo() = " + ((Sesion)getActivity().getApplicationContext()).getCodigo());
         Call<List<Bicicleta>> call = null;
-        if(((Sesion)getActivity().getApplicationContext()).getRol_id()==1){
+        if(((Sesion)getActivity().getApplicationContext()).getRol_id()!=2){
             call=iRetrofit.executeGetBikes(((Sesion)getActivity().getApplicationContext()).getCodio());
         }else if(((Sesion)getActivity().getApplicationContext()).getRol_id()==2){
             call=iRetrofit.executeGetBikes(((Sesion)getActivity().getApplicationContext()).getCodigo());
@@ -88,7 +88,7 @@ public class InterfazBicicleta extends Fragment {
 
                             System.out.println("Averrer");
                             System.out.println(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getMarca());
-                            if(((Sesion)getActivity().getApplicationContext()).getRol_id()==1){
+                            if(((Sesion)getActivity().getApplicationContext()).getRol_id()!=2){
                                 alertBici.setMessage("Marca: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getMarca()+
                                                 "\nTipo: "+lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getTipo()+
                                                 "\nId: "+String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())+
@@ -99,25 +99,54 @@ public class InterfazBicicleta extends Fragment {
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 String palabras =String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())
                                                         +","+((Sesion)getActivity().getApplicationContext()).getCupo();
-                                                Call<Parqueadero> callParqueadero = iRetrofit.executeCreateParqueadero(palabras);
-                                                callParqueadero.enqueue(new Callback<Parqueadero>() {
-                                                    @Override
-                                                    public void onResponse(Call<Parqueadero> call, Response<Parqueadero> response) {
-                                                        if(response.code()==200){
-                                                            Snackbar.make(v, "Bicicleta Asignada al cupo", Snackbar.LENGTH_LONG).show();
+                                                if(((Sesion)getActivity().getApplicationContext()).isModificando()){
+                                                    Call<Number> callActualizarParqueadero = iRetrofit.executeUpdateParqueadero(palabras);
+                                                    callActualizarParqueadero.enqueue(new Callback<Number>() {
+                                                        @Override
+                                                        public void onResponse(Call<Number> call, Response<Number> response) {
+                                                            ((Sesion)getActivity().getApplicationContext()).setModificando(false);
                                                             NavHostFragment.findNavController(InterfazBicicleta.this)
-                                                                    .navigate(R.id.action_interfazBicicleta_to_interfaz_administrador);
-                                                        }else if(response.code()==412){
-                                                            Snackbar.make(v, "La Bicicleta ya tiene un cupo asignado", Snackbar.LENGTH_LONG).show();
-                                                            NavHostFragment.findNavController(InterfazBicicleta.this)
-                                                                    .navigate(R.id.action_interfazBicicleta_to_interfaz_administrador);
+                                                                    .navigate(R.id.action_interfazBicicleta_to_admParqueaderos);
                                                         }
-                                                    }
-                                                    @Override
-                                                    public void onFailure(Call<Parqueadero> call, Throwable t) {
-                                                        Snackbar.make(v, "La Bicicleta no se pudo asignar", Snackbar.LENGTH_LONG).show();
-                                                    }
-                                                });
+
+                                                        @Override
+                                                        public void onFailure(Call<Number> call, Throwable t) {
+                                                            Snackbar.make(v, "La Bicicleta no se pudo asignar", Snackbar.LENGTH_LONG).show();
+                                                            NavHostFragment.findNavController(InterfazBicicleta.this)
+                                                                    .navigate(R.id.action_interfazBicicleta_to_admParqueaderos);
+                                                        }
+                                                    });
+                                                }else {
+                                                    Call<Parqueadero> callParqueadero = iRetrofit.executeCreateParqueadero(palabras);
+                                                    callParqueadero.enqueue(new Callback<Parqueadero>() {
+                                                        @Override
+                                                        public void onResponse(Call<Parqueadero> call, Response<Parqueadero> response) {
+                                                            if(response.code()==200){
+                                                                Snackbar.make(v, "Bicicleta Asignada al cupo", Snackbar.LENGTH_LONG).show();
+                                                                if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                                                                    NavHostFragment.findNavController(InterfazBicicleta.this)
+                                                                            .navigate(R.id.action_interfazBicicleta_to_admParqueaderos);
+                                                                }else{
+                                                                    NavHostFragment.findNavController(InterfazBicicleta.this)
+                                                                            .navigate(R.id.action_interfazBicicleta_to_interfaz_administrador);
+                                                                }
+                                                            }else if(response.code()==412){
+                                                                Snackbar.make(v, "La Bicicleta ya tiene un cupo asignado", Snackbar.LENGTH_LONG).show();
+                                                                if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                                                                    NavHostFragment.findNavController(InterfazBicicleta.this)
+                                                                            .navigate(R.id.action_interfazBicicleta_to_admParqueaderos);
+                                                                }else{
+                                                                    NavHostFragment.findNavController(InterfazBicicleta.this)
+                                                                            .navigate(R.id.action_interfazBicicleta_to_interfaz_administrador);
+                                                                }
+                                                            }
+                                                        }
+                                                        @Override
+                                                        public void onFailure(Call<Parqueadero> call, Throwable t) {
+                                                            Snackbar.make(v, "La Bicicleta no se pudo asignar", Snackbar.LENGTH_LONG).show();
+                                                        }
+                                                    });
+                                                }
                                             }
                                         })
                                         .create().show();

@@ -11,9 +11,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -26,12 +25,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+public class modificarParqueadero extends Fragment {
 
-public class AsignarCupo extends Fragment {
-
-    private EditText edtCodigo;
     private Spinner spnSeccion,spnCupos;
-    private Button btnAsignar, btnVolver;
+    private Button btnModificar,btnVolver;
+    private TextView edtCodigo;
 
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
@@ -45,20 +43,11 @@ public class AsignarCupo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        URL="http://"+getResources().getString(R.string.IP)+":3000/createCupo/";
-        View v = inflater.inflate(R.layout.asignar_cupo,container,false);
-        mostrarCupos(1);
-        edtCodigo = v.findViewById(R.id.edtCodigoEnCupos);
-        spnSeccion = v.findViewById(R.id.spnSeccionAsignar);
-        btnAsignar = v.findViewById(R.id.btnAsignar);
-        spnCupos = v.findViewById(R.id.spnCupos);
-        btnVolver = v.findViewById(R.id.btnVolverAsignar);
-
-        retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
-        iRetrofit = retrofit.create(IRetroFit.class);
-
-
-
+        View v = inflater.inflate(R.layout.fragment_modificar_parqueadero,container,false);
+        spnCupos = v.findViewById(R.id.spnCuposModParq);
+        spnSeccion = v.findViewById(R.id.spnSeccionModParq);
+        btnModificar = v.findViewById(R.id.btnVolverModificarParqueadero);
+        btnVolver = v.findViewById(R.id.btnVolverModificarParqueadero);
 
         spnSeccion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -73,7 +62,7 @@ public class AsignarCupo extends Fragment {
             }
         });
 
-        btnAsignar.setOnClickListener(new View.OnClickListener() {
+        btnModificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(spnCupos.getSelectedItem()!=null){
@@ -90,20 +79,20 @@ public class AsignarCupo extends Fragment {
                             public void onResponse(Call<List<Bicicleta>> call, Response<List<Bicicleta>> response) {
                                 if(response.code()==200 && !response.body().isEmpty()){
                                     Snackbar.make(v, "Eliga la bicicleta que desea registrar", Snackbar.LENGTH_LONG).show();
-                                    NavHostFragment.findNavController(AsignarCupo.this).
-                                            navigate(R.id.action_asignarCupo_to_interfazBicicleta);
+                                    NavHostFragment.findNavController(modificarParqueadero.this).
+                                            navigate(R.id.action_modificarParqueadero_to_interfazBicicleta);
                                 }else{
                                     Snackbar.make(v, "Este estudiante no tiene bicicletas", Snackbar.LENGTH_LONG).show();
-                                    NavHostFragment.findNavController(AsignarCupo.this).
-                                                navigate(R.id.action_asignarCupo_to_interfaz_administrador);
+                                    NavHostFragment.findNavController(modificarParqueadero.this).
+                                            navigate(R.id.action_modificarParqueadero_to_admParqueaderos);
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<List<Bicicleta>> call, Throwable t) {
                                 Snackbar.make(v, "Este estudiante no tiene bicicletas", Snackbar.LENGTH_LONG).show();
-                                NavHostFragment.findNavController(AsignarCupo.this).
-                                        navigate(R.id.action_asignarCupo_to_interfaz_administrador);
+                                NavHostFragment.findNavController(modificarParqueadero.this).
+                                        navigate(R.id.action_modificarParqueadero_to_admParqueaderos);
                             }
                         });
 
@@ -115,17 +104,10 @@ public class AsignarCupo extends Fragment {
                 }
             }
         });
-
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
-                    NavHostFragment.findNavController(AsignarCupo.this).
-                            navigate(R.id.action_asignarCupo_to_admParqueaderos);
-                }else{
-                    NavHostFragment.findNavController(AsignarCupo.this).
-                            navigate(R.id.action_asignarCupo_to_interfaz_administrador);
-                }
+
             }
         });
 

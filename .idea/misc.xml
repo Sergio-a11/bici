@@ -21,12 +21,15 @@
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_adm_bicicletas.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_adm_marcas.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_adm_marcas_manager.xml" value="0.3625" />
+        <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_adm_parqueaderos.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_adm_preguntas.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_adm_usuarios.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_admin.xml" value="0.3625" />
+        <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_crear_parqueadero.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_interfaz_bicicleta.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_login.xml" value="0.3061594202898551" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_modificar_bicicleta.xml" value="0.3625" />
+        <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_modificar_parqueadero.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_modificar_usuario.xml" value="0.35597826086956524" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_modificar_y_eliminar_bicicleta.xml" value="0.3625" />
         <entry key="..\:/Repositorios/bici/app/src/main/res/layout/fragment_recuperarcontrasena.xml" value="0.3625" />

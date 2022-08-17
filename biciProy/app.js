@@ -983,3 +983,34 @@ app.post("/createMarca",(req,res)=>{
     }
   })
 })
+
+app.put("/updateParqueadero/:palabras",(req,res)=>{
+  const parqueadero = req.params.parqueadero
+    const words = parqueadero.split(',')
+    const Bicicleta_idBicicleta = words[0]
+    const Cupo_idCupo = words[1]
+    conexion.query(`SELECT * FROM parqueaderos WHERE Bicicleta_idBicicleta=${Bicicleta_idBicicleta}`,(error,results)=>{
+        if(error){
+            throw error
+        }else if(results[0]==undefined){
+          conexion.query(`UPDATE parqueaderos SET Bicicleta_idBicicleta=${Bicicleta_idBicicleta}, Cupo_idCupo=${Cupo_idCupo} WHERE idParqueadero=${idParqueadero}`,(error,results)=>{
+            if(error){
+              throw error
+            }else if(results!=null){
+              conexion.query(`UPDATE cupos SET estado=1 WHERE idCupo=${Cupo_idCupo}`,(error,results)=>{
+                if(error){
+                    throw error
+                }else{
+                    res.status(200).send(JSON.stringify(results["affectedRows"]))
+                }
+            }); 
+            }else{
+              res.status(404).send()
+            }
+          });            
+      } else {
+        res.status(412).send();
+      }
+    }
+  );  
+})

@@ -118,4 +118,7 @@ public interface IRetroFit {
 
     @POST("/createMarca")
     Call<Number> executeRegisterMarca(@Body Marca marca);
+
+    @PUT("/updateParqueadero/{palabras}")
+    Call<Number> executeUpdateParqueadero(@Path("palabras") String palabras);
 }

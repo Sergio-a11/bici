@@ -73,6 +73,14 @@ public class registrarMarca extends Fragment {
                 }
             }
         });
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(registrarMarca.this).
+                        navigate(R.id.action_registrarMarca_to_admMarcas);
+            }
+        });
         return v;
     }
 }
