@@ -345,7 +345,17 @@
         android:id="@+id/admTipos"
         android:name="com.example.sdjcomp.admTipos"
         android:label="fragment_adm_tipos"
-        tools:layout="@layout/fragment_adm_tipos" />
+        tools:layout="@layout/fragment_adm_tipos" >
+        <action
+            android:id="@+id/action_admTipos_to_crearTipo"
+            app:destination="@id/crearTipo" />
+        <action
+            android:id="@+id/action_admTipos_to_admin"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admTipos_to_modificarTipo"
+            app:destination="@id/modificarTipo" />
+    </fragment>
     <fragment
         android:id="@+id/admUsuarios"
         android:name="com.example.sdjcomp.admUsuarios"
@@ -470,5 +480,23 @@
         <action
             android:id="@+id/action_modificarRoles_to_roles2"
             app:destination="@id/roles" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearTipo"
+        android:name="com.example.sdjcomp.crearTipo"
+        android:label="fragment_crear_tipo"
+        tools:layout="@layout/fragment_crear_tipo" >
+        <action
+            android:id="@+id/action_crearTipo_to_admTipos"
+            app:destination="@id/admTipos" />
+    </fragment>
+    <fragment
+        android:id="@+id/modificarTipo"
+        android:name="com.example.sdjcomp.modificarTipo"
+        android:label="fragment_modificar_tipo"
+        tools:layout="@layout/fragment_modificar_tipo" >
+        <action
+            android:id="@+id/action_modificarTipo_to_admTipos"
+            app:destination="@id/admTipos" />
     </fragment>
 </navigation>

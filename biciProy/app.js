@@ -1199,3 +1199,43 @@ app.get("/getPregunta/:codigo", (req, res) => {
     }
   );
 });
+
+app.post("/crearTipo/",(req,res)=>{
+  const tipo = req.body.tipo
+  conexion.query(`INSERT INTO tipos (tipo) VALUES ('${tipo}')`,(error,results)=>{
+    if(error){
+      throw error
+    }else if(results!=null){
+      res.status(200).send(results["affectedRows"])
+    }else{
+      res.status(400).send()
+    }
+  })
+})
+
+app.put("/updateTipo",(req,res)=>{
+  const id = req.body.id
+  const tipo = req.body.tipo
+  conexion.query(`UPDATE tipos SET tipo='${tipo}' WHERE id=${id}`,(error,results)=>{
+    if(error){
+      throw error
+    }else if(results!=null){
+      res.status(200).send(JSON.stringify(results["affectedRows"]))
+    }else{
+      res.status(400).send()
+    }
+  })
+})
+
+app.delete("/deleteTipo/:id",(req,res)=>{
+  const id = req.params.id
+  conexion.query(`DELETE FROM tipos WHERE id=${id}`,(error,results)=>{
+    if(error){
+      throw error
+    }else if(results!=null){
+      res.status(200).send(JSON.stringify(results["affectedRows"]))
+    }else{
+      res.status(404).send()
+    }
+  })
+})

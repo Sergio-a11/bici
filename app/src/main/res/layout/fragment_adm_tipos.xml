@@ -1,63 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:id="@+id/relativeLayout4">
 
 
+    <ScrollView
+        android:id="@+id/scrollView9"
+        android:layout_width="412dp"
+        android:layout_height="266dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TableLayout
+                        android:id="@+id/tablaTipos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/white"
+                        tools:layout_conversion_absoluteHeight="39dp"
+                        tools:layout_conversion_absoluteWidth="351dp">
+
+                        <!-- Table Heading -->
+
+                        <TableRow
+
+                            android:layout_width="369dp"
+                            android:background="@color/colorGreen">
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+
+                            <TextView
+                                android:id="@+id/tvIdTipo"
+                                android:layout_width="134dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Id"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvTipo"
+                                android:layout_width="151dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Tipo"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp" />
 
 
-    <TableLayout
-        android:id="@+id/tablaTipos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="40dp"
-        android:background="@android:color/white">
+                        </TableRow>
 
-        <!-- Table Heading -->
+                        <!-- Table Data -->
 
-        <TableRow
 
-            android:layout_width="369dp"
-            android:background="@color/colorGreen">
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+                    </TableLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </ScrollView>
 
-            <TextView
-                android:id="@+id/tvIdTipo"
-                android:layout_width="134dp"
+    <LinearLayout
+        android:layout_width="411dp"
+        android:layout_height="267dp"
+        android:layout_marginStart="1dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView9">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCrearTipo"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:gravity="center_horizontal"
-                android:padding="10sp"
-                android:text="Id"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
+                android:text="Crear" />
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvTipo"
-                android:layout_width="151dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnVolverTipoAdmin"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:gravity="center_horizontal"
-                android:padding="10sp"
-                android:text="Tipo"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
+                android:layout_weight="1"
+                android:text="Volver" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 
-
-        </TableRow>
-
-        <!-- Table Data -->
-
-
-    </TableLayout>
-
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
