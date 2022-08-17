@@ -30,7 +30,7 @@ public class modificarParqueadero extends Fragment {
 
     private Spinner spnSeccion,spnCupos;
     private Button btnModificar,btnVolver;
-    private EditText edtCodigo;
+    private Spinner spnIDBicicleta;
     private String codigo, idBicicleta;
 
     private Retrofit retrofit;
@@ -49,7 +49,7 @@ public class modificarParqueadero extends Fragment {
         View v = inflater.inflate(R.layout.fragment_modificar_parqueadero,container,false);
         spnCupos = v.findViewById(R.id.spnCuposModParq);
         spnSeccion = v.findViewById(R.id.spnSeccionModParq);
-        edtCodigo = v.findViewById(R.id.edtIDBICIModificarParq);
+        spnIDBicicleta = v.findViewById(R.id.spnIdBici);
         btnModificar = v.findViewById(R.id.btnModificarParqueadero);
         btnVolver = v.findViewById(R.id.btnVolverModificarParqueadero);
 
@@ -58,8 +58,8 @@ public class modificarParqueadero extends Fragment {
         iRetrofit = retrofit.create(IRetroFit.class);
 
         idBicicleta = String.valueOf(((Sesion)getActivity().getApplicationContext()).getIdBici());
-        edtCodigo.setText(idBicicleta);
-        //edtCodigo.setText("20192578008");
+
+        CargarBicicletas();
 
         spnSeccion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -79,7 +79,8 @@ public class modificarParqueadero extends Fragment {
             public void onClick(View view) {
                 if(spnCupos.getSelectedItem()!=null){
                     int cupo=Integer.parseInt(spnCupos.getSelectedItem().toString());
-                    String palabras = ((Sesion)getActivity().getApplicationContext()).getIdBici()+","+cupo+","+((Sesion)getActivity().getApplicationContext()).getIdCupo();
+                    int bici =Integer.parseInt(spnIDBicicleta.getSelectedItem().toString());
+                    String palabras = (bici+","+cupo+","+((Sesion)getActivity().getApplicationContext()).getIdCupo()+","+idBicicleta);
                     Call<Number> call1 = iRetrofit.executeUpdateParqueadero(palabras);
                     call1.enqueue(new Callback<Number>() {
                         @Override
@@ -96,36 +97,6 @@ public class modificarParqueadero extends Fragment {
                                     navigate(R.id.action_modificarParqueadero_to_admParqueaderos);
                         }
                     });
-                        /*int seccion=spnSeccion.getSelectedItemPosition()+1;
-                        int cupo=Integer.parseInt(spnCupos.getSelectedItem().toString());
-
-                        System.out.println("idBicicleta = " + Integer.parseInt(idBicicleta));
-                        Call<Usuario> call1 = iRetrofit.executeGetStudentBike(Integer.parseInt(idBicicleta));
-                        call1.enqueue(new Callback<Usuario>() {
-                            @Override
-                            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                                System.out.println(response);
-                                System.out.println("response = " + response.body().getCodigo());
-                                codigo = response.body().getCodigo();
-                                System.out.println("codigo = " + codigo);
-                                ((Sesion)getActivity().getApplicationContext()).setIdCupo(cupo);
-                                ((Sesion)getActivity().getApplicationContext()).setBicicleta(seccion);
-                                ((Sesion)getActivity().getApplicationContext()).setCodio(codigo);
-                                Snackbar.make(v, "Eliga la bicicleta que desea registrar", Snackbar.LENGTH_LONG).show();
-                                NavHostFragment.findNavController(modificarParqueadero.this).
-                                        navigate(R.id.action_modificarParqueadero_to_interfazBicicleta);
-                            }
-
-                            @Override
-                            public void onFailure(Call<Usuario> call, Throwable t) {
-                                System.out.println("No se pudo modificar");
-                                Snackbar.make(v, t.getMessage(), Snackbar.LENGTH_LONG).show();
-                            }
-                        });*/
-
-
-
-
                 }else{
                     Snackbar.make(v, "No hay cupos disponibles", Snackbar.LENGTH_LONG).show();
                 }
@@ -173,34 +144,35 @@ public class modificarParqueadero extends Fragment {
         });
     }
 
-    /*public void CargarBicicletas(View v){
-        String URLAUX = "http://"+getResources().getString(R.string.IP)+":3000/getBikes/";
+    public void CargarBicicletas(){
+        String URLAUX = "http://"+getResources().getString(R.string.IP)+":3000/getbicicletasSinUso/";
         retrofit = new Retrofit.Builder().baseUrl(URLAUX).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
-        System.out.println("codigo = " + codigo);
-        Call<List<Bicicleta>> call = iRetrofit.executeGetBikes(((Sesion)getActivity().getApplicationContext()).getCodio());
-        call.enqueue(new Callback<List<Bicicleta>>() {
 
+        ArrayList<Bicicleta> listaBicis = new ArrayList<>();
+        ArrayList<Number> listaID = new ArrayList<>();
+        System.out.println("codigo = " + codigo);
+        Call<List<Bicicleta>> call = iRetrofit.executeGetBICISinUso();
+        call.enqueue(new Callback<List<Bicicleta>>() {
             @Override
             public void onResponse(Call<List<Bicicleta>> call, Response<List<Bicicleta>> response) {
-
-                if(response.code()==200 && !response.body().isEmpty()){
-                    Snackbar.make(v, "Eliga la bicicleta que desea registrar", Snackbar.LENGTH_LONG).show();
-                    NavHostFragment.findNavController(modificarParqueadero.this).
-                            navigate(R.id.action_modificarParqueadero_to_interfazBicicleta);
-                }else{
-                    Snackbar.make(v, "Este estudiante no tiene bicicletas", Snackbar.LENGTH_LONG).show();
-                    NavHostFragment.findNavController(modificarParqueadero.this).
-                            navigate(R.id.action_modificarParqueadero_to_admParqueaderos);
+                if(response.code()==200){
+                    for(int i=0; i<response.body().size();i++){
+                        listaBicis.add(response.body().get(i));
+                    }
+                    listaID.add(Integer.parseInt(idBicicleta));
+                    for(Bicicleta i: listaBicis){
+                        listaID.add(i.getIdBicicleta());
+                    }
+                    ArrayAdapter<Number> adapter = new ArrayAdapter<Number>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listaID);
+                    spnIDBicicleta.setAdapter(adapter);
                 }
             }
 
             @Override
             public void onFailure(Call<List<Bicicleta>> call, Throwable t) {
-                Snackbar.make(v, "Este estudiante no tiene bicicletas", Snackbar.LENGTH_LONG).show();
-                NavHostFragment.findNavController(modificarParqueadero.this).
-                        navigate(R.id.action_modificarParqueadero_to_admParqueaderos);
+                System.out.println("Problema en encontrar las bicicletas");
             }
         });
-    }*/
+    }
 }

@@ -92,7 +92,7 @@ public class RegistrarBicicleta extends Fragment {
             }
         });
 
-        //rellenar spinner marcas
+        //rellenar spnIdBici marcas
 
         ArrayList<Tipo> lstTipos = new ArrayList<>();
         ArrayList<String> auxLstTipos = new ArrayList<>();

@@ -990,8 +990,9 @@ app.put("/updateParqueadero/:palabras",(req,res)=>{
     const Bicicleta_idBicicleta = words[0]
     const Cupo_idCupo = words[1]
     const Cupo_idCupo2= words[2]
+    const Bicicleta_idBicicleta2 = words[3]
     console.log(palabras)
-    conexion.query(`SELECT idParqueadero FROM parqueaderos WHERE Bicicleta_idBicicleta=${Bicicleta_idBicicleta}`,(error,results)=>{
+    conexion.query(`SELECT idParqueadero FROM parqueaderos WHERE Bicicleta_idBicicleta=${Bicicleta_idBicicleta2}`,(error,results)=>{
         if(error){
             throw error
         }else if(results[0]!=undefined){
@@ -1024,20 +1025,14 @@ app.put("/updateParqueadero/:palabras",(req,res)=>{
   );  
 })
 
-app.get("/getStudentBike/:idBicicleta",(req,res)=>{
-  const idBicicleta = req.params.idBicicleta
-  conexion.query(`SELECT u.* FROM bicicletas as b JOIN usuarios AS u ON b.idBicicleta=${idBicicleta} AND b.Estudiante_id=u.codigo`,(error,results)=>{
-    if(error){
-      throw error
-    }else if(results!=null){
-      res.status(200).send(results)
-    }else{
-      res.status(400).send()
-    }
-  })
+app.get("/getbicicletasSinUso/",(req,res)=>{
+conexion.query(`SELECT * FROM bicicletas EXCEPT SELECT b.* FROM parqueaderos AS P JOIN bicicletas AS b WHERE b.idBicicleta=p.Bicicleta_idBicicleta`,(error,results)=>{
+  if(error){
+    throw error
+  }else if(results!=null){
+    res.status(200).send(results)
+  }else{
+    res.status(404).send()
+  }
 })
-
-app.get("/getParqueaderoByBici/:id",(req,res)=>{
-  const Bicicleta_idBicicleta = req.params.id
-  conexion.query()
 })

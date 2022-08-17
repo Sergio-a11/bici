@@ -97,7 +97,7 @@ public class ModificarBicicleta extends Fragment {
 
         //Marcas
 
-        //rellenar spinner marcas
+        //rellenar spnIdBici marcas
 
         ArrayList<Marca> lstMarcas = new ArrayList<>();
         ArrayList<String> auxLstMarcas = new ArrayList<>();
@@ -134,7 +134,7 @@ public class ModificarBicicleta extends Fragment {
             }
         });
 
-        //rellenar spinner marcas
+        //rellenar spnIdBici marcas
 
         ArrayList<Tipo> lstTipos = new ArrayList<>();
         ArrayList<String> auxLstTipos = new ArrayList<>();

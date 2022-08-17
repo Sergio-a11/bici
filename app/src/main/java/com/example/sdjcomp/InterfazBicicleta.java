@@ -97,27 +97,6 @@ public class InterfazBicicleta extends Fragment {
                                         .setPositiveButton("Asignar", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
-
-                                                if(((Sesion)getActivity().getApplicationContext()).isModificando()){
-                                                    System.out.println("Modificando");
-                                                    String palabras =String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())
-                                                            +","+((Sesion)getActivity().getApplicationContext()).getCupo()+","+((Sesion)getActivity().getApplicationContext()).getIdCupo();
-                                                    Call<Number> callActualizarParqueadero = iRetrofit.executeUpdateParqueadero(palabras);
-                                                    callActualizarParqueadero.enqueue(new Callback<Number>() {
-                                                        @Override
-                                                        public void onResponse(Call<Number> call, Response<Number> response) {
-                                                            ((Sesion)getActivity().getApplicationContext()).setModificando(false);
-                                                            NavHostFragment.findNavController(InterfazBicicleta.this)
-                                                                    .navigate(R.id.action_interfazBicicleta_to_admParqueaderos);
-                                                        }
-
-                                                        @Override
-                                                        public void onFailure(Call<Number> call, Throwable t) {
-                                                            Snackbar.make(v, "La Bicicleta no se pudo asignar", Snackbar.LENGTH_LONG).show();
-                                                        }
-                                                    });
-                                                }else {
-                                                    System.out.println("No modificando");
                                                     String palabras =String.valueOf(lstBicicletas.get(recyclerViewCiclas.getChildAdapterPosition(view)).getIdBicicleta())
                                                             +","+((Sesion)getActivity().getApplicationContext()).getCupo();
                                                     Call<Parqueadero> callParqueadero = iRetrofit.executeCreateParqueadero(palabras);
@@ -149,7 +128,6 @@ public class InterfazBicicleta extends Fragment {
                                                             Snackbar.make(v, "La Bicicleta no se pudo asignar", Snackbar.LENGTH_LONG).show();
                                                         }
                                                     });
-                                                }
                                             }
                                         })
                                         .create().show();

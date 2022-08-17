@@ -122,6 +122,7 @@ public interface IRetroFit {
     @PUT("/updateParqueadero/{palabras}")
     Call<Number> executeUpdateParqueadero(@Path("palabras") String palabras);
 
-    @GET("/getStudentBike/{idBicicleta}")
-    Call<Usuario> executeGetStudentBike(@Path("idBicicleta") Number idBicicleta);
+    @GET("/getbicicletasSinUso")
+    Call<List<Bicicleta>> executeGetBICISinUso();
+
 }
