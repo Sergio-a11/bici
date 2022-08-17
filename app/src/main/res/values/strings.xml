@@ -24,10 +24,13 @@
     <string-array name="reportes">
         <item>Entradas y salidas de un estudiante o bicicleta</item>
         <item>Bicicletas por ciudad</item>
-        <item>Parqueaderos usados</item>
-        <item>Marca mas usada</item>
-        <item>Tipos mas usada</item>
-        <item>Bicicletas registradas por año</item>
+        <item>Uso de parqueaderos</item>
+    </string-array>
+
+    <string-array name="uso">
+        <item>Todos</item>
+        <item>En uso</item>
+        <item>Sin uso</item>
     </string-array>
 
     <string name="IP">192.168.20.25</string>

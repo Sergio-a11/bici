@@ -44,6 +44,19 @@ public class ControlParqueaderos {
         this.departure_time = departure_time;
     }
 
+    public ControlParqueaderos(int idCupo, int idParqueadero, String seccion, String fechaRegistro, String numSerie, String color, String estudiante_id, String status, String arrived_time, String departure_time) {
+        this.idCupo = idCupo;
+        this.idParqueadero = idParqueadero;
+        this.seccion = seccion;
+        this.fechaRegistro = fechaRegistro;
+        this.numSerie = numSerie;
+        this.color = color;
+        Estudiante_id = estudiante_id;
+        this.status = status;
+        this.arrived_time = arrived_time;
+        this.departure_time = departure_time;
+    }
+
     public int getId() {
         return id;
     }

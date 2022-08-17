@@ -33,9 +33,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ReporteParametrizados extends Fragment {
 
-    Spinner spnReportes;
+    Spinner spnReportes, spnUso;
     Button btnFiltrar;
-    LinearLayout lCodigo, lNumSerie, lCiudad;
+    LinearLayout lCodigo, lNumSerie, lCiudad, lUso;
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
     private String URL="";
@@ -50,7 +50,6 @@ public class ReporteParametrizados extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -58,6 +57,7 @@ public class ReporteParametrizados extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_reporte_parametrizados,container,false);
         spnReportes = v.findViewById(R.id.spnReportes);
+        spnUso = v.findViewById(R.id.spnUso);
         btnFiltrar = v.findViewById(R.id.btnFiltrarR);
         tablaReporte = v.findViewById(R.id.tblReportes);
 
@@ -81,11 +81,11 @@ public class ReporteParametrizados extends Fragment {
         txtDepartureTimeR = v.findViewById(R.id.txtDepartureTimeR);
         txtEstadoR = v.findViewById(R.id.txtEstadoR);
 
-
         //layouts
         lCodigo = v.findViewById(R.id.layoutCodigo);
         lNumSerie = v.findViewById(R.id.layoutNumSerie);
         lCiudad = v.findViewById(R.id.layoutCiudad);
+        lUso = v.findViewById(R.id.layouUso);
 
         //desactivar
         //txtCodigo.setEnabled(false);
@@ -101,6 +101,7 @@ public class ReporteParametrizados extends Fragment {
                         lCodigo.setVisibility(View.VISIBLE);
                         lNumSerie.setVisibility(View.VISIBLE);
                         lCiudad.setVisibility(View.GONE);
+                        lUso.setVisibility(View.GONE);
                         filtrar(i, v);
                         break;
                     }
@@ -110,6 +111,16 @@ public class ReporteParametrizados extends Fragment {
                         lCodigo.setVisibility(View.GONE);
                         lNumSerie.setVisibility(View.GONE);
                         lCiudad.setVisibility(View.VISIBLE);
+                        lUso.setVisibility(View.GONE);
+                        filtrar(i, v);
+                        break;
+                    }
+                    case 2:
+                    {
+                        lCodigo.setVisibility(View.GONE);
+                        lNumSerie.setVisibility(View.GONE);
+                        lCiudad.setVisibility(View.GONE);
+                        lUso.setVisibility(View.VISIBLE);
                         filtrar(i, v);
                         break;
                     }
@@ -371,6 +382,106 @@ public class ReporteParametrizados extends Fragment {
 
                         break;
                     }
+                    case 2:
+                    {
+                        String uso = "";
+                        if(spnUso.getSelectedItemPosition() == 0)
+                        {
+                            //Snackbar.make(v, "Rellene el filtro", Snackbar.LENGTH_LONG).show();
+                            uso = "%";
+                        }else
+                        {
+                            if(spnUso.getSelectedItemPosition() == 1)
+                                uso = "En uso";
+                            if(spnUso.getSelectedItemPosition() == 2)
+                                uso = "Sin uso";
+                        }
+
+                        URL = "http://" + getResources().getString(R.string.IP) + ":3000/getReporteUsoDeParqueaderos/";
+                        retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
+                        iRetrofit = retrofit.create(IRetroFit.class);
+                        Call<List<ControlParqueaderos>> call = iRetrofit.executeGetReporteUso(uso);
+                        call.enqueue(new Callback<List<ControlParqueaderos>>() {
+                            @Override
+                            public void onResponse(Call<List<ControlParqueaderos>> call, Response<List<ControlParqueaderos>> response) {
+
+                                txtIdBiciletaR.setVisibility(View.GONE);
+                                txtCedulaR.setVisibility(View.GONE);
+                                txtLugarRegistroR.setVisibility(View.GONE);
+                                txtIdMarcaR.setVisibility(View.GONE);
+                                txtIdTipoR.setVisibility(View.GONE);
+                                txtNombreR.setVisibility(View.GONE);
+                                txtCorreoR.setVisibility(View.GONE);
+
+                                txtFechaRegistroR.setText("Tiempo de uso");
+
+                                for (int i = 0; i < response.body().size(); i++) {
+                                    System.out.println("hey");
+                                    TableRow fila = new TableRow(getActivity());
+                                    TextView txtIDcupo = new TextView(getActivity());
+                                    txtIDcupo.setTextColor(Color.rgb(255, 255, 255));
+                                    txtIDcupo.setGravity(Gravity.CENTER);
+                                    TextView txtSeccion = new TextView(getActivity());
+                                    TextView txtIDparq = new TextView(getActivity());
+                                    TextView txtNumSerie = new TextView(getActivity());
+                                    TextView txtColor = new TextView(getActivity());
+                                    TextView txtCodigo = new TextView(getActivity());
+                                    TextView txtCreated = new TextView(getActivity());
+                                    TextView txtUpdate = new TextView(getActivity());
+                                    TextView txtFecha = new TextView(getActivity());
+                                    txtFecha.setTextColor(Color.rgb(255, 255, 255));
+                                    txtFecha.setGravity(Gravity.CENTER);
+                                    TextView txtEstatus = new TextView(getActivity());
+
+
+                                    //txtid.setText(String.valueOf(response.body().get(i).getId()));
+                                    txtIDcupo.setText(String.valueOf(response.body().get(i).getId()));
+                                    txtIDparq.setText(String.valueOf(response.body().get(i).getIdParqueadero()));
+                                    txtSeccion.setText(response.body().get(i).getSeccion());
+                                    txtFecha.setText(response.body().get(i).getFechaRegistro());
+                                    txtNumSerie.setText(response.body().get(i).getNumSerie());
+                                    txtColor.setText(response.body().get(i).getColor());
+                                    txtCodigo.setText(response.body().get(i).getEstudiante_id());
+                                    txtEstatus.setText(response.body().get(i).getStatus());
+
+                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                                    SimpleDateFormat output = new SimpleDateFormat("EEEE, yyyy/MM/dd - HH:mm:ss");
+
+                                    try {
+                                        Date d = null;
+                                        d = sdf.parse(response.body().get(i).getArrived_time());
+                                        txtCreated.setText(output.format(d));
+                                        d = sdf.parse(response.body().get(i).getDeparture_time());
+                                        txtUpdate.setText(output.format(d));
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                        txtCreated.setText(response.body().get(i).getArrived_time());
+                                        txtUpdate.setText(response.body().get(i).getDeparture_time());
+                                    }
+
+                                    //fila.addView(txtid);
+                                    fila.addView(txtIDcupo);
+                                    fila.addView(txtSeccion);
+                                    fila.addView(txtIDparq);
+                                    fila.addView(txtNumSerie);
+                                    fila.addView(txtColor);
+                                    fila.addView(txtCodigo);
+                                    fila.addView(txtCreated);
+                                    fila.addView(txtUpdate);
+                                    fila.addView(txtFecha);
+                                    fila.addView(txtEstatus);
+                                    tablaReporte.addView(fila);
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<ControlParqueaderos>> call, Throwable t) {
+                                System.out.println("hola");
+                                System.out.println(t.getMessage());
+                            }
+                        });
+                        break;
+                    }
                 }
 
             }
@@ -446,21 +557,43 @@ public class ReporteParametrizados extends Fragment {
                 fila.addView(txtCorreoR);
                 break;
             }
+            case 2:
+            {
+                fila.addView(txtidCupoR);
+                fila.addView(txtSeccionR);
+                fila.addView(txtIdParqueaderoR);
+                fila.addView(txtNumSerieR);
+                fila.addView(txtColorR);
+                fila.addView(txtCodigoR);
+                fila.addView(txtArriveTimeR);
+                fila.addView(txtDepartureTimeR);
+                fila.addView(txtFechaRegistroR);
+                fila.addView(txtEstadoR);
+                //fila.addView(txtID);
+                fila.addView(txtIdBiciletaR);
+                fila.addView(txtCedulaR);
+                fila.addView(txtLugarRegistroR);
+                fila.addView(txtIdMarcaR);
+                fila.addView(txtIdTipoR);
+                fila.addView(txtNombreR);
+                fila.addView(txtCorreoR);
+                break;
+            }
             default:
             {
                 fila.addView(txtidCupoR);
                 fila.addView(txtSeccionR);
                 fila.addView(txtIdParqueaderoR);
-                fila.addView(txtCedulaR);
-                fila.addView(txtLugarRegistroR);
                 fila.addView(txtNumSerieR);
                 fila.addView(txtColorR);
                 fila.addView(txtCodigoR);
-                fila.addView(txtNombreR);
                 fila.addView(txtArriveTimeR);
                 fila.addView(txtDepartureTimeR);
-                fila.addView(txtEstadoR);
                 fila.addView(txtFechaRegistroR);
+                fila.addView(txtEstadoR);
+                fila.addView(txtCedulaR);
+                fila.addView(txtLugarRegistroR);
+                fila.addView(txtNombreR);
                 fila.addView(txtIdBiciletaR);
                 fila.addView(txtIdMarcaR);
                 fila.addView(txtIdTipoR);
