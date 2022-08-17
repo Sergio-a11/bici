@@ -156,7 +156,7 @@ public interface IRetroFit {
     @PUT("/updatePregunta")
     Call<Number> executeUpdatePregunta(@Body Pregunta pregunta);
 
-    @POST("/crearTipo/{tipo}")
+    @POST("/crearTipo")
     Call<Number> executeCrearTipo(@Body Tipo tipo);
 
     @PUT("/updateTipo")

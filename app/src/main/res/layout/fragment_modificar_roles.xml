@@ -14,6 +14,7 @@
         android:layout_marginStart="164dp"
         android:layout_marginTop="80dp"
         android:text="Modificar Rol"
+        android:textColor="#FFFDFD"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="124dp"
+        android:background="@drawable/edt_texto_campos"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +57,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="232dp"
         android:text="Rol"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

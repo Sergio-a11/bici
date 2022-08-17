@@ -14,6 +14,7 @@
         android:layout_marginStart="160dp"
         android:layout_marginTop="116dp"
         android:text="Crear Rol"
+        android:textColor="#FBF9F9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,44 +29,25 @@
         app:layout_constraintTop_toBottomOf="@+id/edtCrearRol" />
 
     <EditText
-        android:id="@+id/edtCrearIdRol"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="60dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/textView23"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
-    <EditText
         android:id="@+id/edtCrearRol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="89dp"
-        android:layout_marginTop="82dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="124dp"
+        android:background="@drawable/edt_texto_campos"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textView24"
-        app:layout_constraintTop_toBottomOf="@+id/edtCrearIdRol" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="210dp"
-        android:text="ID"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <TextView
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="113dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="264dp"
         android:text="Rol"
+        android:textColor="@color/design_default_color_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

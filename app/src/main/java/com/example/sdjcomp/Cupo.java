@@ -14,6 +14,8 @@ public class Cupo {
         this.estado = estado;
     }
 
+
+
     public Cupo( String seccion, int estado) {
         this.seccion = seccion;
         this.estado = estado;

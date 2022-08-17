@@ -12,6 +12,10 @@ public class Rol {
         this.rol = rol;
     }
 
+    public Rol(String rol){
+        this.rol = rol;
+    }
+
     public int getCodigo() {
         return codigo;
     }
