@@ -209,6 +209,21 @@ public class ReporteParametrizados extends Fragment {
                                     txtIdTipoR.setVisibility(View.GONE);
                                     txtCorreoR.setVisibility(View.GONE);
                                     //txtID.setVisibility(View.GONE);
+                                    txtidCupoR.setVisibility(View.VISIBLE);
+                                    txtSeccionR.setVisibility(View.VISIBLE);
+                                    txtIdParqueaderoR.setVisibility(View.VISIBLE);
+                                    txtCedulaR.setVisibility(View.VISIBLE);
+                                    txtLugarRegistroR.setVisibility(View.VISIBLE);
+                                    txtNumSerieR.setVisibility(View.VISIBLE);
+                                    txtColorR.setVisibility(View.VISIBLE);
+                                    txtCodigoR.setVisibility(View.VISIBLE);
+                                    txtNombreR.setVisibility(View.VISIBLE);
+                                    txtArriveTimeR.setVisibility(View.VISIBLE);
+                                    txtDepartureTimeR.setVisibility(View.VISIBLE);
+                                    txtEstadoR.setVisibility(View.VISIBLE);
+
+                                    if(response.body().size()==0)
+                                        Snackbar.make(v, "No hay coincidencias", Snackbar.LENGTH_LONG).show();
 
                                     for (int i = 0; i < response.body().size(); i++) {
                                         System.out.println("hey");
@@ -307,7 +322,21 @@ public class ReporteParametrizados extends Fragment {
                                 txtidCupoR.setVisibility(View.GONE);
                                 txtSeccionR.setVisibility(View.GONE);
                                 txtIdParqueaderoR.setVisibility(View.GONE);
+                                txtIdBiciletaR.setVisibility(View.VISIBLE);
+                                txtCedulaR.setVisibility(View.VISIBLE);
+                                txtFechaRegistroR.setVisibility(View.VISIBLE);
+                                txtLugarRegistroR.setVisibility(View.VISIBLE);
+                                txtIdMarcaR.setVisibility(View.VISIBLE);
+                                txtNumSerieR.setVisibility(View.VISIBLE);
+                                txtIdTipoR.setVisibility(View.VISIBLE);
+                                txtColorR.setVisibility(View.VISIBLE);
+                                txtCodigoR.setVisibility(View.VISIBLE);
+                                txtArriveTimeR.setVisibility(View.VISIBLE);
+                                txtDepartureTimeR.setVisibility(View.VISIBLE);
+                                txtEstadoR.setVisibility(View.VISIBLE);
 
+                                if(response.body().size()==0)
+                                    Snackbar.make(v, "No hay coincidencias", Snackbar.LENGTH_LONG).show();
 
                                 for (int i = 0; i < response.body().size(); i++) {
                                     System.out.println("hey");
@@ -412,8 +441,20 @@ public class ReporteParametrizados extends Fragment {
                                 txtIdTipoR.setVisibility(View.GONE);
                                 txtNombreR.setVisibility(View.GONE);
                                 txtCorreoR.setVisibility(View.GONE);
+                                txtidCupoR.setVisibility(View.VISIBLE);
+                                txtSeccionR.setVisibility(View.VISIBLE);
+                                txtIdParqueaderoR.setVisibility(View.VISIBLE);
+                                txtNumSerieR.setVisibility(View.VISIBLE);
+                                txtColorR.setVisibility(View.VISIBLE);
+                                txtCodigoR.setVisibility(View.VISIBLE);
+                                txtArriveTimeR.setVisibility(View.VISIBLE);
+                                txtDepartureTimeR.setVisibility(View.VISIBLE);
+                                txtFechaRegistroR.setVisibility(View.VISIBLE);
+                                txtEstadoR.setVisibility(View.VISIBLE);
 
                                 txtFechaRegistroR.setText("Tiempo de uso");
+                                if(response.body().size()==0)
+                                    Snackbar.make(v, "No hay coincidencias", Snackbar.LENGTH_LONG).show();
 
                                 for (int i = 0; i < response.body().size(); i++) {
                                     System.out.println("hey");

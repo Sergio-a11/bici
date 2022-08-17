@@ -24,7 +24,7 @@
 
                 android:layout_marginRight="10dp"
                 android:entries="@array/reportes"
-                android:spinnerMode="dialog"
+                android:spinnerMode="dropdown"
                 android:theme="@style/Theme.SdjComp.AppBarOverlay" />
 
             <Button
@@ -134,7 +134,7 @@
 
                 android:layout_marginRight="10dp"
                 android:entries="@array/uso"
-                android:spinnerMode="dialog"
+                android:spinnerMode="dropdown"
                 android:theme="@style/Theme.SdjComp.AppBarOverlay" />
 
 
