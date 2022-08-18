@@ -249,9 +249,9 @@ INSERT INTO Usuarios  VALUES
 ("20192578005", "Juan Suarez", "juan@correo.udistrital.edu.co","clave",2,"No",2),
 ('20172838741', 'Brian', 'brian@gmail.com', 'clave', 7, 'Colegio La Gaviota', 1),
 ('20192578094', 'josue', 'josue@correo.com', 'joselito', 1, 'hamburguesa', 3),
-('20192578104', 'Miguel', 'miguel@correo.com', 'miguelo', 4, 'Cristo', 3),
-('20192578014', 'Checho', 'sech@correo.com', 'clave', 5, 'gato', 3),
-('20192578001', 'Dan', 'dan@correo.com', 'clave', 3, 'NPI', 3);
+('20192578104', 'Miguel', 'miguel@correo.com', 'miguelo', 4, 'Cristo', 2),
+('20192578014', 'Checho', 'sech@correo.com', 'clave', 5, 'gato', 2),
+('20192578001', 'Dan', 'dan@correo.com', 'clave', 3, 'NPI', 1);
 
 INSERT INTO Bicicletas (cedulaPropietario, fechaRegistro, lugarRegistro, Marca_id, numSerie, Tipo_id, color, Estudiante_id) VALUES 
 ("12567876", "2019/12/23","Bogota",1,"345678",3,"Azul","20192578005"),

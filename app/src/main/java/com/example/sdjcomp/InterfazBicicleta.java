@@ -175,6 +175,9 @@ public class InterfazBicicleta extends Fragment {
                 }else if(((Sesion)getActivity().getApplicationContext()).getRol_id()==2){
                     NavHostFragment.findNavController(InterfazBicicleta.this)
                             .navigate(R.id.action_interfazBicicleta_to_InterfazEstudiante);
+                }else if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                    NavHostFragment.findNavController(InterfazBicicleta.this)
+                            .navigate(R.id.action_interfazBicicleta_to_admParqueaderos);
                 }
             }
         });

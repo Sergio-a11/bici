@@ -3,8 +3,6 @@ const express = require("express");
 const conexion = require("./database");
 const app = express();
 
-//process.env.TZ = 'America/Bogota';
-
 app.use(express.json());
 
 app.listen(3000, () => {

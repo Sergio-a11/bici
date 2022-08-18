@@ -80,7 +80,7 @@ public class admMarcas extends Fragment {
                     btnModificar.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            edtCupoAdmin.setText(textMarca.getText().toString());
+                            //edtCupoAdmin.setText(textMarca.getText().toString());
 
                             ((Sesion)getActivity().getApplicationContext()).setIdMarca(Integer.parseInt(textId.getText().toString()));
                             NavHostFragment.findNavController(admMarcas.this).
