@@ -164,4 +164,19 @@ public interface IRetroFit {
 
     @DELETE("/deleteTipo/{id}")
     Call<Number> executeDeleteTipo(@Path("id") String id);
+    @GET("/getControlBicicletas")
+    Call<List<ControlBicicletas>> executeGetControlBicicletas();
+
+    @GET("/getControlUsuarios")
+    Call<List<ControlUsuarios>> executeGetControlUsuarios();
+
+    //parametros
+    @GET("/getReporteEntradas/{codigo}/{numSerie}")
+    Call<List<ControlParqueaderos>> executeGetReporteEntradas(@Path("codigo") String codigo, @Path("numSerie")  String numSerie);
+
+    @GET("/getReporteBiciCiudad/{ciudad}")
+    Call<List<ControlBicicletas>> executeGetReporteCiudad(@Path("ciudad") String ciudad);
+
+    @GET("/getReporteUsoDeParqueaderos/{uso}")
+    Call<List<ControlParqueaderos>> executeGetReporteUso(@Path("uso") String uso);
 }

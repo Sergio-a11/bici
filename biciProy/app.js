@@ -1,6 +1,9 @@
+const { query } = require("express");
 const express = require("express");
 const conexion = require("./database");
 const app = express();
+
+//process.env.TZ = 'America/Bogota';
 
 app.use(express.json());
 
@@ -1240,3 +1243,55 @@ app.delete("/deleteTipo/:id",(req,res)=>{
     }
   })
 })
+
+app.get("/getReporteEntradas/:codigo/:numSerie", (req,res) => {
+  const codigo = req.params.codigo;
+  const numSerie = req.params.numSerie;
+
+  conexion.query(`SELECT * FROM sdjcomp2.control_parqueaderos where Estudiante_id like '%${codigo}%' AND numSerie like '%${numSerie}%'`, (error, results) => {
+    console.log(codigo);
+    console.log(numSerie);
+    if (error) throw error;
+    else if(results!=null)
+    {
+        //results[0].arrived_time += 5;
+        console.log(results);
+        res.status(200).send(JSON.stringify(results))
+    }
+    else{
+      res.status(404).send();
+    }
+  })
+});
+
+app.get("/getReporteBiciCiudad/:ciudad", (req,res) => {
+  const ciudad = req.params.ciudad;
+conexion.query(`SELECT * FROM sdjcomp2.control_bicicletas where lugarRegistro like '%${ciudad}%'`, (error, results) => {
+  if (error) throw error;
+  else if(results!=null)
+  {
+      //results[0].arrived_time += 5;
+      console.log(results);
+      res.status(200).send(JSON.stringify(results))
+  }
+  else{
+    res.status(404).send();
+  }
+})
+});
+
+app.get("/getReporteUsoDeParqueaderos/:uso", (req,res) => {
+  const uso = req.params.uso;
+conexion.query(`SELECT idCupo, seccion, idParqueadero, numSerie, color, Estudiante_id, arrived_time, departure_time, case 0 when TIMEDIFF(departure_time, arrived_time) then TIMEDIFF(now(), arrived_time) else TIMEDIFF(departure_time, arrived_time) end as "fechaRegistro", status FROM sdjcomp2.control_parqueaderos where status like '%${uso}%'`, (error, results) => {
+  if (error) throw error;
+  else if(results!=null)
+  {
+      //results[0].arrived_time += 5;
+      console.log(results);
+      res.status(200).send(JSON.stringify(results))
+  }
+  else{
+    res.status(404).send();
+  }
+})
+});

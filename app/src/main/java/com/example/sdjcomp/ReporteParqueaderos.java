@@ -17,6 +17,9 @@ import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -61,25 +64,43 @@ public class ReporteParqueaderos extends Fragment {
                 {
                     TableRow fila = new TableRow(getActivity());
                     TextView txtID = new TextView(getActivity());
-                    txtID.setTextColor(Color.rgb(255,255,255));
                     txtID.setGravity(Gravity.CENTER);
                     TextView txtIDcupo = new TextView(getActivity());
+                    txtIDcupo.setGravity(Gravity.CENTER);
                     TextView txtSeccion = new TextView(getActivity());
+                    txtSeccion.setGravity(Gravity.CENTER);
                     TextView txtIDparq = new TextView(getActivity());
+                    txtIDparq.setGravity(Gravity.CENTER);
                     TextView txtIDbici = new TextView(getActivity());
+                    txtIDbici.setGravity(Gravity.CENTER);
                     TextView txtCedula = new TextView(getActivity());
+                    txtCedula.setGravity(Gravity.LEFT);
                     TextView txtFecha = new TextView(getActivity());
+                    txtFecha.setGravity(Gravity.LEFT);
                     TextView txtLugar = new TextView(getActivity());
+                    txtLugar.setGravity(Gravity.LEFT);
                     TextView txtIDmarca = new TextView(getActivity());
+                    txtIDmarca.setGravity(Gravity.CENTER);
                     TextView txtNumSerie = new TextView(getActivity());
+                    txtNumSerie.setGravity(Gravity.CENTER);
                     TextView txtIDtipo = new TextView(getActivity());
+                    txtIDtipo.setGravity(Gravity.CENTER);
                     TextView txtColor = new TextView(getActivity());
+                    txtColor.setGravity(Gravity.CENTER);
                     TextView txtCodigo = new TextView(getActivity());
+                    txtCodigo.setGravity(Gravity.LEFT);
                     TextView txtNombre = new TextView(getActivity());
+                    txtNombre.setGravity(Gravity.LEFT);
                     TextView txtCorreo = new TextView(getActivity());
+                    txtCorreo.setGravity(Gravity.LEFT);
                     TextView txtArrive = new TextView(getActivity());
+                    txtArrive.setGravity(Gravity.LEFT);
+                    txtArrive.setPadding(10,0,10,0);
                     TextView txtDeparture = new TextView(getActivity());
+                    txtDeparture.setGravity(Gravity.LEFT);
+                    txtDeparture.setPadding(10,0,10,0);
                     TextView txtEstatus = new TextView(getActivity());
+                    txtEstatus.setGravity(Gravity.CENTER);
 
                     txtID.setText(String.valueOf(response.body().get(i).getId()));
                     txtIDcupo.setText(String.valueOf(response.body().get(i).getIdCupo()));
@@ -97,8 +118,21 @@ public class ReporteParqueaderos extends Fragment {
                     txtNombre.setText(response.body().get(i).getNombre());
                     txtCorreo.setText(response.body().get(i).getCorreo());
                     txtEstatus.setText(response.body().get(i).getStatus());
-                    txtArrive.setText(response.body().get(i).getArrived_time());
-                    txtDeparture.setText(response.body().get(i).getDeparture_time());
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                    SimpleDateFormat output = new SimpleDateFormat("EEEE, yyyy/MM/dd - HH:mm:ss");
+
+                    try {
+                        Date d = null;
+                        d = sdf.parse(response.body().get(i).getArrived_time());
+                        txtArrive.setText(output.format(d));
+                        d = sdf.parse(response.body().get(i).getDeparture_time());
+                        txtDeparture.setText(output.format(d));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        txtArrive.setText(response.body().get(i).getArrived_time());
+                        txtDeparture.setText(response.body().get(i).getDeparture_time());
+                    }
 
                     fila.addView(txtID);
                     fila.addView(txtIDcupo);

@@ -386,12 +386,6 @@
             android:id="@+id/action_admMarcas_to_registrarMarca"
             app:destination="@id/registrarMarca" />
     </fragment>
-
-    <fragment
-        android:id="@+id/reportes"
-        android:name="com.example.sdjcomp.Reportes"
-        android:label="fragment_reportes"
-        tools:layout="@layout/fragment_reportes" />
     <fragment
         android:id="@+id/modificarMarca"
         android:name="com.example.sdjcomp.modificarMarca"
@@ -498,5 +492,29 @@
         <action
             android:id="@+id/action_modificarTipo_to_admTipos"
             app:destination="@id/admTipos" />
+            </fragment>
+ <fragment
+        android:id="@+id/reportes"
+        android:name="com.example.sdjcomp.Reportes"
+        android:label="fragment_reportes"
+        tools:layout="@layout/fragment_reportes" >
+        <action
+            android:id="@+id/action_reportes_to_reporteParametrizados"
+            app:destination="@id/reporteParametrizados" />
+        <action
+            android:id="@+id/action_reportes_to_admin"
+            app:destination="@id/admin" />
+    </fragment>
+    <fragment
+        android:id="@+id/reporteParametrizados"
+        android:name="com.example.sdjcomp.ReporteParametrizados"
+        android:label="fragment_reporte_parametrizados"
+        tools:layout="@layout/fragment_reporte_parametrizados" >
+        <action
+            android:id="@+id/action_reporteParametrizados_self"
+            app:destination="@id/reporteParametrizados" />
+        <action
+            android:id="@+id/action_reporteParametrizados_to_reportes"
+            app:destination="@id/reportes" />
     </fragment>
 </navigation>
