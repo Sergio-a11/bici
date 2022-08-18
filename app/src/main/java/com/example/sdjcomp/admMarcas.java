@@ -61,7 +61,7 @@ public class admMarcas extends Fragment {
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
         tablaMarcas = v.findViewById(R.id.tablaMarcas);
-        edtCupoAdmin = v.findViewById(R.id.edtCupoAdmin);
+        //edtCupoAdmin = v.findViewById(R.id.edtCupoAdmin);
         Call<List<Marca>> call = iRetrofit.executeGetMarca();
 
         call.enqueue(new Callback<List<Marca>>() {

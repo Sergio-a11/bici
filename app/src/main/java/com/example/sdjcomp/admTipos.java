@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,8 @@ public class admTipos extends Fragment {
                     Button btnEliminar = new Button(getActivity());
                     textId.setText(String.valueOf(response.body().get(i).getId()));
                     textTipo.setText(response.body().get(i).getTipo());
+                    textId.setGravity(Gravity.CENTER);
+                    textTipo.setGravity(Gravity.CENTER);
                     btnModificar.setText("Modificar");
                     btnModificar.setOnClickListener(new View.OnClickListener() {
                         @Override

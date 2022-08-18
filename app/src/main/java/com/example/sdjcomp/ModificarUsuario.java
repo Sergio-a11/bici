@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -38,9 +39,10 @@ public class ModificarUsuario extends Fragment {
     private EditText edtNombre;
     private EditText edtClave;
     private EditText edtRespuesta;
-    private Spinner spnPreguntas;
+    private Spinner spnPreguntas,spnRol;
     private Button btnModificar, btnVolver;
     private ImageButton btnModificarPregunta,btnModificarNombre,btnModificarClave,btnModificarRespuesta;
+    private LinearLayout lyRol;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,9 @@ public class ModificarUsuario extends Fragment {
         btnModificarPregunta = v.findViewById(R.id.btnModificarPregunta);
         btnVolver = v.findViewById(R.id.btnVolverModUsuario);
 
+        lyRol = v.findViewById(R.id.lyModificarUsuarioRol);
+        spnRol = v.findViewById(R.id.spnRolModificar);
+
         edtNombre.setText(((Sesion)getActivity().getApplicationContext()).getNombre());
         edtClave.setText(((Sesion)getActivity().getApplicationContext()).getClave());
         edtRespuesta.setText(((Sesion)getActivity().getApplicationContext()).getRseguridad());
@@ -73,6 +78,12 @@ public class ModificarUsuario extends Fragment {
 
         ArrayList<Pregunta> listaPreguntas = new ArrayList<>();
         ArrayList<String> listaPreguntasNom = new ArrayList<>();
+
+        if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+            lyRol.setVisibility(View.VISIBLE);
+        }else{
+            lyRol.setVisibility(View.GONE);
+        }
 
         Call<List<Pregunta>> call = iRetrofit.executeGetAll("preguntas");
         call.enqueue(new Callback<List<Pregunta>>() {
@@ -104,9 +115,17 @@ public class ModificarUsuario extends Fragment {
                     !edtClave.getText().toString().isEmpty()&&
                     !edtRespuesta.getText().toString().isEmpty())
                 {
-                    Usuario objU = new Usuario(((Sesion)getActivity().getApplicationContext()).getCodigo(),edtNombre.getText().toString(),
-                            ((Sesion)getActivity().getApplicationContext()).getCorreo(),edtClave.getText().toString(),
-                            spnPreguntas.getSelectedItemPosition()+1,edtRespuesta.getText().toString(),2);
+                    Usuario objU;
+
+                    if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                        objU = new Usuario(((Sesion)getActivity().getApplicationContext()).getCodigo(),edtNombre.getText().toString(),
+                                ((Sesion)getActivity().getApplicationContext()).getCorreo(),edtClave.getText().toString(),
+                                spnPreguntas.getSelectedItemPosition()+1,edtRespuesta.getText().toString(),spnRol.getSelectedItemPosition()+1);
+                    }else{
+                        objU = new Usuario(((Sesion)getActivity().getApplicationContext()).getCodigo(),edtNombre.getText().toString(),
+                                ((Sesion)getActivity().getApplicationContext()).getCorreo(),edtClave.getText().toString(),
+                                spnPreguntas.getSelectedItemPosition()+1,edtRespuesta.getText().toString(),2);
+                    }
 
                     Call<Usuario> call = iRetrofit.executeUpdateUser(objU);
                     call.enqueue(new Callback<Usuario>() {

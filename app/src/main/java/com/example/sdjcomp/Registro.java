@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -26,11 +26,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Registro#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Registro extends Fragment {
 
     private Retrofit retrofit;
@@ -42,7 +37,8 @@ public class Registro extends Fragment {
     private EditText edtCorreo;
     private EditText edtClave;
     private EditText edtRespuesta;
-    private Spinner spnPreguntas;
+    private Spinner spnPreguntas, spnRol;
+    private LinearLayout lyRol;
     private Button btnRegistrar, btnVolver;
 
     @Override
@@ -63,6 +59,14 @@ public class Registro extends Fragment {
         btnRegistrar = (Button) v.findViewById(R.id.btnRegistrarUsuario);
         spnPreguntas = (Spinner) v.findViewById(R.id.spnPreguntas);
         btnVolver = (Button) v.findViewById(R.id.btnVolverRegistro);
+        lyRol = v.findViewById(R.id.lyRol);
+        spnRol = v.findViewById(R.id.spnRol);
+
+        if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+            lyRol.setVisibility(View.VISIBLE);
+        }else{
+            lyRol.setVisibility(View.GONE);
+        }
 
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
@@ -104,11 +108,19 @@ public class Registro extends Fragment {
                    !edtClave.getText().toString().isEmpty() &&
                    !edtRespuesta.getText().toString().isEmpty())
                 {
+                    Usuario objU;
                     int preguntaF = spnPreguntas.getSelectedItemPosition()+1;
 
-                    Usuario objU = new Usuario(edtCodigo.getText().toString(),edtNombre.getText().toString(),
-                            edtCorreo.getText().toString(),edtClave.getText().toString(),
-                            preguntaF,edtRespuesta.getText().toString(),2);
+                    if(((Sesion)getActivity().getApplicationContext()).getRol_id()==3){
+                        objU = new Usuario(edtCodigo.getText().toString(),edtNombre.getText().toString(),
+                                edtCorreo.getText().toString(),edtClave.getText().toString(),
+                                preguntaF,edtRespuesta.getText().toString(),spnRol.getSelectedItemPosition()+1);
+                    }else{
+                         objU = new Usuario(edtCodigo.getText().toString(),edtNombre.getText().toString(),
+                                edtCorreo.getText().toString(),edtClave.getText().toString(),
+                                preguntaF,edtRespuesta.getText().toString(),2);
+                    }
+
 
                     HashMap<String,Usuario> map = new HashMap<>();
 

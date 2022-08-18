@@ -48,12 +48,12 @@
                     android:textColor="#FFFFFF" />
 
                 <EditText
-                    android:background="@drawable/edt_texto_campos"
-                    android:gravity="center"
                     android:id="@+id/edtCodigo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/edt_texto_campos"
                     android:ems="10"
+                    android:gravity="center"
                     android:hint="20192578140"
                     android:inputType="number"
                     android:minHeight="48dp" />
@@ -74,14 +74,14 @@
                     android:layout_width="134dp"
                     android:layout_height="31dp"
                     android:gravity="center"
-                    android:textColor="#FFFFFF"
-                    android:text="Nombre"/>
+                    android:text="Nombre"
+                    android:textColor="#FFFFFF" />
 
                 <EditText
-                    android:background="@drawable/edt_texto_campos"
                     android:id="@+id/edtNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/edt_texto_campos"
                     android:ems="10"
                     android:gravity="center"
                     android:hint="Juanito Alcachofa"
@@ -99,47 +99,18 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/lblCorreo"
-                    android:layout_width="134dp"
-                    android:layout_height="31dp"
-                    android:gravity="center"
-                    android:textColor="#FFFFFF"
-                    android:text="Correo" />
-
-                <EditText
-                    android:background="@drawable/edt_texto_campos"
-                    android:id="@+id/edtCorreo"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="estudiante@correo.com"
-                    android:inputType="textEmailAddress"
-                    android:minHeight="48dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:orientation="horizontal">
-
-                <TextView
                     android:id="@+id/lblClave"
                     android:layout_width="134dp"
                     android:layout_height="31dp"
                     android:gravity="center"
-                    android:textColor="#FFFFFF"
-                    android:text="Clave" />
+                    android:text="Clave"
+                    android:textColor="#FFFFFF" />
 
                 <EditText
-                    android:background="@drawable/edt_texto_campos"
                     android:id="@+id/edtClave"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/edt_texto_campos"
                     android:ems="10"
                     android:gravity="center"
                     android:inputType="textPassword"
@@ -155,12 +126,41 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/lblCorreo"
+                    android:layout_width="134dp"
+                    android:layout_height="31dp"
+                    android:gravity="center"
+                    android:text="Correo"
+                    android:textColor="#FFFFFF" />
+
+                <EditText
+                    android:id="@+id/edtCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edt_texto_campos"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="estudiante@correo.com"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <TextView
                     android:id="@+id/lblPregunta"
                     android:layout_width="134dp"
                     android:layout_height="31dp"
                     android:gravity="center"
-                    android:textColor="#FFFFFF"
-                    android:text="Preguntas" />
+                    android:text="Preguntas"
+                    android:textColor="#FFFFFF" />
 
                 <Spinner
                     android:id="@+id/spnPreguntas"
@@ -186,19 +186,47 @@
                     android:layout_width="134dp"
                     android:layout_height="31dp"
                     android:gravity="center"
-                    android:textColor="#FFFFFF"
-                    android:text="Respuesta" />
+                    android:text="Respuesta"
+                    android:textColor="#FFFFFF" />
 
                 <EditText
-                    android:background="@drawable/edt_texto_campos"
                     android:id="@+id/edtRespuesta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:background="@drawable/edt_texto_campos"
                     android:ems="10"
+                    android:gravity="center"
                     android:hint="Amante de la comida"
                     android:inputType="textPersonName"
                     android:minHeight="48dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lyRol"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="134dp"
+                    android:layout_height="31dp"
+                    android:gravity="center"
+                    android:text="Rol"
+                    android:textColor="#FFFFFF" />
+
+                <Spinner
+                    android:id="@+id/spnRol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edt_texto_campos"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:entries="@array/seccion"
+                    android:layout_weight="1" />
             </LinearLayout>
 
         </LinearLayout>

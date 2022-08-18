@@ -66,6 +66,9 @@ public class admCupos extends Fragment {
                     textId.setText(String.valueOf(response.body().get(i).getIdCupo()));
                     textSeccion.setText(response.body().get(i).getSeccion());
                     textEstado.setText(String.valueOf(response.body().get(i).getEstado()));
+                    textId.setGravity(Gravity.CENTER);
+                    textSeccion.setGravity(Gravity.CENTER);
+                    textEstado.setGravity(Gravity.CENTER);
                     btnModificar.setText("Modificar");
 
                     btnModificar.setOnClickListener(new View.OnClickListener() {

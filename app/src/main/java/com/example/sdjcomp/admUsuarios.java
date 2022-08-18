@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +69,13 @@ public class admUsuarios extends Fragment {
                     textPseguridad.setText(String.valueOf(response.body().get(i).getPseguridad()));
                     textRseguridad.setText(response.body().get(i).getRseguridad());
                     textRol.setText(String.valueOf(response.body().get(i).getRol_id()));
+                    textCodigo.setGravity(Gravity.CENTER);
+                    textNombre.setGravity(Gravity.CENTER);
+                    textCorreo.setGravity(Gravity.CENTER);
+                    textClave.setGravity(Gravity.CENTER);
+                    textPseguridad.setGravity(Gravity.CENTER);
+                    textRseguridad.setGravity(Gravity.CENTER);
+                    textRol.setGravity(Gravity.CENTER);
                     btnModificar.setText("Modificar");
                     btnModificar.setOnClickListener(new View.OnClickListener() {
                         @Override

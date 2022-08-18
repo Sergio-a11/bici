@@ -61,6 +61,8 @@ public class admPreguntas extends Fragment {
                     Button btnEliminar = new Button(getActivity());
                     textId.setText(String.valueOf(response.body().get(i).getCodigo()));
                     textPregunta.setText(response.body().get(i).getPregunta());
+                    textId.setGravity(Gravity.CENTER);
+                    textPregunta.setGravity(Gravity.CENTER);
                     btnModificar.setText("Modificar");
                     btnModificar.setOnClickListener(new View.OnClickListener() {
                         @Override

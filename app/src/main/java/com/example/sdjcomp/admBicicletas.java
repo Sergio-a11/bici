@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +78,15 @@ public class admBicicletas extends Fragment {
                     textTipoID.setText(String.valueOf(response.body().get(i).getTipo()));
                     textColor.setText(response.body().get(i).getColor());
                     textEstudianteID.setText(response.body().get(i).getEstudiante_id());
+                    textIdbici.setGravity(Gravity.CENTER);
+                    textCCpropietario.setGravity(Gravity.CENTER);
+                    textFecharegistro.setGravity(Gravity.CENTER);
+                    textLugarRegistro.setGravity(Gravity.CENTER);
+                    textMarcaID.setGravity(Gravity.CENTER);
+                    textNSerie.setGravity(Gravity.CENTER);
+                    textTipoID.setGravity(Gravity.CENTER);
+                    textColor.setGravity(Gravity.CENTER);
+                    textEstudianteID.setGravity(Gravity.CENTER);
                     btnModificar.setText("Modificar");
                     btnModificar.setOnClickListener(new View.OnClickListener() {
                         @Override
