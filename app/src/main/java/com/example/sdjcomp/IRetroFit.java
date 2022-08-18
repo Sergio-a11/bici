@@ -88,7 +88,7 @@ public interface IRetroFit {
     Call<List<Rol>> executeGetRoles();
 
     @GET("/getadmBicicletas")
-    Call<List<Bicicleta>> executeGetadmbicicletas();
+    Call<List<BicicletaRegistrar>> executeGetadmbicicletas();
 
     @GET("/getUsers")
     Call<List<Usuario>> executeGetUsers();

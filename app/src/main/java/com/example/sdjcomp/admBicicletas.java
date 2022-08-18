@@ -51,11 +51,11 @@ public class admBicicletas extends Fragment {
         btnVolver = v.findViewById(R.id.btnVolverBicicletaAdmin);
 
         tablaBicicletas1 = v.findViewById(R.id.tablaBicicletas);
-        Call<List<Bicicleta>> call = iRetrofit.executeGetadmbicicletas();
+        Call<List<BicicletaRegistrar>> call = iRetrofit.executeGetadmbicicletas();
 
-        call.enqueue(new Callback<List<Bicicleta>>() {
+        call.enqueue(new Callback<List<BicicletaRegistrar>>() {
             @Override
-            public void onResponse(Call<List<Bicicleta>> call, Response<List<Bicicleta>> response) {
+            public void onResponse(Call<List<BicicletaRegistrar>> call, Response<List<BicicletaRegistrar>> response) {
                 for(int i=0; i<response.body().size(); i++){
                     TableRow fila = new TableRow(getActivity());
                     TextView textIdbici = new TextView(getActivity());
@@ -133,7 +133,7 @@ public class admBicicletas extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Bicicleta>> call, Throwable t) {
+            public void onFailure(Call<List<BicicletaRegistrar>> call, Throwable t) {
                 Snackbar.make(v, "No se pudieron encontrar las bicicletas", Snackbar.LENGTH_LONG).show();
             }
         });

@@ -53,7 +53,6 @@
         android:name="com.example.sdjcomp.Registro"
         android:label="@string/title"
         tools:layout="@layout/fragment_registro">
-
         <action
             android:id="@+id/action_fragment_registro_to_Home"
             app:destination="@id/Home" />
@@ -492,7 +491,7 @@
         <action
             android:id="@+id/action_modificarTipo_to_admTipos"
             app:destination="@id/admTipos" />
-            </fragment>
+    </fragment>
  <fragment
         android:id="@+id/reportes"
         android:name="com.example.sdjcomp.Reportes"
