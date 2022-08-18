@@ -289,6 +289,9 @@
         <action
             android:id="@+id/action_reportes_to_reporteParametrizados"
             app:destination="@id/reporteParametrizados" />
+        <action
+            android:id="@+id/action_reportes_to_admin"
+            app:destination="@id/admin" />
     </fragment>
     <fragment
         android:id="@+id/reporteParametrizados"
@@ -298,5 +301,8 @@
         <action
             android:id="@+id/action_reporteParametrizados_self"
             app:destination="@id/reporteParametrizados" />
+        <action
+            android:id="@+id/action_reporteParametrizados_to_reportes"
+            app:destination="@id/reportes" />
     </fragment>
 </navigation>

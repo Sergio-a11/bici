@@ -973,7 +973,7 @@ conexion.query(`SELECT * FROM sdjcomp2.control_bicicletas where lugarRegistro li
 
 app.get("/getReporteUsoDeParqueaderos/:uso", (req,res) => {
   const uso = req.params.uso;
-conexion.query(`SELECT idCupo, seccion, idParqueadero, numSerie, color, Estudiante_id, arrived_time, departure_time, TIMEDIFF(departure_time, arrived_time) as "fechaRegistro", status FROM sdjcomp2.control_parqueaderos where status like '%${uso}%'`, (error, results) => {
+conexion.query(`SELECT idCupo, seccion, idParqueadero, numSerie, color, Estudiante_id, arrived_time, departure_time, case 0 when TIMEDIFF(departure_time, arrived_time) then TIMEDIFF(now(), arrived_time) else TIMEDIFF(departure_time, arrived_time) end as "fechaRegistro", status FROM sdjcomp2.control_parqueaderos where status like '%${uso}%'`, (error, results) => {
   if (error) throw error;
   else if(results!=null)
   {

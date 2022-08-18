@@ -25,6 +25,7 @@
 
                     <TableLayout
                         android:id="@+id/tblCU"
+                        android:background="@color/white"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
@@ -35,12 +36,13 @@
                             <TextView
                                 android:id="@+id/txtidControlUsuarios"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="ID"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
@@ -51,40 +53,44 @@
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Codigo Estudiante"
-                                android:textColor="@color/colorAccent"
+                                android:background="@color/white"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtNombreCU"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Nombre"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtCorreoCU"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Correo"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtClaveCU"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Clave"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
@@ -95,40 +101,44 @@
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Pregunta Seguridad"
-                                android:textColor="@color/colorAccent"
+                                android:background="@color/white"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtRseguridadCU"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Respuesta"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtIDrolCU"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="ID rol"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtCreatedDateCU"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Creacion"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
@@ -139,18 +149,20 @@
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Ultima modificacion"
-                                android:textColor="@color/colorAccent"
+                                android:background="@color/white"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtEstadoCU"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Estado"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                         </TableRow>

@@ -24,6 +24,7 @@
                     android:orientation="vertical">
 
                     <TableLayout
+                        android:background="@color/white"
                         android:id="@+id/tblCB"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -35,23 +36,25 @@
                             <TextView
                                 android:id="@+id/txtidControlBicicletas"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="ID"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtIdBicicletaCB"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="ID Bicicleta"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
@@ -62,7 +65,8 @@
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Cedula Propiedario"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
+                                android:background="@color/white"
                                 android:textSize="14sp" />
 
                             <TextView
@@ -73,7 +77,8 @@
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Fecha Registro"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
+                                android:background="@color/white"
                                 android:textSize="14sp" />
 
                             <TextView
@@ -84,51 +89,56 @@
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Lugar Registro"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
+                                android:background="@color/white"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtIdMarcaCB"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="ID Marca"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtNumSerieCB"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="# Serie"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtIdTipoCB"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="ID Tipo"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtColorCB"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Color"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
@@ -139,18 +149,20 @@
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Codigo Estudiante"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
+                                android:background="@color/white"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtCreatedDateCB"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Creacion"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                             <TextView
@@ -161,18 +173,20 @@
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Ultima modificacion"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
+                                android:background="@color/white"
                                 android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/txtEstadoCB"
                                 android:layout_width="110dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="4"
+                                android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
                                 android:text="Estado"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="#432d59"
                                 android:textSize="14sp" />
 
                         </TableRow>

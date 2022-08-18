@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -34,7 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ReporteParametrizados extends Fragment {
 
     Spinner spnReportes, spnUso;
-    Button btnFiltrar;
+    Button btnFiltrar, btnVolverRepoParam;
     LinearLayout lCodigo, lNumSerie, lCiudad, lUso;
     private Retrofit retrofit;
     private IRetroFit iRetrofit;
@@ -60,6 +61,7 @@ public class ReporteParametrizados extends Fragment {
         spnUso = v.findViewById(R.id.spnUso);
         btnFiltrar = v.findViewById(R.id.btnFiltrarR);
         tablaReporte = v.findViewById(R.id.tblReportes);
+        btnVolverRepoParam = v.findViewById(R.id.btnVolverRepoParam);
 
         //TextView columns
         //txtID = v.findViewById(R.id.txtidRepo);
@@ -89,6 +91,13 @@ public class ReporteParametrizados extends Fragment {
 
         //desactivar
         //txtCodigo.setEnabled(false);
+
+        btnVolverRepoParam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ReporteParametrizados.this).navigate(R.id.action_reporteParametrizados_to_reportes);
+            }
+        });
 
         spnReportes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -229,19 +238,31 @@ public class ReporteParametrizados extends Fragment {
                                         System.out.println("hey");
                                         TableRow fila = new TableRow(getActivity());
                                         TextView txtIDcupo = new TextView(getActivity());
-                                        txtIDcupo.setTextColor(Color.rgb(255, 255, 255));
                                         txtIDcupo.setGravity(Gravity.CENTER);
                                         TextView txtSeccion = new TextView(getActivity());
+                                        txtSeccion.setGravity(Gravity.CENTER);
                                         TextView txtIDparq = new TextView(getActivity());
+                                        txtIDparq.setGravity(Gravity.CENTER);
                                         TextView txtCedula = new TextView(getActivity());
+                                        txtCedula.setGravity(Gravity.LEFT);
                                         TextView txtLugar = new TextView(getActivity());
+                                        txtLugar.setGravity(Gravity.LEFT);
                                         TextView txtNumSerie = new TextView(getActivity());
+                                        txtNumSerie.setGravity(Gravity.CENTER);
                                         TextView txtColor = new TextView(getActivity());
+                                        txtColor.setGravity(Gravity.CENTER);
                                         TextView txtCodigo = new TextView(getActivity());
+                                        txtCodigo.setGravity(Gravity.LEFT);
                                         TextView txtNombre = new TextView(getActivity());
+                                        txtNombre.setGravity(Gravity.LEFT);
                                         TextView txtArrive = new TextView(getActivity());
+                                        txtArrive.setGravity(Gravity.LEFT);
+                                        txtArrive.setPadding(10,0,10,0);
                                         TextView txtDeparture = new TextView(getActivity());
+                                        txtDeparture.setGravity(Gravity.LEFT);
+                                        txtDeparture.setPadding(10,0,10,0);
                                         TextView txtEstatus = new TextView(getActivity());
+                                        txtEstatus.setGravity(Gravity.CENTER);
 
 
                                         txtIDcupo.setText(String.valueOf(response.body().get(i).getIdCupo()));
@@ -343,19 +364,31 @@ public class ReporteParametrizados extends Fragment {
                                     TableRow fila = new TableRow(getActivity());
                                     //TextView txtid = new TextView(getActivity());
                                     TextView txtidBici = new TextView(getActivity());
+                                    txtidBici.setGravity(Gravity.CENTER);
                                     TextView txtidMarca = new TextView(getActivity());
+                                    txtidMarca.setGravity(Gravity.CENTER);
                                     TextView txtidTipo = new TextView(getActivity());
+                                    txtidTipo.setGravity(Gravity.CENTER);
                                     TextView txtCedula = new TextView(getActivity());
+                                    txtCedula.setGravity(Gravity.LEFT);
                                     TextView txtFecha = new TextView(getActivity());
+                                    txtFecha.setGravity(Gravity.LEFT);
                                     TextView txtLugar = new TextView(getActivity());
-                                    txtLugar.setTextColor(Color.rgb(255, 255, 255));
-                                    txtLugar.setGravity(Gravity.CENTER);
+                                    txtLugar.setGravity(Gravity.LEFT);
                                     TextView txtNumSerie = new TextView(getActivity());
+                                    txtNumSerie.setGravity(Gravity.CENTER);
                                     TextView txtColor = new TextView(getActivity());
+                                    txtColor.setGravity(Gravity.CENTER);
                                     TextView txtCodigo = new TextView(getActivity());
+                                    txtCodigo.setGravity(Gravity.LEFT);
                                     TextView txtCreated = new TextView(getActivity());
+                                    txtCreated.setGravity(Gravity.LEFT);
+                                    txtCreated.setPadding(10,0,10,0);
                                     TextView txtUpdate = new TextView(getActivity());
+                                    txtUpdate.setGravity(Gravity.LEFT);
+                                    txtUpdate.setPadding(10,0,10,0);
                                     TextView txtEstatus = new TextView(getActivity());
+                                    txtEstatus.setGravity(Gravity.CENTER);
 
 
                                     //txtid.setText(String.valueOf(response.body().get(i).getId()));
@@ -460,23 +493,32 @@ public class ReporteParametrizados extends Fragment {
                                     System.out.println("hey");
                                     TableRow fila = new TableRow(getActivity());
                                     TextView txtIDcupo = new TextView(getActivity());
-                                    txtIDcupo.setTextColor(Color.rgb(255, 255, 255));
                                     txtIDcupo.setGravity(Gravity.CENTER);
                                     TextView txtSeccion = new TextView(getActivity());
+                                    txtSeccion.setGravity(Gravity.CENTER);
                                     TextView txtIDparq = new TextView(getActivity());
+                                    txtIDparq.setGravity(Gravity.CENTER);
                                     TextView txtNumSerie = new TextView(getActivity());
+                                    txtNumSerie.setGravity(Gravity.CENTER);
                                     TextView txtColor = new TextView(getActivity());
+                                    txtColor.setGravity(Gravity.CENTER);
                                     TextView txtCodigo = new TextView(getActivity());
+                                    txtCodigo.setGravity(Gravity.LEFT);
                                     TextView txtCreated = new TextView(getActivity());
+                                    txtCreated.setGravity(Gravity.LEFT);
+                                    txtCreated.setPadding(10,0,10,0);
                                     TextView txtUpdate = new TextView(getActivity());
+                                    txtUpdate.setGravity(Gravity.LEFT);
+                                    txtUpdate.setPadding(10,0,10,0);
                                     TextView txtFecha = new TextView(getActivity());
-                                    txtFecha.setTextColor(Color.rgb(255, 255, 255));
                                     txtFecha.setGravity(Gravity.CENTER);
+                                    txtFecha.setPadding(10,0,10,0);
                                     TextView txtEstatus = new TextView(getActivity());
+                                    txtEstatus.setGravity(Gravity.CENTER);
 
 
                                     //txtid.setText(String.valueOf(response.body().get(i).getId()));
-                                    txtIDcupo.setText(String.valueOf(response.body().get(i).getId()));
+                                    txtIDcupo.setText(String.valueOf(response.body().get(i).getIdCupo()));
                                     txtIDparq.setText(String.valueOf(response.body().get(i).getIdParqueadero()));
                                     txtSeccion.setText(response.body().get(i).getSeccion());
                                     txtFecha.setText(response.body().get(i).getFechaRegistro());

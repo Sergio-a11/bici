@@ -15,10 +15,10 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabReportes"
             app:tabGravity="fill"
-            app:tabSelectedTextColor="@color/purple_200"
-            app:tabTextColor="@color/colorAccent"
+            app:tabSelectedTextColor="#8c1c25"
+            app:tabTextColor="#FFF"
             app:tabIndicator="@color/colorGreen"
-            android:background="@color/colorPrimaryDark"
+            android:background="#432d59"
             app:tabMode="fixed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -36,6 +36,13 @@
             android:layout_marginLeft="35dp"
             android:layout_marginTop="40dp"
             android:text="Reportes Parametrizados" />
+
+        <Button
+            android:id="@+id/btnVolverReportes"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:text="Volver" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,7 +27,7 @@ public class Reportes extends Fragment {
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
     private ViewPageAdapter viewPageAdapter;
-    private Button btnReportes;
+    private Button btnReportes, btnVolverReportes;
     public String[] titles = new String[]{"Parqueaderos","Bicicletas","Usuarios"};
 
 
@@ -50,6 +50,7 @@ public class Reportes extends Fragment {
         View v = inflater.inflate(R.layout.fragment_reportes, container, false);
        tabLayout = v.findViewById(R.id.tabReportes);
        viewPager2 = v.findViewById(R.id.viewPager);
+        btnVolverReportes = v.findViewById(R.id.btnVolverReportes);
 
         viewPageAdapter = new ViewPageAdapter(getActivity());
                 viewPager2.setAdapter(viewPageAdapter);
@@ -64,6 +65,13 @@ public class Reportes extends Fragment {
             public void onClick(View view) {
                 Snackbar.make(v, "Seleccione un tipo de reporte y rellene os campos", Snackbar.LENGTH_LONG).show();
                 NavHostFragment.findNavController(Reportes.this).navigate(R.id.action_reportes_to_reporteParametrizados);
+            }
+        });
+
+        btnVolverReportes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(Reportes.this).navigate(R.id.action_reportes_to_admin);
             }
         });
 
