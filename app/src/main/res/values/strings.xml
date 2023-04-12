@@ -3,17 +3,17 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <!-- editar en navgraph -->
-    <string name="login">LOGIN</string>
-    <string name="registrarse">Registrarse</string>
+    <string name="login">Login</string>
+    <string name="registrarse">Register</string>
 
-    <string name="iniiciarSesion">iniiciar Sesión</string>
-    <string name="olvidoContrasena">¿Olvido su contraseña?</string>
-    <string name="email">person@correo.udistrital.edu.co</string>
-    <string name="verRegistros">Ver Registros</string>
-    <string name="verRegistrosCupos">Ver registros de cupos en uso</string>
-    <string name="AsignarCupo">AsignarCupo</string>
-    <string name="DesAsignarCupo">DesAsignar Cupo</string>
-    <string name="CerrarSesion">Cerrar Sesion</string>
+    <string name="iniiciarSesion">Log in</string>
+    <string name="olvidoContrasena">Forgot your password?</string>
+    <string name="email">name@email.com</string>
+    <string name="verRegistros">registry</string>
+    <string name="verRegistrosCupos">View parking spaces allocated</string>
+    <string name="AsignarCupo">Allocate parking space</string>
+    <string name="DesAsignarCupo">De-Allocate parking space</string>
+    <string name="CerrarSesion">Log out</string>
 
     <string-array name="seccion">
         <item>1</item>
@@ -22,18 +22,18 @@
     </string-array>
 
     <string-array name="reportes">
-        <item>Entradas y salidas de un estudiante o bicicleta</item>
-        <item>Bicicletas por ciudad</item>
-        <item>Uso de parqueaderos</item>
+        <item>Entry and exit of students/bikes</item>
+        <item>Bikes per city</item>
+        <item>Use of parking spaces</item>
     </string-array>
 
     <string-array name="uso">
-        <item>Todos</item>
-        <item>En uso</item>
-        <item>Sin uso</item>
+        <item>All</item>
+        <item>In use</item>
+        <item>Not use</item>
     </string-array>
 
-    <string name="IP">192.168.20.25</string>
+    <string name="IP">192.168.20.21</string>
 
     <string name="title">BICI UD</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
