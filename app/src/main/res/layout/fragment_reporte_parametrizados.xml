@@ -23,7 +23,7 @@
                 android:layout_marginLeft="10dp"
 
                 android:layout_marginRight="10dp"
-                android:entries="@array/reportes"
+                android:entries="@array/reports"
                 android:spinnerMode="dropdown"
                 android:theme="@style/Theme.SdjComp.AppBarOverlay" />
 
@@ -140,7 +140,7 @@
                 android:layout_marginLeft="10dp"
 
                 android:layout_marginRight="10dp"
-                android:entries="@array/uso"
+                android:entries="@array/state"
                 android:spinnerMode="dropdown"
                 android:theme="@style/Theme.SdjComp.AppBarOverlay" />
 

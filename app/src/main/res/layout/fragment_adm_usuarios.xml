@@ -50,7 +50,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Codigo"
+                                android:text="Id"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -61,7 +61,7 @@
                                 android:layout_weight="2"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Nombre"
+                                android:text="Name"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -72,7 +72,7 @@
                                 android:layout_weight="2"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Correo"
+                                android:text="Email"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -83,7 +83,7 @@
                                 android:layout_weight="2"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Clave"
+                                android:text="Password"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -94,7 +94,7 @@
                                 android:layout_weight="2"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Id Pregunta"
+                                android:text="Question Id"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -105,7 +105,7 @@
                                 android:layout_weight="2"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Respuesta de seguridad"
+                                android:text="Answer of Security"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -116,7 +116,7 @@
                                 android:layout_weight="2"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Rol Id"
+                                android:text="Role Id"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -127,7 +127,7 @@
                                 android:gravity="center"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="Acciones -->"
+                                android:text="Actions -->"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -161,14 +161,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Volver" />
+                android:text="Exit" />
 
             <Button
                 android:id="@+id/btnCrearUsuarioAdmin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Crear" />
+                android:text="Create" />
         </LinearLayout>
     </LinearLayout>
 

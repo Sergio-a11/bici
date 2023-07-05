@@ -45,7 +45,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Codigo"
+                                android:text="Code"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -56,7 +56,7 @@
                                 android:layout_weight="2"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Rol"
+                                android:text="Role"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -67,7 +67,7 @@
                                 android:layout_weight="2"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Funciones"
+                                android:text="Functions"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="188dp"
         android:layout_marginBottom="145dp"
-        android:text="Crear"
+        android:text="Create"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -100,7 +100,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="33dp"
         android:layout_marginEnd="363dp"
-        android:text="Salir"
+        android:text="Exit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/scrollView6"
         app:layout_constraintTop_toBottomOf="@+id/btnCrearRoles" />

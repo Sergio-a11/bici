@@ -29,13 +29,13 @@
                 android:id="@+id/btnadmCrearCupo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Crear" />
+                android:text="Create" />
 
             <Button
                 android:id="@+id/btnVolverAdmCupos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Volver" />
+                android:text="Back" />
         </LinearLayout>
 
     </LinearLayout>
@@ -94,7 +94,7 @@
                                 android:gravity="center"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="Marca"
+                                android:text="Brand"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -105,7 +105,7 @@
                                 android:gravity="center"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="Acciones -->"
+                                android:text="Actions -->"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
                         </TableRow>

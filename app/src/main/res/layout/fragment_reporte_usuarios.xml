@@ -52,7 +52,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Codigo Estudiante"
+                                android:text="Student Code"
                                 android:background="@color/white"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />
@@ -65,7 +65,7 @@
                                 android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Nombre"
+                                android:text="Name"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />
 
@@ -77,7 +77,7 @@
                                 android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Correo"
+                                android:text="Email"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />
 
@@ -89,7 +89,7 @@
                                 android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Clave"
+                                android:text="Password"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />
 
@@ -100,7 +100,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Pregunta Seguridad"
+                                android:text="Question of security"
                                 android:background="@color/white"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />
@@ -113,7 +113,7 @@
                                 android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Respuesta"
+                                android:text="Answer"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />
 
@@ -125,7 +125,7 @@
                                 android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="ID rol"
+                                android:text="Id Role"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />
 
@@ -137,7 +137,7 @@
                                 android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Creacion"
+                                android:text="Created"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />
 
@@ -148,7 +148,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Ultima modificacion"
+                                android:text="Last Modification"
                                 android:background="@color/white"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />

@@ -52,7 +52,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="ID Cupo"
+                                android:text="ID Slot"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -64,7 +64,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Seccion"
+                                android:text="Section"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -76,7 +76,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="ID Parqueadero"
+                                android:text="ID Parking"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -88,7 +88,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="ID Bicicleta"
+                                android:text="ID Bike"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -100,7 +100,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Cedula Propiedario"
+                                android:text="Owner Id"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -112,7 +112,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Fecha Registro"
+                                android:text="Date"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -124,7 +124,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Lugar Registro"
+                                android:text="Place"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -136,7 +136,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="ID Marca"
+                                android:text="ID Brand"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -160,7 +160,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="ID Tipo"
+                                android:text="ID Type"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -184,7 +184,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Codigo Estudiante"
+                                android:text="Student Id"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -196,7 +196,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Nombre"
+                                android:text="Name"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -208,7 +208,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Correo"
+                                android:text="Email"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -220,7 +220,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Fecha y Hora de Llegada"
+                                android:text="Date and Hour of arrival"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -232,7 +232,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Fecha y Hora de Salida"
+                                android:text="Date and Hour of exit"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -244,7 +244,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Estado"
+                                android:text="State"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />

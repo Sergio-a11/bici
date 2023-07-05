@@ -29,7 +29,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="Bienvenido Nombre Usuario"
+                android:text="Welcome "
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="128dp"
                 android:layout_marginTop="32dp"
-                android:text="@string/verRegistros" />
+                android:text="@string/registry" />
 
             <Button
                 android:background="@drawable/radius"
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="104dp"
                 android:layout_marginTop="32dp"
-                android:text="Registrar Bicicleta" />
+                android:text="Register Bicycle" />
 
             <Button
                 android:background="@drawable/radius"
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="108dp"
                 android:layout_marginTop="32dp"
-                android:text="Modificar Usuario" />
+                android:text="Edit User" />
 
             <Button
                 android:background="@drawable/radius"
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="125dp"
                 android:layout_marginTop="32dp"
-                android:text="@string/CerrarSesion" />
+                android:text="@string/logOut" />
         </LinearLayout>
     </ScrollView>
 

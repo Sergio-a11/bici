@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="163dp"
         android:layout_marginTop="66dp"
-        android:text="Crear"
+        android:text="Create"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtPreguntaCrear" />
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="164dp"
         android:layout_marginTop="32dp"
-        android:text="Crear Pregunta"
+        android:text="Create Question"
         android:textColor="#FBFBFB"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="251dp"
-        android:text="Pregunta"
+        android:text="Question"
         android:textColor="#FAFAFA"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

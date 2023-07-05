@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="59dp"
         android:layout_marginTop="74dp"
-        android:text="@string/verRegistrosCupos"
+        android:text="@string/registrySlots"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="119dp"
         android:layout_marginTop="55dp"
-        android:text="@string/DesAsignarCupo"
+        android:text="@string/unassignSlot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAsignarCupo" />
 
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="134dp"
         android:layout_marginTop="45dp"
-        android:text="@string/AsignarCupo"
+        android:text="@string/asignSlot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnVerRegistrosCupos" />
 
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="129dp"
         android:layout_marginTop="80dp"
-        android:text="@string/CerrarSesion"
+        android:text="@string/logOut"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnDesAsignarCupo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

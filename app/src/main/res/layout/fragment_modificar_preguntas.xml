@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="159dp"
         android:layout_marginTop="110dp"
-        android:text="Modificar"
+        android:text="Edit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtModificarPregunta" />
 
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="260dp"
-        android:text="Pregunta"
+        android:text="Question"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

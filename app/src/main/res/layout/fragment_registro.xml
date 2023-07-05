@@ -27,7 +27,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="Registrarte como nuevo usuario"
+                android:text="Register as New User"
                 android:textColor="#FFFFFF"
                 android:textSize="20dp" />
 
@@ -44,7 +44,7 @@
                     android:layout_width="134dp"
                     android:layout_height="31dp"
                     android:gravity="center"
-                    android:text="Codigo"
+                    android:text="Code"
                     android:textColor="#FFFFFF" />
 
                 <EditText
@@ -74,7 +74,7 @@
                     android:layout_width="134dp"
                     android:layout_height="31dp"
                     android:gravity="center"
-                    android:text="Nombre"
+                    android:text="Name"
                     android:textColor="#FFFFFF" />
 
                 <EditText
@@ -103,7 +103,7 @@
                     android:layout_width="134dp"
                     android:layout_height="31dp"
                     android:gravity="center"
-                    android:text="Clave"
+                    android:text="Password"
                     android:textColor="#FFFFFF" />
 
                 <EditText
@@ -130,7 +130,7 @@
                     android:layout_width="134dp"
                     android:layout_height="31dp"
                     android:gravity="center"
-                    android:text="Correo"
+                    android:text="Email"
                     android:textColor="#FFFFFF" />
 
                 <EditText
@@ -159,7 +159,7 @@
                     android:layout_width="134dp"
                     android:layout_height="31dp"
                     android:gravity="center"
-                    android:text="Preguntas"
+                    android:text="Questions"
                     android:textColor="#FFFFFF" />
 
                 <Spinner
@@ -186,7 +186,7 @@
                     android:layout_width="134dp"
                     android:layout_height="31dp"
                     android:gravity="center"
-                    android:text="Respuesta"
+                    android:text="Answer"
                     android:textColor="#FFFFFF" />
 
                 <EditText
@@ -196,7 +196,7 @@
                     android:background="@drawable/edt_texto_campos"
                     android:ems="10"
                     android:gravity="center"
-                    android:hint="Amante de la comida"
+                    android:hint="Fan of food"
                     android:inputType="textPersonName"
                     android:minHeight="48dp" />
             </LinearLayout>
@@ -215,7 +215,7 @@
                     android:layout_width="134dp"
                     android:layout_height="31dp"
                     android:gravity="center"
-                    android:text="Rol"
+                    android:text="Role"
                     android:textColor="#FFFFFF" />
 
                 <Spinner
@@ -239,7 +239,7 @@
         android:layout_marginTop="13dp"
         android:layout_marginEnd="61dp"
         android:background="@drawable/radius"
-        android:text="Registrar"
+        android:text="Register"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FF0000"
         android:textColorHint="#FF0000"
@@ -256,7 +256,7 @@
         android:layout_marginStart="66dp"
         android:layout_marginTop="13dp"
         android:background="@drawable/radius"
-        android:text="Volver"
+        android:text="Exit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
 

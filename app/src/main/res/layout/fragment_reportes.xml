@@ -35,14 +35,14 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:layout_marginTop="40dp"
-            android:text="Reportes Parametrizados" />
+            android:text="Parameterised Reports" />
 
         <Button
             android:id="@+id/btnVolverReportes"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
-            android:text="Volver" />
+            android:text="Exit" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

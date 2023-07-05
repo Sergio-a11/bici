@@ -9,12 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class VerCupos extends Fragment {
+public class viewSlots extends Fragment {
 
     private RecyclerView recyclerViewCiclas;
     private RecyclerViewAdapter adapterCiclas;
 
-    public VerCupos() {
+    public viewSlots() {
         // Required empty public constructor
     }
 

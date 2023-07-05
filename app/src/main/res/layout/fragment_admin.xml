@@ -22,7 +22,7 @@
                 android:layout_height="31dp"
                 android:layout_marginStart="104dp"
                 android:layout_marginTop="16dp"
-                android:text="Interfaz Super Admin"
+                android:text="Super Admin Interface"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 
@@ -32,7 +32,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="11dp"
-                android:text="Bicicletas" />
+                android:text="Bicycles" />
 
             <Button
                 android:id="@+id/btnCupos"
@@ -40,7 +40,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="19dp"
-                android:text="Cupos"
+                android:text="Slots"
                 tools:ignore="TextContrastCheck" />
 
             <Button
@@ -49,7 +49,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="14dp"
-                android:text="Marcas" />
+                android:text="Brands" />
 
             <Button
                 android:id="@+id/btnParqueaderos"
@@ -57,7 +57,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="17dp"
-                android:text="Parqueaderos" />
+                android:text="Parkings" />
 
             <Button
                 android:id="@+id/btnPreguntas"
@@ -65,7 +65,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="15dp"
-                android:text="Preguntas" />
+                android:text="Questions" />
 
             <Button
                 android:id="@+id/btnRoles"
@@ -81,7 +81,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="13dp"
-                android:text="Usuarios" />
+                android:text="Users" />
 
             <Button
                 android:id="@+id/btnTipos"
@@ -89,7 +89,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="10dp"
-                android:text="Tipos" />
+                android:text="Types" />
 
             <Button
                 android:id="@+id/btnReportes"
@@ -97,7 +97,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="10dp"
-                android:text="Reportes" />
+                android:text="Reports" />
 
             <Button
                 android:id="@+id/btnCerrarSesionSuperAdmin"
@@ -105,7 +105,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="10dp"
-                android:text="Cerrar Sesion" />
+                android:text="Log Out" />
 
         </LinearLayout>
     </ScrollView>

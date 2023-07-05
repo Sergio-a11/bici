@@ -29,7 +29,7 @@
                 android:id="@+id/btnadmCrearCupo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Crear Cupo" />
+                android:text="Create Slot" />
 
             <Button
                 android:id="@+id/btnVolverAdmCupos"
@@ -94,7 +94,7 @@
                                 android:gravity="center"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="Seccion"
+                                android:text="Section"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -105,7 +105,7 @@
                                 android:gravity="center"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="Estado"
+                                android:text="State"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
 
@@ -116,7 +116,7 @@
                                 android:gravity="center"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="Acciones -->"
+                                android:text="Actions -->"
                                 android:textColor="@android:color/white"
                                 android:textSize="14sp" />
                         </TableRow>

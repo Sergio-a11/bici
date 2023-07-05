@@ -15,7 +15,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="120dp"
         android:gravity="center"
-        android:text="Codigo"
+        android:text="Id"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="132dp"
         android:layout_marginBottom="11dp"
-        android:text="Asignar Cupo"
+        android:text="Asign Slot"
         app:layout_constraintBottom_toTopOf="@+id/btnVolverAsignar"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="164dp"
-        android:text="Seccion"
+        android:text="Section"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCodigo" />
 
@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginBottom="101dp"
-        android:text="Volver"
+        android:text="Exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

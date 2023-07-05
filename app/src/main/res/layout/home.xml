@@ -30,7 +30,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="125dp"
         android:background="@drawable/radius"
-        android:text="@string/iniiciarSesion"
+        android:text="@string/logIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="138dp"
         android:background="@drawable/radius"
-        android:text="@string/registrarse"
+        android:text="@string/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,7 @@
         android:layout_marginStart="84dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/radius"
-        android:text="@string/olvidoContrasena"
+        android:text="@string/forgotPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse" />
 

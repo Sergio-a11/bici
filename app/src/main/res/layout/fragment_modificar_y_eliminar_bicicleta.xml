@@ -120,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
         android:layout_marginTop="52dp"
-        android:text="Modificar Bicicleta"
+        android:text="Edit Bicycle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
@@ -130,7 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
         android:layout_marginTop="18dp"
-        android:text="Eliminar Bicicleta"
+        android:text="Delete Bicycle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnModificarBici" />
 
@@ -140,7 +140,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="164dp"
         android:layout_marginTop="8dp"
-        android:text="Volver"
+        android:text="Exit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEliminarBici" />
 </androidx.constraintlayout.widget.ConstraintLayout>

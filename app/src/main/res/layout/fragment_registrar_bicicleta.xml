@@ -32,7 +32,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="center"
-                    android:text="Registrar Nueva Bicicleta"
+                    android:text="Register New Bicycle"
                     android:textColor="#FFFFFF"
                     android:textSize="20dp" />
 
@@ -49,7 +49,7 @@
                         android:layout_width="134dp"
                         android:layout_height="31dp"
                         android:gravity="center"
-                        android:text="Cedula propietario"
+                        android:text="Owner Id"
                         android:textColor="#FFFFFF" />
 
                     <EditText
@@ -79,7 +79,7 @@
                         android:layout_height="31dp"
                         android:textColor="#FFFFFF"
                         android:gravity="center"
-                        android:text="Fecha Registro" />
+                        android:text="Date Registered" />
 
                     <EditText
                         android:id="@+id/txtFechaRegistro"
@@ -108,7 +108,7 @@
                         android:layout_height="31dp"
                         android:textColor="#FFFFFF"
                         android:gravity="center"
-                        android:text="Lugar Registro" />
+                        android:text="Place" />
 
                     <EditText
                         android:id="@+id/txtLugarRegistro"
@@ -136,7 +136,7 @@
                         android:layout_height="31dp"
                         android:gravity="center"
                         android:textColor="#FFFFFF"
-                        android:text="Marca" />
+                        android:text="Brand" />
 
                     <Spinner
                         android:id="@+id/spnMarca"
@@ -163,7 +163,7 @@
                         android:layout_height="31dp"
                         android:gravity="center"
                         android:textColor="#FFFFFF"
-                        android:text="Número de serie" />
+                        android:text="Serie #" />
 
                     <EditText
                         android:id="@+id/txtNumSerie"
@@ -192,7 +192,7 @@
                         android:layout_height="31dp"
                         android:gravity="center"
                         android:textColor="#FFFFFF"
-                        android:text="Tipo" />
+                        android:text="Type" />
 
                     <Spinner
                         android:id="@+id/spnTipo"
@@ -229,7 +229,7 @@
                         android:background="@drawable/edt_texto_campos"
                         android:ems="10"
                         android:gravity="center"
-                        android:hint="Rosado unicornio"
+                        android:hint="Pink"
                         android:inputType="textPersonName"
                         android:maxLength="45" />
                 </LinearLayout>
@@ -249,7 +249,7 @@
                         android:layout_height="31dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Codigo Estudiante"
+                        android:text="Student Id"
                         android:textColor="#FFFFFF" />
 
                     <EditText
@@ -276,7 +276,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="66dp"
                         android:layout_marginTop="13dp"
-                        android:text="Volver" />
+                        android:text="Exit" />
 
                     <Button
                         android:id="@+id/btnRegistrarBicicletaDesdePantallaRegistro"
@@ -284,7 +284,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="13dp"
-                        android:text="Registrar Bicicleta" />
+                        android:text="Register Bicycle" />
                 </LinearLayout>
 
             </LinearLayout>

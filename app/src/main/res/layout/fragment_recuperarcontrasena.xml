@@ -23,7 +23,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:text="Recuperar Contraseña"
+            android:text="Recover Password"
             android:textColor="#FFFFFF"
             android:textSize="20dp" />
 
@@ -40,7 +40,7 @@
                 android:layout_width="134dp"
                 android:layout_height="31dp"
                 android:gravity="center"
-                android:text="Codigo"
+                android:text="Id"
                 android:textColor="#FFFFFF" />
 
             <EditText
@@ -67,7 +67,7 @@
                 android:layout_width="134dp"
                 android:layout_height="31dp"
                 android:gravity="center"
-                android:text="Pregunta"
+                android:text="Question"
                 android:textColor="#FFFFFF" />
 
             <Spinner
@@ -92,7 +92,7 @@
                 android:layout_width="134dp"
                 android:layout_height="31dp"
                 android:gravity="center"
-                android:text="Respuesta"
+                android:text="Answer"
                 android:textColor="#FFFFFF" />
 
             <EditText
@@ -120,7 +120,7 @@
                 android:layout_width="134dp"
                 android:layout_height="31dp"
                 android:gravity="center"
-                android:text="Nueva \nContraseña"
+                android:text="New \nPassword"
                 android:textColor="#FFFFFF" />
 
             <EditText
@@ -149,7 +149,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/radius"
-                android:text="Volver" />
+                    android:text="Exit" />
 
             <Button
                 android:id="@+id/btnCambiarPw"
@@ -158,7 +158,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/radius"
-                android:text="Cambiar contraseña" />
+                android:text="Change Password" />
 
         </LinearLayout>
 

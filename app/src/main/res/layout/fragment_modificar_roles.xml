@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="164dp"
         android:layout_marginTop="80dp"
-        android:text="Modificar Rol"
+        android:text="Edit Role"
         android:textColor="#FFFDFD"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="159dp"
         android:layout_marginTop="84dp"
-        android:text="Modificar"
+        android:text="Edit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtRolModificar" />
 
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="166dp"
         android:layout_marginTop="83dp"
-        android:text="Volver"
+        android:text="Exit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnModificarRol" />
 
@@ -56,7 +56,7 @@
         android:layout_height="34dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="232dp"
-        android:text="Rol"
+        android:text="Role"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

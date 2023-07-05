@@ -53,7 +53,7 @@
                                 android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="ID Bicicleta"
+                                android:text="ID Bicycle"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />
 
@@ -64,7 +64,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Cedula Propiedario"
+                                android:text="Owner Id"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -76,7 +76,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Fecha Registro"
+                                android:text="Date"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -88,7 +88,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Lugar Registro"
+                                android:text="Place"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -101,7 +101,7 @@
                                 android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="ID Marca"
+                                android:text="ID Brand"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />
 
@@ -125,7 +125,7 @@
                                 android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="ID Tipo"
+                                android:text="ID Type"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />
 
@@ -148,7 +148,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Codigo Estudiante"
+                                android:text="Student Id"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -161,7 +161,7 @@
                                 android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Creacion"
+                                android:text="Creation"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />
 
@@ -172,7 +172,7 @@
                                 android:layout_weight="4"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Ultima modificacion"
+                                android:text="Last Modification"
                                 android:textColor="#432d59"
                                 android:background="@color/white"
                                 android:textSize="14sp" />
@@ -185,7 +185,7 @@
                                 android:background="@color/white"
                                 android:gravity="center_horizontal"
                                 android:padding="10sp"
-                                android:text="Estado"
+                                android:text="State"
                                 android:textColor="#432d59"
                                 android:textSize="14sp" />
 

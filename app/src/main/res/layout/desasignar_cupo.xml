@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="152dp"
-        android:text="N° Serie"
+        android:text="Serie #"
         android:textColor="#FFFFFF"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,7 @@
         android:layout_marginTop="57dp"
         android:textColor="#FFFFFF"
         android:gravity="center"
-        android:text="Nombre"
+        android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="52dp"
-        android:text="Tipo"
+        android:text="Type"
         android:textColor="#FFFFFF"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="117dp"
         android:layout_marginTop="45dp"
-        android:text="Desasignar Cupo"
+        android:text="Unasign Slot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtColorDAC" />
 
@@ -136,7 +136,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
         android:layout_marginTop="28dp"
-        android:text="Volver"
+        android:text="Exit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnDesasignarCupo" />
 
