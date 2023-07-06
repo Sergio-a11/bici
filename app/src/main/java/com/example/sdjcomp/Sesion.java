@@ -4,8 +4,9 @@ import android.app.Application;
 
 public class Sesion extends Application {
     private String codigo,nombre,correo,clave,Rseguridad;
-    private int Rol_id,Pseguridad,idBici;
-    private boolean validado;
+    private int Rol_id,Pseguridad,idBici,idMarca,idTipo,idPreguntas,idRol,idCupo;
+    private boolean validado, modificando;
+    private Parqueadero objParqueadero;
 
     private int cupo, bicicleta;
     private String codio,seccion;
@@ -145,4 +146,60 @@ public class Sesion extends Application {
     public void setIdBici(int idBici) {
         this.idBici = idBici;
     }
+
+    public int getIdMarca() {
+        return idMarca;
+    }
+
+    public void setIdMarca(int idMarca) {
+        this.idMarca = idMarca;
+    }
+
+    public int getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(int idTipo) {
+        this.idTipo = idTipo;
+    }
+
+    public int getIdPreguntas() {
+        return idPreguntas;
+    }
+
+    public void setIdPreguntas(int idPreguntas) {
+        this.idPreguntas = idPreguntas;
+    }
+
+    public int getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
+    }
+
+    public boolean isModificando() {
+        return modificando;
+    }
+
+    public void setModificando(boolean modificando) {
+        this.modificando = modificando;
+    }
+
+    public Parqueadero getObjParqueadero() {
+        return objParqueadero;
+    }
+
+    public void setObjParqueadero(Parqueadero objParqueadero) {
+        this.objParqueadero = objParqueadero;
+    }
+    public void setIdCupo(int idCupo) {
+        this.idCupo = idCupo;
+    }
+
+    public int getIdCupo() {
+        return idCupo;
+    }
+
 }

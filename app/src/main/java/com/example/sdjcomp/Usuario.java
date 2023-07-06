@@ -19,6 +19,10 @@ public class Usuario {
         Rol_id = rol_id;
     }
 
+    public Usuario(String codigo) {
+        this.codigo = codigo;
+    }
+
     public Usuario(String nombre, String correo, String clave, int pseguridad, String rseguridad, int rol_id) {
         this.nombre = nombre;
         this.correo = correo;

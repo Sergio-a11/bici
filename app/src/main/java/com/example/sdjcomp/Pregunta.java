@@ -8,10 +8,16 @@ public class Pregunta {
         this.pregunta = pregunta;
     }
 
+    public Pregunta(String pregunta) {
+        this.pregunta = pregunta;
+    }
+
     public Pregunta() {
         this.codigo = "";
         this.pregunta = "";
     }
+
+
 
     public String getCodigo() {
         return codigo;

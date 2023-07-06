@@ -14,6 +14,8 @@ public class Cupo {
         this.estado = estado;
     }
 
+
+
     public Cupo( String seccion, int estado) {
         this.seccion = seccion;
         this.estado = estado;
@@ -30,6 +32,12 @@ public class Cupo {
     public String getSeccion() {
         return seccion;
     }
+
+    public int getEstado() {
+        return estado;
+    }
+
+
 
     public void setSeccion(String seccion) {
         this.seccion = seccion;

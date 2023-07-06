@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import com.example.sdjcomp.databinding.HomeBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.HashMap;
 
@@ -79,13 +80,17 @@ public class Home extends Fragment {
                                     ((Sesion) getActivity().getApplicationContext()).setCorreo(txtCorreo.getText().toString());
                                     System.out.println("response.body().getRol_id() = " + response.body().getRol_id());
                                     if(result.getRol_id()==1){
-                                        System.out.println("Logeado Como Administrador");
+                                        System.out.println("Logeado Como Celador");
                                         NavHostFragment.findNavController(Home.this).
                                                 navigate(R.id.action_Home_to_interfaz_administrador);
                                     }else if(result.getRol_id()==2){
                                         System.out.println("Logeado Como Estudiante");
                                         NavHostFragment.findNavController(Home.this).
                                                 navigate(R.id.action_Home_to_InterfazEstudiante);
+                                    }else if(result.getRol_id()==3){
+                                        System.out.println("Logeado Como Administrador");
+                                        NavHostFragment.findNavController(Home.this).
+                                                navigate(R.id.action_Home_to_admin);
                                     }
 
                                 }
@@ -98,11 +103,11 @@ public class Home extends Fragment {
                             validado=false;
                             //TODO QUItar
                             System.out.println("BULIAN1!!!¡");
-                            Toast.makeText(getContext(), "Correo o Contraseña Incorrectos", Toast.LENGTH_LONG).show();
+                            Snackbar.make(v, "Correo o Contraseña Incorrectos", Snackbar.LENGTH_LONG).show();
                         }
                     });
                 }else{
-                    Toast.makeText(getContext(), "Debe rellenar ambos campos obligatoriamente", Toast.LENGTH_LONG).show();
+                    Snackbar.make(v, "Debe rellenar ambos campos obligatoriamente", Snackbar.LENGTH_LONG).show();
                 }
             }
         });

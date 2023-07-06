@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.w3c.dom.Text;
 
 import retrofit2.Call;
@@ -56,14 +58,11 @@ public class ModificarYEliminarBicicleta extends Fragment {
         btnVolver = (Button) v.findViewById(R.id.btnVolverModyElim);
 
         int id = ((Sesion)getActivity().getApplicationContext()).getIdBici();
-        System.out.println("id = " + id);
 
         Call<Bicicleta> call = iRetrofit.executeGetBike(((Sesion)getActivity().getApplicationContext()).getCodigo(), id);
-        System.out.println("((Sesion)getActivity().getApplicationContext()).getCodigo() = " + ((Sesion)getActivity().getApplicationContext()).getCodigo());
         call.enqueue(new Callback<Bicicleta>() {
             @Override
             public void onResponse(Call<Bicicleta> call, Response<Bicicleta> response) {
-                System.out.println("123");
                 txtCedula.setText(response.body().getCedulaPropietario());
                 txtFecha.setText(response.body().getFechaRegistro());
                 txtLugar.setText(response.body().getLugarRegistro());
@@ -75,8 +74,7 @@ public class ModificarYEliminarBicicleta extends Fragment {
 
             @Override
             public void onFailure(Call<Bicicleta> call, Throwable t) {
-                System.out.println("321");
-                System.out.println(t.getMessage());
+                Snackbar.make(v, t.getMessage(), Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -96,14 +94,14 @@ public class ModificarYEliminarBicicleta extends Fragment {
                     @Override
                     public void onResponse(Call<Number> call, Response<Number> response) {
                         if(Integer.parseInt(String.valueOf(response.body()))==1){
-                            Toast.makeText(getContext(), "Bicicleta eliminada", Toast.LENGTH_LONG).show();
+                            Snackbar.make(v, "Bicicleta eliminada", Snackbar.LENGTH_LONG).show();
                             NavHostFragment.findNavController(ModificarYEliminarBicicleta.this).navigate(R.id.action_modificarYEliminarBicicleta_to_InterfazEstudiante);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Number> call, Throwable t) {
-                        Toast.makeText(getContext(), "Bicicleta no eliminada", Toast.LENGTH_LONG).show();
+                        Snackbar.make(v, "Bicicleta no eliminada", Snackbar.LENGTH_LONG).show();
                     }
                 });
 

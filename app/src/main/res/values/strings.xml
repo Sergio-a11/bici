@@ -3,17 +3,17 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <!-- editar en navgraph -->
-    <string name="login">LOGIN</string>
-    <string name="registrarse">Registrarse</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
 
-    <string name="iniiciarSesion">iniiciar Sesión</string>
-    <string name="olvidoContrasena">¿Olvido su contraseña?</string>
-    <string name="email">person@correo.udistrital.edu.co</string>
-    <string name="verRegistros">Ver Registros</string>
-    <string name="verRegistrosCupos">Ver registros de cupos en uso</string>
-    <string name="AsignarCupo">AsignarCupo</string>
-    <string name="DesAsignarCupo">DesAsignar Cupo</string>
-    <string name="CerrarSesion">Cerrar Sesion</string>
+    <string name="logIn">Log in</string>
+    <string name="forgotPassword">Forgot your password?</string>
+    <string name="email">name@email.com</string>
+    <string name="registry">registry</string>
+    <string name="registrySlots">View parking spaces allocated</string>
+    <string name="asignSlot">Allocate parking space</string>
+    <string name="unassignSlot">De-Allocate parking space</string>
+    <string name="logOut">Log out</string>
 
     <string-array name="seccion">
         <item>1</item>
@@ -21,7 +21,19 @@
         <item>3</item>
     </string-array>
 
-    <string name="IP">192.168.1.10</string>
+    <string-array name="reports">
+        <item>Entry and exit of students/bikes</item>
+        <item>Bikes per city</item>
+        <item>Use of parking spaces</item>
+    </string-array>
+
+    <string-array name="state">
+        <item>All</item>
+        <item>In use</item>
+        <item>Not use</item>
+    </string-array>
+
+    <string name="IP">192.168.20.21</string>
 
     <string name="title">BICI UD</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>

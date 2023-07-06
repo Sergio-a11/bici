@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.sdjcomp.databinding.HomeBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,33 +38,9 @@ public class Recuperarcontrasena extends Fragment {
     private Spinner spnPregunta;
     private Button btnCambiarpw, btnVolver;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Recuperarcontrasena() {
-        // Required empty public constructor
-    }
-
-    public static Recuperarcontrasena newInstance(String param1, String param2) {
-        Recuperarcontrasena fragment = new Recuperarcontrasena();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -91,7 +68,6 @@ public class Recuperarcontrasena extends Fragment {
             public void onResponse(Call<List<Pregunta>> call, Response<List<Pregunta>> response) {
                 if(response.code()==200){
                     for(int i=0; i<response.body().size(); i++){
-                        System.out.println("for 1");
                         listaPreguntas.add(response.body().get(i));
                     }
                     for (Pregunta i: listaPreguntas) {
@@ -101,13 +77,12 @@ public class Recuperarcontrasena extends Fragment {
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
                             listaPreguntasNom);
                     spnPregunta.setAdapter(adapter);
-                    System.out.println("tamaño : " + response.body().size());//size de q?
-                }// lo unico diferente esq mi spinner se llama pregunta y no preguntas, pero da igual no ?
+                }
             }
 
             @Override
             public void onFailure(Call<List<Pregunta>> call, Throwable t) {
-                System.out.println("Preguntas No Encontradas");
+                Snackbar.make(v, "Preguntas No Encontradas", Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -124,17 +99,17 @@ public class Recuperarcontrasena extends Fragment {
                     public void onResponse(Call<Number> call, Response<Number> response) {
                         if(response.code()==200){
                             if(Integer.parseInt(String.valueOf(response.body()))==1){
-                                Toast.makeText(getContext(), "Contraseña Modificada", Toast.LENGTH_LONG).show();
+                                Snackbar.make(v, "Contraseña Modificada", Snackbar.LENGTH_LONG).show();
                                 NavHostFragment.findNavController(Recuperarcontrasena.this).navigate(R.id.action_recuperarcontrasena_to_Home);
                             }
                         }
                         if(response.code()==412){
-                            Toast.makeText(getContext(), "Respuesta incorrecta", Toast.LENGTH_LONG).show();
+                            Snackbar.make(v, "Respuesta incorrecta", Snackbar.LENGTH_LONG).show();
                         }
                     }
                     @Override
                     public void onFailure(Call<Number> call, Throwable t) {
-                        Toast.makeText(getContext(), "Error", Toast.LENGTH_LONG).show();
+                        Snackbar.make(v, "Error", Snackbar.LENGTH_LONG).show();
                     }
                 });
             }

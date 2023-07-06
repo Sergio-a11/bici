@@ -9,119 +9,159 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="253dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="79dp"
-        android:layout_marginTop="34dp"
-        android:text="Recuperar Contraseña"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="22dp"
-        android:text="Codigo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="26dp"
-        android:text="Pregunta"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCodigoR" />
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="Recover Password"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/txtCodigoR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="13dp"
-        android:ems="10"
-        android:inputType="number"
-        android:maxLength="20"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
 
-    <Spinner
-        android:id="@+id/spnPreguntaR"
-        android:layout_width="338dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="29dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="134dp"
+                android:layout_height="31dp"
+                android:gravity="center"
+                android:text="Id"
+                android:textColor="#FFFFFF" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="17dp"
-        android:text="Respuesta"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spnPreguntaR" />
+            <EditText
+                android:gravity="center"
+                android:id="@+id/txtCodigoR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edt_texto_campos"
+                android:ems="10"
+                android:inputType="number"
+                android:minHeight="48dp"/>
+        </LinearLayout>
 
-    <EditText
-        android:id="@+id/txtRespuestaR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="25dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="22dp"
-        android:text="Nueva Contraseña"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRespuestaR" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="134dp"
+                android:layout_height="31dp"
+                android:gravity="center"
+                android:text="Question"
+                android:textColor="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/txtContrasenaR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:maxLength="255"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+            <Spinner
+                android:gravity="center"
+                android:id="@+id/spnPreguntaR"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/edt_texto_campos"
+                android:theme="@style/Theme.SdjComp.AppBarOverlay" />
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/btnCambiarPw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="28dp"
-        android:text="Cambiar contraseña"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtContrasenaR" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnVolverRecuperar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="4dp"
-        android:text="Volver"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCambiarPw" />
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="134dp"
+                android:layout_height="31dp"
+                android:gravity="center"
+                android:text="Answer"
+                android:textColor="#FFFFFF" />
+
+            <EditText
+                android:gravity="center"
+                android:id="@+id/txtRespuestaR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edt_texto_campos"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="134dp"
+                android:layout_height="31dp"
+                android:gravity="center"
+                android:text="New \nPassword"
+                android:textColor="#FFFFFF" />
+
+            <EditText
+                android:gravity="center"
+                android:id="@+id/txtContrasenaR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edt_texto_campos"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:minHeight="48dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnVolverRecuperar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/radius"
+                    android:text="Exit" />
+
+            <Button
+                android:id="@+id/btnCambiarPw"
+                android:layout_width="241dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/radius"
+                android:text="Change Password" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

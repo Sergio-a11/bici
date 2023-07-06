@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.sdjcomp.databinding.InterfazEstudianteBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +30,7 @@ public class InterfazEstudiante extends Fragment {
     private String URL="";
 
     private TextView txtTitulo;
-    private Button btnActualizarUsuario, btnEliminarUsuario, btnVerRegistros, btnRegistrarBicicleta, btnVolver;
+    private Button btnActualizarUsuario, btnVerRegistros, btnRegistrarBicicleta, btnVolver;
 
     @Override
     public View onCreateView(
@@ -42,7 +43,6 @@ public class InterfazEstudiante extends Fragment {
 
         txtTitulo = v.findViewById(R.id.lblTitulo);
         btnActualizarUsuario = v.findViewById(R.id.btnModificarUsuario);
-        btnEliminarUsuario = v.findViewById(R.id.btnEliminarUsuario);
         btnRegistrarBicicleta = v.findViewById(R.id.btnRegistrarBicicleta);
         btnVolver = v.findViewById(R.id.btnVolver);
 
@@ -91,7 +91,7 @@ public class InterfazEstudiante extends Fragment {
 
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                Snackbar.make(v, "La Bicicleta no se pudo asignar", Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -100,33 +100,6 @@ public class InterfazEstudiante extends Fragment {
             public void onClick(View view) {
                 NavHostFragment.findNavController(InterfazEstudiante.this)
                         .navigate(R.id.action_InterfazEstudiante_to_fragment_modificar_usuario);
-            }
-        });
-
-        //delete
-        btnEliminarUsuario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                eliminar();
-                System.out.println("((Sesion)getActivity().getApplicationContext()).getCodigo() = " + ((Sesion)getActivity().getApplicationContext()).getCodigo());
-                Call<Number> callElim = iRetrofit.executeDeleteUser(((Sesion)getActivity().getApplicationContext()).getCodigo());
-                callElim.enqueue(new Callback<Number>() {
-                    @Override
-                    public void onResponse(Call<Number> call, Response<Number> response) {
-                        if(response.code()==200) {
-                            if (Integer.parseInt(String.valueOf(response.body())) == 1) {
-                                NavHostFragment.findNavController(InterfazEstudiante.this)
-                                        .navigate(R.id.action_InterfazEstudiante_to_Home);
-                            } else {
-                                Toast.makeText(getContext(), "Usuario no eliminado", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<Number> call, Throwable t) {
-                        System.out.println(t.getMessage());
-                    }
-                });
             }
         });
 
@@ -159,8 +132,6 @@ public class InterfazEstudiante extends Fragment {
         URL = "http://"+getResources().getString(R.string.IP)+":3000/deleteUser/";
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
         iRetrofit = retrofit.create(IRetroFit.class);
-
-
     }
 
 }

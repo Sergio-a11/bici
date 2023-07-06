@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_Home_to_recuperarcontrasena"
             app:destination="@id/recuperarcontrasena" />
+        <action
+            android:id="@+id/action_Home_to_admin"
+            app:destination="@id/admin" />
     </fragment>
     <fragment
         android:id="@+id/InterfazEstudiante"
@@ -50,10 +53,12 @@
         android:name="com.example.sdjcomp.Registro"
         android:label="@string/title"
         tools:layout="@layout/fragment_registro">
-
         <action
             android:id="@+id/action_fragment_registro_to_Home"
             app:destination="@id/Home" />
+        <action
+            android:id="@+id/action_fragment_registro_to_admUsuarios"
+            app:destination="@id/admUsuarios" />
     </fragment>
 
     <fragment
@@ -66,6 +71,9 @@
         <action
             android:id="@+id/action_fragment_modificar_usuario_to_InterfazEstudiante"
             app:destination="@id/InterfazEstudiante" />
+        <action
+            android:id="@+id/action_fragment_modificar_usuario_to_admUsuarios"
+            app:destination="@id/admUsuarios" />
     </fragment>
 
     <fragment
@@ -85,6 +93,9 @@
         <action
             android:id="@+id/action_interfazBicicleta_to_modificarYEliminarBicicleta"
             app:destination="@id/modificarYEliminarBicicleta" />
+        <action
+            android:id="@+id/action_interfazBicicleta_to_admParqueaderos"
+            app:destination="@id/admParqueaderos" />
     </fragment>
 
     <fragment
@@ -98,6 +109,9 @@
         <action
             android:id="@+id/action_registrarBicicleta_to_InterfazEstudiante"
             app:destination="@id/InterfazEstudiante" />
+        <action
+            android:id="@+id/action_registrarBicicleta_to_admBicicletas"
+            app:destination="@id/admBicicletas" />
     </fragment>
 
     <fragment
@@ -147,6 +161,9 @@
         <action
             android:id="@+id/action_asignarCupo_to_interfazBicicleta"
             app:destination="@id/interfazBicicleta" />
+        <action
+            android:id="@+id/action_asignarCupo_to_admParqueaderos"
+            app:destination="@id/admParqueaderos" />
     </fragment>
     <fragment
         android:id="@+id/consultarParqueaderoSeccion"
@@ -198,5 +215,305 @@
         <action
             android:id="@+id/action_modificarBicicleta_to_modificarYEliminarBicicleta"
             app:destination="@id/modificarYEliminarBicicleta" />
+        <action
+            android:id="@+id/action_modificarBicicleta_to_admBicicletas"
+            app:destination="@id/admBicicletas" />
+    </fragment>
+    <fragment
+        android:id="@+id/admin"
+        android:name="com.example.sdjcomp.Admin"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" >
+        <action
+            android:id="@+id/action_admin_to_Home"
+            app:destination="@id/Home" />
+        <action
+            android:id="@+id/action_admin_to_roles"
+            app:destination="@id/roles" />
+        <action
+            android:id="@+id/action_admin_to_admBicicletas"
+            app:destination="@id/admBicicletas" />
+        <action
+            android:id="@+id/action_admin_to_admCupos"
+            app:destination="@id/admCupos" />
+        <action
+            android:id="@+id/action_admin_to_admUsuarios"
+            app:destination="@id/admUsuarios" />
+        <action
+            android:id="@+id/action_admin_to_admParqueaderos"
+            app:destination="@id/admParqueaderos" />
+        <action
+            android:id="@+id/action_admin_to_admPreguntas"
+            app:destination="@id/admPreguntas" />
+        <action
+            android:id="@+id/action_admin_to_admTipos"
+            app:destination="@id/admTipos" />
+        <action
+            android:id="@+id/action_admin_to_admMarcas"
+            app:destination="@id/admMarcas" />
+        <action
+            android:id="@+id/action_admin_to_reportes"
+            app:destination="@id/reportes" />
+        <action
+            android:id="@+id/action_admin_to_Home2"
+            app:destination="@id/Home" />
+    </fragment>
+    <fragment
+        android:id="@+id/roles"
+        android:name="com.example.sdjcomp.Roles"
+        android:label="Roles" >
+        <action
+            android:id="@+id/action_roles_to_crearRoles"
+            app:destination="@id/crearRoles" />
+        <action
+            android:id="@+id/action_roles_to_admin"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_roles_to_modificarRoles"
+            app:destination="@id/modificarRoles" />
+    </fragment>
+    <fragment
+        android:id="@+id/admBicicletas"
+        android:name="com.example.sdjcomp.admBicicletas"
+        android:label="fragment_adm_bicicletas"
+        tools:layout="@layout/fragment_adm_bicicletas" >
+        <action
+            android:id="@+id/action_admBicicletas_to_admin"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admBicicletas_to_registrarBicicleta"
+            app:destination="@id/registrarBicicleta" />
+        <action
+            android:id="@+id/action_admBicicletas_to_modificarBicicleta"
+            app:destination="@id/modificarBicicleta" />
+    </fragment>
+    <fragment
+        android:id="@+id/admCupos"
+        android:name="com.example.sdjcomp.admCupos"
+        android:label="fragment_adm_cupos"
+        tools:layout="@layout/fragment_adm_cupos" >
+        <action
+            android:id="@+id/action_admCupos_to_consultarCupo"
+            app:destination="@id/consultarCupo" />
+        <action
+            android:id="@+id/action_admCupos_to_desasignarCupo"
+            app:destination="@id/desasignarCupo" />
+        <action
+            android:id="@+id/action_admCupos_to_asignarCupo"
+            app:destination="@id/asignarCupo" />
+        <action
+            android:id="@+id/action_admCupos_to_modificarCupos"
+            app:destination="@id/modificarCupos" />
+        <action
+            android:id="@+id/action_admCupos_to_admin"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admCupos_to_crearCupos"
+            app:destination="@id/crearCupos" />
+    </fragment>
+    <fragment
+        android:id="@+id/admParqueaderos"
+        android:name="com.example.sdjcomp.admParqueaderos"
+        android:label="admParqueaderos" >
+        <action
+            android:id="@+id/action_admParqueaderos_to_admin"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admParqueaderos_to_asignarCupo"
+            app:destination="@id/asignarCupo" />
+        <action
+            android:id="@+id/action_admParqueaderos_to_modificarParqueadero"
+            app:destination="@id/modificarParqueadero" />
+    </fragment>
+    <fragment
+        android:id="@+id/admPreguntas"
+        android:name="com.example.sdjcomp.admPreguntas"
+        android:label="fragment_adm_preguntas"
+        tools:layout="@layout/fragment_adm_preguntas" >
+        <action
+            android:id="@+id/action_admPreguntas_to_modificarPreguntas"
+            app:destination="@id/modificarPreguntas" />
+        <action
+            android:id="@+id/action_admPreguntas_to_admin"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admPreguntas_to_crearPregunta"
+            app:destination="@id/crearPregunta" />
+    </fragment>
+    <fragment
+        android:id="@+id/admTipos"
+        android:name="com.example.sdjcomp.admTipos"
+        android:label="fragment_adm_tipos"
+        tools:layout="@layout/fragment_adm_tipos" >
+        <action
+            android:id="@+id/action_admTipos_to_crearTipo"
+            app:destination="@id/crearTipo" />
+        <action
+            android:id="@+id/action_admTipos_to_admin"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admTipos_to_modificarTipo"
+            app:destination="@id/modificarTipo" />
+    </fragment>
+    <fragment
+        android:id="@+id/admUsuarios"
+        android:name="com.example.sdjcomp.admUsuarios"
+        android:label="fragment_adm_usuarios"
+        tools:layout="@layout/fragment_adm_usuarios" >
+        <action
+            android:id="@+id/action_admUsuarios_to_fragment_registro2"
+            app:destination="@id/fragment_registro" />
+        <action
+            android:id="@+id/action_admUsuarios_to_admin2"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admUsuarios_to_fragment_modificar_usuario"
+            app:destination="@id/fragment_modificar_usuario" />
+    </fragment>
+    <fragment
+        android:id="@+id/admMarcas"
+        android:name="com.example.sdjcomp.admMarcas"
+        android:label="fragment_adm_marcas"
+        tools:layout="@layout/fragment_adm_marcas">
+        <action
+            android:id="@+id/action_admMarcas_to_admin"
+            app:destination="@id/admin" />
+        <action
+            android:id="@+id/action_admMarcas_to_modificarMarca"
+            app:destination="@id/modificarMarca" />
+        <action
+            android:id="@+id/action_admMarcas_to_registrarMarca"
+            app:destination="@id/registrarMarca" />
+    </fragment>
+    <fragment
+        android:id="@+id/modificarMarca"
+        android:name="com.example.sdjcomp.modificarMarca"
+        android:label="modificar_marca"
+        tools:layout="@layout/modificar_marca" >
+        <action
+            android:id="@+id/action_modificarMarca_to_admMarcas"
+            app:destination="@id/admMarcas" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrarMarca"
+        android:name="com.example.sdjcomp.registrarMarca"
+        android:label="fragment_registrar_marca"
+        tools:layout="@layout/fragment_registrar_marca" >
+        <action
+            android:id="@+id/action_registrarMarca_to_admMarcas"
+            app:destination="@id/admMarcas" />
+    </fragment>
+    <fragment
+        android:id="@+id/modificarParqueadero"
+        android:name="com.example.sdjcomp.modificarParqueadero"
+        android:label="fragment_modificar_parqueadero"
+        tools:layout="@layout/fragment_modificar_parqueadero" >
+        <action
+            android:id="@+id/action_modificarParqueadero_to_admParqueaderos"
+            app:destination="@id/admParqueaderos" />
+        <action
+            android:id="@+id/action_modificarParqueadero_to_interfazBicicleta"
+            app:destination="@id/interfazBicicleta" />
+    </fragment>
+    <fragment
+        android:id="@+id/modificarCupos"
+        android:name="com.example.sdjcomp.modificarCupos"
+        android:label="modificarCupos" >
+        <action
+            android:id="@+id/action_modificarCupos_to_admCupos"
+            app:destination="@id/admCupos" />
+        <action
+            android:id="@+id/action_modificarCupos_to_admCupos2"
+            app:destination="@id/admCupos" />
+    </fragment>
+    <fragment
+        android:id="@+id/modificarPreguntas"
+        android:name="com.example.sdjcomp.modificarPreguntas"
+        android:label="fragment_modificar_preguntas"
+        tools:layout="@layout/fragment_modificar_preguntas" >
+        <action
+            android:id="@+id/action_modificarPreguntas_to_admPreguntas"
+            app:destination="@id/admPreguntas" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearPregunta"
+        android:name="com.example.sdjcomp.crearPregunta"
+        android:label="fragment_crear_pregunta"
+        tools:layout="@layout/fragment_crear_pregunta" >
+        <action
+            android:id="@+id/action_crearPregunta_to_admPreguntas"
+            app:destination="@id/admPreguntas" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearCupos"
+        android:name="com.example.sdjcomp.crearCupos"
+        android:label="fragment_crear_cupos"
+        tools:layout="@layout/fragment_crear_cupos" >
+        <action
+            android:id="@+id/action_crearCupos_to_admCupos"
+            app:destination="@id/admCupos" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearRoles"
+        android:name="com.example.sdjcomp.crearRoles"
+        android:label="fragment_crear_roles"
+        tools:layout="@layout/fragment_crear_roles" >
+        <action
+            android:id="@+id/action_crearRoles_to_roles"
+            app:destination="@id/roles" />
+    </fragment>
+    <fragment
+        android:id="@+id/modificarRoles"
+        android:name="com.example.sdjcomp.modificarRoles"
+        android:label="fragment_modificar_roles"
+        tools:layout="@layout/fragment_modificar_roles" >
+        <action
+            android:id="@+id/action_modificarRoles_to_roles"
+            app:destination="@id/roles" />
+        <action
+            android:id="@+id/action_modificarRoles_to_roles2"
+            app:destination="@id/roles" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearTipo"
+        android:name="com.example.sdjcomp.crearTipo"
+        android:label="fragment_crear_tipo"
+        tools:layout="@layout/fragment_crear_tipo" >
+        <action
+            android:id="@+id/action_crearTipo_to_admTipos"
+            app:destination="@id/admTipos" />
+    </fragment>
+    <fragment
+        android:id="@+id/modificarTipo"
+        android:name="com.example.sdjcomp.modificarTipo"
+        android:label="fragment_modificar_tipo"
+        tools:layout="@layout/fragment_modificar_tipo" >
+        <action
+            android:id="@+id/action_modificarTipo_to_admTipos"
+            app:destination="@id/admTipos" />
+    </fragment>
+ <fragment
+        android:id="@+id/reportes"
+        android:name="com.example.sdjcomp.Reportes"
+        android:label="fragment_reportes"
+        tools:layout="@layout/fragment_reportes" >
+        <action
+            android:id="@+id/action_reportes_to_reporteParametrizados"
+            app:destination="@id/reporteParametrizados" />
+        <action
+            android:id="@+id/action_reportes_to_admin"
+            app:destination="@id/admin" />
+    </fragment>
+    <fragment
+        android:id="@+id/reporteParametrizados"
+        android:name="com.example.sdjcomp.ReporteParametrizados"
+        android:label="fragment_reporte_parametrizados"
+        tools:layout="@layout/fragment_reporte_parametrizados" >
+        <action
+            android:id="@+id/action_reporteParametrizados_self"
+            app:destination="@id/reporteParametrizados" />
+        <action
+            android:id="@+id/action_reporteParametrizados_to_reportes"
+            app:destination="@id/reportes" />
     </fragment>
 </navigation>

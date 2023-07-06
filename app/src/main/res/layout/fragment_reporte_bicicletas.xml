@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReporteBicicletas">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TableLayout
+                        android:background="@color/white"
+                        android:id="@+id/tblCB"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/txtidControlBicicletas"
+                                android:layout_width="110dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4"
+                                android:background="@color/white"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="ID"
+                                android:textColor="#432d59"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtIdBicicletaCB"
+                                android:layout_width="110dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4"
+                                android:background="@color/white"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="ID Bicycle"
+                                android:textColor="#432d59"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtCedulaCB"
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Owner Id"
+                                android:textColor="#432d59"
+                                android:background="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtFechaRegistroCB"
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Date"
+                                android:textColor="#432d59"
+                                android:background="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtLugarRegistroCB"
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Place"
+                                android:textColor="#432d59"
+                                android:background="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtIdMarcaCB"
+                                android:layout_width="110dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4"
+                                android:background="@color/white"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="ID Brand"
+                                android:textColor="#432d59"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtNumSerieCB"
+                                android:layout_width="110dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4"
+                                android:background="@color/white"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="# Serie"
+                                android:textColor="#432d59"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtIdTipoCB"
+                                android:layout_width="110dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4"
+                                android:background="@color/white"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="ID Type"
+                                android:textColor="#432d59"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtColorCB"
+                                android:layout_width="110dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4"
+                                android:background="@color/white"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Color"
+                                android:textColor="#432d59"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtCodigoCB"
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Student Id"
+                                android:textColor="#432d59"
+                                android:background="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtCreatedDateCB"
+                                android:layout_width="110dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4"
+                                android:background="@color/white"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Creation"
+                                android:textColor="#432d59"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtLastModifiedDateCB"
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="Last Modification"
+                                android:textColor="#432d59"
+                                android:background="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtEstadoCB"
+                                android:layout_width="110dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4"
+                                android:background="@color/white"
+                                android:gravity="center_horizontal"
+                                android:padding="10sp"
+                                android:text="State"
+                                android:textColor="#432d59"
+                                android:textSize="14sp" />
+
+                        </TableRow>
+
+                    </TableLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
